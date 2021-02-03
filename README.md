@@ -7,3 +7,6 @@ Simple skeleton with libgdx.
 
 
 Test
+
+
+test2
