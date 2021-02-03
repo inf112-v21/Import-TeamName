@@ -16,6 +16,9 @@
 ## Hva ble diskutert
 
 Diskutert arbeidsfordeling. <br>
+Erfaringen til alle gruppemedlemmer ble diskutert.
+* Gruppen vurderer å vektlegge parprogrammering i starten av projektet. <br>
+
 Møter: <br>
 * Hyppighet
 * Lengde
