@@ -22,9 +22,17 @@ Møter: <br>
 * Tidspunkter
 
 Foreløpig plan:
-* Mandag kl 15:00 - 14:00
+* Mandag kl 15:00 - 16:00
 * Onsdag kl 12:15 - 14:00  
 * Fredag kl 15:00 - 16:00
+
+##Prosjektstruktur
+* Laget/Organisert github-en mer.
+
+###Kommunikasjon
+* Discord
+* Laget github Projekt Board
+* Zoom
 
 
 
