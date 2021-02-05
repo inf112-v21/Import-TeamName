@@ -14,23 +14,23 @@
 -  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
 
 		- Akseptansekriterier: 
-           	    - Brettet har forventet størrelse og mengde ruter.
-           	    - Antall ruter på brettet tilsvarer antall mulige posisjoner spilleren kan gå til.
+			Brettet har forventet størrelse og mengde ruter.
+			Antall ruter på brettet tilsvarer antall mulige posisjoner spilleren kan gå til.
 		- Arbeidsoppgaver
-		    - Lage fullstendig tiled kart
-		    - Importere nevnte kart i spillmotor
-		    - Koble spill logikk opp mot spillmotor/renderer.
+			Lage fullstendig tiled kart
+			Importere nevnte kart i spillmotor
+			Koble spill logikk opp mot spillmotor/renderer.
 
 - Som bruker trenger jeg å se min egen brikke på brettet, for å kunne se om brikken min står i fare.
 
         	- Akseptansekriterier:
-            	   - Robot må være synlig på brettet.
-            	   - Når spillet startes, må bruker bli tildelt en robot brikke.
-                   - Robot har forventet plassering i forhold til koordinater innad i spillet.
+			Robot må være synlig på brettet.
+			Når spillet startes, må bruker bli tildelt en robot brikke.
+			Robot har forventet plassering i forhold til koordinater innad i spillet.
                - Arbeidsoppgaver:
-             	   - Lage grafisk fremstilling av robot.
-              	   - Splitte og korrekt angi grafisk fremstilling i spillmotoren
-                   - Lage spill logikk som plasserer brikken i korrekt layer av spillebrettet
+	       		Lage grafisk fremstilling av robot.
+			Splitte og korrekt angi grafisk fremstilling i spillmotoren
+			Lage spill logikk som plasserer brikken i korrekt layer av spillebrettet
             
 - Som bruker trenger jeg å se andre spilleres brikker, for å kunne planlegge mitt neste trekk.
 		Akseptansekriterier:
