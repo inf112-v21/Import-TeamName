@@ -12,10 +12,10 @@
 <h4> Eksempel på brukerhistorier i prioritert rekkefølge </h4>
 
 * Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
-		- Akseptansekriterier:
-            - Brettet har forventet størrelse og mengde ruter. </br>
+		**Akseptansekriterier:**
+            - Brettet har forventet størrelse og mengde ruter.
             - Antall ruter på brettet tilsvarer antall mulige posisjoner spilleren kan gå til.
-		Arbeidsoppgaver:
+		**Arbeidsoppgaver:**
             **Lage fullstendig tiled kart
             **Importere nevnte kart i spillmotor
             **Koble spill logikk opp mot spillmotor/renderer.
