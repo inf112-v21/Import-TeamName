@@ -16,10 +16,10 @@
            	 -  Brettet har forventet størrelse og mengde ruter.
            	 -  Antall ruter på brettet tilsvarer antall mulige posisjoner spilleren kan gå til.
 		 
-		**Arbeidsoppgaver:**
-            **Lage fullstendig tiled kart
-            **Importere nevnte kart i spillmotor
-            **Koble spill logikk opp mot spillmotor/renderer.
+		- Arbeidsoppgaver
+		    - Lage fullstendig tiled kart
+		    - Importere nevnte kart i spillmotor
+		    - Koble spill logikk opp mot spillmotor/renderer.
 
 * Som bruker trenger jeg å se min egen brikke på brettet, for å kunne se om brikken min står i fare.
         Akseptansekriterier:
