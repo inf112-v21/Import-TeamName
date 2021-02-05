@@ -1,18 +1,18 @@
 # Obligatorisk Oppgave 1
 
 
-<h3> Deloppgave 1: Organiser teamet </h3>
+## Deloppgave 1: Organiser teamet
 
 
 
-<h3> Deloppgave 2: Velg og tilpass en prosess for laget</h3>
+## Deloppgave 2: Velg og tilpass en prosess for laget
 
 
-<h3> Deloppgave 3: Få oversikt over forventet produkt </h3>
+## Deloppgave 3: Få oversikt over forventet produkt
 
-<h4> Overordnet mål for applikasjonen: (Kort oppsummering) </h4>
+### Overordnet mål for applikasjonen: (Kort oppsummering)
 
-<h4> Eksempel på brukerhistorier i prioritert rekkefølge </h4>
+### Eksempel på brukerhistorier i prioritert rekkefølge
 
 -  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
 
