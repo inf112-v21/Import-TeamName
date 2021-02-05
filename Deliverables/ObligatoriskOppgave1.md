@@ -2,6 +2,36 @@
 
 
 ## Deloppgave 1: Organiser teamet
+### Kompetanse:
+
+Endre:
+* Datateknologi 2.år
+* Erfaring med Git/Github, OOP Java.
+
+August
+* Datateknologi 2 år
+* Litt erfaring med Git / GitHub
+* OOP, Java
+* Litt erfaring med Game Engine Godot
+
+Sondre
+* IKT 3.år
+* Brukt Git til flere prosjekter.
+* Java OOP
+
+Jakob
+* Datatek 2.
+* Tidligere studert fysikk
+* Lite kodeerfaring
+
+Eivind Mai
+* Datatek 2.
+* Litt erfaring med Git/Java
+
+Viktig erfaring vi ikke har:
+* Libgdx
+* Networking/Multiplayer
+
 
 ### Roller:
 * Sondre
@@ -20,7 +50,7 @@
 NoeNoeNoeNoeNoeNoe<br>
 NoeNoeNoeNoeNoe
 ### Eksempel på brukerhistorier i prioritert rekkefølge
-<b>Brukerhistorie 1</b>
+<b>Brukerhistorie 1 - Visuell fremstilling</b>
 
 -  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
 
@@ -32,7 +62,7 @@ NoeNoeNoeNoeNoe
 			Importere nevnte kart i spillmotor
 			Koble spill logikk opp mot spillmotor/renderer.
 
-<b>Brukerhistorie 2</b>
+<b>Brukerhistorie 2 - Brikke på brett</b>
 
 - Som bruker trenger jeg å se min egen brikke på brettet, for å kunne se om brikken min står i fare.
 
@@ -45,7 +75,20 @@ NoeNoeNoeNoeNoe
 			Splitte og korrekt angi grafisk fremstilling i spillmotoren
 			Lage spill logikk som plasserer brikken i korrekt layer av spillebrettet
 
-<b>Brukerhistorie 3</b>
+<b>Brukerhistorie 3 - Robot bevegelighet</b>
+
+- Som bruker trenger jeg at roboten kan bevege seg, slik at jeg kan bytte posisjon på brettet.
+
+  	- Akseptansekriterier:
+            Roboten skal kunne flytte seg opp, høyre, venstre og ned
+            Robotens brikke vises korrekt på ny plassering.
+            Den forrige ruten viser ikke duplikat av roboten når den flytter seg.
+  	- Arbeidsoppgaver:
+            Spiller kan styre retningen roboten beveger seg i.
+            Robotens gamle posisjon slettes
+            Robotens nye posisjon legges til
+
+<b>Brukerhistorie 4 - Fiender </b>
 
 - Som bruker trenger jeg å se andre spilleres brikker, for å kunne planlegge mitt neste trekk.
   
@@ -57,17 +100,6 @@ NoeNoeNoeNoeNoe
             Splitte og korrekt angi grafisk fremstilling i spillmotoren
             Lage spill logikk som plasser brikkene i korrekt layer av spillebrettet
 
-<b>Brukerhistorie 4</b>
 
-- Som bruker trenger jeg at roboten kan bevege seg, slik at jeg kan bytte posisjon på brettet.
-		
-		- Akseptansekriterier:
-            Roboten skal kunne flytte seg opp, høyre, venstre og ned
-            Robotens brikke vises korrekt på ny plassering.
-            Den forrige ruten viser ikke duplikat av roboten når den flytter seg.
-		- Arbeidsoppgaver:
-            Spiller kan styre retningen roboten beveger seg i.
-            Robotens gamle posisjon slettes
-            Robotens nye posisjon legges til
 
 ### Prioritert liste med krav til første iterasjon:
