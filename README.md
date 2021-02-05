@@ -1,13 +1,5 @@
-# INF112 Gruppe 10-2: Import TeamName
-
-### Team Members:
-- August Klevberg
-- Eivind Mai
-- Endre Tønnessen
-- Jakob Svemo
-- Sondre Eide
+# INF112 Maven template 
+Simple skeleton with libgdx. 
 
 
 ## Known bugs
-
-*No bugs found.*
