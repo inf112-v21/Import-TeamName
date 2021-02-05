@@ -6,7 +6,7 @@
 
 * Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
 		Akseptansekriterier:
-            * Brettet har forventet størrelse og mengde ruter.
+            <br> Brettet har forventet størrelse og mengde ruter. </br>
             * Antall ruter på brettet tilsvarer antall mulige posisjoner spilleren kan gå til.
 		Arbeidsoppgaver:
             * Lage fullstendig tiled kart
