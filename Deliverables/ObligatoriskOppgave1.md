@@ -3,15 +3,22 @@
 
 ## Deloppgave 1: Organiser teamet
 
+### Roller:
+* Sondre
+* Eivind
+* August
+* Jakob
+* Endre
 
 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
-
+### Vi har valgt: 
 
 ## Deloppgave 3: Få oversikt over forventet produkt
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
-
+NoeNoeNoeNoeNoeNoe<br>
+NoeNoeNoeNoeNoe
 ### Eksempel på brukerhistorier i prioritert rekkefølge
 
 -  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
