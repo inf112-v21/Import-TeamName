@@ -2,7 +2,7 @@
 
 
 ## Deloppgave 1: Organiser teamet
-### Kompetanse:
+### Kartlegging av kompetanse:
 
 Endre:
 * Datateknologi 2.år
@@ -28,17 +28,21 @@ Eivind Mai
 * Datatek 2.
 * Litt erfaring med Git/Java
 
+<br>
+
 Viktig erfaring vi ikke har:
 * Libgdx
 * Networking/Multiplayer
 
+<br>
 
 ### Roller:
+Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, slik at alle får en variert erfaring.
 * Sondre
 * Eivind
 * August
-* Jakob
-* Endre
+* Jakob: Utvikler og kundekontakt.
+* Endre: Utvikler og referant.
 
 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
