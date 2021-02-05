@@ -23,20 +23,20 @@
 
 - Som bruker trenger jeg å se min egen brikke på brettet, for å kunne se om brikken min står i fare.
 
-        	- Akseptansekriterier:
+		- Akseptansekriterier:
 			Robot må være synlig på brettet.
 			Når spillet startes, må bruker bli tildelt en robot brikke.
 			Robot har forventet plassering i forhold til koordinater innad i spillet.
-               - Arbeidsoppgaver:
+		- Arbeidsoppgaver:
 	       		Lage grafisk fremstilling av robot.
 			Splitte og korrekt angi grafisk fremstilling i spillmotoren
 			Lage spill logikk som plasserer brikken i korrekt layer av spillebrettet
             
 - Som bruker trenger jeg å se andre spilleres brikker, for å kunne planlegge mitt neste trekk.
-		Akseptansekriterier:
-            **Andre spilleres roboter må være synlig på brettet
-            **Posisjonen til robotene må samsvare med posisjonsdata innad i spillet.
-        Arbeidsoppgaver:
+		- Akseptansekriterier:
+			- Andre spilleres roboter må være synlig på brettet 
+			- Posisjonen til robotene må samsvare med posisjonsdata innad i spillet.
+		- Arbeidsoppgaver:
             **Lage grafisk fremstilling av robot.
             **Splitte og korrekt angi grafisk fremstilling i spillmotoren
             **Lage spill logikk som plasser brikkene i korrekt layer av spillebrettet
