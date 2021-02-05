@@ -48,6 +48,18 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
 ### Vi har valgt: 
 
+### Møter:
+* Obligatorisk møte 1 gang i uken Onsdager 12:15 til 14:00 (Zoom).
+* I tillegg planlegger vi for 2 små møter:
+	* Mandag kl 15:00 - 16:00 (Discord)
+	* Fredag kl 15:00 - 16:00 (Discord)
+* Det skal skrives møtereferat til alle møter. (Lagres under Deliverbles/Møtereferat/)	
+* Gruppen ble enige om at det skal holdes korte, men hyppige møter. Planen over er tentativ, og endres alt etter arbeidsmengde og ved behov. 
+
+* Parprogrammering:
+	 * Gruppen ble enige om at det skal holdes flere parprogrammerings-møter. 
+	 * Hovedgrunnen er for å øke kompetansen til alle i gruppen.
+
 ## Deloppgave 3: Få oversikt over forventet produkt
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
