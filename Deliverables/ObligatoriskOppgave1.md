@@ -59,6 +59,11 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 * Parprogrammering:
 	 * Gruppen ble enige om at det skal holdes flere parprogrammerings-møter. 
 	 * Hovedgrunnen er for å øke kompetansen til alle i gruppen.
+	
+### Kommunikasjon
+* Discord
+* Github Projekt Board
+
 
 ## Deloppgave 3: Få oversikt over forventet produkt
 
@@ -119,3 +124,5 @@ NoeNoeNoeNoeNoe
 
 
 ### Prioritert liste med krav til første iterasjon:
+* 1 
+* 2 
