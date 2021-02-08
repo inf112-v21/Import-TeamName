@@ -4,36 +4,6 @@
 ## Deloppgave 1: Organiser teamet
 ### Kartlegging av kompetanse:
 
-Endre:
-* Datateknologi 2.år
-* Erfaring med Git/Github, OOP Java.
-
-August
-* Datateknologi 2 år
-* Litt erfaring med Git / GitHub
-* OOP, Java
-* Litt erfaring med Game Engine Godot
-
-Sondre
-* IKT 3.år
-* Brukt Git til flere prosjekter.
-* Java OOP
-
-Jakob
-* Datatek 2.
-* Tidligere studert fysikk
-* Lite kodeerfaring
-
-Eivind Mai
-* Datatek 2.
-* Litt erfaring med Git/Java
-
-<br>
-
-Viktig erfaring vi ikke har:
-* Libgdx
-* Networking/Multiplayer
-
 <br>
 
 ### Roller:
