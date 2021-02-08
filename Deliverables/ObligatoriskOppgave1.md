@@ -18,21 +18,29 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
 ### Vi har valgt: 
 
-### Møter:
-* Obligatorisk møte 1 gang i uken Onsdager 12:15 til 14:00 (Zoom).
-* I tillegg planlegger vi for 2 små møter:
-	* Mandag kl 15:00 - 16:00 (Discord)
-	* Fredag kl 15:00 - 16:00 (Discord)
-* Det skal skrives møtereferat til alle møter. (Lagres under Deliverbles/Møtereferat/)	
-* Gruppen ble enige om at det skal holdes korte, men hyppige møter. Planen over er tentativ, og endres alt etter arbeidsmengde og ved behov. 
 
-* Parprogrammering:
-	 * Gruppen ble enige om at det skal holdes flere parprogrammerings-møter. 
-	 * Hovedgrunnen er for å øke kompetansen til alle i gruppen.
-	
-### Kommunikasjon
-* Discord
-* Github Projekt Board
+
+Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstendige utviklere hvor alle har en egen støtterolle i tillegg til å være utvikler. I forkant av prosjektet blir gruppen enige om møtehyppighet, kommunikasjonsmidler og hvordan vi ønsker å arbeide med prosjektet for å oppnå best mulig resultat.
+
+
+## Kommunikasjon mellom møter:
+	* Discord:
+		*All kommunikasjon foregår på en egen discord kanal. Her holdes møter på tre
+		faste ukentlige tidspunkter
+	* Google Doc:
+		* Google docs muliggjør samskriving og enkel formidling av notater, arbeidskrav og dokumentasjon til prosjektet.
+	* Github:
+		* Prosjektet oppbevares som et git repository på github. Issue tracking og prosjektets Kanban tavle er tilgjengelig for gruppens medlemmer.
+
+## Møtehyppighet:
+	* Oblig møte onsdag 12:15- 14:00 (Holdes på Zoom)
+	* Små møter (tentative ved behov) (Holdes på discord):
+		* Mandag 15:00
+		* Fredag 15:15
+Møte for parprogrammering?
+
+Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker.
+
 
 
 ## Deloppgave 3: Få oversikt over forventet produkt
