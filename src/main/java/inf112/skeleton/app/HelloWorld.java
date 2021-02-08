@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -24,17 +23,19 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
 
     private SpriteBatch batch;
     private BitmapFont font;
-    private Sprite sprite;
+
     private TiledMapTileLayer boardTile, holeTile, flagTile, playerTile;
     private TiledMap tiledMap;
     private OrthographicCamera camera;
     private TiledMapRenderer tiledMapRenderer;
 
     // PLAYER
-    private TiledMapTileLayer.Cell playerDiedCell, player, playerWon;
+    private TiledMapTileLayer.Cell playerDied, player, playerWon;
     private Vector2 playerPos;
     private Texture playerTexture;
     private TextureRegion[][] playerTextureRegion;
+
+    boolean movePlayer = true;
 
 
     @Override
@@ -44,29 +45,30 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, w, h);
         camera.update();
-        tiledMap = new TmxMapLoader().load("map.tmx");
+        tiledMap = new TmxMapLoader().load("Maps/tutorialMap.tmx");
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         boardTile = (TiledMapTileLayer) tiledMap.getLayers().get("Board");
         holeTile = (TiledMapTileLayer) tiledMap.getLayers().get("Hole");
         flagTile = (TiledMapTileLayer) tiledMap.getLayers().get("Flag");
         playerTile = (TiledMapTileLayer) tiledMap.getLayers().get("Player");
-        Gdx.input.setInputProcessor(this);
+
 
         //PLAYER
-        playerTexture = new Texture("player.png");
+        playerTexture = new Texture("Images/player.png");
         playerTextureRegion = TextureRegion.split(playerTexture, 300, 300); // Split tile
         player = new TiledMapTileLayer.Cell();
-        playerDiedCell = new TiledMapTileLayer.Cell();
+        playerDied = new TiledMapTileLayer.Cell();
         playerWon  = new TiledMapTileLayer.Cell();
-        player.setTile(new StaticTiledMapTile(playerTextureRegion[0][0])); // Set textures
-        playerDiedCell.setTile(new StaticTiledMapTile(playerTextureRegion[0][1])); // Set textures
-        playerWon.setTile(new StaticTiledMapTile(playerTextureRegion[0][2])); // Set textures
-        playerPos = new Vector2(1,2); // Set position
+        player.setTile(new StaticTiledMapTile(playerTextureRegion[0][0]));
+        playerDied.setTile(new StaticTiledMapTile(playerTextureRegion[0][1]));
+        playerWon.setTile(new StaticTiledMapTile(playerTextureRegion[0][2]));
+        playerPos = new Vector2(1,2);
+
+        Gdx.input.setInputProcessor(this); // Set inputprocessor
     }
 
     @Override
     public void render() {
-
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.BLACK);
@@ -76,8 +78,12 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
         camera.update();
         tiledMapRenderer.setView(camera);
         playerTile.setCell((int) playerPos.x, (int) playerPos.y, player);
-        playerTile.setCell(2,2, playerDiedCell);
+        playerTile.setCell(2,2, playerDied);
+        playerTile.setCell(2,3, playerWon);
+        winOrLose();
         tiledMapRenderer.render();
+
+
 
     }
 
@@ -92,10 +98,39 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
     public boolean keyDown(int i) {
         return false;
     }
-
-
     @Override
     public boolean keyUp(int keycode) {
+        if (movePlayer) {
+            changeDirection(playerTile, playerPos, keycode);
+            return true;
+        }
+        moveCamera(keycode);
+        return true;
+    }
+
+    public void changeDirection(TiledMapTileLayer actor, Vector2 position, int keycode) {
+        /**
+         * Change direction of an actor, e.g a a place
+         */
+        actor.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
+        switch(keycode) {
+            case Input.Keys.W:
+                position.y += 1;
+                break;
+            case Input.Keys.S:
+                position.y -= 1;
+                break;
+            case Input.Keys.A:
+                position.x -= 1;
+                break;
+            case Input.Keys.D:
+                position.x += 1;
+                break;
+        }
+    }
+
+
+    public void moveCamera(int keycode) {
         if(keycode == Input.Keys.LEFT)
             camera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
@@ -108,7 +143,17 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
             tiledMap.getLayers().get(0).setVisible(!tiledMap.getLayers().get(0).isVisible());
         if(keycode == Input.Keys.NUM_2)
             tiledMap.getLayers().get(1).setVisible(!tiledMap.getLayers().get(1).isVisible());
-        return false;
+
+    }
+
+    public void winOrLose() {
+        /**
+         * Has the player won or lost. Render calls function
+         */
+        if (holeTile.getCell((int) playerPos.x,(int) playerPos.y) != null) playerTile.setCell((int) playerPos.x,(int) playerPos.y, playerDied);
+        else if (flagTile.getCell((int) playerPos.x,(int) playerPos.y) != null) playerTile.setCell((int) playerPos.x,(int) playerPos.y,playerWon);
+        else playerTile.setCell((int) playerPos.x,(int) playerPos.y,player);
+
     }
 
     @Override

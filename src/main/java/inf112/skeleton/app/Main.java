@@ -10,7 +10,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("Test-prosjekt");
+        cfg.setTitle("ROBORALLY");
         cfg.setWindowedMode(2560, 1440);
 
         HelloWorld helloWorld = new HelloWorld();
