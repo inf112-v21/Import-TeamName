@@ -8,11 +8,11 @@
 
 ### Roller:
 Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, slik at alle får en variert erfaring.
-* Sondre
-* Eivind
-* August
-* Jakob: Utvikler og kundekontakt.
-* Endre: Utvikler og referant.
+* Sondre: Utvikler og kravsjekker
+* Eivind: Utvikler og playtester
+* August: Utvikler og game master
+* Jakob: Utvikler og kundekontakt
+* Endre: Utvikler og referant
 
 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
