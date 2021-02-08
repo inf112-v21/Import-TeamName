@@ -11,5 +11,3 @@
 
 
 ## Known bugs
-
-*No bugs found.*
