@@ -4,13 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>inf112.test_prosjekt</groupId>
-  <artifactId>test_prosjekt</artifactId>
+  <groupId>inf112.import_team_name</groupId>
+  <artifactId>inf112.import_team_name</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>Test prosjekt</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>IMPORT TEAM NAME</name>
+
+  <url>https://github.com/inf112-v21/Import-TeamName</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +18,6 @@
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx -->
     <dependency>
       <groupId>com.badlogicgames.gdx</groupId>
       <artifactId>gdx</artifactId>

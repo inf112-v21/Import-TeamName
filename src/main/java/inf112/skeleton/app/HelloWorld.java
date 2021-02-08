@@ -20,8 +20,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
-import java.awt.*;
-
 public class HelloWorld extends ApplicationAdapter implements InputProcessor {
 
     private SpriteBatch batch;
@@ -56,20 +54,14 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
 
         //PLAYER
         playerTexture = new Texture("player.png");
-        // Split tile
-        playerTextureRegion = TextureRegion.split(playerTexture, 300, 300);
-
-        System.out.println(playerTextureRegion[0][0]);
-
-
+        playerTextureRegion = TextureRegion.split(playerTexture, 300, 300); // Split tile
         player = new TiledMapTileLayer.Cell();
         playerDiedCell = new TiledMapTileLayer.Cell();
         playerWon  = new TiledMapTileLayer.Cell();
-
-        player.setTile(new StaticTiledMapTile(playerTextureRegion[0][0]));
-        playerDiedCell.setTile(new StaticTiledMapTile(playerTextureRegion[0][1]));
-        playerWon.setTile(new StaticTiledMapTile(playerTextureRegion[0][2]));
-        playerPos = new Vector2(1,2);
+        player.setTile(new StaticTiledMapTile(playerTextureRegion[0][0])); // Set textures
+        playerDiedCell.setTile(new StaticTiledMapTile(playerTextureRegion[0][1])); // Set textures
+        playerWon.setTile(new StaticTiledMapTile(playerTextureRegion[0][2])); // Set textures
+        playerPos = new Vector2(1,2); // Set position
     }
 
     @Override
@@ -83,7 +75,7 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
         tiledMapRenderer.setView(camera);
-        playerTile.setCell(1,2, player);
+        playerTile.setCell((int) playerPos.x, (int) playerPos.y, player);
         playerTile.setCell(2,2, playerDiedCell);
         tiledMapRenderer.render();
 
@@ -100,6 +92,8 @@ public class HelloWorld extends ApplicationAdapter implements InputProcessor {
     public boolean keyDown(int i) {
         return false;
     }
+
+
     @Override
     public boolean keyUp(int keycode) {
         if(keycode == Input.Keys.LEFT)
