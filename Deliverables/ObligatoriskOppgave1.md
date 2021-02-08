@@ -96,3 +96,6 @@ NoeNoeNoeNoeNoe
 ### Prioritert liste med krav til første iterasjon:
 * 1 
 * 2 
+
+
+<h4> Gjeldende commit for innlevering 1 </h4>
