@@ -62,7 +62,7 @@ NoeNoeNoeNoeNoe
 			Når spillet startes, må bruker bli tildelt en robot brikke.
 			Robot har forventet plassering i forhold til koordinater innad i spillet.
 		- Arbeidsoppgaver:
-	       		Lage grafisk fremstilling av robot.
+			Lage grafisk fremstilling av robot.
 			Splitte og korrekt angi grafisk fremstilling i spillmotoren
 			Lage spill logikk som plasserer brikken i korrekt layer av spillebrettet
 
