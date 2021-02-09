@@ -24,17 +24,12 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
 
     private TiledMap map;
     // Layers on the map
-    private TiledMapTileLayer tileBoard;
-    private TiledMapTileLayer tilePlayer;
-    private TiledMapTileLayer tileHole;
-    private TiledMapTileLayer tileFlag;
+    private TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag;
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
 
-    private TiledMapTileLayer.Cell playerCell;
-    private TiledMapTileLayer.Cell playerDead;
-    private TiledMapTileLayer.Cell playerWon;
+    private TiledMapTileLayer.Cell playerCell, playerDead, playerWon;
     private Vector2 playerPos;
 
     private TiledMapTileLayer.Cell emptyCell;
@@ -59,7 +54,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         tileFlag = (TiledMapTileLayer) map.getLayers().get("Flag");
 
         Texture playerTexture = new Texture("Images/player.png"); // Texture of player
-        TextureRegion[][] tx = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/win?
+        TextureRegion[][] tx = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
 
         playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(tx[0][0]));
         playerDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(tx[0][1]));
