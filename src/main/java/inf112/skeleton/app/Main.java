@@ -11,10 +11,11 @@ public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("ROBORALLY");
-        cfg.setWindowedMode(2560, 1440);
+        cfg.setWindowedMode(500,500);
 
-        HelloWorld helloWorld = new HelloWorld();
-        new Lwjgl3Application(helloWorld, cfg);
+        //HelloWorld helloWorld = new HelloWorld();
+        TestGame game = new TestGame();
+        new Lwjgl3Application(game, cfg);
 
     }
 }
