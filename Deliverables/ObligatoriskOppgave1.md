@@ -14,6 +14,23 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 * Jakob: Utvikler og kundekontakt
 * Endre: Utvikler og referant
 
+### Begrunnelse for roller:
+Kravsjekker:<br>
+Ansvarlig for at gruppen oppfyller alle krav i henhold til skriftlige og kode innleveringerer. Alle var enige om at vi burde tilegne en ansvaret for å dobbeltsjekke produktene før vi leverer til kunden. Dette innebærer en sjekk før levering, men også, en løpende oversikt gjennom innleverings perioden.
+
+Utvikler:<br>
+Vi har valgt at alle i gruppen skal ha rollen utvikler. Vi ser et behov for å dele ut visse kritiske roller, men også å beholde smidighet innad i gruppen. Som utvikler skal man bistå andre medlemmer, og tilegne seg oversikt over prosjektet.
+
+Kundekontakt:<br>
+Gruppen har besluttet å inkludere rollen kundekontakt. Vi ser et behov for å ha et knutepunkt mellom kunden og gruppen. Her tenker vi at det vil være enklere for kunden å ikke trenge å forholde seg til flere medlemmer fra samme team, samt det vil spare oss tid og forvirring når en har oversikt. Dette forhindrer at flere utviklere bruker tid på å spørre om samme sak. God kontakt med kunden er essensielt for å løse problemer og til slutt levere produktet kunden forventer. Kundekontakten har ansvaret for å videreformidle spørsmål og forespørsler fra teamet til kunden.
+
+Gamemaster:<br>
+Vi tenker det er gunstig å gi ansvaret for spilleregler til en av medlemmene. Her er ansvaret å ha kontroll på spillereglene, samt bistå andre gruppemedlemmene når det skulle oppstå tvil. Siden det er en stor mengde regler å forholde seg til, vil vi spare tid ved at ikke alle må umiddelbart lese seg opp på hele spillet.
+
+Playtester:<br>
+Ansvaret for å oppdage, dokumentere og informere teamet om feilaktig oppførsel i spillet.
+
+
 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
 
