@@ -18,10 +18,7 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
 ### Vi har valgt: 
 
-
-
-Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstendige utviklere hvor alle har en egen støtterolle i tillegg til å være utvikler. I forkant av prosjektet blir gruppen enige om møtehyppighet, kommunikasjonsmidler og hvordan vi ønsker å arbeide med prosjektet for å oppnå best mulig resultat.
-
+Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstendige utviklere hvor alle har en egen støtterolle i tillegg til å være utvikler. I forkant av prosjektet blir gruppen enige om møtehyppighet, kommunikasjonsmidler og hvordan vi ønsker å arbeide med prosjektet for å oppnå best mulig resultat. 
 
 ## Kommunikasjon mellom møter:
 	* Discord:
@@ -33,13 +30,16 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 		* Prosjektet oppbevares som et git repository på github. Issue tracking og prosjektets Kanban tavle er tilgjengelig for gruppens medlemmer.
 
 ## Møtehyppighet:
-	* Oblig møte onsdag 12:15- 14:00 (Holdes på Zoom)
+	Gruppen er enig om følgende møtetidspunkter:
+	* Obligator møte onsdag 12:15- 14:00 (Holdes på Zoom)
 	* Små møter (tentative ved behov) (Holdes på discord):
 		* Mandag 15:00
 		* Fredag 15:15
-Møte for parprogrammering?
 
-Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker.
+
+Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker. Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet. 
+
+
 
 
 
