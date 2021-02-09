@@ -3,11 +3,11 @@
 
 ## Deloppgave 1: Organiser teamet
 ### Kartlegging av kompetanse:
-
+Teamet består av fire fra datateknologi og en fra IKT. Dermed har alle jevn erfaring opp mot java, og stort sett har alle vært innom samme emner. Git har vært brukt blant annet i INF101 og INF102, og alle i gruppen er kjent med konseptet. Vi ser derimot et behov for å ta en grunnleggende gjennomgang slik at alle har en felles forståelse for git opp mot prosjektet. Ingen i teamet har hatt jobb/sommerjobb relevant til faget, så prosjektarbeid og metodikk er nytt for alle. Flere av medlemmene har hatt relevante prosjekter på fritiden, og har litt utvidet erfaring i visse områder, men det varierer hvor relevant diverse teknologier er for prosjektet.
 <br>
 
 ### Roller:
-Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, slik at alle får en variert erfaring.
+Vi har valgt å rullere på rollene igjennom semesteret, slik at alle får en variert erfaring.
 * Sondre: Utvikler og kravsjekker
 * Eivind: Utvikler og playtester
 * August: Utvikler og game master
