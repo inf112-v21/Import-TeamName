@@ -16,7 +16,7 @@ Noe sånt kanskje? --> Vi har valgt å rullere på rollene igjennom semesteret, 
 
 
 ## Deloppgave 2: Velg og tilpass en prosess for laget
-### Vi har valgt: 
+
 
 Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstendige utviklere hvor alle har en egen støtterolle i tillegg til å være utvikler. I forkant av prosjektet blir gruppen enige om møtehyppighet, kommunikasjonsmidler og hvordan vi ønsker å arbeide med prosjektet for å oppnå best mulig resultat. 
 
