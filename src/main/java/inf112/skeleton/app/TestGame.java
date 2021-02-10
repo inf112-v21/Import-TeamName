@@ -32,13 +32,15 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
     private TiledMapTileLayer.Cell playerCell, playerDead, playerWon;
     private Vector2 playerPos;
 
-    private TiledMapTileLayer.Cell emptyCell;
     boolean movePlayer = true;
+
+
+    /**
+     * Constructor method
+     */
     @Override
     public void create() {
-        /**
-         * Constructor method
-         */
+
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -65,11 +67,14 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
 
         playerPos = new Vector2(0,0);
 
-        emptyCell = new TiledMapTileLayer.Cell(); // Empty cell to fill behind the moving peice. Prevents duplicate textures.
         //UserInputManager uim = new UserInputManager();
         Gdx.input.setInputProcessor(this);
     }
 
+    /**
+     * Method that performs action when key pressed is released
+     * @param keycode: number id of pressed key
+     */
     @Override
     public boolean keyUp(int keycode) {
         if (movePlayer) {
@@ -79,13 +84,15 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         moveCamera(keycode);
         return true;
     }
+
+    /**
+     * Change direction of an actor, e.g a a place
+     * @param actor: the tile containing an actor, e.g a player
+     * @param position: a 2d position
+     * @param keycode: number id of pressed key
+     */
     public void changeDirection(TiledMapTileLayer actor, Vector2 position, int keycode) {
-        /**
-         * Change direction of an actor, e.g a a place
-         * @actor: the tile containing an actor, e.g a player
-         * @position: a 2d position
-         * @keycode: number id of keys
-         */
+
         actor.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
         switch(keycode) {
             case Input.Keys.W:
@@ -102,10 +109,12 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
                 break;
         }
     }
+
+    /**
+     * Change camera location based on WASD keystrokes
+     */
     public void moveCamera(int keycode) {
-        /**
-         * Change camera location based on WASD keystrokes
-         */
+
         if(keycode == Input.Keys.LEFT)
             camera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
@@ -144,11 +153,6 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
             tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerCell);
         }
         mapRenderer.render();
-        /*
-        batch.begin();
-        font.draw(batch, "Hello World", 200, 200);
-        batch.end();
-         */
     }
 
     @Override
