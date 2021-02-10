@@ -145,6 +145,23 @@ Brukerhistorie 1, 2 og 3.
 4. Robot dør når den går over et hull
 5. Robot vinner ved å besøke flagg
 
+## Deloppgave 4: 
+
+
+Vi har gjennom første del av prosjektet avholdt hyppige og korte møter. I den faste gruppetimen har gruppen arbeidet sammen, og skrevet dokumetnasjon og forklart kode til andre gruppemedlemmer. Vi har så langt erfart at dette har vært en god måte å jobbe på.
+
+Etter å ha arbeidet med prosjektet i en uke, har vi har vært at fordeling og delegering av arbeid kan uttrykkes tydeligere. Gruppen har blitt enig om å bruke github sitt issue system til å delegere arbeidsoppgaver gruppen har blitt enig på hvert møte. Prosjekttavlen vil bli brukt for å holde oversikt over prosjektet, hva som er gjort, hva som er igang og hva som skal gjøres.
+
+Det er enda tidlig i prosjektet, og etter hvert som prosjektet går videre vil vi bedre kunne besvare styrker og svakheter i gruppearbeidet.
+
+#### Positive og negative erfrainger 
+    Positivt:
+        Hyppige møter fungerer
+        Prosjektet går fremover
+    Til forbering:
+        Delegering av arbeidsoppgaver. I større grad bruke Issues i Github til å markere arbeidsfordeling.
+        Jevne ut commits. Hyppigere og mer presise commits i git.
 
 
 <h4> Gjeldende commit for innlevering 1 </h4>
+TODO
