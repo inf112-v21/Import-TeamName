@@ -47,7 +47,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         camera.setToOrtho(false, 5,5);  // Set mode
         camera.update();
 
-        map = new TmxMapLoader().load("Maps/tutorialMapEndre.tmx");       // Get map file
+        map = new TmxMapLoader().load("Maps/tutorialMap.tmx");       // Get map file
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(camera); // Attach camera to map
 
@@ -126,7 +126,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         batch.dispose();
         font.dispose();
     }
-    
+
 
     @Override
     public void render() {
