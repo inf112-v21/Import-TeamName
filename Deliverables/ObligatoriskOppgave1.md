@@ -70,7 +70,7 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
 
-Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige enheter og lokasjoner.
+Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige enheter og lokasjoner. Spillet skal gjengi beskrivelsen og dokumentasjonen fra guiden vi har fått utdelt.
 
 
 ### Eksempel på brukerhistorier i prioritert rekkefølge
