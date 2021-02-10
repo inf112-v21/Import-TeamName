@@ -19,7 +19,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
-public class HelloWorld extends ApplicationAdapter implements InputProcessor {
+public class RoboRallyApp extends ApplicationAdapter implements InputProcessor {
 
     private SpriteBatch batch;
     private BitmapFont font;
