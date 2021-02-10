@@ -68,8 +68,10 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 ## Deloppgave 3: Få oversikt over forventet produkt
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
-NoeNoeNoeNoeNoeNoe<br>
-NoeNoeNoeNoeNoe
+
+Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige enheter og lokasjoner.
+
+
 ### Eksempel på brukerhistorier i prioritert rekkefølge
 
 <b>Brukerhistorie 1 - Visuell fremstilling</b>
@@ -128,8 +130,20 @@ NoeNoeNoeNoeNoe
 
 
 ### Prioritert liste med krav til første iterasjon:
-* 1
-* 2
+
+*(Insert relevante brukerhistorier)*
+
+F.eks.
+Brukerhistorie 1, 2 og 3.
+
+
+### MVP-krav:
+
+1. Vise spillebrett på skjermen
+2. Vise brikke på spillebrett
+3. Brikke bevegelighet
+4. Robot vinner ved å besøke flagg
+
 
 
 <h4> Gjeldende commit for innlevering 1 </h4>
