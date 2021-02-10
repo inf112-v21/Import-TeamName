@@ -66,8 +66,10 @@ Ved behov vil arbeidsmetodikk endres etter innlevering 1.
 ## Deloppgave 3: Få oversikt over forventet produkt
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
-NoeNoeNoeNoeNoeNoe<br>
-NoeNoeNoeNoeNoe
+
+Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige enheter og lokasjoner.
+
+
 ### Eksempel på brukerhistorier i prioritert rekkefølge
 
 <b>Brukerhistorie 1 - Visuell fremstilling</b>
@@ -133,7 +135,7 @@ F.eks.
 Brukerhistorie 1, 2 og 3.
 
 
-### MVP:
+### MVP-krav:
 
 1. Vise spillebrett på skjermen
 2. Vise brikke på spillebrett
