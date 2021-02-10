@@ -141,9 +141,9 @@ Brukerhistorie 1, 2 og 3.
 
 1. Vise spillebrett på skjermen
 2. Vise brikke på spillebrett
-3. Brikke bevegelighet
-4. Robot dør når den går over et hull
-5. Robot vinner ved å besøke flagg
+3. Robot bevegelighet
+4. Robot dør når den går over et hull (sprite endres)
+5. Robot vinner ved å besøke flagg (sprite endres)
 
 
 
