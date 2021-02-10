@@ -33,7 +33,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
     private Vector2 playerPos;
 
     private TiledMapTileLayer.Cell emptyCell;
-
+    boolean movePlayer = true;
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -69,14 +69,47 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-        tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,emptyCell); // Clear previous owl. To prevent duplicate players.
-        if (keycode == Input.Keys.LEFT)  playerPos.x -= 1;
-        if (keycode == Input.Keys.RIGHT) playerPos.x += 1;
-        if (keycode == Input.Keys.UP) playerPos.y += 1;
-        if (keycode == Input.Keys.DOWN) playerPos.y -= 1;
-
-        System.out.println("x:" + playerPos.x + " y:" + playerPos.y);
+        if (movePlayer) {
+            changeDirection(tilePlayer, playerPos, keycode);
+            return true;
+        }
+        moveCamera(keycode);
         return true;
+    }
+    public void changeDirection(TiledMapTileLayer actor, Vector2 position, int keycode) {
+        /**
+         * Change direction of an actor, e.g a a place
+         */
+        actor.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
+        switch(keycode) {
+            case Input.Keys.W:
+                position.y += 1;
+                break;
+            case Input.Keys.S:
+                position.y -= 1;
+                break;
+            case Input.Keys.A:
+                position.x -= 1;
+                break;
+            case Input.Keys.D:
+                position.x += 1;
+                break;
+        }
+    }
+    public void moveCamera(int keycode) {
+        if(keycode == Input.Keys.LEFT)
+            camera.translate(-32,0);
+        if(keycode == Input.Keys.RIGHT)
+            camera.translate(32,0);
+        if(keycode == Input.Keys.UP)
+            camera.translate(0,32);
+        if(keycode == Input.Keys.DOWN)
+            camera.translate(0,-32);
+        if(keycode == Input.Keys.NUM_1)
+            map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
+        if(keycode == Input.Keys.NUM_2)
+            map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
+
     }
 
     @Override
