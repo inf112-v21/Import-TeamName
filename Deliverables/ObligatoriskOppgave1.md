@@ -126,8 +126,24 @@ NoeNoeNoeNoeNoe
 
 
 ### Prioritert liste med krav til første iterasjon:
-* 1
-* 2
+
+*(Insert relevante brukerhistorier)*
+
+F.eks.
+Brukerhistorie 1, 2 og 3.
+
+
+### MVP:
+
+1. Vise spillebrett på skjermen
+2. Vise brikke på spillebrett
+3. Brikke bevegelighet
+4. Robot vinner ved å besøke flagg
+5. Multiplayer / Spille fra flere maskiner
+6. Dele ut riktig antall kort
+7. La brukeren velge fem kort
+8. Robot beveger seg ut fra valgte kort
+
 
 
 <h4> Gjeldende commit for innlevering 1 </h4>
