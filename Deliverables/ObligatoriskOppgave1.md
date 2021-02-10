@@ -54,8 +54,13 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 		* Fredag 15:15
 
 
-Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker. Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet.
-
+<p> 
+    Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. <br>
+    Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker. 
+    Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. 
+    Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet.
+    <br> Ved behov vil arbeidsmetodikk endres etter innlevering 1. </br>
+</p>
 
 
 
@@ -63,13 +68,15 @@ Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppføl
 ## Deloppgave 3: Få oversikt over forventet produkt
 
 ### Overordnet mål for applikasjonen: (Kort oppsummering)
-NoeNoeNoeNoeNoeNoe<br>
-NoeNoeNoeNoeNoe
+
+Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige enheter og lokasjoner.
+
+
 ### Eksempel på brukerhistorier i prioritert rekkefølge
 
 <b>Brukerhistorie 1 - Visuell fremstilling</b>
 
--  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
+-  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille RoboRally uten å måtte huske hvordan brettet ser ut.
 ```
 - Akseptansekriterier: 
 	Brettet har forventet størrelse og mengde ruter.
@@ -99,7 +106,7 @@ NoeNoeNoeNoeNoe
 - Som bruker trenger jeg at roboten kan bevege seg, slik at jeg kan bytte posisjon på brettet.
 ```
 - Akseptansekriterier:
-	Roboten skal kunne flytte seg opp, høyre, venstre og ned
+	Roboten skal kunne flytte seg opp, høyre, venstre, og ned.
 	Robotens brikke vises korrekt på ny plassering.
 	Den forrige ruten viser ikke duplikat av roboten når den flytter seg.
 - Arbeidsoppgaver:
@@ -123,8 +130,38 @@ NoeNoeNoeNoeNoe
 
 
 ### Prioritert liste med krav til første iterasjon:
-* 1
-* 2
+
+*(Insert relevante brukerhistorier)*
+
+F.eks.
+Brukerhistorie 1, 2 og 3.
+
+
+### MVP-krav:
+
+1. Vise spillebrett på skjermen
+2. Vise brikke på spillebrett
+3. Robot bevegelighet
+4. Robot dør når den går over et hull (sprite endres)
+5. Robot vinner ved å besøke flagg (sprite endres)
+
+## Deloppgave 4: 
+
+
+Vi har gjennom første del av prosjektet avholdt hyppige og korte møter. I den faste gruppetimen har gruppen arbeidet sammen, og skrevet dokumetnasjon og forklart kode til andre gruppemedlemmer. Vi har så langt erfart at dette har vært en god måte å jobbe på.
+
+Etter å ha arbeidet med prosjektet i en uke, har vi har vært at fordeling og delegering av arbeid kan uttrykkes tydeligere. Gruppen har blitt enig om å bruke github sitt issue system til å delegere arbeidsoppgaver gruppen har blitt enig på hvert møte. Prosjekttavlen vil bli brukt for å holde oversikt over prosjektet, hva som er gjort, hva som er igang og hva som skal gjøres.
+
+Det er enda tidlig i prosjektet, og etter hvert som prosjektet går videre vil vi bedre kunne besvare styrker og svakheter i gruppearbeidet.
+
+#### Positive og negative erfrainger 
+    Positivt:
+        Hyppige møter fungerer
+        Prosjektet går fremover
+    Til forbering:
+        Delegering av arbeidsoppgaver. I større grad bruke Issues i Github til å markere arbeidsfordeling.
+        Jevne ut commits. Hyppigere og mer presise commits i git.
 
 
 <h4> Gjeldende commit for innlevering 1 </h4>
+TODO
