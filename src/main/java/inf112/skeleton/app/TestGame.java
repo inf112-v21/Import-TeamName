@@ -36,6 +36,9 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
     boolean movePlayer = true;
     @Override
     public void create() {
+        /**
+         * Constructor method
+         */
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -79,6 +82,9 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
     public void changeDirection(TiledMapTileLayer actor, Vector2 position, int keycode) {
         /**
          * Change direction of an actor, e.g a a place
+         * @actor: the tile containing an actor, e.g a player
+         * @position: a 2d position
+         * @keycode: number id of keys
          */
         actor.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
         switch(keycode) {
@@ -97,6 +103,9 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         }
     }
     public void moveCamera(int keycode) {
+        /**
+         * Change camera location based on WASD keystrokes
+         */
         if(keycode == Input.Keys.LEFT)
             camera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
@@ -109,16 +118,15 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
             map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
         if(keycode == Input.Keys.NUM_2)
             map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
-
     }
+
 
     @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
     }
-
-    private Vector2 prevPos;
+    
 
     @Override
     public void render() {
@@ -135,9 +143,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         } else {
             tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerCell);
         }
-
         mapRenderer.render();
-
         /*
         batch.begin();
         font.draw(batch, "Hello World", 200, 200);

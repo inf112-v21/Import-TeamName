@@ -50,6 +50,7 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 	Gruppen er enig om følgende møtetidspunkter:
 	* Obligator møte onsdag 12:15- 14:00 (Holdes på Zoom)
 	* Små møter (tentative ved behov) (Holdes på discord):
+        Lengde for små møter er satt til maks 1 time. Ytterliggere møter planlegges ved behov.
 		* Mandag 15:00
 		* Fredag 15:15
 
