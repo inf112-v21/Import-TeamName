@@ -69,7 +69,7 @@ NoeNoeNoeNoeNoe
 
 <b>Brukerhistorie 1 - Visuell fremstilling</b>
 
--  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille roborally uten å måtte huske hvordan brettet ser ut.
+-  Som bruker trenger jeg å se spillbrettet, slik at jeg kan spille RoboRally uten å måtte huske hvordan brettet ser ut.
 ```
 - Akseptansekriterier: 
 	Brettet har forventet størrelse og mengde ruter.
@@ -99,7 +99,7 @@ NoeNoeNoeNoeNoe
 - Som bruker trenger jeg at roboten kan bevege seg, slik at jeg kan bytte posisjon på brettet.
 ```
 - Akseptansekriterier:
-	Roboten skal kunne flytte seg opp, høyre, venstre og ned
+	Roboten skal kunne flytte seg opp, høyre, venstre, og ned.
 	Robotens brikke vises korrekt på ny plassering.
 	Den forrige ruten viser ikke duplikat av roboten når den flytter seg.
 - Arbeidsoppgaver:
