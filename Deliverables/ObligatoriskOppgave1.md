@@ -54,11 +54,13 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
 		* Fredag 15:15
 
 
-Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. <br>
-Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker. 
-Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. 
-<br> Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet.
-Ved behov vil arbeidsmetodikk endres etter innlevering 1.
+<p> 
+    Arbeidet gruppen utfører skal følge en Kanban basert prosjekttavle for oppfølging og delegering av arbeidsoppgaver. <br>
+    Gruppen har valgt å ikke følge en streng metodikk, da ingen gruppemedlemmer har erfaring med prosjektmetodikker. 
+    Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. 
+    Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet.
+    <br> Ved behov vil arbeidsmetodikk endres etter innlevering 1. </br>
+</p>
 
 
 
