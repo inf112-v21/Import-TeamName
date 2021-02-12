@@ -15,7 +15,7 @@
 * Run main.java
 
 Should look like this:
-![Picture of current game](src/main/assets/Images/pictureOfCurrentGame.png )
+![Picture of current game](src/main/assets/Images/pictureOfCurrentGame.PNG)
 
 
 ## Known bugs
