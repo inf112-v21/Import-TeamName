@@ -13,6 +13,7 @@
 ## How to run
 * Clone project.
 * Run main.java
+* Move around with W,A,S,D.
 
 Should look like this:
 ![Picture of current game](src/main/assets/Images/pictureOfCurrentGame.PNG)
