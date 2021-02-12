@@ -24,7 +24,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
 
     private TiledMap map;
     // Layers on the map
-    private TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag;
+    private TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
@@ -46,17 +46,19 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         font.setColor(Color.RED);
 
         camera = new OrthographicCamera();                             // Make camera
-        camera.setToOrtho(false, 5,5);  // Set mode
+        camera.setToOrtho(false, 12,16);  // Set mode
         camera.update();
 
-        map = new TmxMapLoader().load("Maps/tutorialMap.tmx");       // Get map file
+        map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(camera); // Attach camera to map
 
-        tileBoard = (TiledMapTileLayer) map.getLayers().get("Board");
+        tileBoard = (TiledMapTileLayer) map.getLayers().get("Floor");
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        tileHole = (TiledMapTileLayer) map.getLayers().get("Hole");
-        tileFlag = (TiledMapTileLayer) map.getLayers().get("Flag");
+        tileHole = (TiledMapTileLayer) map.getLayers().get("Pit");
+        tileFlag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
+        tileFlag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
+
 
         Texture playerTexture = new Texture("Images/player.png"); // Texture of player
         TextureRegion[][] tx = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
@@ -146,7 +148,7 @@ public class TestGame extends InputAdapter implements ApplicationListener  {
         if (tileHole.getCell((int) playerPos.x,(int) playerPos.y) != null) {
             //Lose
             tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerDead);
-        } else if (tileFlag.getCell((int) playerPos.x,(int) playerPos.y) != null) {
+        } else if (tileFlag1.getCell((int) playerPos.x,(int) playerPos.y) != null || tileFlag2.getCell((int) playerPos.x,(int) playerPos.y) != null) {
             //Win
             tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerWon);
         } else {
