@@ -168,4 +168,4 @@ Det er enda tidlig i prosjektet, og etter hvert som prosjektet går videre vil v
 
 
 <h4> Gjeldende commit for innlevering 1 </h4>
-TODO
+Deliverable 1 under releases
