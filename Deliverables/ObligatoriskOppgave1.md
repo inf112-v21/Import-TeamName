@@ -66,6 +66,7 @@ Gruppen er blitt enig om at prosjektet foretas uten teamleder, men med selvstend
     Ved behov vil gruppen revurdere hvordan vi arbeider, og hvorvidt en spesifikk prosjektmetodikk skal velges. 
     Ved konsultasjon med gruppeleder har gruppen besluttet å forsøke parprogrammering ved behov. Særlig nyttig kan parprogrammering være dersom det er sprikende kunnskaper blandt gruppemedlemmene på et gitt område av prosjektet.
     <br> Ved behov vil arbeidsmetodikk endres etter innlevering 1. </br>
+
 </p>
 
 
@@ -137,12 +138,6 @@ Applikasjonen skal la flere personer spille RoboRally i samtid fra forskjellige 
 
 ### Prioritert liste med krav til første iterasjon:
 
-*(Insert relevante brukerhistorier)*
-
-F.eks.
-Brukerhistorie 1, 2 og 3.
-
-
 ### MVP-krav:
 
 1. Vise spillebrett på skjermen
@@ -150,6 +145,9 @@ Brukerhistorie 1, 2 og 3.
 3. Robot bevegelighet
 4. Robot dør når den går over et hull (sprite endres)
 5. Robot vinner ved å besøke flagg (sprite endres)
+   
+
+<br> Et klassediagram over forventede klasser i arbeidet fremover etter obligatorisk oppgave 1, er lagt til i Deliverables\UML mappen. </br>
 
 ## Deloppgave 4: 
 
