@@ -10,5 +10,12 @@
 - Jakob Svemo
 - Sondre Eide
 
+## How to run
+* Clone project.
+* Run main.java
+
+Should look like this:
+![Picture of current game](src/main/assets/Images/pictureOfCurrentGame.png )
+
 
 ## Known bugs
