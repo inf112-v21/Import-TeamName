@@ -15,8 +15,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.objects.Player;
 
 public class Game extends InputAdapter implements ApplicationListener  {
     private SpriteBatch batch;
@@ -30,9 +30,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
 
-    private TiledMapTileLayer.Cell playerCell, playerDead, playerWon;
+    //private TiledMapTileLayer.Cell playerCell, playerDead, playerWon;
     private Vector2 playerPos;
-
+    private Player player;
     boolean movePlayer = true;
 
 
@@ -62,13 +62,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
 
         Texture playerTexture = new Texture("Images/player.png"); // Texture of player
-        TextureRegion[][] tx = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
+        TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
 
-        playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(tx[0][0]));
-        playerDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(tx[0][1]));
-        playerWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(tx[0][2]));
-
-        playerPos = new Vector2(0,0);
+        player = new Player(0,0, textures);
 
         //UserInputManager uim = new UserInputManager();
         Gdx.input.setInputProcessor(this);
@@ -81,7 +77,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
     @Override
     public boolean keyUp(int keycode) {
         if (movePlayer) {
-            changeDirection(tilePlayer, playerPos, keycode);
+           // changeDirection(tilePlayer, player.getPosition(), keycode);
+            player.movePlayer(tilePlayer, keycode);
             return true;
         }
         moveCamera(keycode);
@@ -90,13 +87,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     /**
      * Change direction of an actor, e.g a a place
-     * @param actor: the tile containing an actor, e.g a player
+     * @param playerTile: the tile containing an actor, e.g a player
      * @param position: a 2d position
      * @param keycode: number id of pressed key
      */
-    public void changeDirection(TiledMapTileLayer actor, Vector2 position, int keycode) {
+    public void changeDirection(TiledMapTileLayer playerTile, Vector2 position, int keycode) {
 
-        actor.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
+        playerTile.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
         switch(keycode) {
             case Input.Keys.W:
                 position.y += 1;
@@ -148,12 +145,12 @@ public class Game extends InputAdapter implements ApplicationListener  {
         //Win/lose condition
         if (tileHole.getCell((int) playerPos.x,(int) playerPos.y) != null) {
             //Lose
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerDead);
+            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCellDead());
         } else if (tileFlag1.getCell((int) playerPos.x,(int) playerPos.y) != null || tileFlag2.getCell((int) playerPos.x,(int) playerPos.y) != null) {
             //Win
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerWon);
+            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCellWon());
         } else {
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,playerCell);
+            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCell());
         }
         mapRenderer.render();
     }

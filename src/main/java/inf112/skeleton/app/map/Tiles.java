@@ -1,42 +1,93 @@
 package inf112.skeleton.app.map;
 
+
+/**
+ *  Returns name of given tile id.
+ */
 public enum Tiles {
 
-    private int id;
-    private boolean collidable;
-    private String name;
+    private final int tileID;
 
-    private Tiles (int id, boolean collidable, String name) {
-        this(id, collidable, name);
+    //Constructor
+    Tiles (int id) {
+        this.tileId = id;
     }
 
-    TEMP1(1, true, "temp1"),
-    TEMP2(2, true, "temp2"),
-    TEMP3(3, true, "temp3"),
-    TEMP4(4, true, "temp4"),
-    FLOOR(5, true, "Floor"),
-    PIT(6, true, "Pit"),
-    RSITE(7, true, "Repair Site"),*
-    WALL_BCR(8, true, "Bottom Right Corner Wall"),
-    TEMP5(9, true, "temp5"),
-    TEMP6(10, true, "temp6"),
-    TEMP7(11, true, "temp7"),
-    TEMP8(12, true, "temp8"),
-    DCONVEYOR_UP(13, true, "Double Conveyor Up"),
-    DCONVEYOR_RIGHT(14, true, "Double Conveyor Right"),
-    RSITE_S(15, true, "Repair Site Single"),
-    WALL_TRC(16, true, "Top Right Corner Wall"),
-    DCONVEYOR_DL(17, true, "Double Conveyor Down-Right"),
+    /**
+     *
+     * @return
+     */
+    public int getTileID() {
+        return tileID;
+    }
+
+    PUSHER1(1),
+    PUSHER2(2),
+    PUSHER3(3),
+    PUSHER4(4),
+    FLOOR(5),
+    PIT(6),
+    REPAIR_SITE_DOUBLE(7),
+    WALL_BOTTOM_RIGHT_CORNER(8),
+    PUSHER5(9),
+    PUSHER6(10),
+    PUSHER7(11),
+    PUSHER8(12),
+    DOUBLE_CONVEYOR_UP(13),
+    DOUBLE_CONVEYOR_RIGHT(14),
+    REPAIR_SITE_SINGLE(15),
+    WALL_TOP_RIGHT_CORNER(16),
+
+    //Double conveyor
+    DOUBLE_CONVEYOR_LEFT_DOWN(17),
+    DOUBLE_CONVEYOR_UP_LEFT(18),
+    DOUBLE_CONVEYOR_UP_RIGHT(19),
+    DOUBLE_CONVEYOR_RIGHT_DOWN(20),
+    DOUBLE_CONVEYOR_DOWN(21),
+    DOUBLE_CONEYOR_LEFT(22),
+    WALL_RIGHT(23),
+    WALL_LEFT_TOP_CORNER(24),
+    DOUBLE_CONVEYOR_DOWN_RIGHT(25),
+    DOUBLE_CONVEYOR_RIGHT_UP(26),
+    DOUBLE_CONVEYOR_LEFT_UP(27),
+    DOUBLE_CONVEYOR_DOWN_LEFT(28),
+    WALL_DOWN(29),
+    WALL_LEFT(30),
+    WALL_TOP(31),
+    WALL_LEFT_DOWN_CORNER(32),
+
+    //Normal conveyor
+    NORMAL_CONVERYOR_LEFT_DOWN(33),
+    NORMAL_CONVERYOR_UP_LEFT(34),
+    NORMAL_CONVERYOR_UP_RIGHT(35)
+    NORMAL_CONVERYOR_RIGHT_DOWN(36),
+
+    //Laser (Position) (Shooting Direction)
+    LASER_DOWN_UP(37),
+    LASER_RIGHT_LEFT(38),
+    LASERBEAM_HORIZONTOL(39),
+    LASERBEAM_CROSS(40),
 
 
+    NORMAL_CONVERYOR_DOWN_RIGHT(41),
+    NORMAL_CONVERYOR_RIGHT_UP(42),
+    NORMAL_CONVERYOR_LEFT_UP(43),
+    NORMAL_CONVERYOR_DOWN_LEFT(44),
+    LASER_TOP_DOWN(45),
+    LASER_RIGHT_LEFT(46),
+    LASERBEAM_VERTICAL(47),
+    EMPTY(48),
+    NORMAL_CONVERYOR_UP(49),
+    NORMAL_CONVERYOR_DOWN(50),
+    NORMAL_CONVERYOR_LEFT(51),
+    NORMAL_CONVERYOR_RIGHT(52),
+    ROTATE_LEFT(53),
+
+    ROTATE_RIGHT(54) {
+
+    }
 
 
-    NCONVERYOR_DOWN(33,)
-
-
-
-
-
-
+    //    CONVEYOR_EXPRESS_JOIN_SOUTH_FROM_NORTH_AND_EAST(75),
 
 }

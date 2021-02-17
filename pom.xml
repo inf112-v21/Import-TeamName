@@ -91,12 +91,12 @@
     </pluginManagement>
     <resources>
       <resource>
-      <directory>src/main/assets</directory>
+      <directory>${basedir}/assets</directory>
       </resource>
     </resources>
     <testResources>
       <testResource>
-      <directory>src/test/assets</directory>
+      <directory>${basedir}/assets</directory>
       </testResource>
     </testResources>
   </build>
