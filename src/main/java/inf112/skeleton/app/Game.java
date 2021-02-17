@@ -30,11 +30,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
 
-    //private TiledMapTileLayer.Cell playerCell, playerDead, playerWon;
-    private Vector2 playerPos;
     private Player player;
     boolean movePlayer = true;
-
 
     /**
      * Constructor method
@@ -60,13 +57,11 @@ public class Game extends InputAdapter implements ApplicationListener  {
         tileFlag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
         tileFlag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
 
-
         Texture playerTexture = new Texture("Images/player.png"); // Texture of player
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
 
         player = new Player(0,0, textures);
 
-        //UserInputManager uim = new UserInputManager();
         Gdx.input.setInputProcessor(this);
     }
 
@@ -77,7 +72,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
     @Override
     public boolean keyUp(int keycode) {
         if (movePlayer) {
-           // changeDirection(tilePlayer, player.getPosition(), keycode);
             player.movePlayer(tilePlayer, keycode);
             return true;
         }
@@ -143,14 +137,14 @@ public class Game extends InputAdapter implements ApplicationListener  {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         //Win/lose condition
-        if (tileHole.getCell((int) playerPos.x,(int) playerPos.y) != null) {
+        if (tileHole.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null) {
             //Lose
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCellDead());
-        } else if (tileFlag1.getCell((int) playerPos.x,(int) playerPos.y) != null || tileFlag2.getCell((int) playerPos.x,(int) playerPos.y) != null) {
+            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCellDead());
+        } else if (tileFlag1.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null || tileFlag2.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null) {
             //Win
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCellWon());
+            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCellWon());
         } else {
-            tilePlayer.setCell((int) playerPos.x,(int) playerPos.y,player.getPlayerCell());
+            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCell());
         }
         mapRenderer.render();
     }

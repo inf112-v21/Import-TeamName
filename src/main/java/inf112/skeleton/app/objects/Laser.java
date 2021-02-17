@@ -11,4 +11,9 @@ public class Laser implements Object {
         return position;
     }
 
+    @Override
+    public void setPosition(Vector2 position) {
+
+    }
+
 }

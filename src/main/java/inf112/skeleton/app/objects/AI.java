@@ -11,4 +11,9 @@ public class AI implements Actor {
         return null;
     }
 
+    @Override
+    public void setPosition(Vector2 position) {
+
+    }
+
 }
