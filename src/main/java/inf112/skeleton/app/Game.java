@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.objects.Player;
 
+
 public class Game extends InputAdapter implements ApplicationListener  {
     private SpriteBatch batch;
     private BitmapFont font;

@@ -9,7 +9,7 @@ public class Main {
         cfg.setTitle("ROBORALLY");
         cfg.setWindowedMode(1000,1000);
 
-        //HelloWorld helloWorld = new HelloWorld();
+
         Game game = new Game();
         new Lwjgl3Application(game, cfg);
 

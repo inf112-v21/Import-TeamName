@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Player implements Actor {
     private Vector2 position;
 
-    private TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
+    private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
 
     public Player(int startRow, int startCol, TextureRegion [][] texture) {
@@ -27,6 +27,7 @@ public class Player implements Actor {
 
 
     public void movePlayer(TiledMapTileLayer playerTile, int keycode) {
+        System.out.println("keycode" + keycode);
         playerTile.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
         switch(keycode) {
             case Input.Keys.W:
