@@ -23,6 +23,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private BitmapFont font;
 
     private TiledMap map;
+
     // Layers on the map
     private TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
 

@@ -6,4 +6,6 @@ public interface Object {
 
     public Vector2 getPosition();
 
+    public void setPosition(Vector2 position);
+
 }
