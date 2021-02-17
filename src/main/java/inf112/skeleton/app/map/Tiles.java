@@ -6,20 +6,7 @@ package inf112.skeleton.app.map;
  */
 public enum Tiles {
 
-    private final int tileID;
 
-    //Constructor
-    Tiles (int id) {
-        this.tileId = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getTileID() {
-        return tileID;
-    }
 
     PUSHER1(1),
     PUSHER2(2),
@@ -59,12 +46,12 @@ public enum Tiles {
     //Normal conveyor
     NORMAL_CONVERYOR_LEFT_DOWN(33),
     NORMAL_CONVERYOR_UP_LEFT(34),
-    NORMAL_CONVERYOR_UP_RIGHT(35)
+    NORMAL_CONVERYOR_UP_RIGHT(35),
     NORMAL_CONVERYOR_RIGHT_DOWN(36),
 
     //Laser (Position) (Shooting Direction)
     LASER_DOWN_UP(37),
-    LASER_RIGHT_LEFT(38),
+    LASER_LEFT_RIGHT(38),
     LASERBEAM_HORIZONTOL(39),
     LASERBEAM_CROSS(40),
 
@@ -83,8 +70,22 @@ public enum Tiles {
     NORMAL_CONVERYOR_RIGHT(52),
     ROTATE_LEFT(53),
 
-    ROTATE_RIGHT(54) {
+    ROTATE_RIGHT(54);
 
+
+
+    private final int tileId;
+
+    //Constructor
+    Tiles (int id) {
+        this.tileId = id;
+    }
+
+    /**
+     * @returns tileID of tile
+     */
+    public int getTileID() {
+        return tileID;
     }
 
 
