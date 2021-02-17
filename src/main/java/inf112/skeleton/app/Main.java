@@ -1,11 +1,7 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import org.lwjgl.system.CallbackI;
-
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +10,7 @@ public class Main {
         cfg.setWindowedMode(1000,1000);
 
         //HelloWorld helloWorld = new HelloWorld();
-        TestGame game = new TestGame();
+        Game game = new Game();
         new Lwjgl3Application(game, cfg);
 
     }

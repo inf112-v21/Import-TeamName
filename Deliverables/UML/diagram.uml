@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="80.00000000000001" y="0.0">inf112.skeleton.app.TestGame</node>
+    <node x="116.00000000000001" y="80.0">inf112.skeleton.app.Main</node>
+    <node x="0.0" y="80.0">inf112.skeleton.app.Player</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="inf112.skeleton.app.Player" target="inf112.skeleton.app.TestGame">
+      <point x="0.0" y="-15.0" />
+      <point x="48.0" y="55.0" />
+      <point x="98.66666666666669" y="55.0" />
+      <point x="-37.333333333333336" y="15.0" />
+    </edge>
+    <edge source="inf112.skeleton.app.Main" target="inf112.skeleton.app.TestGame">
+      <point x="-20.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="56.0" y="52.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
