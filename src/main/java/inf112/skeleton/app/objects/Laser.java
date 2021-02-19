@@ -6,7 +6,7 @@ import inf112.skeleton.app.enums.Direction;
 public class Laser implements IObject {
 
     private Vector2 position;
-    private Direction direction;
+    private final Direction direction; // Made final, will direction of laser/wall ever change?
 
     public Laser(Vector2 position, Direction direction) {
         this.position = position;
