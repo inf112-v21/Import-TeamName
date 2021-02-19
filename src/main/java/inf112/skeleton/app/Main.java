@@ -9,7 +9,6 @@ public class Main {
         cfg.setTitle("ROBORALLY");
         cfg.setWindowedMode(1000,1000);
 
-
         Game game = new Game();
         new Lwjgl3Application(game, cfg);
 
