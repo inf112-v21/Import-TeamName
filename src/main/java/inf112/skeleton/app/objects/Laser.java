@@ -6,6 +6,7 @@ import inf112.skeleton.app.enums.Direction;
 public class Laser implements IObject {
 
     private Vector2 position;
+    //Direction of laser is where the laser ends. Laser(SOUTH), has a wall to its NORTH.
     private final Direction direction; // Made final, will direction of laser/wall ever change?
 
     public Laser(Vector2 position, Direction direction) {
@@ -29,7 +30,7 @@ public class Laser implements IObject {
 
     @Override
     public boolean isPassableFromDirection(Direction dir) {
-        return dir != this.direction;
+        return dir != Direction.DirectionOpposite(dir); // Can go if direction is different than the opposite of the facing direction of laser.
     }
 
 }
