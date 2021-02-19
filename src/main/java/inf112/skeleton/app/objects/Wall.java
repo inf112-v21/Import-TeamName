@@ -5,7 +5,7 @@ import inf112.skeleton.app.enums.Direction;
 
 public class Wall implements IObject{
 
-    private final Vector2 position;
+    private Vector2 position;
     private final Direction direction; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
 
     public Wall(Vector2 position, Direction direction) {
@@ -15,11 +15,11 @@ public class Wall implements IObject{
 
     @Override
     public Vector2 getPosition() {
-        return null;
+        return this.position;
     }
 
     @Override
     public void setPosition(Vector2 position) {
-
+        this.position = position;
     }
 }
