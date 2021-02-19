@@ -15,10 +15,10 @@ public enum Tiles {
     REPAIR_SITE_DOUBLE(7),
     GEAR_ROTATE_LEFT(53),
     GEAR_ROTATE_RIGHT(54),
-    FLAGG1(55),
-    FLAGG2(63),
-    FLAGG3(71),
-    FLAGG4(79),
+    FLAG1(55),
+    FLAG2(63),
+    FLAG3(71),
+    FLAG4(79),
 
 
     //Docking bays
