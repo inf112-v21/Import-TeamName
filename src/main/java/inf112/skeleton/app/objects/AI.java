@@ -3,7 +3,7 @@ package inf112.skeleton.app.objects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
-public class AI implements Actor {
+public class AI implements IActor {
 
     private Vector2 position;
     private Direction lookDirection;
