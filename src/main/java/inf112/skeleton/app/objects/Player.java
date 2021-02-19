@@ -7,7 +7,7 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
-public class Player implements Actor {
+public class Player implements IActor {
 
     private Vector2 position;
     private Direction lookDirection;
