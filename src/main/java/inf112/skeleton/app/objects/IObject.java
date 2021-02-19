@@ -4,8 +4,16 @@ import com.badlogic.gdx.math.Vector2;
 
 public interface IObject {
 
+    /**
+     *
+     * @return Position of object on board.
+     */
     public Vector2 getPosition();
 
+    /**
+     *  Sets an objects position on the board.
+     * @param position
+     */
     public void setPosition(Vector2 position);
 
 }
