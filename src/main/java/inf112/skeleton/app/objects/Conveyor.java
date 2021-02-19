@@ -3,10 +3,10 @@ package inf112.skeleton.app.objects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
-public class Laser implements Object {
+public class Conveyor implements Object {
 
     private Vector2 position;
-    private Direction direction;
+    private Direction pushDirection;
 
     @Override
     public Vector2 getPosition() {
@@ -18,8 +18,8 @@ public class Laser implements Object {
         this.position = pos;
     }
 
-    public Direction getDirection() {
-        return this.direction;
+    public Direction getPushDirection() {
+        return this.pushDirection;
     }
 
 }

@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.enums.Direction;
 
 public class Player implements Actor {
+
     private Vector2 position;
+    private Direction lookDirection;
 
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
-
 
     public Player(int startRow, int startCol, TextureRegion [][] texture) {
         this.position = new Vector2(startRow, startCol);
@@ -25,6 +27,15 @@ public class Player implements Actor {
         return position;
     }
 
+    @Override
+    public Direction getLookDirection() {
+        return this.lookDirection;
+    }
+
+    @Override
+    public void setLookDirection(Direction direction) {
+        this.lookDirection = direction;
+    }
 
     public void movePlayer(TiledMapTileLayer playerTile, int keycode) {
         playerTile.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
