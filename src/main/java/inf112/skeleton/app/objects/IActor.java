@@ -2,7 +2,7 @@ package inf112.skeleton.app.objects;
 
 import inf112.skeleton.app.enums.Direction;
 
-public interface Actor extends Object {
+public interface IActor extends IObject {
 
     Direction getLookDirection();
 
