@@ -22,4 +22,9 @@ public class Wall implements IObject{
     public void setPosition(Vector2 position) {
         this.position = position;
     }
+
+    @Override
+    public boolean isPassableFromDirection(Direction dir) {
+        return dir != this.direction;
+    }
 }

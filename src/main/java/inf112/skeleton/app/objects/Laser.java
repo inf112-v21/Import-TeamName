@@ -27,4 +27,9 @@ public class Laser implements IObject {
         return this.direction;
     }
 
+    @Override
+    public boolean isPassableFromDirection(Direction dir) {
+        return dir != this.direction;
+    }
+
 }
