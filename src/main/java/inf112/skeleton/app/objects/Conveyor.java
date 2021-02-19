@@ -29,4 +29,9 @@ public class Conveyor implements IObject {
         return this.pushDirection;
     }
 
+    @Override
+    public boolean isPassableFromDirection(Direction dir) {
+        return true;
+    }
+
 }
