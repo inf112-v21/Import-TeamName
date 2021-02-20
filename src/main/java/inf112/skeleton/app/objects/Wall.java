@@ -27,4 +27,9 @@ public class Wall implements IWall{
     public boolean isPassableFromDirection(Direction dir) {
         return dir != this.direction;
     }
+
+    @Override
+    public boolean isPassableToDirection(Direction dir) {
+        return false;
+    }
 }

@@ -33,4 +33,9 @@ public class Laser implements IWall {
         return dir != Direction.DirectionOpposite(dir); // Can go if direction is different than the opposite of the facing direction of laser.
     }
 
+    @Override
+    public boolean isPassableToDirection(Direction dir) {
+        return false;
+    }
+
 }
