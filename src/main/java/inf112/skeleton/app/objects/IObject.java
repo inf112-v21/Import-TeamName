@@ -16,11 +16,4 @@ public interface IObject {
      * @param position
      */
     public void setPosition(Vector2 position);
-
-    /**
-     * Checks if object can be passed through from a given direction.
-     * @return true if solid, cannot pass through it.
-     */
-    public boolean isPassableFromDirection(Direction dir);
-
 }

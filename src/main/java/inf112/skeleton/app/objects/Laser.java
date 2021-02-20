@@ -3,7 +3,7 @@ package inf112.skeleton.app.objects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
-public class Laser implements IObject {
+public class Laser implements IWall {
 
     private Vector2 position;
     //Direction of laser is where the laser ends. Laser(SOUTH), has a wall to its NORTH.

@@ -25,11 +25,6 @@ public class Conveyor implements IObject {
         this.position = pos;
     }
 
-    @Override
-    public boolean isPassableFromDirection(Direction dir) {
-        return true;
-    }
-
 
     public Direction getPushDirection() {
         return this.pushDirection;

@@ -3,7 +3,7 @@ package inf112.skeleton.app.objects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
-public class Wall implements IObject{
+public class Wall implements IWall{
 
     private Vector2 position;
     private final Direction direction; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
