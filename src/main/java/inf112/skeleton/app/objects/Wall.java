@@ -6,11 +6,19 @@ import inf112.skeleton.app.enums.Direction;
 public class Wall implements IWall{
 
     private Vector2 position;
-    private final Direction direction; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
+    private final Direction direction1; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
+    private final Direction direction2; // Direction for corner walls.
 
-    public Wall(Vector2 position, Direction direction) {
+    /**
+     *  Creates wall object
+     * @param position
+     * @param dir1 Where the wall is in a tile.
+     * @param dir2 Where the wall is in a tile, only relevant for corner walls.
+     */
+    public Wall(Vector2 position, Direction dir1, Direction dir2) {
         this.position = position;
-        this.direction = direction;
+        this.direction1 = dir1;
+        this.direction2 = dir2;
     }
 
     @Override
@@ -25,7 +33,7 @@ public class Wall implements IWall{
 
     @Override
     public boolean isPassableFromDirection(Direction dir) {
-        return dir != this.direction;
+        return dir != this.direction1 && dir != this.direction2;
     }
 
     @Override
