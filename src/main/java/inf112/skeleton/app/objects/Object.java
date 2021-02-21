@@ -2,6 +2,9 @@ package inf112.skeleton.app.objects;
 
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Simple object class, represents base properties of all objects/actors in the game.
+ */
 public class Object implements IObject{
 
     private Vector2 position;
