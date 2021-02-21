@@ -21,7 +21,7 @@ public enum Tiles {
     FLAG4(79),
 
 
-    //Docking bays
+    //Docking bays (Starting points)
     DOCKING_BAY1(119),
     DOCKING_BAY2(120),
     DOCKING_BAY3(121),
@@ -103,7 +103,7 @@ public enum Tiles {
     NORMAL_CONVEYOR_RIGHT(52),
 
     //Normal merged conveyors
-    NORMAL_CONVEYOR_TO_UP__FROM_LEFT_AND_DOWN(57),
+    NORMAL_CONVEYOR_TO_UP_FROM_LEFT_AND_DOWN(57),
     NORMAL_CONVEYOR_TO_RIGHT_FROM_UP_AND_LEFT(58),
     NORMAL_CONVEYOR_TO_DOWN_FROM_RIGHT_AND_UP(59),
     NORMAL_CONVEYOR_TO_LEFT_FROM_DOWN_AND_RIGHT(60),
