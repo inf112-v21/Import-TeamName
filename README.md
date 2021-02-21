@@ -16,7 +16,7 @@
 * Move around with W,A,S,D.
 
 Should look like this:
-![Picture of current game](src/main/assets/Images/pictureOfCurrentGame.PNG)
+![Picture of current roboRally](src/main/assets/Images/pictureOfCurrentGame.PNG)
 
 
 ## Known bugs

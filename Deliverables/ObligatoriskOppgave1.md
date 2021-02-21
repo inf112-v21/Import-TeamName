@@ -15,7 +15,7 @@ Flere av medlemmene har hatt relevante prosjekter på fritiden, og har litt utvi
 Vi har valgt å rullere på rollene igjennom semesteret, slik at alle får en variert erfaring.
 * Sondre: Utvikler og kravsjekker
 * Eivind: Utvikler og playtester
-* August: Utvikler og game master
+* August: Utvikler og roboRally master
 * Jakob: Utvikler og kundekontakt
 * Endre: Utvikler og referant
 
