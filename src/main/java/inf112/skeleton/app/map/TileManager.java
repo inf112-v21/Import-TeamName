@@ -31,15 +31,6 @@ public class TileManager {
         }
     }
 
-    /**
-     * Prints all enum names and their id
-     * Used for debugging.
-     */
-    public void printT() {
-        for (Tiles tile : Tiles.values()) {
-            System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
-        }
-    }
 
     /**
      * Returns object corresponding to given tileID.
@@ -99,7 +90,18 @@ public class TileManager {
             case DOUBLE_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2);
 
 
+
+            default: throw new IllegalArgumentException("Given tile does not exist.");
         }
-        return null;
+    }
+
+    /**
+     * Prints all enum names and their id
+     * Used for debugging.
+     */
+    public void printT() {
+        for (Tiles tile : Tiles.values()) {
+            System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
+        }
     }
 }
