@@ -3,9 +3,9 @@ package inf112.skeleton.app.objects.TileObjects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.Object;
+import inf112.skeleton.app.objects.SimpleObject;
 
-public class Laser extends Object implements IWall {
+public class Laser extends SimpleObject implements IWall {
 
     //Direction of laser is where the laser ends. Laser(SOUTH), has a wall to its NORTH.
     private final Direction direction; // Made final, will direction of laser/wall ever change?

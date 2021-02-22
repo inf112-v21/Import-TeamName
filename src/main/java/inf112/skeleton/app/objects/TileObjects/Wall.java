@@ -3,12 +3,13 @@ package inf112.skeleton.app.objects.TileObjects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.Object;
+import inf112.skeleton.app.objects.SimpleObject;
 
-public class Wall extends Object implements IWall {
+import java.util.ArrayList;
 
-    private final Direction direction1; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
-    private final Direction direction2; // Direction for corner walls.
+public class Wall extends SimpleObject implements IWall {
+
+    private final ArrayList<Direction> directions = new ArrayList(); // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
 
     /**
      *  Creates wall object
@@ -18,13 +19,18 @@ public class Wall extends Object implements IWall {
      */
     public Wall(Vector2 position, Direction dir1, Direction dir2) {
         super(position);
-        this.direction1 = dir1;
-        this.direction2 = dir2;
+        this.directions.add(dir1);
+        this.directions.add(dir2);
     }
 
     @Override
     public boolean isPassableFromDirection(Direction dir) {
-        return dir != this.direction1 && dir != this.direction2;
+
+        for (Direction direction : directions) {
+            if (dir == direction) return false;
+        }
+        return true;
+
     }
 
     @Override

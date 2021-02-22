@@ -5,11 +5,11 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * Simple object class, represents base properties of all objects/actors in the game.
  */
-public class Object implements IObject{
+public class SimpleObject implements IObject{
 
     private Vector2 position;
 
-    public Object(Vector2 position) {
+    public SimpleObject(Vector2 position) {
         this.position = position;
     }
 

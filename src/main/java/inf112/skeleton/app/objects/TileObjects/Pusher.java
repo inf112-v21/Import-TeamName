@@ -3,9 +3,9 @@ package inf112.skeleton.app.objects.TileObjects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.Object;
+import inf112.skeleton.app.objects.SimpleObject;
 
-public class Pusher extends Object implements IWall{
+public class Pusher extends SimpleObject implements IWall{
 
     private final Direction pushDirection;
 
