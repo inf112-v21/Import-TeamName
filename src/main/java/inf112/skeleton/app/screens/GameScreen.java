@@ -76,7 +76,7 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public boolean keyUp(int keycode) {
         if (movePlayer) {
-            player.movePlayer(tilePlayer, keycode);
+            player.moveRobot(tilePlayer, keycode);
             return true;
         }
         moveCamera(keycode);

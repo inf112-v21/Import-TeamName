@@ -38,7 +38,7 @@ public class PlayerTest {
     @Test
     public void playerMoveUp() {
         Player player = new Player(2, 2, textures );
-        player.movePlayer(tilePlayer, 51); // Keycode 51 -> w Should move up
+        player.moveRobot(tilePlayer, 51); // Keycode 51 -> w Should move up
         assertEquals(player.getPosition(), new Vector2(2,3));
     }
 
