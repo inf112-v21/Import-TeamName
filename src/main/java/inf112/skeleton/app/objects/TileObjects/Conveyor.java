@@ -2,12 +2,12 @@ package inf112.skeleton.app.objects.TileObjects;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.objects.Object;
+import inf112.skeleton.app.objects.SimpleObject;
 
 /**
  *  Class for conveyors
  */
-public class Conveyor extends Object {
+public class Conveyor extends SimpleObject {
 
     private final Direction pushDirection;
     private final Integer speed; // Normal push 1 tile, Fast, push 2 tiles in 2 turns

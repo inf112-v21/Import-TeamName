@@ -3,9 +3,9 @@ package inf112.skeleton.app.objects.TileObjects;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.Object;
+import inf112.skeleton.app.objects.SimpleObject;
 
-public class Wall extends Object implements IWall {
+public class Wall extends SimpleObject implements IWall {
 
     private final Direction direction1; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
     private final Direction direction2; // Direction for corner walls.
