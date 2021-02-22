@@ -8,7 +8,10 @@ public enum Direction {
     NORTH,
     EAST,
     SOUTH,
-    WEST;
+    WEST,
+
+    WITH_CLOCK,
+    AGAINST_CLOCK;
 
     /**
      * Returns opposite direction
@@ -16,15 +19,13 @@ public enum Direction {
      * @return
      */
     public static Direction DirectionOpposite(Direction dir) {
-        if (!(dir instanceof Direction)) throw new IllegalArgumentException("Expected enum direction.");
-
         switch (dir) {
             case NORTH: return Direction.SOUTH;
             case SOUTH: return Direction.NORTH;
             case EAST: return Direction.WEST;
             case WEST: return Direction.EAST;
+            default: throw new IllegalArgumentException("Expected enum cardinal direction.");
         }
-        return null;
     }
 
 
