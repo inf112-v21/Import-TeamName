@@ -2,10 +2,10 @@ package inf112.skeleton.app.map;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.objects.Conveyor;
-import inf112.skeleton.app.objects.DockingBay;
+import inf112.skeleton.app.objects.TileObjects.Conveyor;
+import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.objects.IObject;
-import inf112.skeleton.app.objects.Wall;
+import inf112.skeleton.app.objects.TileObjects.Wall;
 
 /**
  *    Creates an instance of all tiles on the board.
