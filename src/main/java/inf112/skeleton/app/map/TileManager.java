@@ -28,6 +28,7 @@ public class TileManager {
      * @return
      */
     public IObject getTileObject(int tileIDFromMap, Vector2 pos) {
+        //System.out.println(tileIDFromMap);
         return makeTile(tileEnum.get(tileIDFromMap), pos);
     }
 
@@ -38,13 +39,19 @@ public class TileManager {
      * @return IObject corresponding to its tileID.
      */
     private IObject makeTile(Tiles tile, Vector2 pos) {
-        switch (tile) {
+        //System.out.println(tile);
+        //if (tile==null) return new SimpleObject(new Vector2(-1,-1));
 
+        switch (tile) {
             case PIT: return new Pit(pos);
             case REPAIR_SITE_SINGLE: return new RepairSite(pos,1);
             case REPAIR_SITE_DOUBLE: return new RepairSite(pos,2);
             case GEAR_ROTATE_LEFT: return new Gear(pos,Direction.AGAINST_CLOCK);
             case GEAR_ROTATE_RIGHT: return new Gear(pos,Direction.WITH_CLOCK);
+            case FLAG1: return new Flag(pos);
+            case FLAG2: return new Flag(pos);
+            case FLAG3: return new Flag(pos);
+            case FLAG4: return new Flag(pos);
 
             //Docking bays (Starting points)
             case DOCKING_BAY1:
@@ -83,6 +90,20 @@ public class TileManager {
             case DOUBLE_CONVEYOR_UP_LEFT: return new Conveyor(pos, Direction.WEST,2);
             case DOUBLE_CONVEYOR_UP_RIGHT: return new Conveyor(pos, Direction.EAST, 2);
             case DOUBLE_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2);
+
+
+            case NORMAL_CONVEYOR_LEFT_DOWN: return new Conveyor(pos,Direction.SOUTH,1);
+            case NORMAL_CONVEYOR_UP_LEFT: return new Conveyor(pos,Direction.WEST,1);
+            case NORMAL_CONVEYOR_UP_RIGHT: return new Conveyor(pos,Direction.EAST,1);
+            case NORMAL_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos,Direction.NORTH,1);
+            case NORMAL_CONVEYOR_DOWN_RIGHT: return new Conveyor(pos,Direction.EAST,1);
+            case NORMAL_CONVEYOR_RIGHT_UP: return new Conveyor(pos,Direction.NORTH,1);
+            case NORMAL_CONVEYOR_LEFT_UP: return new Conveyor(pos,Direction.NORTH,1);
+            case NORMAL_CONVEYOR_DOWN_LEFT: return new Conveyor(pos,Direction.WEST,1);
+            case NORMAL_CONVEYOR_UP: return new Conveyor(pos,Direction.NORTH,1);
+            case NORMAL_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,1);
+            case NORMAL_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST,1);
+            case NORMAL_CONVEYOR_RIGHT: return new Conveyor(pos,Direction.EAST,1);
 
 
 
