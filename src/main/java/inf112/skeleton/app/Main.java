@@ -9,7 +9,7 @@ public class Main {
         cfg.setTitle("Import team name: Robo Rally");
         cfg.setWindowedMode(1000,1000);
 
-        RoboRally roboRally = new RoboRally();
+        //RoboRally roboRally = new RoboRally();
         GameWithScreens gameWithScreens = new GameWithScreens();
         new Lwjgl3Application(gameWithScreens, cfg);
 

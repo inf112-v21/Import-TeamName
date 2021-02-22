@@ -1,9 +1,6 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,27 +16,29 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.objects.Player;
 
 
-public class RoboRally extends InputAdapter implements ApplicationListener  {
+public class RoboRally extends InputAdapter implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
 
     private TiledMap map;
 
     // Layers on the map
-    private TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
+    public TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
 
-    private Player player;
-    boolean movePlayer = true;
+    public Player player;
+    public boolean movePlayer = true;
+
+    GameWithScreens game;
 
     /**
      * Constructor method
      */
-    @Override
-    public void create() {
 
+    public  RoboRally(GameWithScreens game) {
+        this.game = game;
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -63,7 +62,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener  {
 
         player = new Player(0,0, textures);
 
-        Gdx.input.setInputProcessor(this);
+
     }
 
     /**
@@ -133,7 +132,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener  {
 
 
     @Override
-    public void render() {
+    public void render(float v) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
@@ -151,6 +150,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener  {
     }
 
     @Override
+    public void show() {
+        Gdx.input.setInputProcessor(this);
+    }
+
+
+
+    @Override
     public void resize(int width, int height) {
     }
 
@@ -160,5 +166,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener  {
 
     @Override
     public void resume() {
+    }
+
+    @Override
+    public void hide() {
+
     }
 }
