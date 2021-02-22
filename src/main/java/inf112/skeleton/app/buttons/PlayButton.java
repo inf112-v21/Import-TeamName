@@ -11,6 +11,14 @@ public class PlayButton {
     Texture texture;
     Drawable drawable;
     ImageButton playButton;
+
+    /**
+     *
+     * @param w: Height of placement of button
+     * @param h: Width of placement of button
+     * @param widthSize: Width of button
+     * @param heightSize: Height of button
+     */
     public PlayButton(float w, float h, float widthSize, float heightSize) {
         texture = Assets.manager.get(Assets.playButton);
         drawable = new TextureRegionDrawable(new TextureRegion(texture));
@@ -19,7 +27,11 @@ public class PlayButton {
         playButton.setSize(widthSize,heightSize);
     }
 
-
+    /**
+     *
+     * @param w: Height of placement of button
+     * @param h: Width of placement of button
+     */
     public PlayButton(float w, float h) {
         texture = Assets.manager.get(Assets.playButton);
         drawable = new TextureRegionDrawable(new TextureRegion(texture));
@@ -28,6 +40,10 @@ public class PlayButton {
         playButton.setSize(30,30);
     }
 
+    /**
+     *
+     * @return
+     */
     public ImageButton getButton() {
         return playButton;
     }

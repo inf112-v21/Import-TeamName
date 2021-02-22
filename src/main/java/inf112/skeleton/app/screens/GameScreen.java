@@ -83,30 +83,6 @@ public class GameScreen extends InputAdapter implements Screen {
         return true;
     }
 
-    /**
-     * Change direction of an actor, e.g a a place
-     * @param playerTile: the tile containing an actor, e.g a player
-     * @param position: a 2d position
-     * @param keycode: number id of pressed key
-     */
-    public void changeDirection(TiledMapTileLayer playerTile, Vector2 position, int keycode) {
-
-        playerTile.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
-        switch(keycode) {
-            case Input.Keys.W:
-                position.y += 1;
-                break;
-            case Input.Keys.S:
-                position.y -= 1;
-                break;
-            case Input.Keys.A:
-                position.x -= 1;
-                break;
-            case Input.Keys.D:
-                position.x += 1;
-                break;
-        }
-    }
 
     /**
      * Change camera location based on WASD keystrokes
@@ -157,7 +133,6 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
         Gdx.input.setInputProcessor(this);
     }
-
 
 
     @Override
