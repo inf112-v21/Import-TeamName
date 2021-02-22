@@ -39,7 +39,6 @@ public class Player implements IActor {
     }
 
     public void movePlayer(TiledMapTileLayer playerTile, int keycode) {
-        System.out.println("keycode" + keycode);
         playerTile.setCell((int) position.x,(int) position.y, new TiledMapTileLayer.Cell());
         switch(keycode) {
             case Input.Keys.W:

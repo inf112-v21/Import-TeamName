@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class GameTest {
+public class RoboRallyTest {
     /**
      * Rigorous Test :-)
      */
