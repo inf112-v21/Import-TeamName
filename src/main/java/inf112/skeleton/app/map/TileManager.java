@@ -2,10 +2,8 @@ package inf112.skeleton.app.map;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.objects.TileObjects.Conveyor;
-import inf112.skeleton.app.objects.TileObjects.DockingBay;
+import inf112.skeleton.app.objects.TileObjects.*;
 import inf112.skeleton.app.objects.IObject;
-import inf112.skeleton.app.objects.TileObjects.Wall;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,14 +12,6 @@ import java.util.Map;
  *    Creates an instance of all tiles on the board.
  */
 public class TileManager {
-
-    /*
-         Plan:
-             - Loop through all tiles on board.
-             - Create class instance of tile, with correct direction and other data,
-             - Return a list of all tiles? 1D og 2D list? Represent board?
-
-     */
     private static final Map<Integer, Tiles> tileEnum = new HashMap<Integer,Tiles>();
 
     public TileManager() {
@@ -30,7 +20,6 @@ public class TileManager {
             tileEnum.put(tile.getTileID(), tile);
         }
     }
-
 
     /**
      * Returns object corresponding to given tileID.
@@ -50,6 +39,12 @@ public class TileManager {
      */
     private IObject makeTile(Tiles tile, Vector2 pos) {
         switch (tile) {
+
+            case PIT: return new Pit(pos);
+            case REPAIR_SITE_SINGLE: return new RepairSite(pos,1);
+            case REPAIR_SITE_DOUBLE: return new RepairSite(pos,2);
+            case GEAR_ROTATE_LEFT: return new Gear(pos,Direction.AGAINST_CLOCK);
+            case GEAR_ROTATE_RIGHT: return new Gear(pos,Direction.WITH_CLOCK);
 
             //Docking bays (Starting points)
             case DOCKING_BAY1:
@@ -91,7 +86,7 @@ public class TileManager {
 
 
 
-            default: throw new IllegalArgumentException("Given tile does not exist.");
+            default: throw new IllegalArgumentException("Given tile does not exist: " + tile);
         }
     }
 
