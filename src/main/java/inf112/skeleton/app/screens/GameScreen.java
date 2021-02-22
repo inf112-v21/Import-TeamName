@@ -20,7 +20,9 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.objects.Actors.Player;
 
 
-
+/**
+ * Creates a game screen to be displayed while playing the game
+ */
 public class GameScreen extends InputAdapter implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
@@ -38,9 +40,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     RoboRally game;
 
-    /**
-     * Constructor method
-     */
 
     public GameScreen(RoboRally game) {
         this.game = game;

@@ -19,6 +19,10 @@ import inf112.skeleton.app.buttons.SimpleButton;
 
 import static com.badlogic.gdx.Gdx.gl;
 
+/**
+ * Creates a title screen to act as a menu.
+ * * The display the player encounters
+ */
 public class TitleScreen implements Screen {
 
     final RoboRally game;
@@ -29,10 +33,12 @@ public class TitleScreen implements Screen {
     float width;
     float height;
 
+    /**
+     * Constructor method
+
+     */
     public TitleScreen(final RoboRally game) {
         this.game = game;
-        // create the camera and the SpriteBatch
-
     }
 
     @Override
@@ -67,7 +73,6 @@ public class TitleScreen implements Screen {
         game.batch.end();
         stage.act();
         stage.draw();
-
 
     }
 

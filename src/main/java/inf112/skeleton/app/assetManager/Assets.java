@@ -15,8 +15,6 @@ public class Assets {
             new AssetDescriptor<Texture>("Images/buttons/simpleButton.png", Texture.class);
 
 
-
-
     public static void load()
     {
         manager.load(texture);

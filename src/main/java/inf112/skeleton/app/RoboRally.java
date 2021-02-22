@@ -21,8 +21,11 @@ public class RoboRally extends Game {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
+
+        // Load assets from assetsmanager
         Assets.load();
         Assets.manager.finishLoading();
+
         // Set up screens
         titleScreen = new TitleScreen(this);
         gameScreen = new GameScreen(this);

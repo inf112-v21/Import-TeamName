@@ -9,7 +9,6 @@ public class Main {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Import team name: Robo Rally");
         cfg.setWindowedMode(1000,1000);
-
         RoboRally roboRally = new RoboRally();
         new Lwjgl3Application(roboRally, cfg);
 
