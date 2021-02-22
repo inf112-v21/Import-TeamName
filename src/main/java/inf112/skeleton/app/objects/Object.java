@@ -2,10 +2,24 @@ package inf112.skeleton.app.objects;
 
 import com.badlogic.gdx.math.Vector2;
 
-public interface Object {
+/**
+ * Simple object class, represents base properties of all objects/actors in the game.
+ */
+public class Object implements IObject{
 
-    public Vector2 getPosition();
+    private Vector2 position;
 
-    public void setPosition(Vector2 position);
+    public Object(Vector2 position) {
+        this.position = position;
+    }
 
+    @Override
+    public Vector2 getPosition() {
+        return this.position;
+    }
+
+    @Override
+    public void setPosition(Vector2 position) {
+        this.position = position;
+    }
 }

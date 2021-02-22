@@ -1,16 +1,14 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.SerializationException;
 import com.badlogic.gdx.graphics.Texture;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-import inf112.skeleton.app.objects.Player;
+import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

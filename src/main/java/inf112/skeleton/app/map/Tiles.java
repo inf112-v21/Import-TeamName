@@ -1,6 +1,9 @@
 package inf112.skeleton.app.map;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *  Returns name of given tile id.
  */
@@ -15,13 +18,13 @@ public enum Tiles {
     REPAIR_SITE_DOUBLE(7),
     GEAR_ROTATE_LEFT(53),
     GEAR_ROTATE_RIGHT(54),
-    FLAGG1(55),
-    FLAGG2(63),
-    FLAGG3(71),
-    FLAGG4(79),
+    FLAG1(55),
+    FLAG2(63),
+    FLAG3(71),
+    FLAG4(79),
 
 
-    //Docking bays
+    //Docking bays (Starting points)
     DOCKING_BAY1(119),
     DOCKING_BAY2(120),
     DOCKING_BAY3(121),
@@ -52,12 +55,6 @@ public enum Tiles {
     WALL_BOTTOM_RIGHT_CORNER(8),
     WALL_LEFT_TOP_CORNER(24),
     WALL_TOP_RIGHT_CORNER(16),
-
-    CONED_WALL_DOWN(87),
-    CONED_WALL_LEFT(93),
-    CONED_WALL_UP(94),
-    CONED_WALL_RIGHT(95),
-
 
     //Double conveyor
     DOUBLE_CONVEYOR_DOWN(21),
@@ -103,7 +100,7 @@ public enum Tiles {
     NORMAL_CONVEYOR_RIGHT(52),
 
     //Normal merged conveyors
-    NORMAL_CONVEYOR_TO_UP__FROM_LEFT_AND_DOWN(57),
+    NORMAL_CONVEYOR_TO_UP_FROM_LEFT_AND_DOWN(57),
     NORMAL_CONVEYOR_TO_RIGHT_FROM_UP_AND_LEFT(58),
     NORMAL_CONVEYOR_TO_DOWN_FROM_RIGHT_AND_UP(59),
     NORMAL_CONVEYOR_TO_LEFT_FROM_DOWN_AND_RIGHT(60),
@@ -129,6 +126,11 @@ public enum Tiles {
     LASER_BEAM_CRISSCROSS(101),
     LASER_BEAM_PARALLEL_VERTICAL(102),
     LASER_BEAM_PARALLEL_HORIZONTAL(103),
+
+    LASER_DOUBLE__DOWN(87),
+    LASER_DOUBLE_LEFT(93),
+    LASER_DOUBLE_UP(94),
+    LASER_DOUBLE_RIGHT(95),
 
     //Temporary names
     TEMP1(89),
@@ -167,6 +169,7 @@ public enum Tiles {
 
 
     private final int tileId;
+    private static final Map<Integer, Tiles> map = new HashMap<Integer,Tiles>();
 
     //Constructor
     Tiles (int id) {
@@ -182,4 +185,19 @@ public enum Tiles {
 
 
 
+    //Makes map of tiles and their names
+    static {
+        for (Tiles tiles : Tiles.values()) {
+            map.put(tiles.tileId, tiles);
+        }
+    }
+
+    /**
+     * Returns name of given tileID
+     * @param tileId
+     * @return Tiles Name
+     */
+    public static Tiles valueOf(int tileId) {
+        return map.get(tileId);
+    }
 }
