@@ -7,6 +7,9 @@ import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.objects.IObject;
 import inf112.skeleton.app.objects.TileObjects.Wall;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *    Creates an instance of all tiles on the board.
  */
@@ -19,14 +22,42 @@ public class TileManager {
              - Return a list of all tiles? 1D og 2D list? Represent board?
 
      */
+    private static final Map<Integer, Tiles> tileEnum = new HashMap<Integer,Tiles>();
+
+    public TileManager() {
+        //Adds all enums to map. Used to get corresponding name of a given tileID (int).
+        for (Tiles tile : Tiles.values()) {
+            tileEnum.put(tile.getTileID(), tile);
+        }
+    }
 
     /**
-     * Creates object based on given Tile
-     * @param tile
+     * Prints all enum names and their id
+     * Used for debugging.
+     */
+    public void printT() {
+        for (Tiles tile : Tiles.values()) {
+            System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
+        }
+    }
+
+    /**
+     * Returns object corresponding to given tileID.
+     * @param tileIDFromMap
      * @param pos
      * @return
      */
-    public IObject makeTile(Tiles tile, Vector2 pos) {
+    public IObject getTileObject(int tileIDFromMap, Vector2 pos) {
+        return makeTile(tileEnum.get(tileIDFromMap), pos);
+    }
+
+    /**
+     * Creates object based on given Tile enum
+     * @param tile enum
+     * @param pos
+     * @return IObject corresponding to its tileID.
+     */
+    private IObject makeTile(Tiles tile, Vector2 pos) {
         switch (tile) {
 
             //Docking bays (Starting points)
