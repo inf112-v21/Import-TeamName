@@ -11,20 +11,16 @@ public class Assets {
             new AssetDescriptor<Texture>("Images/player.png", Texture.class);
 
 
-    public static final AssetDescriptor<Texture> simpleButton =
+    public static final AssetDescriptor<Texture> playButton =
             new AssetDescriptor<Texture>("Images/buttons/simpleButton.png", Texture.class);
 
-
-    //BUTTONS
-    public static final AssetDescriptor<Texture> EXIT_BUTTON
-            = new AssetDescriptor<Texture>("assets/buttons/exitButton.png", Texture.class);
 
 
 
     public static void load()
     {
         manager.load(texture);
-        manager.load(simpleButton);
+        manager.load(playButton);
 
     }
 
