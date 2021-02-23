@@ -30,20 +30,12 @@ public abstract class Robot extends SimpleObject implements IActor {
         Vector2 pos = getPosition();
 
         playerTile.setCell((int) pos.x,(int) pos.y, new TiledMapTileLayer.Cell());
-        switch(keycode) {
+        switch(keycode) {   //tested, this implementation is causing collision bugs.
             case Input.Keys.W:
                 if (board.canGoToTile(pos, Direction.NORTH)) {
                     //pos.y += 1;
                     setPosition(Direction.goDirection(pos,Direction.NORTH));
                     System.out.println(pos);
-                    break;
-                }
-            case Input.Keys.S:
-                if (board.canGoToTile(pos, Direction.SOUTH)) {
-                    //pos.y -= 1;
-                    setPosition(Direction.goDirection(pos,Direction.SOUTH));
-                    System.out.println(pos);
-
                     break;
                 }
             case Input.Keys.A:
@@ -53,13 +45,18 @@ public abstract class Robot extends SimpleObject implements IActor {
                     System.out.println(pos);
                     break;
                 }
+            case Input.Keys.S:
+                if (board.canGoToTile(pos, Direction.SOUTH)) {
+                    //pos.y -= 1;
+                    setPosition(Direction.goDirection(pos,Direction.SOUTH));
+                    System.out.println(pos);
+                    break;
+                }
             case Input.Keys.D:
                 if (board.canGoToTile(pos, Direction.EAST)) {
                     //pos.x += 1;
                     setPosition(Direction.goDirection(pos,Direction.EAST));
-
                     System.out.println(pos);
-
                     break;
                 }
         }
