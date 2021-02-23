@@ -21,44 +21,42 @@ public abstract class Robot extends SimpleObject implements IActor {
 
         this.board = board;
 
-        this.playerCell =  new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
+        this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
-        this.playerCellWon  = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
+        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
     }
 
     public void moveRobot(TiledMapTileLayer playerTile, int keycode) {
         Vector2 pos = getPosition();
 
-        playerTile.setCell((int) pos.x,(int) pos.y, new TiledMapTileLayer.Cell());
-        switch(keycode) {   //tested, this implementation is causing collision bugs.
-            case Input.Keys.W:
-                if (board.canGoToTile(pos, Direction.NORTH)) {
-                    //pos.y += 1;
-                    setPosition(Direction.goDirection(pos,Direction.NORTH));
-                    System.out.println(pos);
-                    break;
-                }
-            case Input.Keys.A:
-                if (board.canGoToTile(pos, Direction.WEST)) {
-                    //pos.x -= 1;
-                    setPosition(Direction.goDirection(pos,Direction.WEST));
-                    System.out.println(pos);
-                    break;
-                }
-            case Input.Keys.S:
-                if (board.canGoToTile(pos, Direction.SOUTH)) {
-                    //pos.y -= 1;
-                    setPosition(Direction.goDirection(pos,Direction.SOUTH));
-                    System.out.println(pos);
-                    break;
-                }
-            case Input.Keys.D:
-                if (board.canGoToTile(pos, Direction.EAST)) {
-                    //pos.x += 1;
-                    setPosition(Direction.goDirection(pos,Direction.EAST));
-                    System.out.println(pos);
-                    break;
-                }
+        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
+        if (keycode == Input.Keys.W) {
+            if (board.canGoToTile(pos, Direction.NORTH)) {
+                //pos.y += 1;
+                setPosition(Direction.goDirection(pos, Direction.NORTH));
+                System.out.println(pos);
+            }
+        }
+        if (keycode == Input.Keys.A) {
+            if (board.canGoToTile(pos, Direction.WEST)) {
+                //pos.x -= 1;
+                setPosition(Direction.goDirection(pos, Direction.WEST));
+                System.out.println(pos);
+            }
+        }
+        if (keycode == Input.Keys.S) {
+            if (board.canGoToTile(pos, Direction.SOUTH)) {
+                //pos.y -= 1;
+                setPosition(Direction.goDirection(pos, Direction.SOUTH));
+                System.out.println(pos);
+            }
+        }
+        if (keycode == Input.Keys.D) {
+            if (board.canGoToTile(pos, Direction.EAST)) {
+                //pos.x += 1;
+                setPosition(Direction.goDirection(pos, Direction.EAST));
+                System.out.println(pos);
+            }
         }
     }
 
