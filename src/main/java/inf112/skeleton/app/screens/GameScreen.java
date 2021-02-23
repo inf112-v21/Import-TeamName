@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
+import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 
 
@@ -40,6 +41,8 @@ public class GameScreen extends InputAdapter implements Screen {
 
     RoboRally game;
 
+    Board board;
+
 
     public GameScreen(RoboRally game) {
         this.game = game;
@@ -47,11 +50,11 @@ public class GameScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        camera = new OrthographicCamera();                             // Make camera
+        camera = new OrthographicCamera();                               // Make camera
         camera.setToOrtho(false, 12,16);  // Set mode
         camera.update();
 
-        map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
+        map = new TmxMapLoader().load("Maps/Chess.tmx");                  // Get map file
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(camera); // Attach camera to map
 
@@ -64,9 +67,9 @@ public class GameScreen extends InputAdapter implements Screen {
         Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
 
-        player = new Player(0,0, textures);
+        this.board = new Board(map); // Get map objects
 
-
+        player = new Player(0,0, textures, board);
     }
 
     /**
