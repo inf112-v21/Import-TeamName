@@ -6,14 +6,11 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IObject;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.TileObjects.Laser;
-import inf112.skeleton.app.objects.TileObjects.Pusher;
-import inf112.skeleton.app.objects.TileObjects.Wall;
+import inf112.skeleton.app.objects.TileObjects.*;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
 
 /**
  *  Gathers information of given board.
@@ -26,12 +23,15 @@ public class Board {
     private final HashMap<Vector2,IWall> mapCollidables;   //(Pos on board, wall objects). Contains Walls, Lasers, Pushers
     private final HashMap<Vector2,IObject> mapOtherTiles;  //(Pos on board, tile objects). Contains all other tiles.
 
-    private int nrFlags; //Number of flags on board.
-    private int nrDockingBays; //Number of starting points.
+    private ArrayList<DockingBay> dockingBays;
+    private ArrayList<Flag> flags;
 
     public Board(TiledMap map) {
         collidables = new ArrayList<IWall>();
         otherTiles = new ArrayList<IObject>();
+
+        dockingBays = new ArrayList<DockingBay>();
+        flags = new ArrayList<Flag>();
 
         mapCollidables = new HashMap<Vector2,IWall>();
         mapOtherTiles = new HashMap<Vector2,IObject>();
@@ -72,6 +72,9 @@ public class Board {
                         collidables.add((IWall) tileInstance);
                         mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
                     } else {
+                        if (tileInstance instanceof Flag) flags.add((Flag) tileInstance);
+                        if (tileInstance instanceof DockingBay) dockingBays.add((DockingBay) tileInstance);
+
                         otherTiles.add(tileInstance);
                         mapOtherTiles.put(new Vector2(x,y),tileInstance);
                     }
@@ -137,7 +140,7 @@ public class Board {
      * @return
      */
     public int getNrFlags() {
-        return nrFlags;
+        return flags.size();
     }
 
     /**
@@ -145,6 +148,6 @@ public class Board {
      * @return
      */
     public int getNrDockingBays() {
-        return nrDockingBays;
+        return dockingBays.size();
     }
 }
