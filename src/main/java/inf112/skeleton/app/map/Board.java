@@ -87,7 +87,7 @@ public class Board {
      * @return
      */
     public boolean canGoToTile(Vector2 pos, Direction dir) {
-        return canLeaveTile(pos,dir); //&& canGoOntoTile(Direction.goDirection(pos, dir), dir);
+        return canLeaveTile(pos,dir) && canGoOntoTile(Direction.goDirection(pos, dir), dir);
     }
 
     /**
