@@ -36,6 +36,7 @@ public enum Direction {
     }
 
 
+
     /**
      * Returns opposite direction
      * @param dir
@@ -47,7 +48,6 @@ public enum Direction {
             case SOUTH: return Direction.NORTH;
             case EAST: return Direction.WEST;
             case WEST: return Direction.EAST;
-
             case WITH_CLOCK: return Direction.AGAINST_CLOCK;
             case AGAINST_CLOCK: return Direction.WITH_CLOCK;
 

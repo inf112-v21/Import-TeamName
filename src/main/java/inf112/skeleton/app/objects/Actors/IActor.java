@@ -22,4 +22,9 @@ public interface IActor extends IObject {
      */
     void setLookDirection(Direction direction);
 
+    /**
+     *
+     * @param rotation: rotation direction. With or against clock
+     */
+    void rotate(Direction rotation);
 }

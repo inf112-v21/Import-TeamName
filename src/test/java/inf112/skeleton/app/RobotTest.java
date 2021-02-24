@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
+import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
@@ -44,6 +45,21 @@ public class RobotTest {
         Player player = new Player(2, 2, textures, board);
         player.moveRobot(tilePlayer, 51); // Keycode 51 -> w Should move up
         assertEquals(player.getPosition(), new Vector2(2,3));
+    }
+
+    @Test
+    public void rotateWithClock() {
+        Player player = new Player(4,4, textures, board);
+        player.rotate(Direction.WITH_CLOCK);
+        assertEquals(Direction.EAST, player.getLookDirection());
+    }
+
+    @Test
+    public void rotateAgainstClock() {
+        Player player = new Player(4,4, textures, board);
+        player.setLookDirection(Direction.WEST);
+        player.rotate(Direction.AGAINST_CLOCK);
+        assertEquals(Direction.SOUTH, player.getLookDirection());
     }
 
 

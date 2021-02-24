@@ -13,7 +13,7 @@ public interface IProgramCard {
 
     /**
      * Perform action
-     * @param robot: Robot which performs a given actio
+     * @param robot: Robot which performs a given action
      */
     void action(Robot robot);
 
