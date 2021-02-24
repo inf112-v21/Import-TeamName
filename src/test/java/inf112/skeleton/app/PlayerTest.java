@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
+import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +25,7 @@ public class PlayerTest {
     private Texture playerTexture;
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
+    private Board board;
 
 
     @Before
@@ -32,12 +34,14 @@ public class PlayerTest {
         textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
+
+        this.board = new Board(map);
     }
 
 
     @Test
     public void playerMoveUp() {
-        Player player = new Player(2, 2, textures );
+        Player player = new Player(2, 2, textures, board);
         player.moveRobot(tilePlayer, 51); // Keycode 51 -> w Should move up
         assertEquals(player.getPosition(), new Vector2(2,3));
     }

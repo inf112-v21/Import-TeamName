@@ -9,16 +9,19 @@ import java.util.ArrayList;
 
 public class Wall extends SimpleObject implements IWall {
 
-    private final ArrayList<Direction> directions = new ArrayList(); // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
+    private final ArrayList<Direction> directions; // Direction of wall in a tile? If direction=NORTH, then cannot go north when standing on tile?
 
     /**
-     *  Creates wall object
+     * Creates wall object
+     *
      * @param position Position of wall
-     * @param dir1 Where the wall is in a tile.
-     * @param dir2 Where the wall is in a tile, only relevant for corner walls.
+     * @param dir1     Where the wall is in a tile.
+     * @param dir2     Where the wall is in a tile, only relevant for corner walls.
      */
     public Wall(Vector2 position, Direction dir1, Direction dir2) {
         super(position);
+
+        this.directions = new ArrayList<Direction>();
         this.directions.add(dir1);
         this.directions.add(dir2);
     }
@@ -31,10 +34,5 @@ public class Wall extends SimpleObject implements IWall {
         }
         return true;
 
-    }
-
-    @Override
-    public boolean isPassableToDirection(Direction dir) {
-        return false;
     }
 }

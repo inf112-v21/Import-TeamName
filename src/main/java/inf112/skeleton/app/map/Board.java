@@ -3,13 +3,13 @@ package inf112.skeleton.app.map;
 import com.badlogic.gdx.maps.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.IObject;
 import inf112.skeleton.app.objects.IWall;
-import inf112.skeleton.app.objects.TileObjects.Laser;
-import inf112.skeleton.app.objects.TileObjects.Pusher;
-import inf112.skeleton.app.objects.TileObjects.Wall;
+import inf112.skeleton.app.objects.TileObjects.*;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,22 +17,31 @@ import java.util.List;
  */
 public class Board {
 
-    private final List<IWall> collidables; // Walls, Lasers, Pushers
+    private final List<IWall> collidables;   // Walls, Lasers, Pushers
     private final List<IObject> otherTiles;  // Everything other than Floor, empty space and collidables.
 
-    private int nrFlags; //Number of flags on board.
-    private int nrDockingBays; //Number of starting points.
+    private final HashMap<Vector2,IWall> mapCollidables;   //(Pos on board, wall objects). Contains Walls, Lasers, Pushers
+    private final HashMap<Vector2,IObject> mapOtherTiles;  //(Pos on board, tile objects). Contains all other tiles.
+
+    private ArrayList<DockingBay> dockingBays;
+    private ArrayList<Flag> flags;
 
     public Board(TiledMap map) {
         collidables = new ArrayList<IWall>();
         otherTiles = new ArrayList<IObject>();
+
+        dockingBays = new ArrayList<DockingBay>();
+        flags = new ArrayList<Flag>();
+
+        mapCollidables = new HashMap<Vector2,IWall>();
+        mapOtherTiles = new HashMap<Vector2,IObject>();
 
         tileTranslator(map);
     }
 
     /**
      *
-     * @param TiledMap map
+     * @param
      */
     private void tileTranslator(TiledMap map) {
         TileManager tileManager = new TileManager();
@@ -55,15 +64,61 @@ public class Board {
 
                     if (tileInstance instanceof Wall){
                         collidables.add((IWall) tileInstance);
+                        mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
                     } else if (tileInstance instanceof Laser) {
                         collidables.add((IWall) tileInstance);
+                        mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
                     } else if (tileInstance instanceof Pusher) {
                         collidables.add((IWall) tileInstance);
-                    } else otherTiles.add(tileInstance);
+                        mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
+                    } else {
+                        if (tileInstance instanceof Flag) flags.add((Flag) tileInstance);
+                        if (tileInstance instanceof DockingBay) dockingBays.add((DockingBay) tileInstance);
+
+                        otherTiles.add(tileInstance);
+                        mapOtherTiles.put(new Vector2(x,y),tileInstance);
+                    }
                 }
             }
         }
     }
+
+    /**
+     * Checks if actor can go to tile from given direction.
+     * @param pos
+     * @param dir
+     * @return
+     */
+    public boolean canGoToTile(Vector2 pos, Direction dir) {
+        return canLeaveTile(pos,dir) && canGoOntoTile(pos, dir);
+    }
+
+    /**
+     * Checks that an actor can move away from a tile in a given direction.
+     * @param pos Tile actor is standing on.
+     * @param dir Direction actor wants to move.
+     * @return True if can move in given direction.
+     */
+    private boolean canLeaveTile(Vector2 pos, Direction dir) {
+        IWall wall = mapCollidables.get(pos); //Tile actor is standing on.
+        if (wall == null) return true;        //Nothing in given direction.
+        return wall.isPassableFromDirection(dir);
+    }
+
+    /**
+     * Checks that an actor can move onto a tile from given direction.
+     * @param pos Tile actor is standing on.
+     * @param dir Direction actor wants to move.
+     * @return True if can move onto a tile from given direction.
+     */
+    private boolean canGoOntoTile(Vector2 pos, Direction dir) {
+        Vector2 adjacentPos = Direction.goDirection(pos, dir); // Adjacent tile in given direction.
+
+        IWall wall = mapCollidables.get(adjacentPos);
+        if (wall == null) return true; //Nothing in given direction.
+        return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
+    }
+
 
 
     /**
@@ -87,7 +142,7 @@ public class Board {
      * @return
      */
     public int getNrFlags() {
-        return nrFlags;
+        return flags.size();
     }
 
     /**
@@ -95,6 +150,6 @@ public class Board {
      * @return
      */
     public int getNrDockingBays() {
-        return nrDockingBays;
+        return dockingBays.size();
     }
 }

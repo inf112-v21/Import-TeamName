@@ -19,8 +19,7 @@ public class Pusher extends SimpleObject implements IWall{
         return dir != Direction.DirectionOpposite(dir); //Wall is opposite to pushDirection.
     }
 
-    @Override
-    public boolean isPassableToDirection(Direction dir) {
-        return false;
+    public Direction getPushDirection() {
+        return pushDirection;
     }
 }
