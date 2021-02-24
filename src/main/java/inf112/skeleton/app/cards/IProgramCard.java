@@ -17,4 +17,9 @@ public interface IProgramCard {
      */
     void action(Robot robot);
 
+
+    int getPriority();
+
+    CardType getType();
+
 }
