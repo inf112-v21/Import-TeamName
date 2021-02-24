@@ -25,8 +25,7 @@ public abstract class Robot extends SimpleObject implements IActor {
         super(new Vector2(startRow, startCol));
 
         this.board = board;
-        lookDirection = NORTH;
-
+        lookDirection = Direction.NORTH;
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
@@ -66,11 +65,6 @@ public abstract class Robot extends SimpleObject implements IActor {
         }
     }
 
-    @Override
-    public Direction getLookDirection() {
-        return this.lookDirection;
-    }
-
 
     @Override
     public ProgramSheet getProgramSheet() {
@@ -90,27 +84,38 @@ public abstract class Robot extends SimpleObject implements IActor {
     }
 
     @Override
+    public Direction getLookDirection() {
+        return this.lookDirection;
+    }
+
+    @Override
     public void setLookDirection(Direction direction) {
         this.lookDirection = direction;
     }
 
     @Override
     public void rotate(Direction rotation) {
+
         switch (rotation) {
 
             case WITH_CLOCK:
-                switch (rotation) {
+                switch (lookDirection) {
                     case NORTH:
                         setLookDirection(Direction.EAST);
+                        break;
                     case EAST:
                         setLookDirection(Direction.SOUTH);
+                        break;
                     case SOUTH:
                         setLookDirection(Direction.WEST);
+                        break;
                     case WEST:
                         setLookDirection(Direction.NORTH);
+                        break;
                 }
+                break;
             case AGAINST_CLOCK:
-                switch (rotation) {
+                switch (lookDirection) {
                     case NORTH:
                         setLookDirection(Direction.WEST);
                     case EAST:
