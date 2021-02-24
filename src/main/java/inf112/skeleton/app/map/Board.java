@@ -119,7 +119,35 @@ public class Board {
         return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
     }
 
+    
 
+    /**
+     * Returns object of tile on given position on board.
+     * Does not include Walls, Lasers and Pushers.
+     * @param pos
+     * @return
+     */
+    public IObject getNonWallTileOnPos(Vector2 pos) {
+        return mapOtherTiles.get(pos);
+    }
+
+    /**
+     * Checks if a position on board is a Flag.
+     * @param pos
+     * @return
+     */
+    public boolean isPosAFlag(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof Flag;
+    }
+
+    /**
+     * Checks if a position on board is a Pit.
+     * @param pos
+     * @return
+     */
+    public boolean isPosAPit(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof Pit;
+    }
 
     /**
      * List of all collidable tiles on the board. Does not include players!
