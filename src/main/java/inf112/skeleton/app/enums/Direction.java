@@ -31,7 +31,7 @@ public enum Direction {
             case WEST: return newPos.add(-1,0);
             case EAST: return newPos.add(1,0);
 
-            default: throw new IllegalArgumentException("Expected enum direction. Received: " + dir);
+            default: throw new IllegalArgumentException("Expected enum cardinal direction. Received: " + dir);
         }
     }
 
