@@ -32,7 +32,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private TiledMap map;
 
     // Layers on the map
-    public TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
+    public TiledMapTileLayer tilePlayer;
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
@@ -59,11 +59,7 @@ public class GameScreen extends InputAdapter implements Screen {
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(camera); // Attach camera to map
 
-        tileBoard = (TiledMapTileLayer) map.getLayers().get("Floor");
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        tileHole = (TiledMapTileLayer) map.getLayers().get("Pit");
-        tileFlag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
-        tileFlag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
 
         Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
