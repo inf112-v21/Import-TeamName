@@ -1,6 +1,6 @@
 package inf112.skeleton.app.cards;
 
-public enum CardTypes {
+public enum CardType {
 
     MOVEMENT,
     ROTATION

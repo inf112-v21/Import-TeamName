@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.ProgramSheet;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.SimpleObject;
 
 public abstract class Robot extends SimpleObject implements IActor {
+
     private Direction lookDirection;
+    private ProgramSheet programSheet = new ProgramSheet();
 
     private final Board board;
 
@@ -66,8 +69,8 @@ public abstract class Robot extends SimpleObject implements IActor {
     }
 
     @Override
-    public void setLookDirection(Direction direction) {
-        this.lookDirection = direction;
+    public ProgramSheet getProgramSheet() {
+        return this.programSheet;
     }
 
     public TiledMapTileLayer.Cell getPlayerCell() {
@@ -79,5 +82,15 @@ public abstract class Robot extends SimpleObject implements IActor {
 
     public TiledMapTileLayer.Cell getPlayerCellWon() {
         return playerCellWon;
+    }
+
+    @Override
+    public void setPosition(Vector2 position){
+        this.position = position;
+    }
+
+    @Override
+    public void setLookDirection(Direction direction) {
+        this.lookDirection = direction;
     }
 }
