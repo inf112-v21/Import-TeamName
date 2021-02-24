@@ -169,7 +169,6 @@ public enum Tiles {
 
 
     private final int tileId;
-    private static final Map<Integer, Tiles> map = new HashMap<Integer,Tiles>();
 
     //Constructor
     Tiles (int id) {
