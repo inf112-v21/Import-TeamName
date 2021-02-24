@@ -85,11 +85,6 @@ public abstract class Robot extends SimpleObject implements IActor {
     }
 
     @Override
-    public void setPosition(Vector2 position){
-        this.position = position;
-    }
-
-    @Override
     public void setLookDirection(Direction direction) {
         this.lookDirection = direction;
     }
