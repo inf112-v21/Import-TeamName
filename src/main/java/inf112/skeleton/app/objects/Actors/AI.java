@@ -6,7 +6,6 @@ import inf112.skeleton.app.enums.Direction;
 
 public class AI extends Robot {
 
-
     public AI(int startRow, int startCol, TextureRegion[][] texture) {
         super(startRow, startCol, texture);
     }
