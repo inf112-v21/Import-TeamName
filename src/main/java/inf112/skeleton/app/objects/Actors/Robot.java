@@ -10,6 +10,8 @@ import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.SimpleObject;
 
+import static inf112.skeleton.app.enums.Direction.NORTH;
+
 public abstract class Robot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
@@ -23,6 +25,7 @@ public abstract class Robot extends SimpleObject implements IActor {
         super(new Vector2(startRow, startCol));
 
         this.board = board;
+        lookDirection = NORTH;
 
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
@@ -34,9 +37,9 @@ public abstract class Robot extends SimpleObject implements IActor {
 
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
         if (keycode == Input.Keys.W) {
-            if (board.canGoToTile(pos, Direction.NORTH)) {
+            if (board.canGoToTile(pos, NORTH)) {
                 //pos.y += 1;
-                setPosition(Direction.goDirection(pos, Direction.NORTH));
+                setPosition(Direction.goDirection(pos, NORTH));
                 System.out.println(pos);
             }
         }
@@ -68,6 +71,7 @@ public abstract class Robot extends SimpleObject implements IActor {
         return this.lookDirection;
     }
 
+
     @Override
     public ProgramSheet getProgramSheet() {
         return this.programSheet;
@@ -76,6 +80,7 @@ public abstract class Robot extends SimpleObject implements IActor {
     public TiledMapTileLayer.Cell getPlayerCell() {
         return playerCell;
     }
+
     public TiledMapTileLayer.Cell getPlayerCellDead() {
         return playerCellDead;
     }
@@ -87,5 +92,35 @@ public abstract class Robot extends SimpleObject implements IActor {
     @Override
     public void setLookDirection(Direction direction) {
         this.lookDirection = direction;
+    }
+
+    @Override
+    public void rotate(Direction rotation) {
+        switch (rotation) {
+
+            case WITH_CLOCK:
+                switch (rotation) {
+                    case NORTH:
+                        setLookDirection(Direction.EAST);
+                    case EAST:
+                        setLookDirection(Direction.SOUTH);
+                    case SOUTH:
+                        setLookDirection(Direction.WEST);
+                    case WEST:
+                        setLookDirection(Direction.NORTH);
+                }
+            case AGAINST_CLOCK:
+                switch (rotation) {
+                    case NORTH:
+                        setLookDirection(Direction.WEST);
+                    case EAST:
+                        setLookDirection(Direction.NORTH);
+                    case SOUTH:
+                        setLookDirection(Direction.EAST);
+                    case WEST:
+                        setLookDirection(Direction.SOUTH);
+                }
+        }
+
     }
 }
