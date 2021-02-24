@@ -9,6 +9,4 @@ public class Player extends Robot {
             super(startRow, startCol, texture, board);
     }
 
-
-
 }
