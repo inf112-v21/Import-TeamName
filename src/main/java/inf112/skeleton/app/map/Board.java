@@ -90,7 +90,7 @@ public class Board {
      * @return
      */
     public boolean canGoToTile(Vector2 pos, Direction dir) {
-        return canLeaveTile(pos,dir) && canGoOntoTile(Direction.goDirection(pos, dir), dir);
+        return canLeaveTile(pos,dir) && canGoOntoTile(pos, dir);
     }
 
     /**
@@ -112,9 +112,11 @@ public class Board {
      * @return True if can move onto a tile from given direction.
      */
     private boolean canGoOntoTile(Vector2 pos, Direction dir) {
-        IWall wall = mapCollidables.get(pos);
+        Vector2 adjacentPos = Direction.goDirection(pos, dir); // Adjacent tile in given direction.
+
+        IWall wall = mapCollidables.get(adjacentPos);
         if (wall == null) return true; //Nothing in given direction.
-        return canLeaveTile(pos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
+        return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
     }
 
 
