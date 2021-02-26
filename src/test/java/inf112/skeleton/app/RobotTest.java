@@ -43,7 +43,7 @@ public class RobotTest {
     @Test
     public void playerMoveUp() {
         Player player = new Player(2, 2, textures, board);
-        player.moveRobot(tilePlayer, 51); // Keycode 51 -> w Should move up
+        player.moveRobotWASD(tilePlayer, 51); // Keycode 51 -> w Should move up
         assertEquals(player.getPosition(), new Vector2(2,3));
     }
 

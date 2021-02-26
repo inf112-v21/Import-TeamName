@@ -31,7 +31,14 @@ public abstract class Robot extends SimpleObject implements IActor {
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
     }
 
-    public void moveRobot(TiledMapTileLayer playerTile, int keycode) {
+    /**
+     * Move forward using WASD keys
+     *
+     * METHOD MEANT FOR TESTING
+     * @param playerTile
+     * @param keycode
+     */
+    public void moveRobotWASD(TiledMapTileLayer playerTile, int keycode) {
         Vector2 pos = getPosition();
 
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
@@ -63,6 +70,18 @@ public abstract class Robot extends SimpleObject implements IActor {
                 System.out.println(pos);
             }
         }
+    }
+
+    /**
+     * Move robot forward based on input
+     * Recursive
+     */
+    public void moveRobot(int steps) {
+        Vector2 pos = getPosition();
+        if (board.canGoToTile(pos, lookDirection)) {
+
+        }
+
     }
 
 

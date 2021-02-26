@@ -19,7 +19,6 @@ import inf112.skeleton.app.assetManager.Assets;
 
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.IObject;
 
 
 /**
@@ -76,7 +75,7 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public boolean keyUp(int keycode) {
         if (movePlayer) {
-            player.moveRobot(tilePlayer, keycode);
+            player.moveRobotWASD(tilePlayer, keycode);
             return true;
         }
         moveCamera(keycode);
