@@ -16,34 +16,32 @@ import java.util.List;
  *  Gathers information of given board.
  */
 public class Board {
-
-    private final List<IWall> collidables;   // Walls, Lasers, Pushers
-    private final List<IObject> otherTiles;  // Everything other than Floor, empty space and collidables.
-
     private final HashMap<Vector2,IWall> mapCollidables;   //(Pos on board, wall objects). Contains Walls, Lasers, Pushers
     private final HashMap<Vector2,IObject> mapOtherTiles;  //(Pos on board, tile objects). Contains all other tiles.
 
-    private ArrayList<DockingBay> dockingBays;
-    private ArrayList<Flag> flags;
+    private final ArrayList<DockingBay> dockingBays;
+    private final ArrayList<Flag> flags;
+    private final ArrayList<Laser> lasers;
 
     public Board(TiledMap map) {
-        collidables = new ArrayList<IWall>();
-        otherTiles = new ArrayList<IObject>();
-
         dockingBays = new ArrayList<DockingBay>();
         flags = new ArrayList<Flag>();
+        lasers = new ArrayList<Laser>();
 
         mapCollidables = new HashMap<Vector2,IWall>();
         mapOtherTiles = new HashMap<Vector2,IObject>();
 
-        tileTranslator(map);
+        getBoardInformation(map);
     }
 
     /**
+     * Gets all tiles from board, makes an instance of it and adds it to the correct list.
      *
-     * @param
+     *  Loops through all layers and all tiles/positions on current layer.
+     *  Then creates an instance of each tile and adds it either to mapCollidables or mapOtherTiles.
+     * @param map
      */
-    private void tileTranslator(TiledMap map) {
+    private void getBoardInformation(TiledMap map) {
         TileManager tileManager = new TileManager();
 
         for (MapLayer layer2 : map.getLayers()) { // Loop through all layers
@@ -59,23 +57,20 @@ public class Board {
                     if (id==123 || id==124) continue; // Ignore empty space in tileset.
                     if (id==5) continue;              // Ignore Floor
 
-                    //Convert id to TileObject
+                    //Convert id(int) to TileObject(Tile-enum)
                     IObject tileInstance = tileManager.getTileObject(id, new Vector2(x,y));
 
                     if (tileInstance instanceof Wall){
-                        collidables.add((IWall) tileInstance);
                         mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
                     } else if (tileInstance instanceof Laser) {
-                        collidables.add((IWall) tileInstance);
                         mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
+                        lasers.add((Laser) tileInstance);
                     } else if (tileInstance instanceof Pusher) {
-                        collidables.add((IWall) tileInstance);
                         mapCollidables.put(new Vector2(x,y),(IWall) tileInstance);
                     } else {
                         if (tileInstance instanceof Flag) flags.add((Flag) tileInstance);
                         if (tileInstance instanceof DockingBay) dockingBays.add((DockingBay) tileInstance);
 
-                        otherTiles.add(tileInstance);
                         mapOtherTiles.put(new Vector2(x,y),tileInstance);
                     }
                 }
@@ -119,35 +114,88 @@ public class Board {
         return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
     }
 
-
+    
 
     /**
-     * List of all collidable tiles on the board. Does not include players!
+     * Returns object of tile on given position on board.
+     * Does not include Walls, Lasers and Pushers.
+     * @param pos
      * @return
+     */
+    public IObject getNonWallTileOnPos(Vector2 pos) {
+        return mapOtherTiles.get(pos);
+    }
+
+    /**
+     * Checks if a position on board is a Flag.
+     * @param pos
+     * @return
+     */
+    public boolean isPosAFlag(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof Flag;
+    }
+
+    /**
+     * Checks if a position on board is a Pit.
+     * @param pos
+     * @return
+     */
+    public boolean isPosAPit(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof Pit;
+    }
+
+    /**
+     * Checks if pos is a Conveyor.
+     * @param pos
+     * @return
+     */
+    public boolean isPosAConveyor(Vector2 pos) {return getNonWallTileOnPos(pos) instanceof Conveyor; }
+
+    /**
+     * @return List of all collidable tiles on the board. Does not include players!
      */
     public List<IWall> getCollidables() {
-        return new ArrayList<IWall>(collidables); //Copy of collidables.
+        return new ArrayList<IWall>(mapCollidables.values()); //Copy of collidables.
     }
 
     /**
-     * List of all tiles, except {Walls,Lasers,Pushers}.
-     * @return
+     * @return List of all tiles, except {Walls,Lasers,Pushers}.
      */
     public List<IObject> getOtherTiles() {
-        return new ArrayList<IObject>(otherTiles); //Copy of other tiles.
+        return new ArrayList<IObject>(mapOtherTiles.values()); //Copy of all non wall tiles.
     }
 
     /**
-     * Returns nr of flags in given map.
-     * @return
+     * @return List of all lasers on board.
+     */
+    public ArrayList<Laser> getLasers() {
+        return new ArrayList<Laser>(lasers);
+    }
+
+    /**
+     * Returns list of all dockingbays on the board.
+     * @return List of dockingbays.
+     */
+    public ArrayList<DockingBay> getDockingBays() {
+        return new ArrayList<DockingBay>(dockingBays);
+    }
+
+    /**
+     * @return Returns list of all flags.
+     */
+    public ArrayList<Flag> getFlags() {
+        return new ArrayList<Flag>(flags);
+    }
+
+    /**
+     * @return Returns nr of flags in given map.
      */
     public int getNrFlags() {
         return flags.size();
     }
 
     /**
-     * Returns nr of starting points
-     * @return
+     * @return Returns nr of starting points.
      */
     public int getNrDockingBays() {
         return dockingBays.size();

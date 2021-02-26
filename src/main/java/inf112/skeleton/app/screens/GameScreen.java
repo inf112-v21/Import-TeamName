@@ -19,6 +19,7 @@ import inf112.skeleton.app.assetManager.Assets;
 
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.IObject;
 
 
 /**
@@ -31,7 +32,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private TiledMap map;
 
     // Layers on the map
-    public TiledMapTileLayer tileBoard, tilePlayer, tileHole, tileFlag1, tileFlag2;
+    public TiledMapTileLayer tilePlayer;
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera camera;
@@ -58,11 +59,7 @@ public class GameScreen extends InputAdapter implements Screen {
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(camera); // Attach camera to map
 
-        tileBoard = (TiledMapTileLayer) map.getLayers().get("Floor");
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        tileHole = (TiledMapTileLayer) map.getLayers().get("Pit");
-        tileFlag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
-        tileFlag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
 
         Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
@@ -119,16 +116,19 @@ public class GameScreen extends InputAdapter implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-        //Win/lose condition
-        if (tileHole.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null) {
-            //Lose
-            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCellDead());
-        } else if (tileFlag1.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null || tileFlag2.getCell((int) player.getPosition().x,(int) player.getPosition().y) != null) {
-            //Win
-            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCellWon());
+        Vector2 playerPos = player.getPosition();
+        int xPos = (int) playerPos.x;
+        int yPos = (int) playerPos.y;
+
+        //Player is on a flag. Win
+        if (board.isPosAFlag(playerPos)) {
+            tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
+        } else if (board.isPosAPit(playerPos)) {
+            tilePlayer.setCell(xPos,yPos,player.getPlayerCellDead());
         } else {
-            tilePlayer.setCell((int) player.getPosition().x,(int) player.getPosition().y,player.getPlayerCell());
+            tilePlayer.setCell(xPos,yPos,player.getPlayerCell());
         }
+
         mapRenderer.render();
     }
 

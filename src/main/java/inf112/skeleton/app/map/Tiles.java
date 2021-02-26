@@ -169,7 +169,6 @@ public enum Tiles {
 
 
     private final int tileId;
-    private static final Map<Integer, Tiles> map = new HashMap<Integer,Tiles>();
 
     //Constructor
     Tiles (int id) {
@@ -181,23 +180,5 @@ public enum Tiles {
      */
     public int getTileID() {
         return tileId;
-    }
-
-
-
-    //Makes map of tiles and their names
-    static {
-        for (Tiles tiles : Tiles.values()) {
-            map.put(tiles.tileId, tiles);
-        }
-    }
-
-    /**
-     * Returns name of given tileID
-     * @param tileId
-     * @return Tiles Name
-     */
-    public static Tiles valueOf(int tileId) {
-        return map.get(tileId);
     }
 }
