@@ -81,7 +81,7 @@ public abstract class Robot extends SimpleObject implements IActor {
     public void moveRobot(int steps) {
         if (steps == 0) return;
         Vector2 pos = getPosition();
-        setPosition(Direction.goDirection(pos, lookDirection));
+        setPosition(Direction.goDirection(pos, lookDirection)); // Move forward
         if (board.canGoToTile(pos, lookDirection)) {
             moveRobot(steps - 1);
         }
@@ -117,9 +117,7 @@ public abstract class Robot extends SimpleObject implements IActor {
 
     @Override
     public void rotate(Direction rotation) {
-
         switch (rotation) {
-
             case WITH_CLOCK:
                 switch (lookDirection) {
                     case NORTH:
@@ -134,6 +132,7 @@ public abstract class Robot extends SimpleObject implements IActor {
                     case WEST:
                         setLookDirection(Direction.NORTH);
                         break;
+                    default: throw new IllegalArgumentException("Expected enum direction of type (NORTH, EAST, SOUTH, WEST). Got :" + lookDirection);
                 }
                 break;
             case AGAINST_CLOCK:

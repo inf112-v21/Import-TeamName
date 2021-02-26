@@ -8,6 +8,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
+import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -35,7 +38,8 @@ public class RobotTest {
         textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-
+        Assets.load();
+        Assets.manager.finishLoading();
         this.board = new Board(map);
     }
 
@@ -68,6 +72,16 @@ public class RobotTest {
         player.moveRobot(1); //To north
         assertEquals(player.getPosition(), new Vector2(2,3));
     }
+
+    @Test
+    public void moveOneBack() {
+        Player player = new Player(2,2, textures, board);
+        Texture playerTexture = Assets.manager.get(Assets.texture);
+        MovementCard backwardsCard = new MovementCard("BackwardsCard", 2, CardType.MOVEMENT , playerTexture, 1, true );
+        backwardsCard.action(player);
+        assertEquals(player.getPosition(), new Vector2(2,1));
+    }
+
 
 
 }
