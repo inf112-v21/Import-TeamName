@@ -15,7 +15,7 @@ public class MovementCard extends ProgramCard {
     }
 
     /**
-     * 
+     * Moves robot with the amount of steps determined by the field variable numberOfSteps
      * @param robot: Robot which performs a given action
      */
     @Override
@@ -23,10 +23,8 @@ public class MovementCard extends ProgramCard {
             if (backUpCard) {
                 Direction lookDirectionRobot= robot.getLookDirection();
                 robot.setLookDirection(Direction.DirectionOpposite(lookDirectionRobot)); // Change look direction
-                robot.moveRobot(numberOfSteps);
             }
-            else {
-                robot.moveRobot(numberOfSteps);
-            }
+        robot.moveRobot(numberOfSteps);
     }
+
 }

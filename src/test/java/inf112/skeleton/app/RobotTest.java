@@ -62,5 +62,12 @@ public class RobotTest {
         assertEquals(Direction.SOUTH, player.getLookDirection());
     }
 
+    @Test
+    public void moveOneForward() {
+        Player player = new Player(2,2, textures, board);
+        player.moveRobot(1); //To north
+        assertEquals(player.getPosition(), new Vector2(2,3));
+    }
+
 
 }

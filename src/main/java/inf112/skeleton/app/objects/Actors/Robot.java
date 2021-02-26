@@ -74,14 +74,17 @@ public abstract class Robot extends SimpleObject implements IActor {
 
     /**
      * Move robot forward based on input
-     * Recursive
+     * Recursive method to move robot forward
+     * Backwards movement is determined by the MovementCard class
+     * @param steps: number of steps to be taken
      */
     public void moveRobot(int steps) {
+        if (steps == 0) return;
         Vector2 pos = getPosition();
+        setPosition(Direction.goDirection(pos, lookDirection));
         if (board.canGoToTile(pos, lookDirection)) {
-
+            moveRobot(steps - 1);
         }
-
     }
 
 
