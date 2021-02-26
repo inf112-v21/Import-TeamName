@@ -8,11 +8,14 @@ public class MovementCard extends ProgramCard {
 
     int numberOfSteps;
     boolean backUpCard;
-    MovementCard(String name, int priority, CardType cardtype, Texture texture, int numberOfSteps, boolean backUpCard) {
+    public MovementCard(String name, int priority, CardType cardtype, Texture texture, int numberOfSteps, boolean backUpCard) {
         super(name, priority, cardtype, texture);
         this.backUpCard = backUpCard;
         this.numberOfSteps = numberOfSteps;
     }
+
+
+
 
     /**
      * Moves robot with the amount of steps determined by the field variable numberOfSteps
@@ -26,5 +29,8 @@ public class MovementCard extends ProgramCard {
             }
         robot.moveRobot(numberOfSteps);
     }
+
+
+    public int getNumberOfSteps() {return getNumberOfSteps();}
 
 }
