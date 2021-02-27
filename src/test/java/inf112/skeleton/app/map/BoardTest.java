@@ -71,7 +71,7 @@ public class BoardTest {
     }
 
     @Test
-    public void getDockingBaysShouldReturnAllFlags() {
+    public void getFlagsShouldReturnAllFlags() {
         Assert.assertEquals(1, boardTestMap.getFlags().size());
     }
 
