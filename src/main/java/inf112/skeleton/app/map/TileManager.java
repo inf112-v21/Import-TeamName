@@ -64,6 +64,16 @@ public class TileManager {
             case DOCKING_BAY8:
                 return new DockingBay(pos);
 
+            //Pushers
+            case PUSHER_NORTH_SOUTH_2: return new Pusher(pos,Direction.SOUTH);
+            case PUSHER_EAST_WEST_2: return new Pusher(pos,Direction.WEST);
+            case PUSHER_SOUTH_NORTH: return new Pusher(pos,Direction.NORTH);
+            case PUSHER_WEST_EAST_2: return new Pusher(pos,Direction.EAST);
+            case PUSHER_NORTH_SOUTH: return new Pusher(pos,Direction.SOUTH);
+            case PUSHER_EAST_WEST: return new Pusher(pos,Direction.WEST);
+            case PUSHER_SOUTH_NORTH_2: return new Pusher(pos,Direction.NORTH);
+            case PUSHER_WEST_EAST: return new Pusher(pos,Direction.EAST);
+
 
             //Walls
             case WALL_RIGHT: return new Wall(pos, Direction.EAST,null);
@@ -105,6 +115,16 @@ public class TileManager {
             case NORMAL_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST,1);
             case NORMAL_CONVEYOR_RIGHT: return new Conveyor(pos,Direction.EAST,1);
 
+            //Laser (Position) (Shooting Direction)
+            case LASER_DOWN_UP: return new Laser(pos,Direction.NORTH, 1);
+            case LASER_LEFT_RIGHT: return new Laser(pos,Direction.EAST, 1);
+            case LASER_TOP_DOWN: return new Laser(pos,Direction.SOUTH, 1);
+            case LASER_RIGHT_LEFT: return new Laser(pos,Direction.WEST, 1);
+
+            case LASER_DOUBLE_DOWN: return new Laser(pos,Direction.SOUTH, 2);
+            case LASER_DOUBLE_LEFT: return new Laser(pos,Direction.WEST, 2);
+            case LASER_DOUBLE_UP: return new Laser(pos,Direction.NORTH, 2);
+            case LASER_DOUBLE_RIGHT: return new Laser(pos,Direction.EAST, 2);
 
 
             default: throw new IllegalArgumentException("Given tile does not exist: " + tile);
