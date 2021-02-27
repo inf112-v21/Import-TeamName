@@ -27,6 +27,7 @@ public class BoardTest {
             Tests for JunitTestMap.tmx
      */
 
+    //Collision with Lasers, Pushers and CornerWall
     @Test
     public void canGoToTileShouldNotGoThroughPusher() {
         Assert.assertFalse(boardTestMap.canGoToTile(new Vector2(2,3), Direction.EAST));
@@ -43,6 +44,7 @@ public class BoardTest {
         Assert.assertFalse(boardTestMap.canGoToTile(new Vector2(4,0), Direction.SOUTH));
     }
 
+    //Information for board
     @Test
     public void getWallTileOnPosShouldReturnPusher() {
         Assert.assertTrue(boardTestMap.getWallTileOnPos(new Vector2(0,4)) instanceof Pusher);
@@ -66,6 +68,11 @@ public class BoardTest {
     @Test
     public void getDockingBaysShouldReturnAllDockingBays() {
         Assert.assertEquals(1, boardTestMap.getDockingBays().size());
+    }
+
+    @Test
+    public void getDockingBaysShouldReturnAllFlags() {
+        Assert.assertEquals(1, boardTestMap.getFlags().size());
     }
 
 
