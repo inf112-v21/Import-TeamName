@@ -1,9 +1,5 @@
 package inf112.skeleton.app.map;
 
-
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *  Returns name of given tile id.
  */
@@ -35,15 +31,15 @@ public enum Tiles {
     DOCKING_BAY8(132),
 
 
-    //Pushers
-    PUSHER1(1),
-    PUSHER2(2),
-    PUSHER3(3),
-    PUSHER4(4),
-    PUSHER5(9),
-    PUSHER6(10),
-    PUSHER7(11),
-    PUSHER8(12),
+    //Pushers (Position) (Pushing Direction)
+    PUSHER_NORTH_SOUTH_2(1),
+    PUSHER_EAST_WEST_2(2),
+    PUSHER_SOUTH_NORTH(3),
+    PUSHER_WEST_EAST_2(4),
+    PUSHER_NORTH_SOUTH(9),
+    PUSHER_EAST_WEST(10),
+    PUSHER_SOUTH_NORTH_2(11),
+    PUSHER_WEST_EAST(12),
 
 
     //Walls
@@ -127,7 +123,7 @@ public enum Tiles {
     LASER_BEAM_PARALLEL_VERTICAL(102),
     LASER_BEAM_PARALLEL_HORIZONTAL(103),
 
-    LASER_DOUBLE__DOWN(87),
+    LASER_DOUBLE_DOWN(87),
     LASER_DOUBLE_LEFT(93),
     LASER_DOUBLE_UP(94),
     LASER_DOUBLE_RIGHT(95),
