@@ -109,7 +109,7 @@ public class BoardTest {
 
     @Test
     public void ShouldReturnCorrectNrOfNonWallTilesOnBoard() {
-        Assert.assertEquals(79, boardChessMap.getOtherTiles().size()); //Should be 77 non wall tiles in Chess.tmx
+        Assert.assertEquals(79, boardChessMap.getOtherTiles().size()); //Should be 79 non wall tiles in Chess.tmx
     }
 
     
