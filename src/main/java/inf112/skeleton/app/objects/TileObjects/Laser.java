@@ -25,6 +25,6 @@ public class Laser extends SimpleObject implements IWall {
 
     @Override
     public boolean isPassableFromDirection(Direction dir) {
-        return dir != Direction.DirectionOpposite(dir); // Can go if direction is different than the opposite of the facing direction of laser.
+        return dir != Direction.DirectionOpposite(direction); // Can go if direction is different than the opposite of the facing direction of laser.
     }
 }
