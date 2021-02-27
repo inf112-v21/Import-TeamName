@@ -21,10 +21,10 @@ public enum Tiles {
 
 
     //Docking bays (Starting points)
-    DOCKING_BAY1(119),
-    DOCKING_BAY2(120),
-    DOCKING_BAY3(121),
-    DOCKING_BAY4(122),
+    DOCKING_BAY1(121),
+    DOCKING_BAY2(122),
+    DOCKING_BAY3(123),
+    DOCKING_BAY4(124),
     DOCKING_BAY5(129),
     DOCKING_BAY6(130),
     DOCKING_BAY7(131),

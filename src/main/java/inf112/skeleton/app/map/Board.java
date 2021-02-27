@@ -54,7 +54,6 @@ public class Board {
 
                     if (tile==null) continue;         // Ignore null. Where is this in the map?
                     int id = tile.getTile().getId();  // Gets id of current tile.
-                    if (id==123 || id==124) continue; // Ignore empty space in tileset.
                     if (id==5) continue;              // Ignore Floor
 
                     //Convert id(int) to TileObject(Tile-enum)
