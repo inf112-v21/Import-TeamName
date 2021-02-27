@@ -64,7 +64,7 @@ public class TileManager {
             case DOCKING_BAY8:
                 return new DockingBay(pos);
 
-            //Pushers
+            //Pushers (Pos) (Push Direction)
             case PUSHER_NORTH_SOUTH_2: return new Pusher(pos,Direction.SOUTH);
             case PUSHER_EAST_WEST_2: return new Pusher(pos,Direction.WEST);
             case PUSHER_SOUTH_NORTH: return new Pusher(pos,Direction.NORTH);
