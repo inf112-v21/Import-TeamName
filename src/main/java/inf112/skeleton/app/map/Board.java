@@ -126,6 +126,15 @@ public class Board {
     }
 
     /**
+     * Returns IWall type object on given pos. May be either Laser, Wall, Pusher or null if empty.
+     * @param pos
+     * @return
+     */
+    public IWall getWallTileOnPos(Vector2 pos) {
+        return mapCollidables.get(pos);
+    }
+
+    /**
      * Checks if a position on board is a Flag.
      * @param pos
      * @return
