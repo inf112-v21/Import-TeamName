@@ -54,7 +54,6 @@ public class Board {
 
                     if (tile==null) continue;         // Ignore null. Where is this in the map?
                     int id = tile.getTile().getId();  // Gets id of current tile.
-                    if (id==123 || id==124) continue; // Ignore empty space in tileset.
                     if (id==5) continue;              // Ignore Floor
 
                     //Convert id(int) to TileObject(Tile-enum)
@@ -124,6 +123,15 @@ public class Board {
      */
     public IObject getNonWallTileOnPos(Vector2 pos) {
         return mapOtherTiles.get(pos);
+    }
+
+    /**
+     * Returns IWall type object on given pos. May be either Laser, Wall, Pusher or null if empty.
+     * @param pos
+     * @return
+     */
+    public IWall getWallTileOnPos(Vector2 pos) {
+        return mapCollidables.get(pos);
     }
 
     /**
