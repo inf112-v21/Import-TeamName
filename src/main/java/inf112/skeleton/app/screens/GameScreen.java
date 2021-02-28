@@ -14,11 +14,19 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
+
+import static com.badlogic.gdx.Gdx.gl;
+import static java.lang.Math.round;
 
 
 /**
@@ -34,11 +42,23 @@ public class GameScreen extends InputAdapter implements Screen {
     public TiledMapTileLayer tilePlayer;
 
     private OrthogonalTiledMapRenderer mapRenderer;
-    private OrthographicCamera camera;
+    private OrthographicCamera gameCamera, uiCamera;
 
+
+    private int viewPortWidth = 12, viewPortHeight = 16;
+
+    Stage stage;
+    Stage uiStage;
+    private Viewport gameViewport;
+    private Viewport menuViewport;
     public Player player;
     public boolean movePlayer = true;
 
+
+    int width = 12;
+    int height = 20;
+
+    int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.9);
     RoboRally game;
 
     Board board;
@@ -50,13 +70,28 @@ public class GameScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        camera = new OrthographicCamera();                               // Make camera
-        camera.setToOrtho(false, 12,16);  // Set mode
-        camera.update();
+        uiStage = new Stage(new StretchViewport(width, height));
 
+
+
+        gameCamera = new OrthographicCamera();                               // Make camera
+        uiCamera   = new OrthographicCamera();
+
+        gameCamera.setToOrtho(false, viewPortWidth,viewPortHeight);  // Set mode
+        uiCamera.setToOrtho(false, 8, 20);
+
+        int initialCameraY = viewPortHeight - 10;
+        gameCamera.position.y = initialCameraY;
+        gameCamera.update();
+        uiCamera.update();
+
+
+        gameViewport = new FitViewport(gameCamera.viewportWidth, gameCamera.viewportHeight, gameCamera);
+
+        uiStage.getViewport().setCamera(uiCamera);
         map = new TmxMapLoader().load("Maps/Chess.tmx");                  // Get map file
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
-        mapRenderer.setView(camera); // Attach camera to map
+        mapRenderer.setView(gameCamera); // Attach camera to map
 
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
@@ -89,13 +124,13 @@ public class GameScreen extends InputAdapter implements Screen {
     public void moveCamera(int keycode) {
 
         if(keycode == Input.Keys.LEFT)
-            camera.translate(-32,0);
+            gameCamera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
-            camera.translate(32,0);
+            gameCamera.translate(32,0);
         if(keycode == Input.Keys.UP)
-            camera.translate(0,32);
+            gameCamera.translate(0,32);
         if(keycode == Input.Keys.DOWN)
-            camera.translate(0,-32);
+            gameCamera.translate(0,-32);
         if(keycode == Input.Keys.NUM_1)
             map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
         if(keycode == Input.Keys.NUM_2)
@@ -112,12 +147,17 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void render(float v) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+
+       //Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(), menuHeight); // Set card deck menu height
+        gameCamera.update();
+        uiCamera.update();
 
         Vector2 playerPos = player.getPosition();
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
+
 
         //Player is on a flag. Win
         if (board.isPosAFlag(playerPos)) {
@@ -128,6 +168,7 @@ public class GameScreen extends InputAdapter implements Screen {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCell());
         }
 
+        uiStage.act();
         mapRenderer.render();
     }
 
