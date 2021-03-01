@@ -1,4 +1,4 @@
-package inf112.skeleton.app.map;
+package inf112.skeleton.app.objects.Actors;
 
 import inf112.skeleton.app.cards.ProgramCard;
 
