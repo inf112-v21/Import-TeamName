@@ -1,6 +1,19 @@
 package inf112.skeleton.app.game;
 
-public class CleanUpPhase {
+public class CleanupPhase {
+
+    public static void run() {
+        repairs();
+        upgrades();
+    }
+
+    private static void repairs() {
+
+    }
+
+    private static void upgrades() {
+
+    }
 
     /*
     Clean up plan:

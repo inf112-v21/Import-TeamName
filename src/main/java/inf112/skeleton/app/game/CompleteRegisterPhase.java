@@ -2,6 +2,29 @@ package inf112.skeleton.app.game;
 
 public class CompleteRegisterPhase {
 
+    public static void run() {
+        revealProgramCards();
+        executeProgramCards();
+        boardElementsMove();
+        lasersFire();
+    }
+
+    private static void revealProgramCards() {
+
+    }
+
+    private static void executeProgramCards() {
+
+    }
+
+    private static void boardElementsMove() {
+
+    }
+
+    private static void lasersFire() {
+
+    }
+
     /*
     CompleteRegister plan:
         - Reveal Program Cards

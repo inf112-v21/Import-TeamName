@@ -5,19 +5,26 @@ package inf112.skeleton.app.game;
  */
 public class ProgramRegisterPhase {
 
-    public static void showCards() {
+    public static void run() {
+        showCards();
+        chooseCards();
+        discardLeftOverCards();
+        announceDone();
+    }
+
+    private static void showCards() {
         // Print to console maybe? Easy debugging.
     }
 
-    public static void chooseCards() {
+    private static void chooseCards() {
         //Player chooses from given cards.
     }
 
-    public static void discardLeftOverCards() {
+    private static void discardLeftOverCards() {
         //Discards cards not picked by player
     }
 
-    public static void announceDone() {
+    private static void announceDone() {
         // When a player has finished picking their cards, they will announce done
     }
 

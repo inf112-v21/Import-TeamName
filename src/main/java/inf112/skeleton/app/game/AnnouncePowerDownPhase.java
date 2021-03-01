@@ -1,8 +1,12 @@
 package inf112.skeleton.app.game;
 
-public class DeclarePowerdownPhase {
+public class AnnouncePowerDownPhase {
 
-    public static void declarePowerdownIntention() {
+    public static void run() {
+        declarePowerDownIntention();
+    }
+
+    private static void declarePowerDownIntention() {
         // If yes, player places power down token on their program sheet, and their robot powers down next round.
         // If no, do nothing.
     }

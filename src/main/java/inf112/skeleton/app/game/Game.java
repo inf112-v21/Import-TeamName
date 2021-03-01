@@ -12,13 +12,19 @@ public class Game {
     }
 
     /**
-        Game Loop (Phase)
-            - While loop
+     * Game Loop
+     * Executes the phases in correct order
     */
     public static void gameLoop() {
-        while (true) {
 
+        while (true) { //TODO: If game is over, end loop.
+            DealCardsPhase.run();
+            ProgramRegisterPhase.run();
+            AnnouncePowerDownPhase.run();
+            CompleteRegisterPhase.run();
+            CleanupPhase.run();
         }
+
     }
 
     /**
