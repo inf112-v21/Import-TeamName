@@ -1,9 +1,12 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.TitleScreen;
@@ -14,6 +17,8 @@ public class RoboRally extends Game {
     public ShapeRenderer shapeRenderer;
     public BitmapFont font;
     TitleScreen titleScreen;
+    StretchViewport viewPort;
+    Stage stage;
     GameScreen gameScreen;
 
     @Override
@@ -22,14 +27,18 @@ public class RoboRally extends Game {
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
 
+        viewPort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        viewPort.apply();
+        stage = new Stage(viewPort);
+
         // Load assets from assetsmanager
         Assets.load();
         Assets.manager.finishLoading();
 
         // Set up screens
-        titleScreen = new TitleScreen(this);
-        gameScreen = new GameScreen(this);
-        this.setScreen(titleScreen);
+        titleScreen = new TitleScreen(this, stage, viewPort);
+        Gdx.input.setInputProcessor(stage);
+        this.setScreen(titleScreen); // Set screen to title screen
     }
 
     @Override

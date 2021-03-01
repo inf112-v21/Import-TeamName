@@ -14,14 +14,19 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
+import inf112.skeleton.app.buttons.PlayButton;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.CardVisual;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 
@@ -49,7 +54,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     Stage stage;
     Stage uiStage;
-    private Viewport gameViewport;
+    private StretchViewport viewPort;
     private Viewport menuViewport;
     public Player player;
     public boolean movePlayer = true;
@@ -64,8 +69,10 @@ public class GameScreen extends InputAdapter implements Screen {
     Board board;
 
 
-    public GameScreen(RoboRally game) {
+    public GameScreen(RoboRally game, Stage stage, StretchViewport viewPort) {
         this.game = game;
+        this.stage = stage;
+        this.viewPort = viewPort;
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -73,20 +80,21 @@ public class GameScreen extends InputAdapter implements Screen {
         uiStage = new Stage(new StretchViewport(width, height));
 
 
-
-        gameCamera = new OrthographicCamera();                               // Make camera
+        // Make camera
+        gameCamera = new OrthographicCamera(50,50);
         uiCamera   = new OrthographicCamera();
 
         gameCamera.setToOrtho(false, viewPortWidth,viewPortHeight);  // Set mode
         uiCamera.setToOrtho(false, 8, 20);
 
         int initialCameraY = viewPortHeight - 10;
-        gameCamera.position.y = initialCameraY;
+        // Set camera, but does not scale with the fit viewport
+        //gameCamera.position.y = initialCameraY;
         gameCamera.update();
         uiCamera.update();
 
 
-        gameViewport = new FitViewport(gameCamera.viewportWidth, gameCamera.viewportHeight, gameCamera);
+
 
         uiStage.getViewport().setCamera(uiCamera);
         map = new TmxMapLoader().load("Maps/Chess.tmx");                  // Get map file
@@ -150,13 +158,15 @@ public class GameScreen extends InputAdapter implements Screen {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-       //Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(), menuHeight); // Set card deck menu height
+        Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(), menuHeight-15); // Set card deck menu height
+
         gameCamera.update();
         uiCamera.update();
 
         Vector2 playerPos = player.getPosition();
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
+
 
 
         //Player is on a flag. Win
@@ -168,19 +178,36 @@ public class GameScreen extends InputAdapter implements Screen {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCell());
         }
 
-        uiStage.act();
         mapRenderer.render();
+        // Draw card visuals
+        uiStage.act();
+        uiStage.draw();
     }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(this);
-    }
+        ImageButton move1Card = new CardVisual(1, 10, CardType.MOVE1).getCard();
+        uiStage.addActor(move1Card);
 
+        move1Card.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                player.moveRobot(1);
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }});
+        Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
+
+    }
 
     @Override
     public void resize(int width, int height) {
+
+        stage.getViewport().update(width, height, true);
     }
+
 
     @Override
     public void pause() {

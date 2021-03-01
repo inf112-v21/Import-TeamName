@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.RoboRally;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -29,6 +31,7 @@ public class TitleScreen implements Screen {
     private Rectangle bucket;
     private OrthographicCamera camera;
     private Stage stage;
+    StretchViewport viewPort;
 
     float width;
     float height;
@@ -37,8 +40,10 @@ public class TitleScreen implements Screen {
      * Constructor method
 
      */
-    public TitleScreen(final RoboRally game) {
+    public TitleScreen(final RoboRally game, Stage stage, StretchViewport viewPort) {
         this.game = game;
+        this.stage = stage;
+        this.viewPort = viewPort;
     }
 
     @Override
@@ -47,13 +52,13 @@ public class TitleScreen implements Screen {
         height = Gdx.graphics.getHeight();
 
         ImageButton playButton = new PlayButton(width * 0.4F,height * 0.7F).getButton();
-        stage = new Stage(new ScreenViewport());
+        stage = new Stage(new StretchViewport(width, height));
         stage.addActor(playButton);
 
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new GameScreen(game, stage, viewPort));
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
