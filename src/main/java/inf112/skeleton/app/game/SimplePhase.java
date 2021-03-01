@@ -1,6 +1,6 @@
 package inf112.skeleton.app.game;
 
-public class Phase {
+public class SimplePhase {
 
 
 
