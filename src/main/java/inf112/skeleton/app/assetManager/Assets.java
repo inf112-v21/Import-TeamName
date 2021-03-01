@@ -41,12 +41,13 @@ public class Assets {
         manager.load(texture);
         manager.load(playButton);
         manager.load(backUpCard);
+        manager.load(UTurnCard);
         manager.load(Move1Card);
         manager.load(Move2Card);
         manager.load(Move3Card);
         manager.load(RotateLeftCard);
         manager.load(RotateRightCard);
-        manager.load(UTurnCard);
+
     }
 
     public void dispose() {

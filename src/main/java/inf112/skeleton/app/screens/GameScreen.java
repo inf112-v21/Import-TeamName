@@ -54,16 +54,15 @@ public class GameScreen extends InputAdapter implements Screen {
 
     Stage stage;
     Stage uiStage;
-    private StretchViewport viewPort;
-    private Viewport menuViewport;
+    StretchViewport viewPort;
     public Player player;
     public boolean movePlayer = true;
 
 
-    int width = 12;
-    int height = 20;
+    int width;
+    int height;
 
-    int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.9);
+    int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.2);
     RoboRally game;
 
     Board board;
@@ -73,19 +72,22 @@ public class GameScreen extends InputAdapter implements Screen {
         this.game = game;
         this.stage = stage;
         this.viewPort = viewPort;
+        width = Gdx.graphics.getWidth();
+        height = Gdx.graphics.getHeight();
+
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        uiStage = new Stage(new StretchViewport(width, height));
+        uiStage = new Stage(new StretchViewport(viewPortWidth, 12));
 
 
         // Make camera
-        gameCamera = new OrthographicCamera(50,50);
+        gameCamera = new OrthographicCamera();
         uiCamera   = new OrthographicCamera();
 
         gameCamera.setToOrtho(false, viewPortWidth,viewPortHeight);  // Set mode
-        uiCamera.setToOrtho(false, 8, 20);
+        uiCamera.setToOrtho(false, viewPortWidth, 12);
 
         int initialCameraY = viewPortHeight - 10;
         // Set camera, but does not scale with the fit viewport
@@ -158,7 +160,9 @@ public class GameScreen extends InputAdapter implements Screen {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-        Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(), menuHeight-15); // Set card deck menu height
+
+        // RENDER GAME //
+        Gdx.gl.glViewport( 0, menuHeight, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         gameCamera.update();
         uiCamera.update();
@@ -167,32 +171,31 @@ public class GameScreen extends InputAdapter implements Screen {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
-
-
         //Player is on a flag. Win
         if (board.isPosAFlag(playerPos)) {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
         } else if (board.isPosAPit(playerPos)) {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCellDead());
         } else {
-            tilePlayer.setCell(xPos,yPos,player.getPlayerCell());
+            tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
         }
-
         mapRenderer.render();
-        // Draw card visuals
+
+        // Draw card visuals //
+        Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height
         uiStage.act();
         uiStage.draw();
     }
 
     @Override
     public void show() {
-        ImageButton move1Card = new CardVisual(1, 10, CardType.MOVE1).getCard();
+        ImageButton move1Card = new CardVisual(0, 0, CardType.MOVE1).getCard();
         uiStage.addActor(move1Card);
 
         move1Card.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                player.moveRobot(1);
+                player.moveRobot(tilePlayer, 1);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

@@ -1,6 +1,7 @@
 package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.Actors.Robot;
 
@@ -22,12 +23,12 @@ public class MovementCard extends ProgramCard {
      * @param robot: Robot which performs a given action
      */
     @Override
-    public void action(Robot robot) {
+    public void action(TiledMapTileLayer tilePlayer, Robot robot) {
             if (backUpCard) {
                 Direction lookDirectionRobot= robot.getLookDirection();
                 robot.setLookDirection(Direction.DirectionOpposite(lookDirectionRobot)); // Change look direction
             }
-        robot.moveRobot(numberOfSteps);
+        robot.moveRobot(tilePlayer, numberOfSteps);
     }
 
 

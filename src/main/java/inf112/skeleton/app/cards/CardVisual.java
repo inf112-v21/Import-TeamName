@@ -22,7 +22,7 @@ public class CardVisual {
         drawable = new TextureRegionDrawable(new TextureRegion(texture));
         card = new ImageButton(drawable);
 
-        card.setSize(2, 2);
+        card.setSize(5, 5);
         card.setPosition(wPos, hPos);
     }
 
@@ -33,12 +33,13 @@ public class CardVisual {
 
     private void getTexture() {
         switch (cardtype) {
-            case MOVE1: texture = Assets.manager.get(Assets.Move1Card);
-            case MOVE2: texture = Assets.manager.get(Assets.Move2Card);
-            case MOVE3: texture = Assets.manager.get(Assets.Move3Card);
-            case ROTATELEFT: texture = Assets.manager.get(Assets.RotateLeftCard);
-            case ROTATERIGHT: texture = Assets.manager.get(Assets.RotateRightCard);
-            case UTURN: texture = Assets.manager.get(Assets.UTurnCard);
+            case MOVE1: texture = Assets.manager.get(Assets.Move1Card);  break;
+            case MOVE2: texture = Assets.manager.get(Assets.Move2Card); break;
+            case MOVE3: texture = Assets.manager.get(Assets.Move3Card); break;
+            case ROTATELEFT: texture = Assets.manager.get(Assets.RotateLeftCard); break;
+            case ROTATERIGHT: texture = Assets.manager.get(Assets.RotateRightCard); break;
+            case UTURN: texture = Assets.manager.get(Assets.UTurnCard); break;
+            default: throw new IllegalArgumentException("Expected enum cardtype of type (Move1, move2, move3, rotateleft, rotateright, uturn). Got :" + cardtype);
         }
     }
 }

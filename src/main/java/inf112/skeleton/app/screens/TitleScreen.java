@@ -28,8 +28,6 @@ import static com.badlogic.gdx.Gdx.gl;
 public class TitleScreen implements Screen {
 
     final RoboRally game;
-    private Rectangle bucket;
-    private OrthographicCamera camera;
     private Stage stage;
     StretchViewport viewPort;
 

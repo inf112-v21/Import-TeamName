@@ -1,5 +1,6 @@
 package inf112.skeleton.app.cards;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.objects.Actors.Robot;
 
 public interface IProgramCard {
@@ -15,7 +16,7 @@ public interface IProgramCard {
      * Perform action
      * @param robot: Robot which performs a given action
      */
-    void action(Robot robot);
+    void action(TiledMapTileLayer playerTile, Robot robot);
 
 
     int getPriority();
