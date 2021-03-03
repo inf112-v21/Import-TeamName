@@ -11,9 +11,12 @@
 - Sondre Eide
 
 ## What is Roborally?
+Roborally is a boardgame developed in 1985 by Richard Garfield (Creator of Magic the Gathering), published in 1994 by Wizards of the Coast. 
+This repo is a digital version of the original game, using the old ruleset from 2005.
 
+The rules can be found here: [Roborally Rules 2005](https://www.fgbradleys.com/rules/rules4/Robo%20Rally%20-%20rules.pdf)
 
-
+Wiki of the game: [Roborally Wiki](https://www.wikiwand.com/en/RoboRally)
 ## Project Setup
 
 ### Requirements
