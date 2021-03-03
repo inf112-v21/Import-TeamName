@@ -60,13 +60,4 @@ public class DirectionTest {
         Assert.assertNotEquals(new Vector2(1,1), northPos);
     }
 
-    @Test
-    public void goDirectionShouldFailWhenGivenRotation() {
-        try {
-            Direction.goDirection(new Vector2(2,2), Direction.AGAINST_CLOCK);
-            fail();
-        } catch (IllegalArgumentException e) {
-
-        }
-    }
 }

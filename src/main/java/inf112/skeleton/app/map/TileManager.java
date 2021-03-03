@@ -2,6 +2,7 @@ package inf112.skeleton.app.map;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
+import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.TileObjects.*;
 import inf112.skeleton.app.objects.IObject;
 
@@ -46,8 +47,8 @@ public class TileManager {
             case PIT: return new Pit(pos);
             case REPAIR_SITE_SINGLE: return new RepairSite(pos,1);
             case REPAIR_SITE_DOUBLE: return new RepairSite(pos,2);
-            case GEAR_ROTATE_LEFT: return new Gear(pos,Direction.AGAINST_CLOCK);
-            case GEAR_ROTATE_RIGHT: return new Gear(pos,Direction.WITH_CLOCK);
+            case GEAR_ROTATE_LEFT: return new Gear(pos, Rotation.AGAINST_CLOCK);
+            case GEAR_ROTATE_RIGHT: return new Gear(pos, Rotation.WITH_CLOCK);
             case FLAG1: return new Flag(pos);
             case FLAG2: return new Flag(pos);
             case FLAG3: return new Flag(pos);

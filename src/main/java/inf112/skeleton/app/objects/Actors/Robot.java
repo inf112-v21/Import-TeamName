@@ -121,37 +121,12 @@ public abstract class Robot extends SimpleObject implements IActor {
     }
 
     @Override
-    public void rotate(Direction rotation) {
-        switch (rotation) {
-            case WITH_CLOCK:
-                switch (lookDirection) {
-                    case NORTH:
-                        setLookDirection(Direction.EAST);
-                        break;
-                    case EAST:
-                        setLookDirection(Direction.SOUTH);
-                        break;
-                    case SOUTH:
-                        setLookDirection(Direction.WEST);
-                        break;
-                    case WEST:
-                        setLookDirection(Direction.NORTH);
-                        break;
-                    default: throw new IllegalArgumentException("Expected enum direction of type (NORTH, EAST, SOUTH, WEST). Got :" + lookDirection);
-                }
-                break;
-            case AGAINST_CLOCK:
-                switch (lookDirection) {
-                    case NORTH:
-                        setLookDirection(Direction.WEST);
-                    case EAST:
-                        setLookDirection(Direction.NORTH);
-                    case SOUTH:
-                        setLookDirection(Direction.EAST);
-                    case WEST:
-                        setLookDirection(Direction.SOUTH);
-                }
+    public void rotate(int clockwiseTurns) {
+
+        for (int i = 0; i < clockwiseTurns; i++) {
+            setLookDirection(Direction.DirectionClockwise(getLookDirection()));
         }
 
     }
+
 }

@@ -42,7 +42,8 @@ If executed properly you are presented with the main screen of the game.
 ## How to play
 * Run main.java
 * A new screen appears, click on the green icon to start the game. 
-* Move around with W,A,S,D, or click on the cards represented at the bottom of the screen.
+* Move around with W,A,S,D (if debug mode turned on in the Main class)
+* OR, click on the cards represented at the bottom of the screen (if debug mode off)
 
 Should look like this:
 ![Picture of current roboRally](src/main/assets/Images/pictureOfCurrentGame.PNG)

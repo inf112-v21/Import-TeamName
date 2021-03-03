@@ -54,7 +54,7 @@ public class RobotTest {
     @Test
     public void rotateWithClock() {
         Player player = new Player(4,4, textures, board);
-        player.rotate(Direction.WITH_CLOCK);
+        player.rotate(1);
         assertEquals(Direction.EAST, player.getLookDirection());
     }
 
@@ -62,8 +62,16 @@ public class RobotTest {
     public void rotateAgainstClock() {
         Player player = new Player(4,4, textures, board);
         player.setLookDirection(Direction.WEST);
-        player.rotate(Direction.AGAINST_CLOCK);
+        player.rotate(3);
         assertEquals(Direction.SOUTH, player.getLookDirection());
+    }
+
+    @Test
+    public void makeUTurn() {
+        Player player = new Player(4,4, textures, board);
+        player.setLookDirection(Direction.EAST);
+        player.rotate(2);
+        assertEquals(Direction.WEST, player.getLookDirection());
     }
 
     @Test
