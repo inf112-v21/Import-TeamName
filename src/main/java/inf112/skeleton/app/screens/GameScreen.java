@@ -27,6 +27,7 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.CardVisual;
+import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 
@@ -187,7 +188,13 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
         ImageButton move1Card = new CardVisual(0, 0, CardType.MOVE1).getCard();
+        ImageButton rotateRight = new CardVisual(4f, 0, CardType.ROTATERIGHT).getCard();
+        ImageButton rotateLeft = new CardVisual(8f, 0, CardType.ROTATELEFT).getCard();
+
         uiStage.addActor(move1Card);
+        uiStage.addActor(rotateRight);
+        uiStage.addActor(rotateLeft);
+
 
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
@@ -197,6 +204,28 @@ public class GameScreen extends InputAdapter implements Screen {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                     player.moveRobot(tilePlayer, 1);
+                }
+
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    return true;
+                }
+            });
+            rotateRight.addListener(new InputListener() {
+                @Override
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    player.rotate(1);
+                }
+
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    return true;
+                }
+            });
+            rotateLeft.addListener(new InputListener() {
+                @Override
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    player.rotate(3);
                 }
 
                 @Override
