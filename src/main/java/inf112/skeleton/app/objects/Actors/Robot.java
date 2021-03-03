@@ -20,8 +20,8 @@ public abstract class Robot extends SimpleObject implements IActor {
 
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
-    public Robot(int startRow, int startCol, TextureRegion[][] texture, Board board) {
-        super(new Vector2(startRow, startCol));
+    public Robot(Vector2 startpos, TextureRegion[][] texture, Board board) {
+        super(startpos);
 
         this.board = board;
         lookDirection = Direction.NORTH;

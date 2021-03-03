@@ -111,8 +111,9 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
 
         this.board = new Board(map); // Get map objects
+        Vector2 startPos = board.getDockingBays().get(0).getPosition();
 
-        player = new Player(0,0, textures, board);
+        player = new Player(startPos, textures, board);
     }
 
     /**

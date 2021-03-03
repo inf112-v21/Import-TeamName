@@ -8,8 +8,8 @@ import inf112.skeleton.app.map.Board;
 public class AI extends Robot {
 
 
-    public AI(int startRow, int startCol, TextureRegion[][] texture, Board board) {
-        super(startRow, startCol, texture, board);
+    public AI(Vector2 startPos, TextureRegion[][] texture, Board board) {
+        super(startPos, texture, board);
     }
 
 }
