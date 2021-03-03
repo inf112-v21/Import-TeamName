@@ -1,23 +1,12 @@
 package inf112.skeleton.app.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.RoboRally;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Rectangle;
-
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import inf112.skeleton.app.buttons.PlayButton;
-import inf112.skeleton.app.buttons.SimpleButton;
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -56,7 +45,7 @@ public class TitleScreen implements Screen {
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new GameScreen(game, stage, viewPort));
+                game.setGameScreen();
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

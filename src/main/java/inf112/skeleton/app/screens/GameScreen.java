@@ -55,8 +55,8 @@ public class GameScreen extends InputAdapter implements Screen {
     Stage stage;
     Stage uiStage;
     StretchViewport viewPort;
-    public Player player;
-    public boolean movePlayer = true;
+    private Player player;
+    private boolean debugMode;
 
 
     int width;
@@ -68,10 +68,11 @@ public class GameScreen extends InputAdapter implements Screen {
     Board board;
 
 
-    public GameScreen(RoboRally game, Stage stage, StretchViewport viewPort) {
+    public GameScreen(RoboRally game, Stage stage, StretchViewport viewPort, boolean debugMode) {
         this.game = game;
         this.stage = stage;
         this.viewPort = viewPort;
+        this.debugMode = debugMode;
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
 
@@ -119,11 +120,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        if (movePlayer) {
-            player.moveRobotWASD(tilePlayer, keycode);
-            return true;
-        }
-        moveCamera(keycode);
+        player.moveRobotWASD(tilePlayer, keycode);
         return true;
     }
 
@@ -192,17 +189,23 @@ public class GameScreen extends InputAdapter implements Screen {
         ImageButton move1Card = new CardVisual(0, 0, CardType.MOVE1).getCard();
         uiStage.addActor(move1Card);
 
-        move1Card.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                player.moveRobot(tilePlayer, 1);
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }});
-        Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
+        if (debugMode) {
+            Gdx.input.setInputProcessor(this);
+        }
+        else {
+            move1Card.addListener(new InputListener() {
+                @Override
+                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    player.moveRobot(tilePlayer, 1);
+                }
 
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    return true;
+                }
+            });
+            Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
+        }
     }
 
     @Override
