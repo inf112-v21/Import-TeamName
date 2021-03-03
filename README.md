@@ -10,23 +10,23 @@
 - Jakob Svemo
 - Sondre Eide
 
-##What is Roborally?
+## What is Roborally?
 
 
 
 ## Project Setup
 
-###Requirements
+### Requirements
 * Java 8+
 * Version Control, git etc.
 * Maven
 
-###Command line
+### Command line
 Clone project: ``git clone git@github.com:inf112-v21/Import-TeamName.git``
 
 Run ``Main.java`` located at  `src/main/java/inf112/skeleton/app/Main.java`
 
-###Windows
+### Windows
 Install a Java IDE, such as Eclipse or IntelliJ IDEA
 
 Import the project from version control, as a Maven project.
