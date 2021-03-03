@@ -48,7 +48,7 @@ public class RobotTest {
     public void playerMoveUp() {
         Player player = new Player(2, 2, textures, board);
         player.moveRobotWASD(tilePlayer, 51); // Keycode 51 -> w Should move up
-        assertEquals(player.getPosition(), new Vector2(2,3));
+        assertEquals(new Vector2(2,3), player.getPosition());
     }
 
     @Test
@@ -70,16 +70,16 @@ public class RobotTest {
     public void moveOneForward() {
         Player player = new Player(2,2, textures, board);
         player.moveRobot(tilePlayer, 1); //To north
-        assertEquals(player.getPosition(), new Vector2(2,3));
+        assertEquals(new Vector2(2,3), player.getPosition());
     }
 
     @Test
     public void moveOneBack() {
         Player player = new Player(2,2, textures, board);
         Texture playerTexture = Assets.manager.get(Assets.texture); // TEST TEXTURE. NO IMPLICATION FOR TEST
-        MovementCard backwardsCard = new MovementCard("BackwardsCard", 2, CardType.MOVEMENT , playerTexture, 1, true );
+        MovementCard backwardsCard = new MovementCard("BackwardsCard", 2, CardType.MOVEMENT, playerTexture, -1);
         backwardsCard.action(tilePlayer, player);
-        assertEquals(player.getPosition(), new Vector2(2,1));
+        assertEquals(new Vector2(2, 1), player.getPosition());
     }
 
 

@@ -18,11 +18,11 @@ public class ProgramRegisterPhase implements IPhase {
     }
 
     private void chooseCards() {
-        //Player chooses from given cards.
+        // Player chooses from given cards.
     }
 
     private void discardLeftOverCards() {
-        //Discards cards not picked by player
+        // Discards cards not picked by player
     }
 
     private void announceDone() {

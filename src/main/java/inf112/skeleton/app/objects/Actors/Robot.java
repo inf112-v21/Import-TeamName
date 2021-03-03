@@ -78,13 +78,18 @@ public abstract class Robot extends SimpleObject implements IActor {
      * @param steps: number of steps to be taken
      */
     public void moveRobot(TiledMapTileLayer playerTile, int steps) {
+
         if (steps == 0) return;
+
         Vector2 pos = getPosition();
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Set empty cell where robot once existed
+
         setPosition(Direction.goDirection(pos, lookDirection)); // Move forward
+
         if (board.canGoToTile(pos, lookDirection)) {
             moveRobot(playerTile, steps - 1);
         }
+
     }
 
 

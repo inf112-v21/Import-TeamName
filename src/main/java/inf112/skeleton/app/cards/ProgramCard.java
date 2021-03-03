@@ -6,10 +6,10 @@ import inf112.skeleton.app.objects.Actors.Robot;
 
 public abstract class ProgramCard implements IProgramCard {
 
-    String name;
-    int priority;
-    CardType cardtype;
-    Texture texture;
+    private final String name;
+    private final int priority;
+    private final CardType cardtype;
+    private final Texture texture;
 
     ProgramCard(String name, int priority, CardType cardtype, Texture texture) {
         this.priority =  priority;
@@ -19,13 +19,20 @@ public abstract class ProgramCard implements IProgramCard {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public int getPriority(){ return priority; }
+    public int getPriority() {
+        return this.priority;
+    }
 
-    public CardType getType() {return cardtype; }
+    public CardType getType() {
+        return this.cardtype;
+    }
 
+    public Texture getTexture() {
+        return this.texture;
+    }
 
     public abstract void action(TiledMapTileLayer tilePlayer, Robot robot);
 }

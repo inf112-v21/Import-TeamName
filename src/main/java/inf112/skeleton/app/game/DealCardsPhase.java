@@ -1,14 +1,28 @@
 package inf112.skeleton.app.game;
 
+import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.cards.IProgramCard;
+
+import java.util.ArrayList;
+
 /**
- * Shuffle deck, then deal cards to the players.
+ * Creates a new deck of cards. Shuffle deck, then deal cards to the players.
  */
 public class DealCardsPhase implements IPhase {
 
     @Override
     public void run() {
+        //CardDeck deck = new CardDeck();
         shuffleCards();
         dealCards();
+    }
+
+    private ArrayList<IProgramCard> createDeck() {
+        ArrayList<IProgramCard> deck = new ArrayList();
+
+        //deck.add();
+
+        return deck;
     }
 
     private void shuffleCards() {
