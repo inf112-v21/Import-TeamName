@@ -8,13 +8,11 @@ public abstract class ProgramCard implements IProgramCard {
 
     private final String name;
     private final int priority;
-    private final CardType cardtype;
     private final Texture texture;
 
-    ProgramCard(String name, int priority, CardType cardtype, Texture texture) {
+    ProgramCard(String name, int priority, Texture texture) {
         this.priority =  priority;
         this.name = name;
-        this.cardtype = cardtype;
         this.texture = texture;
     }
 
@@ -24,10 +22,6 @@ public abstract class ProgramCard implements IProgramCard {
 
     public int getPriority() {
         return this.priority;
-    }
-
-    public CardType getType() {
-        return this.cardtype;
     }
 
     public Texture getTexture() {

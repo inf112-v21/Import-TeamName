@@ -14,8 +14,8 @@ public class MovementCard extends ProgramCard {
      */
     private final int numberOfSteps;
 
-    public MovementCard(String name, int priority, CardType cardtype, Texture texture, int numberOfSteps) {
-        super(name, priority, cardtype, texture);
+    public MovementCard(String name, int priority, Texture texture, int numberOfSteps) {
+        super(name, priority, texture);
         this.numberOfSteps = numberOfSteps;
     }
 

@@ -17,10 +17,7 @@ public interface IProgramCard {
      * @param robot: Robot which performs a given action
      */
     void action(TiledMapTileLayer playerTile, Robot robot);
-
-
+    
     int getPriority();
-
-    CardType getType();
 
 }

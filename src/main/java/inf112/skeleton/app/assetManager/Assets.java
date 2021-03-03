@@ -16,7 +16,7 @@ public class Assets {
 
     // CARDS //
 
-    public static final AssetDescriptor<Texture> backUpCard =
+    public static final AssetDescriptor<Texture> BackUpCard =
             new AssetDescriptor<Texture>("Images/cards/BackUp.png", Texture.class);
 
     public static final AssetDescriptor<Texture> Move1Card =
@@ -40,7 +40,7 @@ public class Assets {
     public static void load() {
         manager.load(texture);
         manager.load(playButton);
-        manager.load(backUpCard);
+        manager.load(BackUpCard);
         manager.load(UTurnCard);
         manager.load(Move1Card);
         manager.load(Move2Card);
