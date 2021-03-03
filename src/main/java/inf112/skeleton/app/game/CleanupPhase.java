@@ -1,17 +1,18 @@
 package inf112.skeleton.app.game;
 
-public class CleanupPhase {
+public class CleanupPhase implements IPhase {
 
-    public static void run() {
+    @Override
+    public void run() {
         repairs();
         upgrades();
     }
 
-    private static void repairs() {
+    private void repairs() {
 
     }
 
-    private static void upgrades() {
+    private void upgrades() {
 
     }
 

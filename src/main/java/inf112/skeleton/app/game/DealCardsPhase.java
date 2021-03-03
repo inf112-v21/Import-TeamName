@@ -3,18 +3,19 @@ package inf112.skeleton.app.game;
 /**
  * Shuffle deck, then deal cards to the players.
  */
-public class DealCardsPhase {
+public class DealCardsPhase implements IPhase {
 
-    public static void run() {
+    @Override
+    public void run() {
         shuffleCards();
         dealCards();
     }
 
-    private static void shuffleCards() {
+    private void shuffleCards() {
 
     }
 
-    private static void dealCards() {
+    private void dealCards() {
 
     }
 
