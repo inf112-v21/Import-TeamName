@@ -10,6 +10,9 @@ public class Main {
         cfg.setTitle("Import team name: Robo Rally");
         cfg.setWindowedMode(1000,1000);
         RoboRally roboRally = new RoboRally();
+
+        // Turn debug mode on or off
+        roboRally.debugModeOn();
         new Lwjgl3Application(roboRally, cfg);
 
 

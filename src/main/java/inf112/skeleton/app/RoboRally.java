@@ -20,6 +20,7 @@ public class RoboRally extends Game {
     StretchViewport viewPort;
     Stage stage;
     GameScreen gameScreen;
+    private boolean debugMode = false;
 
     @Override
     public void create () {
@@ -37,16 +38,22 @@ public class RoboRally extends Game {
 
         // Set up screens
         titleScreen = new TitleScreen(this, stage, viewPort);
+        gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         Gdx.input.setInputProcessor(stage);
         this.setScreen(titleScreen); // Set screen to title screen
     }
 
+    public void debugModeOn() {debugMode = true; }
     @Override
     public void dispose () {
         batch.dispose();
         shapeRenderer.dispose();
         font.dispose();
     }
+    public void setGameScreen() {
+        setScreen(gameScreen);
+    }
+
     public void render() {
         super.render();
     }
