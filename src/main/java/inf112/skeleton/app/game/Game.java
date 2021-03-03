@@ -3,9 +3,9 @@ package inf112.skeleton.app.game;
 public class Game {
 
     /**
-       Setup:
-            - Give map to Board.java
-            - Create Program Card objects
+     * Setup:
+     * - Give map to Board.java
+     * - Create Program Card objects
     */
     public static void setup() {
 
@@ -17,12 +17,18 @@ public class Game {
     */
     public static void gameLoop() {
 
+        IPhase dealCardsPhase = new DealCardsPhase();
+        IPhase programRegisterPhase = new ProgramRegisterPhase();
+        IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
+        IPhase completeRegisterPhase = new CompleteRegisterPhase();
+        IPhase cleanupPhase = new CleanupPhase();
+
         while (true) { //TODO: If game is over, end loop.
-            DealCardsPhase.run();
-            ProgramRegisterPhase.run();
-            AnnouncePowerDownPhase.run();
-            CompleteRegisterPhase.run();
-            CleanupPhase.run();
+            dealCardsPhase.run();
+            programRegisterPhase.run();
+            announcePowerDownPhase.run();
+            completeRegisterPhase.run();
+            cleanupPhase.run();
         }
 
     }

@@ -86,7 +86,7 @@ public class GameScreen extends InputAdapter implements Screen {
         gameCamera = new OrthographicCamera();
         uiCamera   = new OrthographicCamera();
 
-        gameCamera.setToOrtho(false, viewPortWidth,viewPortHeight);  // Set mode
+        gameCamera.setToOrtho(false, viewPortWidth, 20);  // Set mode
         uiCamera.setToOrtho(false, viewPortWidth, 12);
 
         int initialCameraY = viewPortHeight - 10;
