@@ -7,18 +7,15 @@ import inf112.skeleton.app.objects.Actors.Robot;
 
 public class RotationCard extends ProgramCard{
 
-    Direction rotation;
-    boolean uTurn;
+    int clockwiseTurns; // The amount of times the robot will execute a 45° clockwise turn.
 
-    RotationCard(String name, int priority, CardType cardtype, Texture texture, Direction rotation, boolean uTurn) {
+    RotationCard(String name, int priority, CardType cardtype, Texture texture, int amountOfClockwiseTurns) {
         super(name, priority, cardtype, texture);
-        this.uTurn = uTurn;
-        this.rotation = rotation;
+        this.clockwiseTurns = amountOfClockwiseTurns;
     }
 
     @Override
     public void action(TiledMapTileLayer tilePlayer, Robot robot) {
-        if (uTurn) { robot.setLookDirection(Direction.DirectionOpposite(robot.getLookDirection())); } // Set look direction to the opposite direction
-        robot.rotate(rotation);
+        robot.rotate(clockwiseTurns);
     }
 }

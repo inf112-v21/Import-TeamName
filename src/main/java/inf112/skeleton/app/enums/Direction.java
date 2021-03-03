@@ -10,11 +10,7 @@ public enum Direction {
     NORTH,
     EAST,
     SOUTH,
-    WEST,
-
-    WITH_CLOCK,
-    AGAINST_CLOCK;
-
+    WEST;
 
     /**
      * Returns a new vector2 that is 1 tile away from given vector, in the given direction.
@@ -48,8 +44,17 @@ public enum Direction {
             case SOUTH: return Direction.NORTH;
             case EAST: return Direction.WEST;
             case WEST: return Direction.EAST;
-            case WITH_CLOCK: return Direction.AGAINST_CLOCK;
-            case AGAINST_CLOCK: return Direction.WITH_CLOCK;
+
+            default: throw new IllegalArgumentException("Expected enum direction. Received: " + dir);
+        }
+    }
+
+    public static Direction DirectionClockwise(Direction dir) {
+        switch (dir) {
+            case NORTH: return Direction.EAST;
+            case EAST: return Direction.SOUTH;
+            case SOUTH: return Direction.WEST;
+            case WEST: return Direction.NORTH;
 
             default: throw new IllegalArgumentException("Expected enum direction. Received: " + dir);
         }

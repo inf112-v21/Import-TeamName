@@ -29,7 +29,7 @@ public class MovementCard extends ProgramCard {
             Direction lookDirectionRobot = robot.getLookDirection();
             robot.setLookDirection(Direction.DirectionOpposite(lookDirectionRobot)); // Change look direction
         }
-        robot.moveRobot(tilePlayer, abs(numberOfSteps)); //TODO: Support negative integers.
+        robot.moveRobot(tilePlayer, abs(numberOfSteps));
     }
 
 

@@ -23,7 +23,7 @@ public interface IActor extends IObject {
 
     /**
      *
-     * @param rotation: rotation direction. With or against clock
+     * @param clockwiseTurns: The amount of 45° clockwise turns the actor will make.
      */
-    void rotate(Direction rotation);
+    void rotate(int clockwiseTurns);
 }
