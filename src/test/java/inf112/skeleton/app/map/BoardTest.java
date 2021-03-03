@@ -3,23 +3,28 @@ package inf112.skeleton.app.map;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.TileObjects.Laser;
 import inf112.skeleton.app.objects.TileObjects.Pusher;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+@RunWith(GdxTestRunner.class)
 public class BoardTest {
 
     private final Board boardChessMap;
     private final Board boardTestMap;
     
     public BoardTest() {
+
+        TiledMap testMap = new TmxMapLoader().load("assets/Maps/MapForJunitTests.tmx");  // Get map file
+        this.boardTestMap = new Board(testMap);
+
+
         TiledMap map = new TmxMapLoader().load("Maps/Chess.tmx");  // Get map file
         this.boardChessMap = new Board(map);
-
-        TiledMap testMap = new TmxMapLoader().load("Maps/MapForJunitTests.tmx");  // Get map file
-        this.boardTestMap = new Board(testMap);
     }
 
 
