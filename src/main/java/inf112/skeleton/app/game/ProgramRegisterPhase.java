@@ -3,28 +3,29 @@ package inf112.skeleton.app.game;
 /**
  * Lets the players choose their preferred cards.
  */
-public class ProgramRegisterPhase {
+public class ProgramRegisterPhase implements IPhase {
 
-    public static void run() {
+    @Override
+    public void run() {
         showCards();
         chooseCards();
         discardLeftOverCards();
         announceDone();
     }
 
-    private static void showCards() {
+    private void showCards() {
         // Print to console maybe? Easy debugging.
     }
 
-    private static void chooseCards() {
+    private void chooseCards() {
         //Player chooses from given cards.
     }
 
-    private static void discardLeftOverCards() {
+    private void discardLeftOverCards() {
         //Discards cards not picked by player
     }
 
-    private static void announceDone() {
+    private void announceDone() {
         // When a player has finished picking their cards, they will announce done
     }
 

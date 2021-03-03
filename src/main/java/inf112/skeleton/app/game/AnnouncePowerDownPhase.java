@@ -1,12 +1,13 @@
 package inf112.skeleton.app.game;
 
-public class AnnouncePowerDownPhase {
+public class AnnouncePowerDownPhase implements IPhase {
 
-    public static void run() {
+    @Override
+    public void run() {
         declarePowerDownIntention();
     }
 
-    private static void declarePowerDownIntention() {
+    private void declarePowerDownIntention() {
         // If yes, player places power down token on their program sheet, and their robot powers down next round.
         // If no, do nothing.
     }

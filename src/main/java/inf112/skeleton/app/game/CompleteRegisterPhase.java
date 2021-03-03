@@ -1,27 +1,28 @@
 package inf112.skeleton.app.game;
 
-public class CompleteRegisterPhase {
+public class CompleteRegisterPhase implements IPhase {
 
-    public static void run() {
+    @Override
+    public void run() {
         revealProgramCards();
         executeProgramCards();
         boardElementsMove();
         lasersFire();
     }
 
-    private static void revealProgramCards() {
+    private void revealProgramCards() {
 
     }
 
-    private static void executeProgramCards() {
+    private void executeProgramCards() {
 
     }
 
-    private static void boardElementsMove() {
+    private void boardElementsMove() {
 
     }
 
-    private static void lasersFire() {
+    private void lasersFire() {
 
     }
 
