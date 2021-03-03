@@ -50,3 +50,4 @@ Should look like this:
 
 
 ## Known bugs
+* Resizing the window will currently break the clickable cards. Restart fixes it.
