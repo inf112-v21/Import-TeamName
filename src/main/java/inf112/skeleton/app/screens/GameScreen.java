@@ -30,6 +30,7 @@ import inf112.skeleton.app.cards.CardVisual;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.ProgramSheet;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Math.round;
@@ -170,6 +171,9 @@ public class GameScreen extends InputAdapter implements Screen {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
+
+        if (player.getProgramSheet().getNumberOfFlags() == 2) { game.setWinScreen(); } // As of now, player wins when visting all flags (2)
+
         //Player is on a flag. Win
         if (board.isPosAFlag(playerPos)) {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
@@ -196,11 +200,13 @@ public class GameScreen extends InputAdapter implements Screen {
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);
 
-
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
         }
         else {
+
+
+
             move1Card.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

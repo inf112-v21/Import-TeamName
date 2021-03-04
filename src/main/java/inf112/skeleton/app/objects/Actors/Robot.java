@@ -68,6 +68,7 @@ public abstract class Robot extends SimpleObject implements IActor {
                 System.out.println(pos);
             }
         }
+        checkPosition();
     }
 
     /**
@@ -87,11 +88,20 @@ public abstract class Robot extends SimpleObject implements IActor {
 
         setPosition(Direction.goDirection(pos, lookDirection)); // Move forward
         moveRobot(playerTile, steps - 1);
+        checkPosition();
     }
 
 
 
+    public void checkPosition() {
+        Vector2 playerPos = getPosition();
+        int xPos = (int) playerPos.x;
+        int yPos = (int) playerPos.y;
 
+        if (board.isPosAFlag(playerPos)) {
+            this.programSheet.addFlag();
+        }
+    }
 
     @Override
     public ProgramSheet getProgramSheet() {

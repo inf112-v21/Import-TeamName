@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.TitleScreen;
+import inf112.skeleton.app.screens.WinScreen;
 
 public class RoboRally extends Game {
 
@@ -17,9 +18,13 @@ public class RoboRally extends Game {
     public ShapeRenderer shapeRenderer;
     public BitmapFont font;
     TitleScreen titleScreen;
+    GameScreen  gameScreen;
+    WinScreen   winScreen;
+
+
     StretchViewport viewPort;
     Stage stage;
-    GameScreen gameScreen;
+
     private boolean debugMode = false;
 
     @Override
@@ -39,6 +44,7 @@ public class RoboRally extends Game {
         // Set up screens
         titleScreen = new TitleScreen(this, stage, viewPort);
         gameScreen = new GameScreen(this, stage, viewPort, debugMode);
+        winScreen  = new WinScreen(this, stage, viewPort);
         Gdx.input.setInputProcessor(stage);
         this.setScreen(titleScreen); // Set screen to title screen
     }
@@ -52,6 +58,10 @@ public class RoboRally extends Game {
     }
     public void setGameScreen() {
         setScreen(gameScreen);
+    }
+
+    public void setWinScreen() {
+        setScreen(winScreen);
     }
 
     public void render() {
