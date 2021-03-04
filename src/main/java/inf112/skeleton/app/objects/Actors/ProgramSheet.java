@@ -8,11 +8,20 @@ public class ProgramSheet {
 
     private final ArrayList<ProgramCard> registers = new ArrayList<>();
 
-    private int damageTokens = 0;
+    private int damageTokens;
 
-    private int lifeTokens = 0;
+    private int lifeTokens;
 
-    private boolean powerDown = false;
+    private boolean powerDown;
+
+    private int flags;
+
+    public ProgramSheet() {
+        damageTokens = 0;
+        lifeTokens   = 0;
+        powerDown    = false;
+        flags        = 0;
+    }
 
     public void addDamage(int amount) {
         this.damageTokens += amount;
@@ -37,6 +46,10 @@ public class ProgramSheet {
             this.lifeTokens = 0;
         }
     }
+
+    public int getNumberOfFlags() {return flags;}
+
+    public void addFlag() {flags++;}
 
     public int getDamage() {
         return this.damageTokens;
