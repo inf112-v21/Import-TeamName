@@ -9,7 +9,7 @@ public class RotationCard extends ProgramCard {
 
     int clockwiseTurns; // The amount of times the robot will execute a 45° clockwise turn.
 
-    RotationCard(String name, int priority, Texture texture, int amountOfClockwiseTurns) {
+    public RotationCard(String name, int priority, Texture texture, int amountOfClockwiseTurns) {
         super(name, priority, texture);
         this.clockwiseTurns = amountOfClockwiseTurns;
     }

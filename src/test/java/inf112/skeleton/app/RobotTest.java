@@ -26,7 +26,6 @@ public class RobotTest {
     // Make maps
     private TiledMap map;
 
-    private Texture playerTexture;
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
     private Board board;
@@ -34,7 +33,6 @@ public class RobotTest {
 
     @Before
     public void initialise() {
-        playerTexture = new Texture("Images/player.png"); // Texture of player
         textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");

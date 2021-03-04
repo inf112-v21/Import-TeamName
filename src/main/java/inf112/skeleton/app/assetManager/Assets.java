@@ -37,6 +37,10 @@ public class Assets {
     public static final AssetDescriptor<Texture> UTurnCard =
             new AssetDescriptor<Texture>("Images/cards/U-Turn.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> VictoryImage =
+            new AssetDescriptor<Texture>("Images/Victory.png", Texture.class);
+
+
     public static void load() {
         manager.load(texture);
         manager.load(playButton);
@@ -47,6 +51,7 @@ public class Assets {
         manager.load(Move3Card);
         manager.load(RotateLeftCard);
         manager.load(RotateRightCard);
+        manager.load(VictoryImage);
 
     }
 
