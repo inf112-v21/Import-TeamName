@@ -19,7 +19,7 @@ Gruppen erfarer at det til tider kan være vanskelig å få oversikt over hva hv
 Stemningen er god i gruppen, og vi er fornøyd med fremgangen. MVP slik den er beskrevet i Deliverable 1 vil ikke kunne fullføres, men vi anser likevel at det totale arbeidet i prosjektet er kommet langt.
 
 <b>Kommunikasjon:</b>
-Gruppen ble tidlig enig om at fastsatte korte møter gir god mulighet for oppfølging på deloppgaver og oppnådde mål. Som nevnt i forrige deliverable, avholdes møtene på mandager, onsdag og fredager. Gruppen har erfart hittil at et slikt møte regime har fungert bra.
+Gruppen ble tidlig enig om at fastsatte korte møter gir god mulighet for oppfølging på deloppgaver og oppnådde mål. Som nevnt i forrige deliverable, avholdes møtene på mandager, onsdag og fredager. Gruppen har erfart hittil at et slikt møte regime har fungert bra. Tonen i gruppen har vært god.
 
 <br>
 
@@ -64,7 +64,7 @@ Referater fra møter gruppen har gjennomført kan finnes i github repository und
 
 ### <b>Brukerhistorie #2.1 - Vegger og kollisjon</b>
 
-* “Som brikke, må jeg ikke kunne gå gjennom vegger, slik at jeg ikke bryter spillereglene.”
+* “Som spiller, må jeg ikke kunne gå gjennom vegger, slik at jeg ikke bryter spillereglene.”
 
 <b>Akseptansekriterier:</b>
 * Spillere kan ikke gå gjennom vegg objekter. (Wall, Laser, Pushers)
@@ -91,7 +91,7 @@ Referater fra møter gruppen har gjennomført kan finnes i github repository und
 <b>Arbeidsoppgaver:</b>
 * Skrive JUnit tester som dekker forretningslogikken.
 
-<br>
+
 
 ### <b>Brukerhistorie #2.3 - Manuelle tester </b>
 * "Som utvikler trenger jeg manuelle tester/prosedyrer for GUI og andre elementer som er vanskelige å teste/forsikre seg om fungerer ved automatisk sjekk..”
@@ -168,7 +168,7 @@ Første prioritet for gruppen var å refaktorere kode for å innfri Single Respo
 
 En oversikt over hvilke krav som er innfridd i denne iterasjonen er gitt i avsnittet over.
 
-Multiplayer anså vi som mindre kritisk så slik funksjonalitet vil bli implementert i en senere iterasjon.Dette er en komponent som vi ser på som seperat fra kritisk spilllogikk. Prioritet har blitt gitt til de deler av spillet som trengs for å utføre RoboRally slik det står skissert i regelboken.
+Multiplayer anså vi som mindre kritisk så slik funksjonalitet vil bli implementert i en senere iterasjon. Dette er en komponent som vi ser på som seperat fra kritisk spilllogikk. Prioritet har blitt gitt til de deler av spillet som trengs for å utføre RoboRally slik det står skissert i regelboken.
 
 I henhold til de prioriterte kravene gitt i første iterasjon, har vi ikke kommet helt i mål etter en streng tolkning av kravene. Slik vi ser det har vi laget et godt fundament for videreutvikling, og har unngått stor refaktorering som ville vært resultatet dersom vi utelukkende skulle prioritert å innfri MVP kravene. Gruppen anser at på lang sikt vil gruppen være bedre tjent med en slik metodikk enn et snevert fokus på MVP poeng.
 
@@ -177,7 +177,10 @@ I henhold til de prioriterte kravene gitt i første iterasjon, har vi ikke komme
 ## Deloppgave 3
 
 Bygging, testing og kjøring er beskrevet i readme.md.
+
+<b> Tester</b>
 Manuelle tester ligger ved `Deliverables/ManuelTests/ManuelTests.md`
+Automatiske tester gjøres gjennom Junit rammeverk, og dekker de mest kritiske komponentene av kodebasen.
 
 <b>Klassediagram</b>
 Et oppdatert klassediagram per Deliverable 2 finnes i Deliverables/UML
