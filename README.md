@@ -27,6 +27,8 @@ Wiki of the game: [Roborally Wiki](https://www.wikiwand.com/en/RoboRally)
 ### Command line
 Clone project: ``git clone git@github.com:inf112-v21/Import-TeamName.git``
 
+Build the project.
+
 Run ``Main.java`` located at  `src/main/java/inf112/skeleton/app/Main.java`
 
 ### Windows
@@ -48,6 +50,15 @@ If executed properly you are presented with the main screen of the game.
 Should look like this:
 ![Picture of current roboRally](assets/Images/pictureOfCurrentGame.JPG)
 
+### Tests
+The game uses Junit to automatically test the game.
+
+Manual tests for GUI and game can be found under `Deliverables/ManuelTests/ManuelTests.md`,
+
+### Debug
+The game has a limited debug mode. It can be toggled under `src/main/java/inf112/skeleton/app/Main.java`.
+
+The debug mode disables moving by clicking on the cards, and instead uses WASD.
 
 ## Known bugs
 * Resizing the window will currently break the clickable cards. Restart fixes it.
