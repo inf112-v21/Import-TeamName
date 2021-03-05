@@ -46,7 +46,7 @@ If executed properly you are presented with the main screen of the game.
 * OR, click on the cards represented at the bottom of the screen (if debug mode off)
 
 Should look like this:
-![Picture of current roboRally](src/main/assets/Images/pictureOfCurrentGame.PNG)
+![Picture of current roboRally](assets/Images/pictureOfCurrentGame.JPG)
 
 
 ## Known bugs
