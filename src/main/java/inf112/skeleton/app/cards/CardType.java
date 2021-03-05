@@ -10,4 +10,5 @@ public enum CardType {
     ROTATERIGHT,
     ROTATELEFT,
     UTURN
+
 }

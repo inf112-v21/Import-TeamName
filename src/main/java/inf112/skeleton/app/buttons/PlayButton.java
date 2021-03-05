@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.assetManager.Assets;
 
 public class PlayButton {
+
     Texture texture;
     Drawable drawable;
     ImageButton playButton;
@@ -42,7 +43,7 @@ public class PlayButton {
 
     /**
      *
-     * return
+     * @return button
      */
     public ImageButton getButton() {
         return playButton;

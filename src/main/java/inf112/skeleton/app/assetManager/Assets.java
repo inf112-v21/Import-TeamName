@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Assets {
+
     public static AssetManager manager = new AssetManager();
 
     public static final AssetDescriptor<Texture> texture =
@@ -42,6 +43,7 @@ public class Assets {
 
 
     public static void load() {
+
         manager.load(texture);
         manager.load(playButton);
         manager.load(BackUpCard);

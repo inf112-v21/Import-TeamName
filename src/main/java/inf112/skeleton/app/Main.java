@@ -14,7 +14,5 @@ public class Main {
         // Turn debug mode on or off
         // roboRally.debugModeOn();
         new Lwjgl3Application(roboRally, cfg);
-
-
     }
 }

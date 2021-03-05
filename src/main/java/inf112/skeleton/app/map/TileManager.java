@@ -13,6 +13,7 @@ import java.util.Map;
  *    Creates an instance of all tiles on the board.
  */
 public class TileManager {
+
     private static final Map<Integer, Tiles> tileEnum = new HashMap<Integer,Tiles>();
 
     public TileManager() {
@@ -141,4 +142,5 @@ public class TileManager {
             System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
         }
     }
+
 }

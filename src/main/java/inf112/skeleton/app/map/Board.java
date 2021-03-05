@@ -16,6 +16,7 @@ import java.util.List;
  *  Gathers information of given board.
  */
 public class Board {
+
     private final HashMap<Vector2,IWall> mapCollidables;   //(Pos on board, wall objects). Contains Walls, Lasers, Pushers
     private final HashMap<Vector2,IObject> mapOtherTiles;  //(Pos on board, tile objects). Contains all other tiles.
 
@@ -113,8 +114,6 @@ public class Board {
         return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
     }
 
-    
-
     /**
      * Returns object of tile on given position on board.
      * Does not include Walls, Lasers and Pushers.
@@ -208,4 +207,5 @@ public class Board {
     public int getNrDockingBays() {
         return dockingBays.size();
     }
+
 }

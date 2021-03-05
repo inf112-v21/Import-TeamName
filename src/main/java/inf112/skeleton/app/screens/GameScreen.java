@@ -40,6 +40,7 @@ import static java.lang.Math.round;
  * Creates a game screen to be displayed while playing the game
  */
 public class GameScreen extends InputAdapter implements Screen {
+
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -127,7 +128,6 @@ public class GameScreen extends InputAdapter implements Screen {
         return true;
     }
 
-
     /**
      * Change camera location based on WASD keystrokes
      */
@@ -147,13 +147,11 @@ public class GameScreen extends InputAdapter implements Screen {
             map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
     }
 
-
     @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
     }
-
 
     @Override
     public void render(float v) {
@@ -250,7 +248,6 @@ public class GameScreen extends InputAdapter implements Screen {
         stage.getViewport().update(width, height, true);
     }
 
-
     @Override
     public void pause() {
     }
@@ -263,4 +260,5 @@ public class GameScreen extends InputAdapter implements Screen {
     public void hide() {
 
     }
+
 }

@@ -26,4 +26,5 @@ public interface IActor extends IObject {
      * @param clockwiseTurns: The amount of 45° clockwise turns the actor will make.
      */
     void rotate(int clockwiseTurns);
+
 }

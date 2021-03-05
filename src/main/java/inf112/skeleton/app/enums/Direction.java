@@ -3,7 +3,7 @@ package inf112.skeleton.app.enums;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- *
+ * Direction enum represents the four directions an actor can move.
  */
 public enum Direction {
 
@@ -31,8 +31,6 @@ public enum Direction {
         }
     }
 
-
-
     /**
      * Returns opposite direction
      * @param dir
@@ -59,6 +57,5 @@ public enum Direction {
             default: throw new IllegalArgumentException("Expected enum direction. Received: " + dir);
         }
     }
-
 
 }

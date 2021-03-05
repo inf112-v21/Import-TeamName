@@ -9,7 +9,6 @@ import inf112.skeleton.app.assetManager.Assets;
 
 public class CardVisual {
 
-
     private Drawable drawable;
     private CardType cardtype;
     private Texture texture;
@@ -30,7 +29,6 @@ public class CardVisual {
 
     public void setPosition(float wPos, float hPos) { card.setPosition(wPos, hPos); }
 
-
     private void getTexture() {
         switch (cardtype) {
             case MOVE1: texture = Assets.manager.get(Assets.Move1Card);  break;
@@ -42,4 +40,5 @@ public class CardVisual {
             default: throw new IllegalArgumentException("Expected enum cardtype of type (Move1, move2, move3, rotateleft, rotateright, uturn). Got :" + cardtype);
         }
     }
+
 }

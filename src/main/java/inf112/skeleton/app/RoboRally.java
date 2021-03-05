@@ -68,6 +68,4 @@ public class RoboRally extends Game {
         super.render();
     }
 
-
-
 }

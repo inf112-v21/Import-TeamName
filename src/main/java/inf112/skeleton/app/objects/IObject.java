@@ -16,4 +16,5 @@ public interface IObject {
      * @param position
      */
     public void setPosition(Vector2 position);
+
 }

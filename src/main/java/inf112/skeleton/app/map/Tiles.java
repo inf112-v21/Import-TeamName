@@ -19,7 +19,6 @@ public enum Tiles {
     FLAG3(71),
     FLAG4(79),
 
-
     //Docking bays (Starting points)
     DOCKING_BAY1(121),
     DOCKING_BAY2(122),
@@ -30,7 +29,6 @@ public enum Tiles {
     DOCKING_BAY7(131),
     DOCKING_BAY8(132),
 
-
     //Pushers (Position) (Pushing Direction)
     PUSHER_NORTH_SOUTH_2(1),
     PUSHER_EAST_WEST_2(2),
@@ -40,7 +38,6 @@ public enum Tiles {
     PUSHER_EAST_WEST(10),
     PUSHER_SOUTH_NORTH_2(11),
     PUSHER_WEST_EAST(12),
-
 
     //Walls
     WALL_RIGHT(23),
@@ -80,7 +77,6 @@ public enum Tiles {
     DOUBLE_CONVEYOR_TO_LEFT_FROM_RIGHT_AND_UP(85),
     DOUBLE_CONVEYOR_TO_DOWN_FROM_LEFT_AND_UP(86),
 
-
     //Normal conveyor
     NORMAL_CONVEYOR_LEFT_DOWN(33),
     NORMAL_CONVEYOR_UP_LEFT(34),
@@ -108,7 +104,6 @@ public enum Tiles {
     NORMAL_CONVEYOR_TO_LEFT_FROM_RIGHT_AND_UP(68),
     NORMAL_CONVEYOR_TO_UP_RFOM_RIGHT_AND_LEFT(69),
     NORMAL_CONVEYOR_TO_LEFT_FROM_UP_AND_DOWN(70),
-
 
     //Laser (Position) (Shooting Direction)
     LASER_DOWN_UP(37),
@@ -162,8 +157,6 @@ public enum Tiles {
     //125-128 is blank
     //133-136 is irrelevant blank
 
-
-
     private final int tileId;
 
     //Constructor
@@ -177,4 +170,5 @@ public enum Tiles {
     public int getTileID() {
         return tileId;
     }
+
 }

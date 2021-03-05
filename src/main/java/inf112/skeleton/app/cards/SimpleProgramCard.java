@@ -2,7 +2,7 @@ package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.objects.Actors.Robot;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
 /**
  * Abstract simple class.
@@ -31,5 +31,6 @@ public abstract class SimpleProgramCard implements IProgramCard {
         return this.texture;
     }
 
-    public abstract void action(TiledMapTileLayer tilePlayer, Robot robot);
+    public abstract void action(TiledMapTileLayer tilePlayer, SimpleRobot robot);
+
 }

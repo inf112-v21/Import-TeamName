@@ -11,14 +11,14 @@ import inf112.skeleton.app.objects.SimpleObject;
 
 import static inf112.skeleton.app.enums.Direction.NORTH;
 
-public abstract class Robot extends SimpleObject implements IActor {
+public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
     private final Board board;
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
-    public Robot(Vector2 startpos, TextureRegion[][] texture, Board board) {
+    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, Board board) {
         super(startpos);
 
         this.board = board;
