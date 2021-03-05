@@ -1,12 +1,12 @@
 package inf112.skeleton.app.objects.Actors;
 
-import inf112.skeleton.app.cards.ProgramCard;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 
 import java.util.ArrayList;
 
 public class ProgramSheet {
 
-    private final ArrayList<ProgramCard> registers = new ArrayList<>();
+    private final ArrayList<SimpleProgramCard> registers = new ArrayList<>();
 
     private int damageTokens;
 
