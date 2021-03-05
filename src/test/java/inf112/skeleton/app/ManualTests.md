@@ -1,4 +1,4 @@
-##Manual Tests
+## Manual Tests
 This document contain all manual tests for our version of the RoboRally game.
 
 # Graphics load
