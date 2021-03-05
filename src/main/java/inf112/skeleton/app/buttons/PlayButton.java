@@ -42,7 +42,7 @@ public class PlayButton {
 
     /**
      *
-     * @return
+     * return
      */
     public ImageButton getButton() {
         return playButton;

@@ -172,7 +172,7 @@ public enum Tiles {
     }
 
     /**
-     * @returns tileID of tile
+     * returns tileID of tile
      */
     public int getTileID() {
         return tileId;

@@ -44,87 +44,96 @@ Tidlig i prosjektet var mye av arbeidet “grunt-work”, for eksmepel Tiles.jav
 
 Vi anser bidraget av alle i gruppen som realistisk jevn og rettferdig, og mener at antall commits, og antall linjer endret, gir en feilaktig representasjon av den faktiske arbeidsfordelingen.
 
+<br>
 
 <b>Møtereferater</b>
-Referater fra samtlige møter gruppen har gjennomført kan finnes i github repository under Deliverables/Møtereferater.
+Referater fra møter gruppen har gjennomført kan finnes i github repository under Deliverables/Møtereferater.
 
 
 <b>Forbedringspunkter:</b>
-Kartlegge>Kartlegge fremtidige arbeidsoppgaver i prosjekttavlen. Ikke utelukkende akutte arbeidsoppgaver
-Være tydeligere på MVP krav og oppfølging av dem.
-I større grad skille møtetid og arbeidstid
+1. Kartlegge fremtidige arbeidsoppgaver i prosjekttavlen. Ikke utelukkende akutte arbeidsoppgaver
+2. Være tydeligere på MVP krav og oppfølging av dem.
+3. I større grad skille møtetid og arbeidstid
 
 <br>
 
 
 ## Deloppgave 2: Krav
 
-<b> Brukerhistorier: </b>
+### <b> Brukerhistorier: </b>
 
-Brukerhistorie #2.1 - Vegger og kollisjon
+### <b>Brukerhistorie #2.1 - Vegger og kollisjon</b>
 
-    “Som brikke, må jeg ikke kunne gå gjennom vegger, slik at jeg ikke bryter spillereglene.”
-        Akseptansekriterier:
-            Spillere kan ikke gå gjennom vegg objekter. (Wall, Laser, Pushers)
-            Spesifisert: En spiller på brettet står sør for en nord-vegg plassert på f.eks (1,1)= (x.y).
-            (Nord-vegg, at veggen ligger grafisk nord inne i cellen sin.)
-            Spilleren står dermed på (0, 1), og når spilleren prøver å gå inn i cellen (1,1), forlater spilleren (1,0) og inn på (1,1).
-            Dersom spilleren prøver å forlate (1,1) i retningen nord,skal spilleren ikke kunne forlate cellen (1,1) pga. nord-veggen i samme celle.
+* “Som brikke, må jeg ikke kunne gå gjennom vegger, slik at jeg ikke bryter spillereglene.”
+
+<b>Akseptansekriterier:</b>
+* Spillere kan ikke gå gjennom vegg objekter. (Wall, Laser, Pushers)
+* Spesifisert: En spiller på brettet står sør for en nord-vegg plassert på f.eks 1,1 (x,y) koordinater. (Nord-vegg*, at veggen ligger grafisk nord inne i cellen sin.)
+  Spilleren står dermed på (0, 1), og når spilleren prøver å gå inn i cellen (1,1), forlater spilleren (1,0) og inn på (1,1). Dersom spilleren prøver å forlate (1,1) i retningen nord,skal spilleren ikke kunne forlate cellen (1,1) pga. nord-veggen i samme celle.
 
 <b> Arbeidsoppgaver: </b>
 
-        Implementere en metode for å sjekke om en actor kan forlate sin egen tile i gitt retning.
-        Implementere en metode for å sjekke om en actor kan gå inn på en annen tile i gitt retning.
-        Implementere en metode som bruker metodene over, og sjekker om en actor kan beaavege seg i gitt         retning. 
+* Implementere en metode for å sjekke om en actor kan forlate sin egen tile i gitt retning.
+* Implementere en metode for å sjekke om en actor kan gå inn på en annen tile i gitt retning.
+* Implementere en metode som bruker metodene over, og sjekker om en actor kan beaavege seg i gitt         retning.
 
 
-<b> Brukerhistorie #2.2 - Må ikke krasje? </b>
+### <b>Brukerhistorie #2.2 - JUnit tester </b>
 
+* “Som utvikler trenger jeg automatiske tester som gir meg tilbakemelding om kodebasen fortsatt            fungerer etter jeg har gjort endringer i den.”
+
+<b>Akseptansekriterier: </b>
+
+* Hver test, tester bare for 1 egenskap.
+* Test navnene kommuniserer tydelig intensjonen til testen.
+* Tester dekker kodebasen der det er mulig.
+
+<b>Arbeidsoppgaver:</b>
+* Skrive JUnit tester som dekker forretningslogikken.
+
+<br>
+
+### <b>Brukerhistorie #2.3 - Manuelle tester </b>
+* "Som utvikler trenger jeg manuelle tester/prosedyrer for GUI og andre elementer som er vanskelige å teste/forsikre seg om fungerer ved automatisk sjekk..”
+
+<b>Akseptansekriterier: </b>
+
+* Testene er presise/beskriver/tester bare 1 ting hver.
+* Presiserer forventet oppførsel.
+* Arbeidsoppgaver:
+* Skrive manuelle tester for GUI
+
+
+### <b>Brukerhistorie #2.4 - Kort </b>
+* “Som bruker trenger jeg å få utdelt kort, så jeg kan bruke de til å programmere roboten min.”
 
 <b>Akseptansekriterier:</b>
 
+* Spillet gir ut riktig antall kort til hver spiller
+* Hver spiller har en egen lagringsplass (hånd)  til sine kort
+* Ha en kortstokk som alle kort trekkes fra
+
+<b>Arbeidsoppgaver:</b>
+
+* Implementere lagringsplass til spiller
+* Skrive metode som deler ut kort
+* Lage en kortstokk
+
+### <b>Brukerhistorie #2.5 - Program sheet</b>
+
+* “Som bruker trenger jeg et programming sheet, så jeg kan programmere roboten min.”
+
+<b>Akseptansekriterier:</b>
+
+* Spillet gir deg mulighet til å endre riktig antall kort
+* Hver spiller har en egen programming sheet
+* Spiller kan velge kort fra sin hånd
+
 <b>Arbeidsoppgaver: </b>
 
-<b>Brukerhistorie #2.3 - JUnit tester </b>
-“Som utvikler trenger jeg automatiske tester som gir meg tilbakemelding om kodebasen fortsatt fungerer etter jeg har gjort endringer i den.”
-
-<b>Akseptansekriterier: </b>
-Hver test, tester bare for 1 egenskap.
-Test navnene kommuniserer tydelig intensjonen til testen.
-Tester dekker kodebasen der det er mulig.
-Arbeidsoppgaver:
-Skrive JUnit tester som dekker forretningslogikken.
-
-<b>Brukerhistorie #2.4 - Manuelle tester </b>
-“Som utvikler trenger jeg manuelle tester/prosedyrer for GUI og andre elementer som er vanskelige å teste/forsikre seg om fungerer ved automatisk sjekk..”
-
-Akseptansekriterier:
-Testene er presise/beskriver/tester bare 1 ting hver.
-Presiserer forventet oppførsel.
-Arbeidsoppgaver:
-Skrive manuelle tester for GUI
-
-Brukerhistorie #2.5 - Kort
-“Som bruker trenger jeg å få utdelt kort, så jeg kan bruke de til å programmere roboten min.”
-Akseptansekriterier:
-Spillet gir ut riktig antall kort til hver spiller
-Hver spiller har en egen lagringsplass (hånd)  til sine kort
-Ha en kortstokk som alle kort trekkes fra
-Arbeidsoppgaver:
-Implementere lagringsplass til spiller
-Skrive metode som deler ut kort
-Lage en kortstokk
-
-Brukerhistorie #2.6 - Program sheet
-“Som bruker trenger jeg et programming sheet, så jeg kan programmere roboten min.”
-Akseptansekriterier:
-Spillet gir deg mulighet til å endre riktig antall kort
-Hver spiller har en egen programming sheet
-Spiller kan velge kort fra sin hånd
-Arbeidsoppgaver:
-Skrive funksjon som fryser kort i programming sheet
-Implementere lagringsplass til programming sheet
-Fjerne valgte kort fra hånd
+* Skrive funksjon som fryser kort i programming sheet
+* Implementere lagringsplass til programming sheet
+* Fjerne valgte kort fra hånd
 
 
 <br>
@@ -153,28 +162,22 @@ Første prioritet for gruppen var å refaktorere kode for å innfri Single Respo
         4. Robot besøker flagg
         5. Robot vinner ved å besøke flagg
         7. Dele ut kort
-        8. Bevege robot ut fra valgte kort 
+        9. Bevege robot ut fra valgte kort 
 
 <b> Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang. </b>
 
 En oversikt over hvilke krav som er innfridd i denne iterasjonen er gitt i avsnittet over.
 
+Multiplayer anså vi som mindre kritisk så slik funksjonalitet vil bli implementert i en senere iterasjon.Dette er en komponent som vi ser på som seperat fra kritisk spilllogikk. Prioritet har blitt gitt til de deler av spillet som trengs for å utføre RoboRally slik det står skissert i regelboken.
+
 I henhold til de prioriterte kravene gitt i første iterasjon, har vi ikke kommet helt i mål etter en streng tolkning av kravene. Slik vi ser det har vi laget et godt fundament for videreutvikling, og har unngått stor refaktorering som ville vært resultatet dersom vi utelukkende skulle prioritert å innfri MVP kravene. Gruppen anser at på lang sikt vil gruppen være bedre tjent med en slik metodikk enn et snevert fokus på MVP poeng.
-
-
-
-
-
-
-
-
-
 
 
 
 ## Deloppgave 3
 
 Bygging, testing og kjøring er beskrevet i readme.md.
+Manuelle tester ligger ved `Deliverables/ManuelTests/ManuelTests.md`
 
 <b>Klassediagram</b>
 Et oppdatert klassediagram per Deliverable 2 finnes i Deliverables/UML
