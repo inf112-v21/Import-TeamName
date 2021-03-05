@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(GdxTestRunner.class)
 public class CardsTest {
-    
+
     // Make maps
     private TiledMap map;
 

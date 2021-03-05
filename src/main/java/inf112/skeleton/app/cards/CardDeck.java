@@ -5,7 +5,7 @@ import inf112.skeleton.app.assetManager.Assets;
 import java.util.ArrayList;
 
 /**
- * This class will represent the deck of cards used in the game
+ * This class will represent the deck of cards used in the game.
  */
 public class CardDeck {
 

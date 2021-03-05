@@ -7,7 +7,7 @@ import inf112.skeleton.app.objects.Actors.Robot;
 
 import static java.lang.Math.abs;
 
-public class MovementCard extends ProgramCard {
+public class MovementCard extends SimpleProgramCard {
 
     /**
      * The number of steps the robot will make. (-1 if Back Up)
@@ -31,7 +31,6 @@ public class MovementCard extends ProgramCard {
         }
         robot.moveRobot(tilePlayer, abs(numberOfSteps));
     }
-
 
     public int getNumberOfSteps() {
         return this.numberOfSteps;
