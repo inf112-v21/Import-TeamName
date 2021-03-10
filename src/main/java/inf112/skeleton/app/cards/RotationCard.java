@@ -7,7 +7,7 @@ import inf112.skeleton.app.objects.Actors.SimpleRobot;
 public class RotationCard extends SimpleProgramCard {
 
     /**
-     * The amount of times the robot will execute a 45° clockwise turn.
+     * The amount of times the robot will execute a 90° clockwise turn.
      */
     int clockwiseTurns;
 
