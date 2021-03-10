@@ -8,6 +8,8 @@ public class ProgramSheet {
 
     private final ArrayList<SimpleProgramCard> registers = new ArrayList<>();
 
+    private boolean isDead;
+
     private int damageTokens;
 
     private int lifeTokens;
@@ -67,4 +69,11 @@ public class ProgramSheet {
         return this.powerDown;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
 }
