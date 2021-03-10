@@ -22,8 +22,8 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         super(startpos);
 
         this.board = board;
-        lookDirection = Direction.NORTH;
-        programSheet = new ProgramSheet();
+        this.lookDirection = Direction.NORTH;
+        this.programSheet = new ProgramSheet();
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));

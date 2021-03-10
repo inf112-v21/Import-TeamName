@@ -8,21 +8,18 @@ public class ProgramSheet {
 
     private final ArrayList<SimpleProgramCard> registers = new ArrayList<>();
 
+    private int damageTokens;
+    private int lifeTokens;
+    private int flags;
+    private boolean powerDown;
     private boolean isDead;
 
-    private int damageTokens;
-
-    private int lifeTokens;
-
-    private boolean powerDown;
-
-    private int flags;
-
     public ProgramSheet() {
-        damageTokens = 0;
-        lifeTokens   = 0;
-        powerDown    = false;
-        flags        = 0;
+        this.damageTokens = 0;
+        this.lifeTokens   = 0;
+        this.flags        = 0;
+        this.powerDown    = false;
+        this.isDead       = false;
     }
 
     public void addDamage(int amount) {
@@ -70,10 +67,10 @@ public class ProgramSheet {
     }
 
     public boolean isDead() {
-        return isDead;
+        return this.isDead;
     }
 
     public void setDead(boolean dead) {
-        isDead = dead;
+        this.isDead = dead;
     }
 }
