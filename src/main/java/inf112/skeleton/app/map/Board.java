@@ -24,7 +24,7 @@ public class Board {
     private final ArrayList<Flag> flags;
     private final ArrayList<Laser> lasers;
 
-    private final Vector2 boardDimensions;
+    private final Vector2 boardDimensions; // (Width, Height)
 
     public Board(TiledMap map) {
         dockingBays = new ArrayList<DockingBay>();
@@ -229,5 +229,17 @@ public class Board {
      */
     public Vector2 getBoardDimensions() {
         return boardDimensions;
+    }
+
+    /**
+     * Checks if a position is out of bounds or not.
+     * @param Vector2 posPlayer
+     * @return If on board or not
+     */
+    public boolean isOnBoard(Vector2 posPlayer) {
+        int playerX = (int) posPlayer.x;
+        int playerY = (int) posPlayer.y;
+        return (playerX < 0 || playerX > getBoardDimensions().x || playerY < 0 || playerY > getBoardDimensions().y);
+
     }
 }
