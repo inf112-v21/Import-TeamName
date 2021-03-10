@@ -24,6 +24,8 @@ public class Board {
     private final ArrayList<Flag> flags;
     private final ArrayList<Laser> lasers;
 
+    private final Vector2 boardDimensions;
+
     public Board(TiledMap map) {
         dockingBays = new ArrayList<DockingBay>();
         flags = new ArrayList<Flag>();
@@ -31,6 +33,11 @@ public class Board {
 
         mapCollidables = new HashMap<Vector2,IWall>();
         mapOtherTiles = new HashMap<Vector2,IObject>();
+
+        //Dimensions of board
+        int width = map.getProperties().get("width",Integer.class);
+        int height = map.getProperties().get("height",Integer.class);
+        boardDimensions = new Vector2(width,height);
 
         getBoardInformation(map);
     }
@@ -78,6 +85,10 @@ public class Board {
         }
     }
 
+    /*
+        Wall collision handling
+     */
+
     /**
      * Checks if actor can go to tile from given direction.
      * @param pos
@@ -113,6 +124,11 @@ public class Board {
         if (wall == null) return true; //Nothing in given direction.
         return canLeaveTile(adjacentPos,Direction.DirectionOpposite(dir)); //Entering a tile is equivalent to leaving it in the opposite direction.
     }
+
+
+    /*
+     *  Getters for tile on board
+     */
 
     /**
      * Returns object of tile on given position on board.
@@ -208,4 +224,10 @@ public class Board {
         return dockingBays.size();
     }
 
+    /**
+     * @return Vector2 with dimensions of board.
+     */
+    public Vector2 getBoardDimensions() {
+        return boardDimensions;
+    }
 }
