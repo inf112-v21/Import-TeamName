@@ -170,10 +170,10 @@ public class GameScreen extends InputAdapter implements Screen {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
+        //Win condition
+        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { game.setWinScreen(); } // As of now, player wins when visting all flags.
 
-        if (player.getProgramSheet().getNumberOfFlags() == 2) { game.setWinScreen(); } // As of now, player wins when visting all flags (2)
-
-        //Player is on a flag. Win
+        //Player is on a flag. Change texture to win texture
         if (board.isPosAFlag(playerPos)) {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
         } else if (board.isPosAPit(playerPos)) {
@@ -181,6 +181,7 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
         }
+        
         mapRenderer.render();
 
         // Draw card visuals //
