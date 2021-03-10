@@ -98,10 +98,16 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
+        //Player on flag
         if (board.isPosAFlag(playerPos)) {
             this.programSheet.addFlag();
-        } else if (board.isOnBoard(playerPos) || board.isPosAPit(playerPos)) {
+            return;
+        }
+
+        //If player is on Pit or outside map. Set player to dead.
+        if (board.isOnBoard(playerPos) || board.isPosAPit(playerPos)) {
             getProgramSheet().setDead(true); // Temporary?
+            return;
         }
     }
 
