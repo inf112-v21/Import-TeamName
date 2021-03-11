@@ -10,22 +10,20 @@ public class ProgramSheet {
 
     CardDeck carddeck;
     private int damageTokens;
-
-    private boolean dead;
     private int lifeTokens;
-
-    private boolean powerDown;
-
     private int flags;
+    private boolean powerDown;
+    private boolean dead;
 
     public ProgramSheet() {
         damageTokens = 0;
-        lifeTokens   = 0;
-        powerDown    = false;
-        flags        = 0;
-        dead         = false;
+        lifeTokens = 0;
+        powerDown = false;
+        flags = 0;
+        dead = false;
         carddeck = new CardDeck(9);
     }
+
 
     public void addDamage(int amount) {
 
@@ -81,4 +79,11 @@ public class ProgramSheet {
         return this.powerDown;
     }
 
+    public boolean isDead() {
+        return this.dead;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
 }

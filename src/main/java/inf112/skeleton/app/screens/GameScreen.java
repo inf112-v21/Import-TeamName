@@ -56,7 +56,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private OrthographicCamera gameCamera, uiCamera;
 
 
-    private int viewPortWidth = 12, viewPortHeight = 16;
+    private int viewPortWidth, viewPortHeight;
 
     Stage stage;
     Stage uiStage;
@@ -86,15 +86,21 @@ public class GameScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        uiStage = new Stage(new StretchViewport(viewPortWidth, 12));
+        // Load map and get board data
+        map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
+        this.board = new Board(map); // Get map objects
+        //Set viewPort dimensions to dimensions of board
+        viewPortHeight = (int) board.getBoardDimensions().y;
+        viewPortWidth = (int) board.getBoardDimensions().x;
 
+        uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
 
         // Make camera
         gameCamera = new OrthographicCamera();
         uiCamera   = new OrthographicCamera();
-
-        gameCamera.setToOrtho(false, viewPortWidth, 20);  // Set mode
-        uiCamera.setToOrtho(false, viewPortWidth, 12);
+        // Set camera to correct view settings, making room for dashboard.
+        gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
+        uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
 
         int initialCameraY = viewPortHeight - 10;
         // Set camera, but does not scale with the fit viewport
@@ -102,22 +108,17 @@ public class GameScreen extends InputAdapter implements Screen {
         gameCamera.update();
         uiCamera.update();
 
-
-
-
         uiStage.getViewport().setCamera(uiCamera);
-        map = new TmxMapLoader().load("Maps/Chess.tmx");                  // Get map file
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(gameCamera); // Attach camera to map
 
-        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
+        //Handling player1
+        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
-
-        this.board = new Board(map); // Get map objects
+        //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-
         player = new Player(startPos, textures, board);
     }
 
@@ -172,10 +173,10 @@ public class GameScreen extends InputAdapter implements Screen {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
+        //Win condition
+        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { game.setWinScreen(); } // As of now, player wins when visting all flags.
 
-        if (player.getProgramSheet().getNumberOfFlags() == 2) { game.setWinScreen(); } // As of now, player wins when visting all flags (2)
-
-        //Player is on a flag. Win
+        //Player is on a flag. Change texture to win texture
         if (board.isPosAFlag(playerPos)) {
             tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
         } else if (board.isPosAPit(playerPos)) {
@@ -183,6 +184,7 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
         }
+        
         mapRenderer.render();
 
         // Draw card visuals //

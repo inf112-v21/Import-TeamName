@@ -22,8 +22,8 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         super(startpos);
 
         this.board = board;
-        lookDirection = Direction.NORTH;
-        programSheet = new ProgramSheet();
+        this.lookDirection = Direction.NORTH;
+        this.programSheet = new ProgramSheet();
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
@@ -98,8 +98,16 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
+        //Player on flag
         if (board.isPosAFlag(playerPos)) {
             this.programSheet.addFlag();
+            return;
+        }
+
+        //If player is on Pit or outside map. Set player to dead.
+        if (board.isOnBoard(playerPos) || board.isPosAPit(playerPos)) {
+            getProgramSheet().setDead(true); // Temporary?
+            return;
         }
     }
 
