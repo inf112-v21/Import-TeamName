@@ -10,7 +10,7 @@ import static java.lang.Math.abs;
 public class MovementCard extends SimpleProgramCard {
 
     /**
-     * The number of steps the robot will make. (-1 if Back Up)
+     * The number of steps the robot will make. (Negative number if Back Up)
      */
     private final int numberOfSteps;
 

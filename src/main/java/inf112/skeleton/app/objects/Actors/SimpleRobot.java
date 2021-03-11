@@ -103,6 +103,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         }
     }
 
+    public void dealCards() {this.programSheet.dealCards();}
     @Override
     public ProgramSheet getProgramSheet() {
         return this.programSheet;

@@ -1,15 +1,17 @@
 package inf112.skeleton.app.objects.Actors;
 
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 
 import java.util.ArrayList;
 
 public class ProgramSheet {
 
-    private final ArrayList<SimpleProgramCard> registers = new ArrayList<>();
 
+    CardDeck carddeck;
     private int damageTokens;
 
+    private boolean dead;
     private int lifeTokens;
 
     private boolean powerDown;
@@ -21,11 +23,14 @@ public class ProgramSheet {
         lifeTokens   = 0;
         powerDown    = false;
         flags        = 0;
+        dead         = false;
+        carddeck = new CardDeck(9);
     }
 
     public void addDamage(int amount) {
-        this.damageTokens += amount;
 
+        this.damageTokens += amount;
+        if (damageTokens > lifeTokens) this.dead = true;
         if (this.damageTokens > 10) {
             this.damageTokens = 10;
         }
@@ -33,6 +38,15 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
+        carddeck.setNumCardsDeck(9 - damageTokens);
+    }
+
+    /**
+     * Called every round for its robot
+     */
+    public void dealCards() {
+        carddeck = new CardDeck(9 - damageTokens);
+
     }
 
     public void addLife(int amount) {

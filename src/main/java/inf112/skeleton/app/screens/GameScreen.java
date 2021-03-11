@@ -25,12 +25,15 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
 import inf112.skeleton.app.buttons.PlayButton;
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.CardVisual;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.ProgramSheet;
+
+import java.util.ArrayList;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Math.round;
@@ -190,6 +193,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
+        // Generate cards
         ImageButton move1Card = new CardVisual(0, 0, CardType.MOVE1).getCard();
         ImageButton rotateRight = new CardVisual(4f, 0, CardType.ROTATERIGHT).getCard();
         ImageButton rotateLeft = new CardVisual(8f, 0, CardType.ROTATELEFT).getCard();
@@ -198,6 +202,15 @@ public class GameScreen extends InputAdapter implements Screen {
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);
 
+        CardDeck deck = new CardDeck(9);
+        ArrayList<CardVisual> cardVisuals = deck.getVisuals();
+        /**
+         * Do something fantastic with cardeck
+         */
+        for (CardVisual visual : cardVisuals) {
+            //uiStage.addActor(visual.getCard());
+            //visual.getCard().addListener(new InputListener()
+        }
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
         }
@@ -208,6 +221,7 @@ public class GameScreen extends InputAdapter implements Screen {
             move1Card.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+
                     player.moveRobot(tilePlayer, 1);
                 }
 

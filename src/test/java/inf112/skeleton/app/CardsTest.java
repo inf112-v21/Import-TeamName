@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.MovementCard;
 import inf112.skeleton.app.cards.RotationCard;
@@ -67,6 +68,21 @@ public class CardsTest {
         RotationCard rotate1 = new RotationCard("Rotate with clock 1",1, Assets.manager.get(Assets.RotateRightCard), 1 );
         rotate1.action(tilePlayer, player);
         assertEquals(Direction.EAST, player.getLookDirection());
+    }
+
+
+    @Test
+    public void generateCardDeck() {
+        CardDeck deck = new CardDeck(9);
+
+    }
+
+    @Test
+    public void cardDeckSubtractNumCards() {
+        CardDeck deck = new CardDeck(9);
+        deck.subtractNumCardsDeck();
+        assertEquals(8, deck.getNumCardsDeck());
+
     }
 
 }
