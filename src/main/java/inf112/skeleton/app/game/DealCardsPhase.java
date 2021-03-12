@@ -19,6 +19,10 @@ public class DealCardsPhase implements IPhase {
     }
 
     private ArrayList<IProgramCard> createDeck() {
+        /**
+         *
+         * Create deck for all players?
+         */
         ArrayList<IProgramCard> deck = new ArrayList();
 
         //deck.add();

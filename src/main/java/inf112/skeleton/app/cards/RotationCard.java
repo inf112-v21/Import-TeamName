@@ -11,8 +11,8 @@ public class RotationCard extends SimpleProgramCard {
      */
     int clockwiseTurns;
 
-    public RotationCard(String name, int priority, Texture texture, int amountOfClockwiseTurns) {
-        super(name, priority, texture);
+    public RotationCard(String name, int priority, int amountOfClockwiseTurns) {
+        super(name, priority);
         this.clockwiseTurns = amountOfClockwiseTurns;
     }
 

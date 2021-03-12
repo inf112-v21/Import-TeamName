@@ -1,6 +1,24 @@
 package inf112.skeleton.app.game;
 
+import inf112.skeleton.app.objects.Actors.IActor;
+import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+
 public class Game {
+
+
+   // private ArrayList<SimpleRobot> robots;
+
+    /**
+     * Constructor method
+     */
+    public Game() {
+        //this.robots = new ArrayList<>();
+    }
 
     /**
      * Setup:
@@ -39,6 +57,16 @@ public class Game {
      */
     public static void end() {
 
+    }
+
+    public void setNumPlayers(int numPlayers) {
+        for (int i = 0; i < numPlayers; i++) {
+            /**
+             * Set to correct start positions
+             */
+            //Player robot = new Player()
+            // robots.add(robot);
+        }
     }
 
 }

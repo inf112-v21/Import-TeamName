@@ -11,12 +11,12 @@ public abstract class SimpleProgramCard implements IProgramCard {
 
     private final String name;
     private final int priority;
-    private final Texture texture;
 
-    SimpleProgramCard(String name, int priority, Texture texture) {
+
+    SimpleProgramCard(String name, int priority) {
         this.priority =  priority;
         this.name = name;
-        this.texture = texture;
+
     }
 
     public String getName() {
@@ -27,9 +27,7 @@ public abstract class SimpleProgramCard implements IProgramCard {
         return this.priority;
     }
 
-    public Texture getTexture() {
-        return this.texture;
-    }
+
 
     public abstract void action(TiledMapTileLayer tilePlayer, SimpleRobot robot);
 

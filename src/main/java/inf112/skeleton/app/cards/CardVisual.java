@@ -25,9 +25,18 @@ public class CardVisual {
         card.setPosition(wPos, hPos);
     }
 
-    public ImageButton getCard() { return card; }
+    public CardVisual(CardType cardType) {
+            this.cardtype = cardType;
+            getTexture();
+            drawable = new TextureRegionDrawable(new TextureRegion(texture));
+            card = new ImageButton(drawable);
+    }
+
+    public void setSize(int w, int h) {this.card.setSize(w,h);}
 
     public void setPosition(float wPos, float hPos) { card.setPosition(wPos, hPos); }
+
+    public ImageButton getCard() { return card; }
 
     private void getTexture() {
         switch (cardtype) {

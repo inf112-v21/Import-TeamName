@@ -35,9 +35,14 @@ public class CardDeck {
     }
 
     public void generateCardDeck() {
+        for (CardType type : chosenCardTypes) {
+            if (type.equals(CardType.MOVE1)) {
+                cards.add(new MovementCard("Move 1 card", 1, 1));
+                cardVisuals.add(new CardVisual(CardType.MOVE1));
+            }
+        }
         for (int i = 0; i < numCards; i++) {
                 // Add cards
-
         }
 
     }

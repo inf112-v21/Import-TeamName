@@ -204,10 +204,15 @@ public class GameScreen extends InputAdapter implements Screen {
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);
 
+        /**
+         *
+         */
+        // game.getRobots()
+
         CardDeck deck = new CardDeck(9);
         ArrayList<CardVisual> cardVisuals = deck.getVisuals();
         /**
-         * Do something fantastic with cardeck
+         * Do something fantastic with carddeck
          */
         for (CardVisual visual : cardVisuals) {
             //uiStage.addActor(visual.getCard());
@@ -224,7 +229,7 @@ public class GameScreen extends InputAdapter implements Screen {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-                    player.moveRobot(tilePlayer, 1);
+                    player.getProgramSheet().getc
                 }
 
                 @Override
@@ -276,5 +281,8 @@ public class GameScreen extends InputAdapter implements Screen {
     public void hide() {
 
     }
+
+    public Stage getUIStage() {return this.uiStage; }
+    public Stage getStage()   {return this.stage;   }
 
 }
