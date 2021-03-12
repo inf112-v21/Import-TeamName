@@ -11,17 +11,20 @@ import java.util.ArrayList;
 public class Game {
 
 
-   // private ArrayList<SimpleRobot> robots;
+   public static ArrayList<SimpleRobot> robots;
 
     /**
      * Constructor method
      */
-    public Game() {
-        //this.robots = new ArrayList<>();
+    public Game(int numPlayers) {
+        robots = new ArrayList<>();
+
+
     }
 
     /**
      * Setup:
+     * - Initialize robots Arraylist
      * - Give map to Board.java
      * - Create Program Card objects
     */

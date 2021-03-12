@@ -3,8 +3,12 @@ package inf112.skeleton.app.game;
 //import inf112.skeleton.app.cards.CardDeck;
 
 import inf112.skeleton.app.cards.IProgramCard;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
+import java.awt.*;
 import java.util.ArrayList;
+
+import static inf112.skeleton.app.game.Game.robots;
 
 /**
  * Creates a new deck of cards. Shuffle deck, then deal cards to the players.
@@ -30,15 +34,15 @@ public class DealCardsPhase implements IPhase {
         return deck;
     }
 
-    private void shuffleCards() {
 
-    }
 
     /**
-     * Deals card through robots?
+     * Deals card
      */
     private void dealCards() {
-
+        for (SimpleRobot robot: robots) {
+            robot.getProgramSheet().dealCards();
+        }
     }
 
     /*

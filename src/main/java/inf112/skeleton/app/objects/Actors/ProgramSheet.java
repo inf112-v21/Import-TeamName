@@ -1,14 +1,11 @@
 package inf112.skeleton.app.objects.Actors;
 
-import inf112.skeleton.app.cards.CardDeck;
-import inf112.skeleton.app.cards.SimpleProgramCard;
-
-import java.util.ArrayList;
+import inf112.skeleton.app.cards.CardHand;
 
 public class ProgramSheet {
 
 
-    CardDeck carddeck;
+    private CardHand carddeck;
     private int damageTokens;
     private int lifeTokens;
     private int flags;
@@ -21,7 +18,7 @@ public class ProgramSheet {
         powerDown = false;
         flags = 0;
         dead = false;
-        carddeck = new CardDeck(9);
+        carddeck = new CardHand(9);
     }
 
 
@@ -43,7 +40,7 @@ public class ProgramSheet {
      * Called every round for its robot
      */
     public void dealCards() {
-        carddeck = new CardDeck(9 - damageTokens);
+        carddeck = new CardHand(9 - damageTokens);
 
     }
 
@@ -58,6 +55,8 @@ public class ProgramSheet {
             this.lifeTokens = 0;
         }
     }
+
+    public CardHand getCardDeck() {return this.carddeck;}
 
     public int getNumberOfFlags() {return flags;}
 

@@ -18,20 +18,15 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
-import inf112.skeleton.app.buttons.PlayButton;
-import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.CardVisual;
-import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.ProgramSheet;
 
 import java.util.ArrayList;
 
@@ -209,7 +204,7 @@ public class GameScreen extends InputAdapter implements Screen {
          */
         // game.getRobots()
 
-        CardDeck deck = new CardDeck(9);
+        CardHand deck = new CardHand(9);
         ArrayList<CardVisual> cardVisuals = deck.getVisuals();
         /**
          * Do something fantastic with carddeck
@@ -229,7 +224,7 @@ public class GameScreen extends InputAdapter implements Screen {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-                    player.getProgramSheet().getc
+                    player.moveRobot(tilePlayer, 1);
                 }
 
                 @Override
