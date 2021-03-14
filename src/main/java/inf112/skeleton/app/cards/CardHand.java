@@ -38,14 +38,14 @@ public class CardHand {
         for (CardType type : chosenCardTypes) {
             /**
              * switch statements
-             */
+
             switch:
                 case(type.equals(CardType.MOVE1)) {
                 cards.add(new MovementCard("Move 1 card", 1, 1));
                 cardVisuals.add(new CardVisual(CardType.MOVE1));
+             */
             }
         }
-    }
 
     public ArrayList<SimpleProgramCard> getProgramCards() {return cards;}
     public ArrayList<CardVisual> getVisuals() { return cardVisuals;}
