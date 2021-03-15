@@ -6,9 +6,9 @@ import inf112.skeleton.app.objects.Actors.SimpleRobot;
 public interface IProgramCard {
 
     /**
-     * @return: The name of the program card
+     * @return: The type of the card
      */
-    String getName();
+    CardType getType();
 
     /**
      * Perform action

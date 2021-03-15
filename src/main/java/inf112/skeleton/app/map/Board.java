@@ -175,6 +175,24 @@ public class Board {
     public boolean isPosAConveyor(Vector2 pos) {return getNonWallTileOnPos(pos) instanceof Conveyor; }
 
     /**
+     * Checks if pos os a Pusher
+     * @param pos
+     * @return
+     */
+    public boolean isPosAPusher(Vector2 pos) {
+        return getWallTileOnPos(pos) instanceof Pusher;
+    }
+
+    /**
+     * Checks if pos is a Gear
+     * @param pos
+     * @return
+     */
+    public boolean isPosAGear(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof Gear;
+    }
+
+    /**
      * @return List of all collidable tiles on the board. Does not include players!
      */
     public List<IWall> getCollidables() {

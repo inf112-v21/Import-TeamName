@@ -11,10 +11,12 @@ public class RotationCard extends SimpleProgramCard {
      */
     int clockwiseTurns;
 
-    public RotationCard(String name, int priority, int amountOfClockwiseTurns) {
-        super(name, priority);
+    public RotationCard(int priority, CardType cardType, int amountOfClockwiseTurns) {
+        super(priority, cardType);
         this.clockwiseTurns = amountOfClockwiseTurns;
     }
+
+
 
     @Override
     public void action(TiledMapTileLayer tilePlayer, SimpleRobot robot) {

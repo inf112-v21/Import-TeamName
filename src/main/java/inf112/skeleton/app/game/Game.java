@@ -1,9 +1,10 @@
 package inf112.skeleton.app.game;
 
+import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -12,14 +13,15 @@ public class Game {
 
 
    public static ArrayList<SimpleRobot> robots;
+   public static Board gameBoard;
+   public static CardDeck deck;
 
     /**
      * Constructor method
      */
-    public Game(int numPlayers) {
+    public Game(int numPlayers, Board board) {
         robots = new ArrayList<>();
-
-
+        setup(board);
     }
 
     /**
@@ -28,8 +30,9 @@ public class Game {
      * - Give map to Board.java
      * - Create Program Card objects
     */
-    public static void setup() {
-
+    public static void setup(Board board) {
+        gameBoard = board;
+        deck = new CardDeck();
     }
 
     /**
@@ -60,6 +63,9 @@ public class Game {
      */
     public static void end() {
 
+    }
+    public CardDeck getDeck() {
+        return deck;
     }
 
     public void setNumPlayers(int numPlayers) {

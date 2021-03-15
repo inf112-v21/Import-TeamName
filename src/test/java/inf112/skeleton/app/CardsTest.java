@@ -7,9 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.cards.CardHand;
-import inf112.skeleton.app.cards.MovementCard;
-import inf112.skeleton.app.cards.RotationCard;
+import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -48,7 +46,7 @@ public class CardsTest {
     @Test
     public void moveOneForward() {
         Player player = new Player(new Vector2(2,2), textures, board);
-        MovementCard move1 = new MovementCard("Move1",1,  1 );
+        MovementCard move1 = new MovementCard(1, CardType.MOVE1,  1 );
         move1.action(tilePlayer, player);
         assertEquals(new Vector2(2,3), player.getPosition());
     }
@@ -56,7 +54,7 @@ public class CardsTest {
     @Test
     public void moveOneBack() {
         Player player = new Player(new Vector2(2,2), textures, board);
-        MovementCard move1 = new MovementCard("Moveback1",1,  -1 );
+        MovementCard move1 = new MovementCard(1,  CardType.BACK1,-1 );
         move1.action(tilePlayer, player);
         assertEquals(new Vector2(2,1), player.getPosition());
     }
@@ -64,17 +62,12 @@ public class CardsTest {
     @Test
     public void rotateWithClock() {
         Player player = new Player(new Vector2(2,2), textures, board);
-        RotationCard rotate1 = new RotationCard("Rotate with clock 1",1, 1 );
+        RotationCard rotate1 = new RotationCard(1, CardType.ROTATERIGHT,1 );
         rotate1.action(tilePlayer, player);
         assertEquals(Direction.EAST, player.getLookDirection());
     }
 
 
-    @Test
-    public void generateCardDeck() {
-        CardHand deck = new CardHand(9);
-
-    }
 
     @Test
     public void cardDeckSubtractNumCards() {
@@ -82,6 +75,12 @@ public class CardsTest {
         deck.subtractNumCardsDeck();
         assertEquals(8, deck.getNumCardsDeck());
 
+    }
+
+    @Test
+    public void generateCardDeck() {
+        CardDeck deck = new CardDeck();
+        assertEquals(18, deck.getAvailableCards(CardType.MOVE1));
     }
 
 }

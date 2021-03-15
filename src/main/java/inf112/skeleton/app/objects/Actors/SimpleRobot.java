@@ -5,9 +5,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
+import inf112.skeleton.app.game.Game;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.SimpleObject;
+import static inf112.skeleton.app.game.Game.gameBoard;
+
 
 import static inf112.skeleton.app.enums.Direction.NORTH;
 
@@ -18,12 +22,11 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     private final Board board;
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
-    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, Board board) {
+    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, Game game) {
         super(startpos);
-
-        this.board = board;
+        this.board = game.gameBoard;
         this.lookDirection = Direction.NORTH;
-        this.programSheet = new ProgramSheet();
+        this.programSheet = new ProgramSheet(game.getDeck());
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
@@ -111,7 +114,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         }
     }
 
-    public void dealCards() {this.programSheet.dealCards();}
+    public void dealCards(CardDeck deck) {this.programSheet.dealCards( deck);}
     @Override
     public ProgramSheet getProgramSheet() {
         return this.programSheet;

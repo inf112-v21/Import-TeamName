@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.CardVisual;
+import inf112.skeleton.app.cards.IProgramCard;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 
@@ -28,15 +30,15 @@ public class CardUI extends Actor {
 
 
     public void setUpCards(int w, int h) {
-        ArrayList<CardVisual> cardVisuals = deck.getVisuals();
-        for (CardVisual cardVisual : cardVisuals) {
+        ArrayList<SimpleProgramCard> potentialCards;
+        for (SimpleProgramCard card : potentialCards) {
             /*
 
 
              */
 
-            cardVisual.setSize(5,5);
-            cardVisual.setPosition(width + 7, height);
+            card.setSize(5,5);
+            card.setPosition(width + 7, height);
         }
     }
 

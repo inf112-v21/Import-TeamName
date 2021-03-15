@@ -205,7 +205,7 @@ public class GameScreen extends InputAdapter implements Screen {
         // game.getRobots()
 
         CardHand deck = new CardHand(9);
-        ArrayList<CardVisual> cardVisuals = deck.getVisuals();
+        ArrayList<CardVisual> cardVisuals = decpu.getVisuals();
         /**
          * Do something fantastic with carddeck
          */

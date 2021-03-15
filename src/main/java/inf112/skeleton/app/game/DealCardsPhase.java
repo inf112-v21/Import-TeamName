@@ -8,6 +8,7 @@ import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static inf112.skeleton.app.game.Game.deck;
 import static inf112.skeleton.app.game.Game.robots;
 
 /**
@@ -18,7 +19,7 @@ public class DealCardsPhase implements IPhase {
     @Override
     public void run() {
         //CardDeck deck = new CardDeck();
-        //shuffleCards();
+        deck.shuffleDeck();
         dealCards();
     }
 
@@ -41,16 +42,10 @@ public class DealCardsPhase implements IPhase {
      */
     private void dealCards() {
         for (SimpleRobot robot: robots) {
-            robot.getProgramSheet().dealCards();
+            robot.getProgramSheet().dealCards(deck);
         }
     }
 
-    /*
-    Deal cards plan
-        - Shuffle deck.
-        - If robot doesn't have a Damage token --> Deal 9 cards.
-                - If robot has and damage, give out 9 cards - damage taken.
-                        - If more than5 damage tokens --> See "Locking Register".
-     */
+
 
 }
