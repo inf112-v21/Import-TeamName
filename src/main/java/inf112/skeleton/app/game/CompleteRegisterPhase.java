@@ -30,9 +30,12 @@ public class CompleteRegisterPhase implements IPhase {
 
     }
 
+    /**
+     * Moves all conveyors, pushers if activated and rotates robots on Gear tiles.
+     */
     private void boardElementsMove() {
         /*
-        TODO: Implement player collision, accounting for player moveing, pushers and conveyors. See Rulebook page 5.
+        TODO: Implement player collision, accounting for player moving, pushers and conveyors. See Rulebook page 5.
              Player collision
                 - Collect all moves in a collection
                 - Check if two or more robots wants to go to same tile.
@@ -53,10 +56,13 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
 
+    /**
+     * The phase activating all lasers. Wall mounted and robots.
+     */
     private void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
-        //Fire lasers for all wallmounted lasers.
+        //Fire lasers for all wall mounted lasers.
         for (Laser laser : lasers) {
             fireLaser(laser.getPosition(), laser.getDirection(), laser.getStrength());
         }
@@ -69,6 +75,12 @@ public class CompleteRegisterPhase implements IPhase {
 
     }
 
+    /**
+     * Recursively simulates the laser moving in firing direction, stopping only if hitting wall, robot, or is out of bounds.
+     * @param currentPosOfLaser
+     * @param fireDirection
+     * @param nrOfLasers
+     */
     private void fireLaser(Vector2 currentPosOfLaser, Direction fireDirection, int nrOfLasers) {
         //If out of bounds.
         if (!gameBoard.isOnBoard(currentPosOfLaser)) return; //Laser is outside board.
