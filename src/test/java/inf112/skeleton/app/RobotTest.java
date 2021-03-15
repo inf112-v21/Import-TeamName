@@ -29,7 +29,6 @@ public class RobotTest {
 
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
-    private static Board board;
     private static MainGame game;
 
 
@@ -40,7 +39,8 @@ public class RobotTest {
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
         Assets.manager.finishLoading();
-        board = new Board(map);
+        game = new MainGame();
+        game.setup(map);
     }
 
 

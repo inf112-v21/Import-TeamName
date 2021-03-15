@@ -31,7 +31,6 @@ public class CardsTest {
 
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
-    private Board board;
     private MainGame game;
 
     @Before
@@ -41,8 +40,8 @@ public class CardsTest {
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
         Assets.manager.finishLoading();
-
-        this.board = new Board(map);
+        game = new MainGame();
+        game.setup(map);
     }
 
     @Test

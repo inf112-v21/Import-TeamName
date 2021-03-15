@@ -55,6 +55,7 @@ public abstract class SimpleProgramCard implements IProgramCard {
             case MOVE1: texture = Assets.manager.get(Assets.Move1Card);  break;
             case MOVE2: texture = Assets.manager.get(Assets.Move2Card); break;
             case MOVE3: texture = Assets.manager.get(Assets.Move3Card); break;
+            case BACK1: texture = Assets.manager.get(Assets.BackUpCard); break;
             case ROTATELEFT: texture = Assets.manager.get(Assets.RotateLeftCard); break;
             case ROTATERIGHT: texture = Assets.manager.get(Assets.RotateRightCard); break;
             case UTURN: texture = Assets.manager.get(Assets.UTurnCard); break;
