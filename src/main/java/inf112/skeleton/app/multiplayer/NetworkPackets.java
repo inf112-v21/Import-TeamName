@@ -17,4 +17,6 @@ public class NetworkPackets {
 
     }
 
+    //implement the classes for use in RRClient/RRServer here
+
 }
