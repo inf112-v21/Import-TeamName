@@ -18,7 +18,7 @@ public class DealCardsPhase implements IPhase {
     @Override
     public void run() {
         //CardDeck deck = new CardDeck();
-        shuffleCards();
+        //shuffleCards();
         dealCards();
     }
 

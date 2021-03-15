@@ -36,16 +36,16 @@ public class CardHand {
     public void generateCardDeck() {
         for (CardType type : chosenCardTypes) {
             if (type.equals(CardType.MOVE1)) {
-                    cards.add(new MovementCard("Move 1 card", 1, 1));
-                    cardVisuals.add(new CardVisual(CardType.MOVE1));
-            }
-            else if (type.equals(CardType.MOVE1)) {
+                cards.add(new MovementCard("Move 1 card", 1, 1));
+                cardVisuals.add(new CardVisual(CardType.MOVE1));
+            } else if (type.equals(CardType.MOVE1)) {
                 cards.add(new MovementCard("Move 2 card", 1, 2));
                 cardVisuals.add(new CardVisual(CardType.MOVE2));
             }
             /**
              * Continue
              */
+
         }
     }
 
