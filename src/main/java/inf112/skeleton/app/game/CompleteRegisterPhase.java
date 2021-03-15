@@ -54,12 +54,37 @@ public class CompleteRegisterPhase implements IPhase {
 
 
     private void lasersFire() {
-        /*
-        TODO: Implement laser fire by both Robots and laserWalls.
-            - All lasers fire, lasers are only stopped by walls. and robots if hit?
-         */
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
+        //Fire lasers for all wallmounted lasers.
+        for (Laser laser : lasers) {
+            fireLaser(laser.getPosition(), laser.getDirection(), laser.getStrength());
+        }
+
+        //Fire laser for robots in their lookDirection
+        for (SimpleRobot robot : robots) {
+            Vector2 nextTile = Direction.goDirection(robot.getPosition(),robot.getLookDirection()); //Fire from next tile. Prevents robot hitting itself.
+            fireLaser(nextTile, robot.getLookDirection(), 1);
+        }
+
+    }
+
+    private void fireLaser(Vector2 currentPosOfLaser, Direction fireDirection, int nrOfLasers) {
+        //If out of bounds.
+        if (!gameBoard.isOnBoard(currentPosOfLaser)) return; //Laser is outside board.
+
+        //Check if robot is on laser. If so -> Damage robot.
+        for (SimpleRobot robot : robots) {
+            if (robot.getPosition().equals(currentPosOfLaser)) {
+                //Robot is hit by laser. Take damage
+                robot.getProgramSheet().addDamage(nrOfLasers); //TODO: Implement how much damage robot should take based on rules.
+                return; //Robot is hit, stop lasers.
+            }
+        }
+
+        //Wall collision. If cannot leave current tile, or cannot go to next tile, return.
+        if (!gameBoard.canGoToTile(currentPosOfLaser, fireDirection)) return;
+        fireLaser(Direction.goDirection(currentPosOfLaser, fireDirection), fireDirection, nrOfLasers); //Go to next tile
     }
 
 
