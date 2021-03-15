@@ -12,7 +12,6 @@ public class RRServer {
     //Server Object
     Server server;
 
-    //private BoardState/Board/GameMap board;
 
 
     public RRServer() throws IOException {
@@ -34,8 +33,13 @@ public class RRServer {
         server.bind(NetworkPackets.tcpPort, NetworkPackets.udpPort);
 
         server.addListener(new Listener() {
+            public void received(Connection c, Object packet) {
+                RRConnection connection = (RRConnection) c; //every connection is of RRConnection, so this should be fine.
 
-            //fill here, what server should do stuff.
+                //fill in with if packet instanceof object/packet
+                //if (packet instanceof )
+            }
+
 
         });
 
@@ -45,18 +49,19 @@ public class RRServer {
         System.out.println("Server is up and running"); //yet another test/confirmation
     }
 
-    //is run when a packet is received.
-    public void received(Connection c, Object packet) { //should shove this into listener, but no idea what to place in listener atm.
-        RRConnection connection = (RRConnection) c; //every connection is of RRConnection, so this should be fine.
-    }
     public void disconnected (Connection c) {
         RRConnection connection = (RRConnection) c;
         //do something here, to be implemented, maybe an if connection.name != null or something, do {message}
         System.out.println("A client disconnected."); //testing
     }
 
-    static class RRConnection extends Connection { //could also use a static hashmap to be honest.
+    static class RRConnection extends Connection {
         public String name;
+    }
+
+    public void ceaseServer() {
+        server.close();
+        server.stop();
     }
 
 
