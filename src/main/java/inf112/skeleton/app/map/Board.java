@@ -175,6 +175,15 @@ public class Board {
     public boolean isPosAConveyor(Vector2 pos) {return getNonWallTileOnPos(pos) instanceof Conveyor; }
 
     /**
+     * Checks if pos is a RepairSite.
+     * @param pos
+     * @return
+     */
+    public boolean isPosARepaiSite(Vector2 pos) {
+        return getNonWallTileOnPos(pos) instanceof RepairSite;
+    }
+
+    /**
      * Checks if pos os a Pusher
      * @param pos
      * @return
