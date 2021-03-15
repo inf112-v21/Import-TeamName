@@ -1,8 +1,7 @@
 package inf112.skeleton.app.cards;
-import java.util.Random;
 import java.util.ArrayList;
 
-import static inf112.skeleton.app.game.Game.deck;
+import static inf112.skeleton.app.game.MainGame.deck;
 
 /**
  * Class that handles all cards a robot is dealt
@@ -23,7 +22,7 @@ public class CardHand {
     }
 
 
-    public void getCardsFromDeck() throws Exception {
+    public void getCardsFromDeck() {
         chosenCardTypes = new ArrayList<>();
         for (int i = 0; i < numCards; i++) { chosenCardTypes.add(deck.dealACard()); }
     }

@@ -5,11 +5,10 @@ package inf112.skeleton.app.game;
 import inf112.skeleton.app.cards.IProgramCard;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
-import java.awt.*;
 import java.util.ArrayList;
 
-import static inf112.skeleton.app.game.Game.deck;
-import static inf112.skeleton.app.game.Game.robots;
+import static inf112.skeleton.app.game.MainGame.deck;
+import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * Creates a new deck of cards. Shuffle deck, then deal cards to the players.

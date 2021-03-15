@@ -38,7 +38,7 @@ Kanban har fungert bra sammen med parprogrammering hvor parene har kontroll over
 Gruppen opplever arbeidsfordelingen som så jevn det er realistisk å få til. Alle har forskjellige styrker og erfaringer, samt forskjellige nivåer innen programmering. Tidlig i prosjektet brukte alle medlemmene tid på å planlegge struktur og arve relasjon.
 Mange timer er også lagt ned i research og planlegging før vi gikk igang med å programmere noe. Dette vises dårlig, og ofte ikke i det hele tatt, i commit historikken.
 
-Vi har nådd utviklingsstadiet der en forandring, implementasjon eller tillegg i koden kan ta alt fra sekunder, til timer, alt etter hva som blir skrevet. Gruppen har lite erfaring med game-engine og GUI. Vi opplever det som utfordrende arbeid som krever svært mye lesing og googling, og resulterer i lite kode skrevet. Dette resulterer i ujevn commit statistikk, selv om mengden timer som er lagt inn i prosjektet er akseptabelt likt.
+Vi har nådd utviklingsstadiet der en forandring, implementasjon eller tillegg i koden kan ta alt fra sekunder, til timer, alt etter hva som blir skrevet. Gruppen har lite erfaring med mainGame-engine og GUI. Vi opplever det som utfordrende arbeid som krever svært mye lesing og googling, og resulterer i lite kode skrevet. Dette resulterer i ujevn commit statistikk, selv om mengden timer som er lagt inn i prosjektet er akseptabelt likt.
 
 Tidlig i prosjektet var mye av arbeidet “grunt-work”, for eksmepel Tiles.java og TileManager.java. Samt oppretting av klasser og filer. Arbeid som er enkelt og gir godt utslag på statistikken. Det har blitt brukt ulik commit konvensjon, noen foretrekker små og hyppige, andre større og færre.
 

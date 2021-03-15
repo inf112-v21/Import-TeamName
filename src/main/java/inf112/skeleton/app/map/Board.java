@@ -251,7 +251,7 @@ public class Board {
 
     /**
      * Checks if a position is out of bounds or not.
-     * @param Vector2 posPlayer
+     * @param  posPlayer
      * @return If on board or not
      */
     public boolean isOnBoard(Vector2 posPlayer) {

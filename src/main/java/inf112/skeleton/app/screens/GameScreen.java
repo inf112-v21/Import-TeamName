@@ -25,6 +25,7 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.CardVisual;
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 
@@ -47,6 +48,8 @@ public class GameScreen extends InputAdapter implements Screen {
     // Layers on the map
     public TiledMapTileLayer tilePlayer;
 
+
+    MainGame game;
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera gameCamera, uiCamera;
 
@@ -64,13 +67,14 @@ public class GameScreen extends InputAdapter implements Screen {
     int height;
 
     int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.2);
-    RoboRally game;
+    private RoboRally switcher;
 
-    Board board;
+    static Board board;
 
 
-    public GameScreen(RoboRally game, Stage stage, StretchViewport viewPort, boolean debugMode) {
-        this.game = game;
+    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode) {
+        game = new MainGame();
+        this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
         this.debugMode = debugMode;
@@ -83,7 +87,9 @@ public class GameScreen extends InputAdapter implements Screen {
 
         // Load map and get board data
         map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
-        this.board = new Board(map); // Get map objects
+        //this.board = new Board(map); // Get map objects
+        game.setup(map);
+        this.board = game.getGameBoard();
         //Set viewPort dimensions to dimensions of board
         viewPortHeight = (int) board.getBoardDimensions().y;
         viewPortWidth = (int) board.getBoardDimensions().x;
@@ -114,7 +120,7 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        player = new Player(startPos, textures, board);
+        player = new Player(startPos, textures, game);
     }
 
     /**
@@ -169,7 +175,7 @@ public class GameScreen extends InputAdapter implements Screen {
         int yPos = (int) playerPos.y;
 
         //Win condition
-        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { game.setWinScreen(); } // As of now, player wins when visting all flags.
+        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { switcher.setWinScreen(); } // As of now, player wins when visting all flags.
 
         //Player is on a flag. Change texture to win texture
         if (board.isPosAFlag(playerPos)) {
@@ -204,15 +210,12 @@ public class GameScreen extends InputAdapter implements Screen {
          */
         // game.getRobots()
 
-        CardHand deck = new CardHand(9);
-        ArrayList<CardVisual> cardVisuals = decpu.getVisuals();
+        CardHand deck = new CardHand(9, game.getDeck());
+
         /**
          * Do something fantastic with carddeck
          */
-        for (CardVisual visual : cardVisuals) {
-            //uiStage.addActor(visual.getCard());
-            //visual.getCard().addListener(new InputListener()
-        }
+
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
         }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.enums.Direction;
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
@@ -31,6 +32,7 @@ public class CardsTest {
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
     private Board board;
+    private MainGame game;
 
     @Before
     public void initalise() {
@@ -45,7 +47,7 @@ public class CardsTest {
 
     @Test
     public void moveOneForward() {
-        Player player = new Player(new Vector2(2,2), textures, board);
+        Player player = new Player(new Vector2(2,2), textures, game);
         MovementCard move1 = new MovementCard(1, CardType.MOVE1,  1 );
         move1.action(tilePlayer, player);
         assertEquals(new Vector2(2,3), player.getPosition());
@@ -53,7 +55,7 @@ public class CardsTest {
 
     @Test
     public void moveOneBack() {
-        Player player = new Player(new Vector2(2,2), textures, board);
+        Player player = new Player(new Vector2(2,2), textures, game);
         MovementCard move1 = new MovementCard(1,  CardType.BACK1,-1 );
         move1.action(tilePlayer, player);
         assertEquals(new Vector2(2,1), player.getPosition());
@@ -61,7 +63,7 @@ public class CardsTest {
 
     @Test
     public void rotateWithClock() {
-        Player player = new Player(new Vector2(2,2), textures, board);
+        Player player = new Player(new Vector2(2,2), textures, game);
         RotationCard rotate1 = new RotationCard(1, CardType.ROTATERIGHT,1 );
         rotate1.action(tilePlayer, player);
         assertEquals(Direction.EAST, player.getLookDirection());
@@ -71,7 +73,7 @@ public class CardsTest {
 
     @Test
     public void cardDeckSubtractNumCards() {
-        CardHand deck = new CardHand(9);
+        CardHand deck = new CardHand(9, game.getDeck());
         deck.subtractNumCardsDeck();
         assertEquals(8, deck.getNumCardsDeck());
 

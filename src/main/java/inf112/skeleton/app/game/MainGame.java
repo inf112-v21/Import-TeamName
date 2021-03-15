@@ -1,5 +1,6 @@
 package inf112.skeleton.app.game;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.IActor;
@@ -9,7 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class Game {
+public class MainGame {
 
 
    public static ArrayList<SimpleRobot> robots;
@@ -19,9 +20,8 @@ public class Game {
     /**
      * Constructor method
      */
-    public Game(int numPlayers, Board board) {
+    public MainGame() {
         robots = new ArrayList<>();
-        setup(board);
     }
 
     /**
@@ -30,9 +30,9 @@ public class Game {
      * - Give map to Board.java
      * - Create Program Card objects
     */
-    public static void setup(Board board) {
-        gameBoard = board;
+    public static void setup(TiledMap map) {
         deck = new CardDeck();
+        gameBoard = new Board(map);
     }
 
     /**
@@ -64,9 +64,9 @@ public class Game {
     public static void end() {
 
     }
-    public CardDeck getDeck() {
-        return deck;
-    }
+
+    public Board getGameBoard() { return gameBoard; }
+    public CardDeck getDeck() { return deck; }
 
     public void setNumPlayers(int numPlayers) {
         for (int i = 0; i < numPlayers; i++) {

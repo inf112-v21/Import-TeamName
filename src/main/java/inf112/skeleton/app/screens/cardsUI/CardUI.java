@@ -30,7 +30,7 @@ public class CardUI extends Actor {
 
 
     public void setUpCards(int w, int h) {
-        ArrayList<SimpleProgramCard> potentialCards;
+        ArrayList<SimpleProgramCard> potentialCards = deck.getProgramCards();
         for (SimpleProgramCard card : potentialCards) {
             /*
 

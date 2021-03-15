@@ -8,17 +8,14 @@ import java.util.*;
  */
 public class CardDeck {
 
-    private ArrayList<SimpleProgramCard> inUseCards;
-    //private ArrayList<SimpleProgramCard> availableCards;
+
     LinkedHashMap<CardType, Integer> availableCards;
 
-    LinkedList<CardType> list;
+    LinkedList<CardType> list; // List used for shuffling cardTypes
 
     public CardDeck() {
-        inUseCards = new ArrayList<>();
         availableCards = new LinkedHashMap<>();
-
-
+        startCards();
     }
 
     /**
@@ -38,28 +35,39 @@ public class CardDeck {
      * Shuffle a deck
      */
     public void shuffleDeck() {
+
         list = new LinkedList(availableCards.keySet());
+
         Collections.shuffle(list);
-        Map<CardType, Integer> shuffledCards = new LinkedHashMap();
+        LinkedHashMap<CardType, Integer> shuffledCards = new LinkedHashMap();
         list.forEach(k -> shuffledCards.put(k, availableCards.get(k)));
-        availableCards = (LinkedHashMap<CardType, Integer>) shuffledCards;
+        availableCards = shuffledCards;
 
     }
 
-    public CardType dealACard() throws Exception {
+    /**
+     * Deals a card from the available cards.
+     * Shuffles cardtypes before proceeding
+     * @return a single CardType, used to construct a full cardhand
+     */
+    public CardType dealACard()  {
+        shuffleDeck();
         CardType type = list.pop();
         int numCards = availableCards.get(type);
         while(numCards <= 0) {
-            if (list.size() <= 0) throw new Exception("No cards left");
-            type = list.pop();
-            numCards = availableCards.get(type);
+            //if (list.size() <= 0) throw new Exception("No cards left");
+            try {
+                type = list.pop();
+                numCards = availableCards.get(type);
+            }
+            catch(Exception e) {
+                System.out.println("No cards left");
+            }
         }
         availableCards.put(type, availableCards.get(type)-1);
         return (type);
     }
 
-    public int getAvailableCards(CardType type) {
-        return availableCards.get(type);
-    }
+    public int getAvailableCards(CardType type) { return availableCards.get(type); }
 
 }

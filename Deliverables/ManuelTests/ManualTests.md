@@ -1,25 +1,25 @@
 ## Manual Tests
-This document contains all manual tests for our version of the RoboRally game.
+This document contains all manual tests for our version of the RoboRally mainGame.
 
 # Graphics load
-The graphics of the game loads when the game is launched (05.03.21)
-1. Launch game.
-2. In the main menu screen: click on the green button to launch the game screen.
+The graphics of the mainGame loads when the mainGame is launched (05.03.21)
+1. Launch mainGame.
+2. In the main menu screen: click on the green button to launch the mainGame screen.
 
-If you see a game screen with a board with a player figure on, the test is successful. Otherwise, it failed.
+If you see a mainGame screen with a board with a player figure on, the test is successful. Otherwise, it failed.
 
-# Exit game
-Closing the game window. (05.03.21)
-1. Launch game.
-2. In the main menu screen: click on the green button to launch the game screen.
-3. In the game screen: click on the x in the top right corner. 
+# Exit mainGame
+Closing the mainGame window. (05.03.21)
+1. Launch mainGame.
+2. In the main menu screen: click on the green button to launch the mainGame screen.
+3. In the mainGame screen: click on the x in the top right corner. 
 
-If the game closes, the test is successful. Otherwise, it failed.
+If the mainGame closes, the test is successful. Otherwise, it failed.
 
 # Movement of player
 Move the player figure one by clicking on the cards (05.03.21)
-1. Launch game.
-2. In the main menu screen: click on the green button to launch the game screen.
-3. In the game screen: click on the move1 card.
+1. Launch mainGame.
+2. In the main menu screen: click on the green button to launch the mainGame screen.
+3. In the mainGame screen: click on the move1 card.
 
 If the player figure moves one tile to the north, the test is successful. Otherwise, it failed.

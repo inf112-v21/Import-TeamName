@@ -12,11 +12,11 @@
 
 ## What is Roborally?
 Roborally is a boardgame developed in 1985 by Richard Garfield (Creator of Magic the Gathering), published in 1994 by Wizards of the Coast. 
-This repo is a digital version of the original game, using the old ruleset from 2005.
+This repo is a digital version of the original mainGame, using the old ruleset from 2005.
 
 The rules can be found here: [Roborally Rules 2005](https://www.fgbradleys.com/rules/rules4/Robo%20Rally%20-%20rules.pdf)
 
-Wiki of the game: [Roborally Wiki](https://www.wikiwand.com/en/RoboRally)
+Wiki of the mainGame: [Roborally Wiki](https://www.wikiwand.com/en/RoboRally)
 ## Project Setup
 
 ### Requirements
@@ -39,11 +39,11 @@ Specify `pom.xml` as the configuration file for Maven.
 
 Run the project, the main class is located at `src/main/java/inf112/skeleton/app/Main.java`, from Project root.
 
-If executed properly you are presented with the main screen of the game.
+If executed properly you are presented with the main screen of the mainGame.
 
 ## How to play
 * Run main.java
-* A new screen appears, click on the green icon to start the game. 
+* A new screen appears, click on the green icon to start the mainGame. 
 * Move around with W,A,S,D (if debug mode turned on in the Main class)
 * OR, click on the cards represented at the bottom of the screen (if debug mode off)
 
@@ -51,12 +51,12 @@ Should look like this:
 ![Picture of current roboRally](assets/Images/pictureOfCurrentGame.JPG)
 
 ### Tests
-The game uses Junit to automatically test the game.
+The mainGame uses Junit to automatically test the mainGame.
 
-Manual tests for GUI and game can be found under `Deliverables/ManuelTests/ManuelTests.md`,
+Manual tests for GUI and mainGame can be found under `Deliverables/ManuelTests/ManuelTests.md`,
 
 ### Debug
-The game has a limited debug mode. It can be toggled under `src/main/java/inf112/skeleton/app/Main.java`.
+The mainGame has a limited debug mode. It can be toggled under `src/main/java/inf112/skeleton/app/Main.java`.
 
 The debug mode disables moving by clicking on the cards, and instead uses WASD.
 

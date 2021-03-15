@@ -9,8 +9,8 @@ import inf112.skeleton.app.objects.TileObjects.Gear;
 import inf112.skeleton.app.objects.TileObjects.Laser;
 import inf112.skeleton.app.objects.TileObjects.Pusher;
 import java.util.List;
-import static inf112.skeleton.app.game.Game.robots;
-import static inf112.skeleton.app.game.Game.gameBoard;
+import static inf112.skeleton.app.game.MainGame.robots;
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 
 public class CompleteRegisterPhase implements IPhase {
 
