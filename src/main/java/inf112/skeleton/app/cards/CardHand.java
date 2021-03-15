@@ -28,7 +28,6 @@ public class CardHand {
         chosenCardTypes = new ArrayList<>();
         CardType cardTypes[] = CardType.values();
         for (int i = 0; i < numCards; i++) {
-            //if (chosenCardTypes.size() == numCards) break;
             int randomNumber = rand.nextInt(numCards);
             chosenCardTypes.add(cardTypes[randomNumber]);
         }
@@ -36,16 +35,21 @@ public class CardHand {
 
     public void generateCardDeck() {
         for (CardType type : chosenCardTypes) {
-            /**
-             * switch statements
-             */
-            switch:
-                case(type.equals(CardType.MOVE1)) {
-                cards.add(new MovementCard("Move 1 card", 1, 1));
-                cardVisuals.add(new CardVisual(CardType.MOVE1));
+            if (type.equals(CardType.MOVE1)) {
+                    cards.add(new MovementCard("Move 1 card", 1, 1));
+                    cardVisuals.add(new CardVisual(CardType.MOVE1));
             }
+            else if (type.equals(CardType.MOVE1)) {
+                cards.add(new MovementCard("Move 2 card", 1, 2));
+                cardVisuals.add(new CardVisual(CardType.MOVE2));
+            }
+            /**
+             * Continue
+             */
         }
     }
+
+
 
     public ArrayList<SimpleProgramCard> getProgramCards() {return cards;}
     public ArrayList<CardVisual> getVisuals() { return cardVisuals;}
