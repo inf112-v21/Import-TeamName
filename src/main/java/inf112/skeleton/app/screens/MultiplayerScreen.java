@@ -9,14 +9,17 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.multiplayer.NetworkPackets;
+
+import java.net.InetAddress;
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -85,8 +88,6 @@ public class MultiplayerScreen implements Screen {
 
 
 
-
-
         stage.addActor(assignIP);
         stage.addActor(joinGame);
         stage.addActor(hostGame);
@@ -143,7 +144,14 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void find() {
-
+        Client client = new Client();
+        client.start();
+        InetAddress find = client.discoverHost(NetworkPackets.udpPort, 5000);
+        if (find != null) {
+            assignIP.setText(find.getHostAddress());
+        }
+        client.stop();
+        client.close();
     }
 
     @Override
