@@ -167,7 +167,6 @@ public class GameScreen extends InputAdapter implements Screen {
         uiCamera.update();
 
         Vector2 playerPos = player.getPosition();
-        System.out.println(playerPos);
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
