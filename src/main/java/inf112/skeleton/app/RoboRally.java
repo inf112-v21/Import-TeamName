@@ -48,12 +48,14 @@ public class RoboRally extends Game {
     }
 
     public void debugModeOn() {debugMode = true; }
+
     @Override
     public void dispose () {
         batch.dispose();
         shapeRenderer.dispose();
         font.dispose();
     }
+
     public void setGameScreen() {
         setScreen(gameScreen);
     }

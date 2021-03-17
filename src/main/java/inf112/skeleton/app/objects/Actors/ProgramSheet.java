@@ -1,11 +1,14 @@
 package inf112.skeleton.app.objects.Actors;
 
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
+import inf112.skeleton.app.cards.Register;
 
 public class ProgramSheet {
 
 
-    private CardHand carddeck;
+    private CardHand hand;
+    private Register register;
     private int damageTokens;
     private int lifeTokens;
     private int flags;
@@ -18,7 +21,7 @@ public class ProgramSheet {
         powerDown = false;
         flags = 0;
         dead = false;
-        carddeck = new CardHand(9);
+        hand = new CardHand(9);
     }
 
 
@@ -33,14 +36,14 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        carddeck.setNumCardsDeck(9 - damageTokens);
+        hand.setNumCardsDeck(9 - damageTokens);
     }
 
     /**
      * Called every round for its robot
      */
-    public void dealCards() {
-        carddeck = new CardHand(9 - damageTokens);
+    public void dealCards(CardDeck deck) {
+        hand = new CardHand(9 - damageTokens);
 
     }
 
@@ -56,7 +59,9 @@ public class ProgramSheet {
         }
     }
 
-    public CardHand getCardDeck() {return this.carddeck;}
+    public Register getRegister() {return this.register;}
+
+    public CardHand getCardHand() {return this.hand;}
 
     public int getNumberOfFlags() {return flags;}
 

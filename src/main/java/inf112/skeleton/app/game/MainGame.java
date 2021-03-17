@@ -1,25 +1,32 @@
 package inf112.skeleton.app.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.TileObjects.DockingBay;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class Game {
+public class MainGame {
 
 
    public static ArrayList<SimpleRobot> robots;
+   public static Board gameBoard;
+   public static CardDeck deck;
 
     /**
      * Constructor method
      */
-    public Game(int numPlayers) {
+    public MainGame() {
         robots = new ArrayList<>();
-
-
     }
 
     /**
@@ -28,8 +35,9 @@ public class Game {
      * - Give map to Board.java
      * - Create Program Card objects
     */
-    public static void setup() {
-
+    public static void setup(TiledMap map) {
+        deck = new CardDeck();
+        gameBoard = new Board(map);
     }
 
     /**
@@ -62,14 +70,28 @@ public class Game {
 
     }
 
+    public Board getGameBoard() { return gameBoard; }
+    public CardDeck getDeck() { return deck; }
+
+    /**
+     * TODO: Discuss how to add players.
+     * @param numPlayers
+     */
     public void setNumPlayers(int numPlayers) {
+        List<DockingBay> startPositions = gameBoard.getDockingBays();
+        TextureRegion[][] textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);
+
         for (int i = 0; i < numPlayers; i++) {
-            /**
-             * Set to correct start positions
-             */
-            //Player robot = new Player()
-            // robots.add(robot);
+            Player robot = new Player(startPositions.get(i).getPosition(), textures);
+            robots.add(robot);
         }
+    }
+
+    /**
+     * Temporary.
+     */
+    public void addPlayer(Player player) {
+        robots.add(player);
     }
 
 }

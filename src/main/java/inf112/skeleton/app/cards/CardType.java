@@ -8,8 +8,6 @@ public enum CardType {
     MOVE2,
     MOVE3,
     BACK1,
-    BACK2,
-    BACK3,
     ROTATERIGHT,
     ROTATELEFT,
     UTURN
