@@ -174,6 +174,7 @@ public class MultiplayerScreen implements Screen {
         stage.dispose();
         skin.dispose();
         batch.dispose();
+        title.dispose();
         Gdx.input.setInputProcessor(null);
     }
 
