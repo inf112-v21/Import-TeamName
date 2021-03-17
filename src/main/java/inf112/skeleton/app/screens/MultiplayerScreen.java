@@ -62,14 +62,23 @@ public class MultiplayerScreen implements Screen {
 
 
         //Textfield UI element
-        assignIP = new TextField("Enter server ip here: ", skin);
-        assignIP.setWidth(300);
+        assignIP = new TextField("Enter server ip here", skin);
+        assignIP.setWidth(400);
         assignIP.setHeight(40);
-        assignIP.setX(width - assignIP.getWidth());
-        assignIP.setY(height - assignIP.getHeight());
+
+        //!!! mostly for for UI element's x-axis centeralization.
+        assignIP.setX(width/2 - assignIP.getWidth()/2);
+
+        //!!!height - UI element's height, then subtract some number, this makes it so it always scales with top of screen.
+        assignIP.setY(height - assignIP.getHeight() - 300);
+
 
         //Button UI elements, maybe integrate with the button package later
         final Button joinGame = new TextButton("Join", skin);
+        joinGame.setWidth(400);
+        joinGame.setHeight(200);
+        joinGame.setX(width/2 - joinGame.getWidth()/2);
+        joinGame.setY(height - joinGame.getHeight());
 
         final Button hostGame = new TextButton("Host", skin);
 
@@ -85,24 +94,26 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(findGame);
 
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
-            @Override
             public void keyTyped(TextField textField, char c) {
                 if (c == '\n') textField.getOnscreenKeyboard().show(false);
             }
         });
 
         joinGame.addListener(new ClickListener() {
+            @Override
            public void clicked(InputEvent event, float x, float y){
                join();
            }
         });
 
         hostGame.addListener(new ClickListener() {
+            @Override
             public void clicked(InputEvent event, float x, float y){
                 host();
             }
         });
         findGame.addListener(new ClickListener() {
+            @Override
             public void clicked(InputEvent event, float x, float y){
                 find();
             }
@@ -123,9 +134,6 @@ public class MultiplayerScreen implements Screen {
         stage.draw();
         stage.act();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.ALT_LEFT)) {
-            host();
-        }
     }
 
     private void join() {
@@ -142,6 +150,8 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        stage.getCamera().viewportHeight = height;
+        stage.getCamera().viewportWidth = width;
     }
 
     @Override
