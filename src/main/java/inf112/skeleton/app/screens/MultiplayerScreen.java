@@ -16,23 +16,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.assetManager.Assets;
 
 import static com.badlogic.gdx.Gdx.gl;
 
 public class MultiplayerScreen implements Screen {
 
+    RoboRally game;
 
     private TextField assignIP;
-
-    StretchViewport viewPort;
+    private SpriteBatch batch;
+    private Stage stage;
+    private Skin skin;
+    private Texture title;
 
     float width;
     float height;
-    RoboRally game;
-
-    SpriteBatch batch;
-    Stage stage;
-    Skin skin;
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
@@ -46,6 +45,7 @@ public class MultiplayerScreen implements Screen {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
+        title = new Texture("Images/buttons/simpleButton.png");
         stage = new Stage(new StretchViewport(width, height));
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
@@ -119,8 +119,7 @@ public class MultiplayerScreen implements Screen {
         gl.glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.font.draw(game.batch, "WELCOME TO ROBORALLY", alignToAxisX, height*0.2f);
-      //  game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
+        game.batch.draw(title, alignToAxisX - title.getWidth()/10, height*0.7f,width*0.3f, height*0.3f);
         game.batch.end();
 
         stage.draw();
