@@ -21,10 +21,7 @@ import static com.badlogic.gdx.Gdx.gl;
 
 public class MultiplayerScreen implements Screen {
 
-    private static final int PLAY_BUTTON_HEIGHT = 150;
-    private static final int PLAY_BUTTON_WIDTH = 300;
-    private static final int EXIT_BUTTON_HEIGHT = 150;
-    private static final int EXIT_BUTTON_WIDTH = 300;
+
     private TextField assignIP;
 
     StretchViewport viewPort;
@@ -33,22 +30,14 @@ public class MultiplayerScreen implements Screen {
     float height;
     RoboRally game;
 
-    Texture exitButtonPressed;
-    Texture exitButtonUnpressed;
-    Texture playButtonPressed;
-    Texture playButtonUnpressed;
     SpriteBatch batch;
     Stage stage;
     Skin skin;
 
-    int alignToAxisX = Gdx.graphics.getWidth() / 2;
+    int alignToAxisX = Gdx.graphics.getWidth()/2;
 
     public MultiplayerScreen (RoboRally game) {
         this.game = game;
-        playButtonPressed = new Texture("Images/buttons/play_button_pressed.png");
-        playButtonUnpressed = new Texture("Images/buttons/play_button_unpressed.png");
-        exitButtonPressed = new Texture("Images/buttons/exit_button_pressed.png");
-        exitButtonUnpressed = new Texture("Images/buttons/exit_button_unpressed.png");
     }
 
 
@@ -63,24 +52,27 @@ public class MultiplayerScreen implements Screen {
 
         //Textfield UI element
         assignIP = new TextField("Enter server ip here", skin);
-        assignIP.setWidth(400);
-        assignIP.setHeight(40);
+        assignIP.setWidth(width*0.33f);
+        assignIP.setHeight(height*0.04f);
 
-        //!!! mostly for for UI element's x-axis centeralization.
-        assignIP.setX(width/2 - assignIP.getWidth()/2);
+                //!!! mostly for for UI element's x-axis centeralization.
+        assignIP.setX(alignToAxisX - assignIP.getWidth()/2);
 
-        //!!!height - UI element's height, then subtract some number, this makes it so it always scales with top of screen.
-        assignIP.setY(height - assignIP.getHeight() - 300);
+                //!!!height - UI element's height, then subtract some number,
+                // this makes it so it always scales from top of screen taking into account button's size.
+        assignIP.setY(height - assignIP.getHeight() -height*0.34f);
 
 
         //Button UI elements, maybe integrate with the button package later
         final Button joinGame = new TextButton("Join", skin);
-        joinGame.setWidth(400);
-        joinGame.setHeight(200);
-        joinGame.setX(width/2 - joinGame.getWidth()/2);
-        joinGame.setY(height - joinGame.getHeight());
+        joinGame.setWidth(width*0.40f);
+        joinGame.setHeight(height*0.10f);
+        joinGame.setX(alignToAxisX - joinGame.getWidth()/2);
+        joinGame.setY(height - joinGame.getHeight()-height*0.40f);
 
         final Button hostGame = new TextButton("Host", skin);
+        hostGame.setWidth(width*0.40f);
+
 
         final Button findGame = new TextButton("Find", skin);
 
@@ -127,7 +119,7 @@ public class MultiplayerScreen implements Screen {
         gl.glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.font.draw(game.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
+        game.font.draw(game.batch, "WELCOME TO ROBORALLY", alignToAxisX, height*0.2f);
       //  game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
         game.batch.end();
 
