@@ -23,7 +23,7 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
     private void revealProgramCards() {
-
+        //TODO: Is this 'nice to have'? Maybe just print to console.
     }
 
     private void executeProgramCards() {
@@ -79,7 +79,7 @@ public class CompleteRegisterPhase implements IPhase {
      * Recursively simulates the laser moving in firing direction, stopping only if hitting wall, robot, or is out of bounds.
      * @param currentPosOfLaser
      * @param fireDirection
-     * @param nrOfLasers
+     * @param nrOfLasers, differentiate single and double lasers.
      */
     private void fireLaser(Vector2 currentPosOfLaser, Direction fireDirection, int nrOfLasers) {
         //If out of bounds.

@@ -6,9 +6,9 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.SimpleObject;
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 
 public abstract class SimpleRobot extends SimpleObject implements IActor {
 
@@ -17,9 +17,9 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     private final Board board;
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
-    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, MainGame mainGame) {
+    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture) {
         super(startpos);
-        this.board = mainGame.getGameBoard();
+        this.board = gameBoard;
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
