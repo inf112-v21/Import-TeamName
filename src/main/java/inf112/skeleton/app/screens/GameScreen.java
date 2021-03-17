@@ -194,11 +194,18 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
         // Generate cards
         ImageButton move1Card = new MovementCard(0,  CardType.MOVE1).getCardButton();
+        System.out.println(move1Card);
         ImageButton rotateRight = new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
         ImageButton rotateLeft =  new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
 
         move1Card.setSize(5,5);
+        rotateRight.setSize(5,5);
+        rotateLeft.setSize(5,5);
+
         move1Card.setPosition(0,0);
+        rotateRight.setPosition(4f,0);
+        rotateLeft.setPosition(8f,0);
+
         uiStage.addActor(move1Card);
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);
