@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
@@ -56,14 +58,28 @@ public class MultiplayerScreen implements Screen {
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 
-        assignIP = new TextField("enter server ip here: ", skin);
+        //Textfield UI element
+        assignIP = new TextField("Enter server ip here: ", skin);
         assignIP.setWidth(300);
         assignIP.setHeight(40);
         assignIP.setX(width - assignIP.getWidth());
         assignIP.setY(height - assignIP.getHeight());
 
+        //Button UI elements, maybe integrate with the button package later
+        final Button joinGame = new TextButton("Join", skin);
+
+        final Button hostGame = new TextButton("Host", skin);
+
+        final Button findGame = new TextButton("Find", skin);
+
+
+
+
 
         stage.addActor(assignIP);
+        stage.addActor(joinGame);
+        stage.addActor(hostGame);
+        stage.addActor(findGame);
     }
 
     @Override
