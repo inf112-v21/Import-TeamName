@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.screens.GameScreen;
-import inf112.skeleton.app.screens.TitleScreen;
+import inf112.skeleton.app.screens.MultiplayerScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
 public class RoboRally extends Game {
@@ -17,7 +17,6 @@ public class RoboRally extends Game {
     public SpriteBatch batch;
     public ShapeRenderer shapeRenderer;
     public BitmapFont font;
-    TitleScreen titleScreen;
     GameScreen  gameScreen;
     WinScreen   winScreen;
 
@@ -42,11 +41,10 @@ public class RoboRally extends Game {
         Assets.manager.finishLoading();
 
         // Set up screens
-        titleScreen = new TitleScreen(this, stage, viewPort);
         gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         winScreen  = new WinScreen(this, viewPort);
         Gdx.input.setInputProcessor(stage);
-        this.setScreen(titleScreen); // Set screen to title screen
+        this.setScreen(new MultiplayerScreen(this)); // Set screen to title screen
     }
 
     public void debugModeOn() {debugMode = true; }
