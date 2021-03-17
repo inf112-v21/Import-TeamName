@@ -21,6 +21,7 @@ public class RotationCard extends SimpleProgramCard {
     private int clockwiseTurns() {
         switch(cardType) {
             case ROTATERIGHT: return 1;
+            case UTURN: return 2;
             case ROTATELEFT: return 3;
             default: throw new IllegalArgumentException("Expected rotation cards got, " + cardType);
         }

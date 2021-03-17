@@ -2,11 +2,13 @@ package inf112.skeleton.app.objects.Actors;
 
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
+import inf112.skeleton.app.cards.Register;
 
 public class ProgramSheet {
 
 
     private CardHand hand;
+    private Register register;
     private int damageTokens;
     private int lifeTokens;
     private int flags;
@@ -57,7 +59,7 @@ public class ProgramSheet {
         }
     }
 
-    public CardHand getCardDeck() {return this.hand;}
+    public Register getRegister() {return this.register;}
 
     public int getNumberOfFlags() {return flags;}
 

@@ -97,8 +97,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     public void checkPosition() {
         Vector2 playerPos = getPosition();
-        int xPos = (int) playerPos.x;
-        int yPos = (int) playerPos.y;
+
 
         //Player on flag
         if (board.isPosAFlag(playerPos)) {
