@@ -4,7 +4,10 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 
 import static com.badlogic.gdx.Gdx.gl;
@@ -15,13 +18,20 @@ public class MultiplayerScreen implements Screen {
     private static final int PLAY_BUTTON_WIDTH = 300;
     private static final int EXIT_BUTTON_HEIGHT = 150;
     private static final int EXIT_BUTTON_WIDTH = 300;
+    private TextField assignIP;
 
+    StretchViewport viewPort;
+
+    float width;
+    float height;
     RoboRally game;
 
     Texture exitButtonPressed;
     Texture exitButtonUnpressed;
     Texture playButtonPressed;
     Texture playButtonUnpressed;
+    SpriteBatch batch;
+    Stage stage;
 
     int alignToAxisX = Gdx.graphics.getWidth() / 2;
 
@@ -36,6 +46,12 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void show () {
+        width = Gdx.graphics.getWidth();
+        height = Gdx.graphics.getHeight();
+        batch = new SpriteBatch();
+        stage = new Stage(new StretchViewport(width, height));
+
+
     }
 
     @Override
@@ -43,7 +59,7 @@ public class MultiplayerScreen implements Screen {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-
+        game.font.draw(game.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
         game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
 
         game.batch.end();
