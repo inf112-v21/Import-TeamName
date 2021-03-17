@@ -72,6 +72,9 @@ public class MultiplayerScreen implements Screen {
 
         final Button hostGame = new TextButton("Host", skin);
         hostGame.setWidth(width*0.40f);
+        hostGame.setHeight(height*0.10f);
+        hostGame.setX(alignToAxisX - hostGame.getWidth()/2);
+        hostGame.setY(height - hostGame.getHeight()-height*0.55f);
 
 
         final Button findGame = new TextButton("Find", skin);
