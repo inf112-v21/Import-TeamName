@@ -87,7 +87,7 @@ public class MultiplayerScreen implements Screen {
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
             @Override
             public void keyTyped(TextField textField, char c) {
-
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
             }
         });
 
@@ -96,17 +96,21 @@ public class MultiplayerScreen implements Screen {
                join();
            }
         });
+
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void render(float delta) {
-        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        gl.glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
         game.font.draw(game.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
-        game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
-
+      //  game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
         game.batch.end();
+
+        stage.draw();
+        stage.act();
     }
 
     private void join() {
@@ -128,6 +132,10 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void hide() {
+        stage.dispose();
+        skin.dispose();
+        batch.dispose();
+        Gdx.input.setInputProcessor(null);
     }
 
     @Override
