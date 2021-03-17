@@ -43,7 +43,7 @@ public abstract class SimpleProgramCard implements IProgramCard {
 
     public void setPosition(float wPos, float hPos) { cardButton.setPosition(wPos, hPos); }
 
-    public ImageButton getCard() { return cardButton; }
+    public ImageButton getCardButton() { return cardButton; }
 
 
     public abstract void action(TiledMapTileLayer tilePlayer, SimpleRobot robot);

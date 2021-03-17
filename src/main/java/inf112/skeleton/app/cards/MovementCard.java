@@ -13,10 +13,24 @@ public class MovementCard extends SimpleProgramCard {
      * The number of steps the robot will make. (Negative number if Back Up)
      */
     private final int numberOfSteps;
+    private CardType cardType;
 
-    public MovementCard(int priority, CardType cardType, int numberOfSteps) {
+    public MovementCard(int priority, CardType cardType) {
         super(priority, cardType);
-        this.numberOfSteps = numberOfSteps;
+        this.cardType = cardType;
+        this.numberOfSteps = numberOfSteps();
+
+
+    }
+
+    private int numberOfSteps() {
+        switch(cardType) {
+            case MOVE1: return 1;
+            case MOVE2: return 2;
+            case MOVE3: return 3;
+            case BACK1: return -1;
+            default: throw new IllegalArgumentException("Expected movement types not, " + cardType);
+        }
     }
 
     /**

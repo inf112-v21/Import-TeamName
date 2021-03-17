@@ -22,14 +22,10 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
-import inf112.skeleton.app.cards.CardHand;
-import inf112.skeleton.app.cards.CardType;
-import inf112.skeleton.app.cards.CardVisual;
+import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
-
-import java.util.ArrayList;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Math.round;
@@ -197,10 +193,12 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
         // Generate cards
-        ImageButton move1Card = new CardVisual(0, 0, CardType.MOVE1).getCard();
-        ImageButton rotateRight = new CardVisual(4f, 0, CardType.ROTATERIGHT).getCard();
-        ImageButton rotateLeft = new CardVisual(8f, 0, CardType.ROTATELEFT).getCard();
+        ImageButton move1Card = new MovementCard(0,  CardType.MOVE1).getCardButton();
+        ImageButton rotateRight = new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
+        ImageButton rotateLeft =  new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
 
+        move1Card.setSize(5,5);
+        move1Card.setPosition(0,0);
         uiStage.addActor(move1Card);
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);

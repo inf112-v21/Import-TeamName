@@ -9,13 +9,22 @@ public class RotationCard extends SimpleProgramCard {
     /**
      * The amount of times the robot will execute a 90° clockwise turn.
      */
-    int clockwiseTurns;
+    private final int clockwiseTurns;
+    private CardType cardType;
 
-    public RotationCard(int priority, CardType cardType, int amountOfClockwiseTurns) {
+    public RotationCard(int priority, CardType cardType) {
         super(priority, cardType);
-        this.clockwiseTurns = amountOfClockwiseTurns;
+        this.cardType = cardType;
+        this.clockwiseTurns = clockwiseTurns();
     }
 
+    private int clockwiseTurns() {
+        switch(cardType) {
+            case ROTATERIGHT: return 1;
+            case ROTATELEFT: return 3;
+            default: throw new IllegalArgumentException("Expected rotation cards got, " + cardType);
+        }
+    }
 
 
     @Override

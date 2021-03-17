@@ -32,12 +32,10 @@ public class CardDeck {
     }
 
     /**
-     * Shuffle a deck
+     * Shuffle a deck. Called every time a card is dealt
      */
     public void shuffleDeck() {
-
         list = new LinkedList(availableCards.keySet());
-
         Collections.shuffle(list);
         LinkedHashMap<CardType, Integer> shuffledCards = new LinkedHashMap();
         list.forEach(k -> shuffledCards.put(k, availableCards.get(k)));
@@ -54,15 +52,12 @@ public class CardDeck {
         shuffleDeck();
         CardType type = list.pop();
         int numCards = availableCards.get(type);
-        while(numCards <= 0) {
-            //if (list.size() <= 0) throw new Exception("No cards left");
+        while(numCards <= 0) { // If no cards left, proceed to next type of card
             try {
                 type = list.pop();
                 numCards = availableCards.get(type);
             }
-            catch(Exception e) {
-                System.out.println("No cards left");
-            }
+            catch(Exception e) { System.out.println("No cards left"); }
         }
         availableCards.put(type, availableCards.get(type)-1);
         return (type);

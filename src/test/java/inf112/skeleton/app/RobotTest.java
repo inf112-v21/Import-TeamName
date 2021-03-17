@@ -85,7 +85,7 @@ public class RobotTest {
     public void moveOneBack() {
         Player player = new Player(new Vector2(2,2), textures, game);
         Texture playerTexture = Assets.manager.get(Assets.texture); // TEST TEXTURE. NO IMPLICATION FOR TEST
-        MovementCard backwardsCard = new MovementCard(1, CardType.BACK1, -1);
+        MovementCard backwardsCard = new MovementCard(1, CardType.BACK1);
         backwardsCard.action(tilePlayer, player);
         assertEquals(new Vector2(2, 1), player.getPosition());
     }

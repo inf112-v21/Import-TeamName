@@ -30,10 +30,10 @@ public class CardHand {
     public void generateCardDeck() {
         for (CardType type : chosenCardTypes) {
             if (type.equals(CardType.MOVE1)) {
-                cards.add(new MovementCard(1,CardType.MOVE1, 1));
+                cards.add(new MovementCard(1,CardType.MOVE1));
 
             } else if (type.equals(CardType.MOVE2)) {
-                cards.add(new MovementCard(1, CardType.MOVE2, 2));
+                cards.add(new MovementCard(1, CardType.MOVE2));
 
             }
             /**
