@@ -22,18 +22,18 @@ public class CompleteRegisterPhase implements IPhase {
         lasersFire();
     }
 
-    private void revealProgramCards() {
+    protected void revealProgramCards() {
         //TODO: Is this 'nice to have'? Maybe just print to console.
     }
 
-    private void executeProgramCards() {
+    protected void executeProgramCards() {
 
     }
 
     /**
      * Moves all conveyors, pushers if activated and rotates robots on Gear tiles.
      */
-    private void boardElementsMove() {
+    protected void boardElementsMove() {
         /*
         TODO: Implement player collision, accounting for player moving, pushers and conveyors. See Rulebook page 5.
              Player collision
@@ -59,7 +59,7 @@ public class CompleteRegisterPhase implements IPhase {
     /**
      * The phase activating all lasers. Wall mounted and robots.
      */
-    private void lasersFire() {
+    protected void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
         //Fire lasers for all wall mounted lasers.
@@ -104,7 +104,7 @@ public class CompleteRegisterPhase implements IPhase {
      * Moves players, if on conveyor type tile
      * @param isExpress
      */
-    private void moveConveyor(Boolean isExpress) {
+    protected void moveConveyor(Boolean isExpress) {
         for (SimpleRobot robot : robots) {
             Vector2 robotLocation = robot.getPosition();
 
@@ -124,8 +124,8 @@ public class CompleteRegisterPhase implements IPhase {
     /**
      * Pushes players if on a Pusher and Pushers are activated.
      */
-    private void movePusher() {
-        if (true) { //If pushers are on, move players
+    protected void movePusher() {
+        if (false) { //If pushers are on, move players
             for (SimpleRobot robot : robots) {
                 Vector2 robotLocation = robot.getPosition();
 
@@ -141,7 +141,7 @@ public class CompleteRegisterPhase implements IPhase {
     /**
      * Rotates players if on Gear tile
      */
-    private void rotatePlayer() {
+    protected void rotatePlayer() {
         for (SimpleRobot robot : robots) {
             Vector2 robotLocation = robot.getPosition();
 

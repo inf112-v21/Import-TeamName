@@ -82,7 +82,7 @@ public class GameScreen extends InputAdapter implements Screen {
         font.setColor(Color.RED);
 
         // Load map and get board data
-        map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
+        map = new TmxMapLoader().load("Maps/MapForJunitTests.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
         game.setup(map);
         this.board = game.getGameBoard();
@@ -167,6 +167,7 @@ public class GameScreen extends InputAdapter implements Screen {
         uiCamera.update();
 
         Vector2 playerPos = player.getPosition();
+        System.out.println(playerPos);
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
 
