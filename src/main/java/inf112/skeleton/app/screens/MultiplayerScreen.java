@@ -4,13 +4,16 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 
@@ -80,6 +83,19 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(joinGame);
         stage.addActor(hostGame);
         stage.addActor(findGame);
+
+        assignIP.setTextFieldListener(new TextField.TextFieldListener() {
+            @Override
+            public void keyTyped(TextField textField, char c) {
+
+            }
+        });
+
+        joinGame.addListener(new ClickListener() {
+           public void clicked(InputEvent event, float x, float y){
+               join();
+           }
+        });
     }
 
     @Override
@@ -91,6 +107,10 @@ public class MultiplayerScreen implements Screen {
         game.batch.draw(exitButtonPressed, alignToAxisX - EXIT_BUTTON_WIDTH / 2 , 100, EXIT_BUTTON_WIDTH,EXIT_BUTTON_HEIGHT);
 
         game.batch.end();
+    }
+
+    private void join() {
+
     }
 
     @Override
