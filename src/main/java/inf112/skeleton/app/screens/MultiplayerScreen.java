@@ -97,6 +97,17 @@ public class MultiplayerScreen implements Screen {
            }
         });
 
+        hostGame.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y){
+                host();
+            }
+        });
+        findGame.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y){
+                find();
+            }
+        });
+
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -111,9 +122,21 @@ public class MultiplayerScreen implements Screen {
 
         stage.draw();
         stage.act();
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ALT_LEFT)) {
+            host();
+        }
     }
 
     private void join() {
+
+    }
+
+    private void host() {
+
+    }
+
+    private void find() {
 
     }
 
