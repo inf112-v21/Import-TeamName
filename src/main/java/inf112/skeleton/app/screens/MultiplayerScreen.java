@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
@@ -32,6 +34,7 @@ public class MultiplayerScreen implements Screen {
     Texture playButtonUnpressed;
     SpriteBatch batch;
     Stage stage;
+    Skin skin;
 
     int alignToAxisX = Gdx.graphics.getWidth() / 2;
 
@@ -50,8 +53,17 @@ public class MultiplayerScreen implements Screen {
         height = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
         stage = new Stage(new StretchViewport(width, height));
+        skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 
+        assignIP = new TextField("enter server ip here: ", skin);
+        assignIP.setWidth(300);
+        assignIP.setHeight(40);
+        assignIP.setX(width - assignIP.getWidth());
+        assignIP.setY(height - assignIP.getHeight());
+
+
+        stage.addActor(assignIP);
     }
 
     @Override
