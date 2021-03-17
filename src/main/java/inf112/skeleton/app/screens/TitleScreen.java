@@ -65,7 +65,6 @@ public class TitleScreen implements Screen {
         game.batch.end();
         stage.act();
         stage.draw();
-
     }
 
     @Override
