@@ -23,7 +23,7 @@ public class CardUI extends Actor {
     public CardUI(GameScreen screen, SimpleRobot robot) {
         stage = screen.getUIStage();
         this.table = new Table();
-        deck = robot.getProgramSheet().getCardDeck();
+        deck = robot.getProgramSheet().getCardHand();
 
 
     }

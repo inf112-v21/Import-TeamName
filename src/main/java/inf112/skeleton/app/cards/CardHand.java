@@ -4,6 +4,7 @@ import java.util.Random;
 
 import static inf112.skeleton.app.game.MainGame.deck;
 
+
 /**
  * Class that handles all cards a robot is dealt
  */
@@ -15,14 +16,14 @@ public class CardHand {
     private ArrayList<CardType> chosenCardTypes;
     private int numCards;
 
-    public CardHand(int numCards, CardDeck deck)  {
+    public CardHand(int numCards)  {
         cards = new ArrayList<>();
         this.numCards = numCards;
         getCardsFromDeck();
         generateCardDeck();
 
     }
-    
+
     public void getCardsFromDeck() {
         chosenCardTypes = new ArrayList<>();
         for (int i = 0; i < numCards; i++) { chosenCardTypes.add(deck.dealACard()); }

@@ -72,7 +72,7 @@ public class CardsTest {
 
     @Test
     public void cardDeckSubtractNumCards() {
-        CardHand deck = new CardHand(9, game.getDeck());
+        CardHand deck = new CardHand(9);
         deck.subtractNumCardsDeck();
         assertEquals(8, deck.getNumCardsDeck());
 

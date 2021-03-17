@@ -15,13 +15,13 @@ public class ProgramSheet {
     private boolean powerDown;
     private boolean dead;
 
-    public ProgramSheet(CardDeck deck) {
+    public ProgramSheet() {
         damageTokens = 0;
         lifeTokens = 0;
         powerDown = false;
         flags = 0;
         dead = false;
-        hand = new CardHand(9, deck);
+        hand = new CardHand(9);
     }
 
 
@@ -43,7 +43,7 @@ public class ProgramSheet {
      * Called every round for its robot
      */
     public void dealCards(CardDeck deck) {
-        hand = new CardHand(9 - damageTokens, deck);
+        hand = new CardHand(9 - damageTokens);
 
     }
 
@@ -60,6 +60,8 @@ public class ProgramSheet {
     }
 
     public Register getRegister() {return this.register;}
+
+    public CardHand getCardHand() {return this.hand;}
 
     public int getNumberOfFlags() {return flags;}
 
