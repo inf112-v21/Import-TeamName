@@ -4,10 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
-import inf112.skeleton.app.objects.TileObjects.Conveyor;
-import inf112.skeleton.app.objects.TileObjects.Gear;
-import inf112.skeleton.app.objects.TileObjects.Laser;
-import inf112.skeleton.app.objects.TileObjects.Pusher;
+import inf112.skeleton.app.objects.TileObjects.*;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.robots;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
@@ -20,6 +17,7 @@ public class CompleteRegisterPhase implements IPhase {
         executeProgramCards();
         boardElementsMove();
         lasersFire();
+        updateCheckPoints(); //Checks if robot is on flag
     }
 
     protected void revealProgramCards() {
@@ -83,7 +81,7 @@ public class CompleteRegisterPhase implements IPhase {
      */
     private void fireLaser(Vector2 currentPosOfLaser, Direction fireDirection, int nrOfLasers) {
         //If out of bounds.
-        if (!gameBoard.isOnBoard(currentPosOfLaser)) return; //Laser is outside board.
+        if (gameBoard.isOnBoard(currentPosOfLaser)) return; //Laser is outside board.
 
         //Check if robot is on laser. If so -> Damage robot.
         for (SimpleRobot robot : robots) {
@@ -115,7 +113,7 @@ public class CompleteRegisterPhase implements IPhase {
                 if (isExpress) {
                     if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 } else {
-                    robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    if (con.getSpeed() == 1) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 }
             }
         }
@@ -125,13 +123,12 @@ public class CompleteRegisterPhase implements IPhase {
      * Pushes players if on a Pusher and Pushers are activated.
      */
     protected void movePusher() {
-        if (false) { //If pushers are on, move players
+        if (true) { //If pushers are on, move players
             for (SimpleRobot robot : robots) {
                 Vector2 robotLocation = robot.getPosition();
 
                 if (gameBoard.isPosAPusher(robotLocation)) { //If position is a conveyor
-                    Pusher con = (Pusher) gameBoard.getNonWallTileOnPos(robotLocation);
-
+                    Pusher con = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
                     robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 }
             }
@@ -156,6 +153,18 @@ public class CompleteRegisterPhase implements IPhase {
                     //Rotate against clock. Equal to rotating with clock and taking the opposite direction from it.
                     robot.setLookDirection(Direction.DirectionOpposite(Direction.DirectionClockwise(robotLook)));
                 }
+            }
+        }
+    }
+
+    /**
+     * Checks if robots are standing on a flag at the end of the phase.
+     * If yes, adds flag to that robots programsheet.
+     */
+    protected void updateCheckPoints() {
+        for (SimpleRobot robot : robots) {
+            if (gameBoard.isPosAFlag(robot.getPosition())) {
+                robot.getProgramSheet().addFlag(); //TODO: Change how robots store which flags they have visited. List of locations? List<Vector2> flags;
             }
         }
     }
