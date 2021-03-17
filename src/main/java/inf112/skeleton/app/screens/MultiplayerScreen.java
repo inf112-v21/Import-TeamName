@@ -45,7 +45,7 @@ public class MultiplayerScreen implements Screen {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
-        title = new Texture("Images/buttons/simpleButton.png");
+        title = new Texture("Images/title.png");
         stage = new Stage(new StretchViewport(width, height));
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
@@ -78,6 +78,10 @@ public class MultiplayerScreen implements Screen {
 
 
         final Button findGame = new TextButton("Find", skin);
+        findGame.setWidth(width*0.10f);
+        findGame.setHeight(height*0.04f);
+        findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
+        findGame.setY(assignIP.getY());
 
 
 
@@ -119,10 +123,10 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        gl.glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
+        gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.batch.draw(title, alignToAxisX - title.getWidth()/10, height*0.7f,width*0.3f, height*0.3f);
+        game.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
         game.batch.end();
 
         stage.draw();
