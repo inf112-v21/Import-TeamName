@@ -79,12 +79,12 @@ public class GameScreen extends InputAdapter implements Screen {
     private RRClient client;
     private String name;
 
-    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode, boolean hosting, String ip, String name) {
+    public GameScreen(RoboRally switcher, boolean debugMode, boolean hosting, String ip, String name) {
         game = new MainGame();
         this.switcher = switcher;
-        this.stage = stage;
-        this.viewPort = viewPort;
-        this.debugMode = debugMode;
+       // this.stage = stage;
+       // this.viewPort = viewPort;
+      //  this.debugMode = debugMode;
         this.hosting = hosting;
         this.name = name;
         if(!ip.isEmpty()) {

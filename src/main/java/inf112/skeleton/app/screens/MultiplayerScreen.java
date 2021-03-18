@@ -159,11 +159,11 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
- //       game.setGameScreen(new GameScreen()); //thinking of changing GameScreen's input to needing the input from this page as parameters
+ //       game.setScreen(new GameScreen()); //thinking of changing GameScreen's input to needing the input from this page as parameters
     }
 
     private void host() {
-  //      game.setGameScreen(new GameScreen());
+      game.setScreen(new GameScreen(game, false, true, "localhost", getName()));
     }
 
     private void find() {
