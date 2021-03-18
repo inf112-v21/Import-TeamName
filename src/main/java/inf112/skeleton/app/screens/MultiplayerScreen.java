@@ -102,6 +102,7 @@ public class MultiplayerScreen implements Screen {
 
 
         stage.addActor(assignIP);
+        stage.addActor(assignName);
         stage.addActor(joinGame);
         stage.addActor(hostGame);
         stage.addActor(findGame);
@@ -174,6 +175,15 @@ public class MultiplayerScreen implements Screen {
         }
         client.stop();
         client.close();
+    }
+
+    private String getName() {
+        String name = assignName.getText();
+        if(name.isEmpty()){
+            name = "Anonymous";
+        }
+        assignName.setText(name);
+        return name;
     }
 
     @Override
