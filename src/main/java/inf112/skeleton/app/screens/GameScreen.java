@@ -73,18 +73,14 @@ public class GameScreen extends InputAdapter implements Screen {
 
     static Board board;
 
-    private final boolean hosting;
-    private final String ip;
+    private boolean hosting;
+    private String ip;
     private RRServer server;
     private RRClient client;
     private String name;
 
-    public GameScreen(RoboRally switcher, boolean debugMode, boolean hosting, String ip, String name) {
-        game = new MainGame();
-        this.switcher = switcher;
-       // this.stage = stage;
-       // this.viewPort = viewPort;
-      //  this.debugMode = debugMode;
+    public GameScreen (RoboRally game, boolean hosting, String ip, String name) {
+        this.game = new MainGame();
         this.hosting = hosting;
         this.name = name;
         if(!ip.isEmpty()) {
@@ -92,6 +88,15 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             this.ip = "localhost";
         }
+    }
+
+
+    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode) {
+        game = new MainGame();
+        this.switcher = switcher;
+        this.stage = stage;
+        this.viewPort = viewPort;
+        this.debugMode = debugMode;
 
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
@@ -137,6 +142,7 @@ public class GameScreen extends InputAdapter implements Screen {
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
         player = new Player(startPos, textures);
     }
+
 
     /**
      * Method that performs action when key pressed is released
