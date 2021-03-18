@@ -5,6 +5,8 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 
+import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
+
 import java.io.IOException;
 import java.util.logging.Handler;
 
@@ -48,7 +50,10 @@ public class RRClient {
 
     protected void connectionHandler (Connection c) {
         id = c.getID();
-        c.getRemoteAddressTCP();
+        c.getRemoteAddressTCP().toString();
+        Entry assignName = new Entry(name);
+        client.sendTCP(assignName);
+        client.updateReturnTripTime();
     }
 
     protected void disconnectHandler (Connection c) {
