@@ -29,6 +29,10 @@ import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
 
+import com.esotericsoftware.minlog.Log;
+
+import java.io.IOException;
+
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Math.round;
 
@@ -227,6 +231,19 @@ public class GameScreen extends InputAdapter implements Screen {
 
         client = new RRClient(name);
 
+        if(hosting) {
+            Log.info("starting server");
+            try {
+                server = new RRServer();
+                client.connect("localhost");
+            } catch (IOException e) {
+                e.printStackTrace();  //no idea what this does, haven't read the documentation on IOException
+                Log.info("Unable to start server.");
+                Gdx.app.exit();
+            }
+        } else {
+            client.connect(ip);
+        }
 
         /**
          *
