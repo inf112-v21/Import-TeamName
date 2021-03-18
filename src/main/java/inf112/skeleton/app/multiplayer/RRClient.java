@@ -16,7 +16,7 @@ public class RRClient {
 
 
 
-    public RRClient (String name) throws Exception {
+    public RRClient (String name) {
         this.name = name;
 
         client = new Client();

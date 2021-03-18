@@ -28,6 +28,7 @@ public class MultiplayerScreen implements Screen {
     RoboRally game;
 
     private TextField assignIP;
+    private TextField assignName;
     private SpriteBatch batch;
     private Stage stage;
     private Skin skin;
@@ -64,6 +65,12 @@ public class MultiplayerScreen implements Screen {
                 //!!!height - UI element's height, then subtract some number,
                 // this makes it so it always scales from top of screen taking into account button's size.
         assignIP.setY(height - assignIP.getHeight() -height*0.34f);
+
+        assignName = new TextField("Enter name here", skin);
+        assignName.setWidth(width*0.20f);
+        assignName.setHeight(height*0.04f);
+        assignName.setX(alignToAxisX - assignName.getWidth()/2);
+        assignName.setY(height - assignName.getHeight() - height*0.45f);
 
 
         //Button UI elements, maybe integrate with the button package later
@@ -105,6 +112,8 @@ public class MultiplayerScreen implements Screen {
                 if (c == '\n') textField.getOnscreenKeyboard().show(false);
             }
         });
+
+
 
         joinGame.addListener(new ClickListener() {
             @Override
