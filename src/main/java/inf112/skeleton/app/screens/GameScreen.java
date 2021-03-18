@@ -73,23 +73,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     static Board board;
 
-    private boolean hosting;
-    private String ip;
-    private RRServer server;
-    private RRClient client;
-    private String name;
-
-    public GameScreen (RoboRally game, boolean hosting, String ip, String name) {
-        this.game = new MainGame();
-        this.hosting = hosting;
-        this.name = name;
-        if(!ip.isEmpty()) {
-            this.ip = ip;
-        } else {
-            this.ip = "localhost";
-        }
-    }
-
 
     public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode) {
         game = new MainGame();
@@ -234,22 +217,6 @@ public class GameScreen extends InputAdapter implements Screen {
         uiStage.addActor(move1Card);
         uiStage.addActor(rotateRight);
         uiStage.addActor(rotateLeft);
-
-        client = new RRClient(name);
-
-        if(hosting) {
-            Log.info("starting server");
-            try {
-                server = new RRServer();
-                client.connect("localhost");
-            } catch (IOException e) {
-                e.printStackTrace();  //no idea what this does, haven't read the documentation on IOException
-                Log.info("Unable to start server.");
-                Gdx.app.exit();
-            }
-        } else {
-            client.connect(ip);
-        }
 
         /**
          *

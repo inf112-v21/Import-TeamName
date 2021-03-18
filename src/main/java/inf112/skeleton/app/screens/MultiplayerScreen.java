@@ -163,7 +163,7 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void host() {
-      game.setScreen(new GameScreen(game, true, "localhost", getName()));
+      game.setScreen(new TestGameScreen(game, true, "localhost", getName()));
     }
 
     private void find() {
