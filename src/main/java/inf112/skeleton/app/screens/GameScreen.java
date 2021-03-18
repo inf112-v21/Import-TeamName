@@ -25,6 +25,8 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
+import inf112.skeleton.app.multiplayer.RRClient;
+import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
 
 import static com.badlogic.gdx.Gdx.gl;
@@ -67,13 +69,24 @@ public class GameScreen extends InputAdapter implements Screen {
 
     static Board board;
 
+    private final boolean hosting;
+    private final String ip;
+    private RRServer server;
+    private RRClient client;
 
-    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode) {
+    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode, boolean hosting, String ip) {
         game = new MainGame();
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
         this.debugMode = debugMode;
+        this.hosting = hosting;
+        if(!ip.isEmpty()) {
+            this.ip = ip;
+        } else {
+            this.ip = "localhost";
+        }
+
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
 

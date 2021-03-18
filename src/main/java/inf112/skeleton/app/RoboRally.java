@@ -41,7 +41,8 @@ public class RoboRally extends Game {
         Assets.manager.finishLoading();
 
         // Set up screens
-        gameScreen = new GameScreen(this, stage, viewPort, debugMode);
+
+        //gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         winScreen  = new WinScreen(this, viewPort);
         Gdx.input.setInputProcessor(stage);
         this.setScreen(new MultiplayerScreen(this)); // Set screen to title screen
