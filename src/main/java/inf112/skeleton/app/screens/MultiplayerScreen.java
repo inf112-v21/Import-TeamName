@@ -67,10 +67,10 @@ public class MultiplayerScreen implements Screen {
         assignIP.setY(height - assignIP.getHeight() -height*0.34f);
 
         assignName = new TextField("Enter name here", skin);
-        assignName.setWidth(width*0.20f);
+        assignName.setWidth(width*0.33f);
         assignName.setHeight(height*0.04f);
         assignName.setX(alignToAxisX - assignName.getWidth()/2);
-        assignName.setY(height - assignName.getHeight() - height*0.45f);
+        assignName.setY(height - assignName.getHeight() - height*0.51f);
 
 
         //Button UI elements, maybe integrate with the button package later

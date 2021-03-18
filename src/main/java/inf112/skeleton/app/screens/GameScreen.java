@@ -227,6 +227,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         client = new RRClient(name);
 
+
         /**
          *
          */
