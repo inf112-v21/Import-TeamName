@@ -86,6 +86,12 @@ public class MultiplayerScreen implements Screen {
         findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
         findGame.setY(assignIP.getY());
 
+        final Button exitGame = new TextButton("Exit", skin);
+        exitGame.setWidth(width*0.40f);
+        exitGame.setHeight(height*0.10f);
+        exitGame.setX(alignToAxisX - exitGame.getWidth()/2);
+        exitGame.setY(height - exitGame.getHeight()-height*0.70f);
+
 
 
         stage.addActor(assignIP);
