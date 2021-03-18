@@ -12,11 +12,11 @@ public class NetworkPackets {
 
 
     static public void register (EndPoint endPoint) {
-        Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
+      //  Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
 
-        obj.register(Vector2.class); //follow this format of "obj.register(xxx.class)", where xxx is class.
-        obj.register(Ping.class);
-        obj.register(Entry.class);
+      //  obj.register(Vector2.class); //follow this format of "obj.register(xxx.class)", where xxx is class.
+      //  obj.register(Ping.class);
+      //  obj.register(Entry.class);
     }
 
     static public class Entry {  //still testing, might need more here
