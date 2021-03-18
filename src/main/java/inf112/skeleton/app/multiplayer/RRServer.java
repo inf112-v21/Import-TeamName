@@ -51,12 +51,15 @@ public class RRServer {
                     // and stuff from here should be game-logic, if i havent forgotten to check something.
 
 
-
-
                 }
+
             }
 
-
+                public void disconnected (Connection c) {
+                    RRConnection connection = (RRConnection) c;
+                    //do something here, to be implemented, maybe an if connection.name != null or something, do {message}
+                    System.out.println("A client disconnected."); //testing
+                }
         });
 
 
@@ -65,11 +68,6 @@ public class RRServer {
         System.out.println("Server is up and running"); //yet another test/confirmation
     }
 
-    public void disconnected (Connection c) {
-        RRConnection connection = (RRConnection) c;
-        //do something here, to be implemented, maybe an if connection.name != null or something, do {message}
-        System.out.println("A client disconnected."); //testing
-    }
 
     static class RRConnection extends Connection {
         public String name;

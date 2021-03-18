@@ -46,10 +46,6 @@ public class RRClient {
         }
     }
 
-    public void localConnect() {
-        connect("localhost");
-    }
-
     protected void connectionHandler (Connection c) {
         id = c.getID();
         c.getRemoteAddressTCP();
