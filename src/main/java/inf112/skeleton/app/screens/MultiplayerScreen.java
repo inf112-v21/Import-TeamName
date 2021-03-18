@@ -98,6 +98,7 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(joinGame);
         stage.addActor(hostGame);
         stage.addActor(findGame);
+        stage.addActor(exitGame);
 
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
             public void keyTyped(TextField textField, char c) {
@@ -123,6 +124,12 @@ public class MultiplayerScreen implements Screen {
             public void clicked(InputEvent event, float x, float y){
                 find();
             }
+        });
+        exitGame.addListener(new ClickListener() {
+           @Override
+           public void clicked(InputEvent event, float x, float y) {
+               Gdx.app.exit();
+           }
         });
 
         Gdx.input.setInputProcessor(stage);
