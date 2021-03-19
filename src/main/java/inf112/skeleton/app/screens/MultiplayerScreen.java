@@ -75,7 +75,7 @@ public class MultiplayerScreen implements Screen {
         assignName.setWidth(width*0.33f);
         assignName.setHeight(height*0.04f);
         assignName.setX(alignToAxisX - assignName.getWidth()/2);
-        assignName.setY(height - assignName.getHeight() - height*0.51f);
+        assignName.setY(height - assignName.getHeight() - height*0.39f);
 
 
         //Button UI elements, maybe integrate with the button package later
@@ -83,7 +83,7 @@ public class MultiplayerScreen implements Screen {
         joinGame.setWidth(width*0.40f);
         joinGame.setHeight(height*0.10f);
         joinGame.setX(alignToAxisX - joinGame.getWidth()/2);
-        joinGame.setY(height - joinGame.getHeight()-height*0.40f);
+        joinGame.setY(height - joinGame.getHeight()-height*0.45f);
 
         final Button hostGame = new TextButton("Host", skin);
         hostGame.setWidth(width*0.40f);
