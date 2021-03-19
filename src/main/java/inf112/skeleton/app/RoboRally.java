@@ -46,7 +46,7 @@ public class RoboRally extends Game {
 
         //gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         winScreen  = new WinScreen(this, viewPort);
-        gameScreen = new GameScreen(this, stage, viewPort, debugMode);
+       // gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         multiplayerScreen = new MultiplayerScreen(this);
 
         Gdx.input.setInputProcessor(stage);
@@ -62,9 +62,9 @@ public class RoboRally extends Game {
         font.dispose();
     }
 
-    public void setGameScreen() {
-        setScreen(gameScreen);
-    }
+  //  public void setGameScreen() {
+  //      setScreen(gameScreen);
+  //  }
 
     public void setWinScreen() {
         setScreen(winScreen);

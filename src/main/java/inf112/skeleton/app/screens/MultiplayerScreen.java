@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.esotericsoftware.kryonet.Client;
 
@@ -43,6 +44,9 @@ public class MultiplayerScreen implements Screen {
     public MultiplayerScreen (RoboRally game) {
         this.game = game;
     }
+
+    FitViewport viewPort;
+    private boolean debugMode = false;
 
 
     @Override
@@ -160,11 +164,11 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        game.setGameScreen();
+        //game.setGameScreen();
     }
 
     private void host() {
-      game.setScreen(new TestGameScreen(game, true, "localhost", getName()));
+      game.setScreen(new GameScreen(game, stage, viewPort, debugMode, true, "localhost", getName()));
     }
 
     private void find() {

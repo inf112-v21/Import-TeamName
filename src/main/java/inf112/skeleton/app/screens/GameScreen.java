@@ -71,13 +71,27 @@ public class GameScreen extends InputAdapter implements Screen {
 
     static Board board;
 
+    private boolean hosting;
+    private String ip;
+    private RRServer server;
+    private RRClient client;
+    private String name;
 
-    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
+
+
+    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode, boolean hosting, String ip, String name) {
         game = new MainGame();
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
         this.debugMode = debugMode;
+        this.hosting = hosting;
+        this.name = name;
+        if(!ip.isEmpty()) {
+            this.ip = ip;
+        } else {
+            this.ip = "localhost";
+        }
 
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
@@ -198,6 +212,21 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
+        client = new RRClient(name);
+
+        if(hosting) {
+            Log.info("starting server");
+            try {
+                server = new RRServer();
+                client.connect("localhost");
+            } catch (IOException e) {
+                e.printStackTrace();  //no idea what this does, haven't read the documentation on IOException
+                Log.info("Unable to start server.");
+                Gdx.app.exit();
+            }
+        } else {
+            client.connect(ip);
+        }
 
         CardUI cardui = new CardUI(this, game);
         cardui.setUpCards(0,0, player); // Generate buttons and listeners for actions
@@ -227,6 +256,10 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void hide() {
+        client.ceaseClient();
+        if (server != null) {
+            server.ceaseServer();
+        }
 
     }
 
