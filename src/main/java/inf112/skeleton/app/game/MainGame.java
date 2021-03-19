@@ -26,7 +26,7 @@ public class MainGame {
      * Constructor method
      */
     public MainGame() {
-        robots = new ArrayList<>();
+
     }
 
     /**
@@ -38,6 +38,7 @@ public class MainGame {
     public static void setup(TiledMap map) {
         deck = new CardDeck();
         gameBoard = new Board(map);
+        robots = new ArrayList<>();
     }
 
     /**
@@ -71,9 +72,6 @@ public class MainGame {
     }
 
 
-    public Board getGameBoard() { return gameBoard; }
-    public CardDeck getDeck() { return deck; }
-
     /**
      * TODO: Discuss how to add players.
      * @param numPlayers
@@ -89,12 +87,11 @@ public class MainGame {
     }
 
     /**
-     * Temporary.
+     * Temporary. Used for tests.
      */
     public void addPlayer(Player player) {
         robots.add(player);
     }
 
-    public ArrayList<Player> getRobots() {return this.robots;}
 
 }

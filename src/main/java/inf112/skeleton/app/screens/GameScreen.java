@@ -68,6 +68,8 @@ public class GameScreen extends InputAdapter implements Screen {
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
         game = new MainGame();
+
+        MainGame.gameLoop();
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
@@ -83,7 +85,7 @@ public class GameScreen extends InputAdapter implements Screen {
         map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
         game.setup(map);
-        this.board = game.getGameBoard();
+        this.board = MainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
         viewPortHeight = (int) board.getBoardDimensions().y;
         viewPortWidth = (int) board.getBoardDimensions().x;
@@ -115,6 +117,18 @@ public class GameScreen extends InputAdapter implements Screen {
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
         game.addPlayer(new Player(startPos, textures));
         player = new Player(startPos, textures);
+
+        //game.addPlayer(player);
+
+        /*
+            Legge til spillere i List<> robot
+                -> MainGame har funksjon addPlayer()? addAI()
+
+         */
+
+
+
+        //MainGame.gameLoop();
     }
 
     /**
@@ -123,6 +137,8 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
+        //Player playerTest = (Player) game.robots.get(0);
+        //playerTest.moveRobotWASD(keycode);
         player.moveRobotWASD(keycode);
         return true;
     }

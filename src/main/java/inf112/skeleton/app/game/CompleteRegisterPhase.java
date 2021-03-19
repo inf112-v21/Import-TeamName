@@ -6,8 +6,7 @@ import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
 import java.util.List;
-import static inf112.skeleton.app.game.MainGame.robots;
-import static inf112.skeleton.app.game.MainGame.gameBoard;
+import static inf112.skeleton.app.game.MainGame.*;
 
 public class CompleteRegisterPhase implements IPhase {
 

@@ -23,14 +23,14 @@ public class CardUI extends Actor {
     CardHand cardHand;
     private int width; // Might be retreived from gdx.graphics.width
     private int height;
-    SimpleRobot robot;
+    Player robot;
 
 
     public CardUI(GameScreen screen, MainGame game) {
         stage = screen.getUIStage();
         this.table = new Table();
-        System.out.println(game.getRobots());
-        this.robot = game.getRobots().get(0); // Take first
+        System.out.println(MainGame.robots);
+        this.robot = MainGame.robots.get(0); // Take first
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
 
@@ -52,6 +52,7 @@ public class CardUI extends Actor {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                     card.action(player);
+                    //card.action(robot);
                 }
 
                 @Override
