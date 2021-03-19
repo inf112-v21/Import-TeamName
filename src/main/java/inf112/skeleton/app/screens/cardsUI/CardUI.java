@@ -5,13 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 
@@ -30,7 +28,8 @@ public class CardUI extends Actor {
     public CardUI(GameScreen screen, MainGame game) {
         stage = screen.getUIStage();
         this.table = new Table();
-        this.robot = robot;
+        System.out.println(game.getRobots());
+        this.robot = game.getRobots().get(0); // Take first
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
 
@@ -38,7 +37,7 @@ public class CardUI extends Actor {
     }
 
 
-    public void setUpCards(int w, int h, TiledMapTileLayer tilePlayer) {
+    public void setUpCards(int w, int h) {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
             w += 5f;
@@ -52,7 +51,7 @@ public class CardUI extends Actor {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
-                    robot.moveRobot(tilePlayer, 1);
+                    card.action(robot);
                 }
 
                 @Override

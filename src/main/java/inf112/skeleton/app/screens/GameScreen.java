@@ -117,6 +117,7 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
+        game.addPlayer(new Player(startPos, textures));
         player = new Player(startPos, textures);
     }
 
@@ -217,7 +218,7 @@ public class GameScreen extends InputAdapter implements Screen {
          */
 
         CardUI cardui = new CardUI(this, game);
-        cardui.setUpCards(0,0, tilePlayer);
+        cardui.setUpCards(0,0);
 
 
 

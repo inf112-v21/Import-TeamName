@@ -2,7 +2,6 @@ package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -46,7 +45,7 @@ public abstract class SimpleProgramCard implements IProgramCard {
     public ImageButton getCardButton() { return cardButton; }
 
 
-    public abstract void action(TiledMapTileLayer tilePlayer, SimpleRobot robot);
+    public abstract void action(SimpleRobot robot);
 
 
 

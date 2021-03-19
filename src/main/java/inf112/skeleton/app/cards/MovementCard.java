@@ -1,7 +1,5 @@
 package inf112.skeleton.app.cards;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
@@ -35,15 +33,15 @@ public class MovementCard extends SimpleProgramCard {
 
     /**
      * Moves robot with the amount of steps determined by the field variable numberOfSteps
-     * @param robot: Robot which performs a given action
+     * @param robot : Robot which performs a given action
      */
     @Override
-    public void action(TiledMapTileLayer tilePlayer, SimpleRobot robot) {
+    public void action(SimpleRobot robot) {
         if (numberOfSteps < 0) {
             Direction lookDirectionRobot = robot.getLookDirection();
             robot.setLookDirection(Direction.DirectionOpposite(lookDirectionRobot)); // Change look direction
         }
-        robot.moveRobot(tilePlayer, abs(numberOfSteps));
+        robot.moveRobot(abs(numberOfSteps));
     }
 
     public int getNumberOfSteps() {
