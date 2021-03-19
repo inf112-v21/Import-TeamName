@@ -12,8 +12,8 @@ import static inf112.skeleton.app.enums.Direction.NORTH;
 
 public class Player extends SimpleRobot {
 
-    public Player(Vector2 pos, TextureRegion [][] texture, MainGame game) {
-            super(pos, texture, game);
+    public Player(Vector2 pos, TextureRegion [][] texture) {
+        super(pos, texture);
     }
 
     /**
