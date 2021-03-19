@@ -11,7 +11,7 @@ public class NetworkPackets {
     static public final int udpPort = 25555;
 
 
-    static public void register (EndPoint endPoint) {
+    static public void register (EndPoint endPoint) { //EndPoint is either server og client
       //  Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
 
       //  obj.register(Vector2.class); //follow this format of "obj.register(xxx.class)", where xxx is class.

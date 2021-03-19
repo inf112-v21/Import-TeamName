@@ -19,14 +19,14 @@ public class RRServer {
         Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
         //board = new BoardState/Board/GameMap(this);
 
-        //Registering of packet class is being done all at once at NetworkPackets.java
-        NetworkPackets.register(server);
-
         server = new Server() {
             protected Connection newConnection() {  //Storing by connection state
                 return new RRConnection();
             }
         };
+
+        //Registering of packet class is being done all at once at NetworkPackets.java
+        NetworkPackets.register(server);
 
 
 
