@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 
@@ -37,21 +38,20 @@ public class CardUI extends Actor {
     }
 
 
-    public void setUpCards(int w, int h) {
+    public void setUpCards(int w, int h, Player player) {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
-            w += 5f;
+            w += 1.5f;
             System.out.println(w);
             ImageButton cardButton = card.getCardButton();
-            cardButton.setSize(5,5);
+            cardButton.setSize(2,5);
             cardButton.setPosition(w, h);
             table.add(cardButton);
             stage.addActor(cardButton);
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-                    card.action(robot);
+                    card.action(player);
                 }
 
                 @Override

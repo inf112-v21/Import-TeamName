@@ -14,12 +14,10 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
-    private final Board board;
     private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
 
     public SimpleRobot(Vector2 startpos, TextureRegion[][] texture) {
         super(startpos);
-        this.board = gameBoard;
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
         this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
@@ -35,13 +33,13 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      */
     public void moveRobot(int steps) {
 
-        TiledMapTileLayer playerTile = (TiledMapTileLayer) board.getMap().getLayers().get("Player");
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
         if (steps == 0) return;
 
         Vector2 pos = getPosition();
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Set empty cell where robot once existed
 
-        if (!board.canGoToTile(pos, lookDirection)) return;
+        if (!gameBoard.canGoToTile(pos, lookDirection)) return;
 
 
         setPosition(Direction.goDirection(pos, lookDirection)); // Move forward
@@ -56,13 +54,13 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
 
         //Player on flag
-        if (board.isPosAFlag(playerPos)) {
+        if (gameBoard.isPosAFlag(playerPos)) {
             this.programSheet.addFlag();
             return;
         }
 
         //If player is on Pit or outside map. Set player to dead.
-        if (board.isOnBoard(playerPos) || board.isPosAPit(playerPos)) {
+        if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
             getProgramSheet().setDead(true); // Temporary?
             return;
         }
@@ -88,7 +86,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     }
 
     public Board getBoard() {
-        return board;
+        return gameBoard;
     }
 
     @Override

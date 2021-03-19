@@ -14,16 +14,12 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
-import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -127,7 +123,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        player.moveRobotWASD(tilePlayer, keycode);
+        player.moveRobotWASD(keycode);
         return true;
     }
 
@@ -194,33 +190,9 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        // Generate cards
-        ImageButton move1Card = new MovementCard(0,  CardType.MOVE1).getCardButton();
-        System.out.println(move1Card);
-        ImageButton rotateRight = new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
-        ImageButton rotateLeft =  new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
-
-        move1Card.setSize(5,5);
-        rotateRight.setSize(5,5);
-        rotateLeft.setSize(5,5);
-
-        move1Card.setPosition(0,0);
-        rotateRight.setPosition(4f,0);
-        rotateLeft.setPosition(8f,0);
-
-       // uiStage.addActor(move1Card);
-        //uiStage.addActor(rotateRight);
-       //uiStage.addActor(rotateLeft);
-
-
-        /**
-         * Do something fantastic with carddeck
-         */
 
         CardUI cardui = new CardUI(this, game);
-        cardui.setUpCards(0,0);
-
-
+        cardui.setUpCards(0,0, player); // Generate buttons and listeners for actions
 
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
