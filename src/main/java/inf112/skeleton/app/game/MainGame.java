@@ -80,7 +80,7 @@ public class MainGame {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
         TextureRegion[][] textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);
 
-        for (int i = 0; i < numPlayers; i++) {
+        for (int i = 0; i < numPlayers-1; i++) {
             Player robot = new Player(startPositions.get(i).getPosition(), textures);
             robots.add(robot);
         }

@@ -69,7 +69,6 @@ public class GameScreen extends InputAdapter implements Screen {
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
         game = new MainGame();
 
-        MainGame.gameLoop();
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
