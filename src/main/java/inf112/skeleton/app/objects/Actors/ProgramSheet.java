@@ -11,7 +11,7 @@ public class ProgramSheet {
     private Register register;
     private int damageTokens;
     private int lifeTokens;
-    private int flags;
+    private int flags; //TODO: Change to List<Vector2> flags or HashSet<Vector2> flags? Containing all visited flags. Easier to differentiate already visited flags.
     private boolean powerDown;
     private boolean dead;
 

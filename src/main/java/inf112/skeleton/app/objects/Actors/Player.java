@@ -24,7 +24,8 @@ public class Player extends SimpleRobot {
     public void moveRobotWASD(int keycode) {
         Vector2 pos = getPosition();
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
+        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
         if (keycode == Input.Keys.W) {
             if (getBoard().canGoToTile(pos, NORTH)) {
                 //pos.y += 1;

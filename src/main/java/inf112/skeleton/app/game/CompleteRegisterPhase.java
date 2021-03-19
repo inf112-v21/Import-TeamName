@@ -17,6 +17,7 @@ public class CompleteRegisterPhase implements IPhase {
         executeProgramCards();
         boardElementsMove();
         lasersFire();
+
         updateCheckPoints(); //Checks if robot is on flag
     }
 

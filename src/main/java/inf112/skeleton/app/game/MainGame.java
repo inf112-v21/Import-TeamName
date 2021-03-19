@@ -94,6 +94,7 @@ public class MainGame {
     public void addPlayer(Player player) {
         robots.add(player);
     }
+
     public ArrayList<Player> getRobots() {return this.robots;}
 
 }
