@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.esotericsoftware.kryonet.Client;
+
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
@@ -119,7 +120,7 @@ public class MultiplayerScreen implements Screen {
         joinGame.addListener(new ClickListener() {
             @Override
            public void clicked(InputEvent event, float x, float y){
-               join();
+                join();
            }
         });
 
@@ -159,7 +160,7 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
- //       game.setGameScreen(new GameScreen()); //thinking of changing GameScreen's input to needing the input from this page as parameters
+        game.setGameScreen();
     }
 
     private void host() {

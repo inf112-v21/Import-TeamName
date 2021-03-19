@@ -11,7 +11,6 @@ import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.screens.GameScreen;
 
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 import java.io.IOException;
 
@@ -61,7 +60,7 @@ public class TestGameScreen implements Screen {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         //render the map
-        game.render();
+        //missing
 
 
     }
