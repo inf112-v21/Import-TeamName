@@ -15,7 +15,7 @@ public class NetworkPackets {
        Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
 
       //  obj.register(Vector2.class); //follow this format of "obj.register(xxx.class)", where xxx is class.
-      //  obj.register(Ping.class);
+        obj.register(Ping.class);
         obj.register(Entry.class);
     }
 
