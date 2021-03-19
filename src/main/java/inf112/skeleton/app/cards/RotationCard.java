@@ -1,7 +1,5 @@
 package inf112.skeleton.app.cards;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
 public class RotationCard extends SimpleProgramCard {
@@ -29,7 +27,7 @@ public class RotationCard extends SimpleProgramCard {
 
 
     @Override
-    public void action(TiledMapTileLayer tilePlayer, SimpleRobot robot) {
+    public void action(SimpleRobot robot) {
         robot.rotate(clockwiseTurns);
     }
 

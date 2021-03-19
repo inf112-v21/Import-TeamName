@@ -5,9 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.map.Board;
 
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.enums.Direction.NORTH;
 
 public class Player extends SimpleRobot {
@@ -20,12 +19,11 @@ public class Player extends SimpleRobot {
      * Move forward using WASD keys
      *
      * METHOD MEANT FOR TESTING
-     * @param playerTile
      * @param keycode
      */
-    public void moveRobotWASD(TiledMapTileLayer playerTile, int keycode) {
+    public void moveRobotWASD(int keycode) {
         Vector2 pos = getPosition();
-
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
         if (keycode == Input.Keys.W) {
             if (getBoard().canGoToTile(pos, NORTH)) {

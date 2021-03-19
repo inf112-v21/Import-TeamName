@@ -23,6 +23,7 @@ public class Board {
     private final ArrayList<DockingBay> dockingBays;
     private final ArrayList<Flag> flags;
     private final ArrayList<Laser> lasers;
+    TiledMap map;
 
     private final Vector2 boardDimensions; // (Width, Height)
 
@@ -30,7 +31,7 @@ public class Board {
         dockingBays = new ArrayList<DockingBay>();
         flags = new ArrayList<Flag>();
         lasers = new ArrayList<Laser>();
-
+        this.map =  map;
         mapCollidables = new HashMap<Vector2,IWall>();
         mapOtherTiles = new HashMap<Vector2,IObject>();
 
@@ -269,4 +270,6 @@ public class Board {
         return (playerX < 0 || playerX > getBoardDimensions().x || playerY < 0 || playerY > getBoardDimensions().y);
 
     }
+
+    public TiledMap getMap() {return this.map;}
 }

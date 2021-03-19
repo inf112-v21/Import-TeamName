@@ -14,20 +14,18 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
-import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import com.esotericsoftware.minlog.Log;
 
@@ -60,7 +58,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     Stage stage;
     Stage uiStage;
-    StretchViewport viewPort;
+    FitViewport viewPort;
     private Player player;
     private boolean debugMode;
 
@@ -74,7 +72,7 @@ public class GameScreen extends InputAdapter implements Screen {
     static Board board;
 
 
-    public GameScreen(RoboRally switcher, Stage stage, StretchViewport viewPort, boolean debugMode) {
+    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
         game = new MainGame();
         this.switcher = switcher;
         this.stage = stage;
@@ -106,7 +104,6 @@ public class GameScreen extends InputAdapter implements Screen {
         gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
         uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
 
-        int initialCameraY = viewPortHeight - 10;
         // Set camera, but does not scale with the fit viewport
         //gameCamera.position.y = initialCameraY;
         gameCamera.update();
@@ -123,6 +120,7 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
+        game.addPlayer(new Player(startPos, textures));
         player = new Player(startPos, textures);
     }
 
@@ -133,7 +131,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        player.moveRobotWASD(tilePlayer, keycode);
+        player.moveRobotWASD(keycode);
         return true;
     }
 
@@ -200,76 +198,15 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        // Generate cards
-        ImageButton move1Card = new MovementCard(0,  CardType.MOVE1).getCardButton();
-        System.out.println(move1Card);
-        ImageButton rotateRight = new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
-        ImageButton rotateLeft =  new RotationCard(0,  CardType.ROTATERIGHT).getCardButton();
 
-        move1Card.setSize(5,5);
-        rotateRight.setSize(5,5);
-        rotateLeft.setSize(5,5);
-
-        move1Card.setPosition(0,0);
-        rotateRight.setPosition(4f,0);
-        rotateLeft.setPosition(8f,0);
-
-        uiStage.addActor(move1Card);
-        uiStage.addActor(rotateRight);
-        uiStage.addActor(rotateLeft);
-
-        /**
-         *
-         */
-        // game.getRobots()
-
-        CardHand deck = new CardHand(9);
-
-        /**
-         * Do something fantastic with carddeck
-         */
+        CardUI cardui = new CardUI(this, game);
+        cardui.setUpCards(0,0, player); // Generate buttons and listeners for actions
 
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
         }
         else {
 
-
-
-            move1Card.addListener(new InputListener() {
-                @Override
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-                    player.moveRobot(tilePlayer, 1);
-                }
-
-                @Override
-                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    return true;
-                }
-            });
-            rotateRight.addListener(new InputListener() {
-                @Override
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    player.rotate(1);
-                }
-
-                @Override
-                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    return true;
-                }
-            });
-            rotateLeft.addListener(new InputListener() {
-                @Override
-                public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    player.rotate(3);
-                }
-
-                @Override
-                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    return true;
-                }
-            });
             Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
         }
     }

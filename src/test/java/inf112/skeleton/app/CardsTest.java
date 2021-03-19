@@ -10,7 +10,6 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +47,7 @@ public class CardsTest {
     public void moveOneForward() {
         Player player = new Player(new Vector2(2,2), textures);
         MovementCard move1 = new MovementCard(1, CardType.MOVE1 );
-        move1.action(tilePlayer, player);
+        move1.action(player);
         assertEquals(new Vector2(2,3), player.getPosition());
     }
 
@@ -56,7 +55,7 @@ public class CardsTest {
     public void moveOneBack() {
         Player player = new Player(new Vector2(2,2), textures);
         MovementCard move1 = new MovementCard(1,  CardType.BACK1);
-        move1.action(tilePlayer, player);
+        move1.action(player);
         assertEquals(new Vector2(2,1), player.getPosition());
     }
 
@@ -64,7 +63,7 @@ public class CardsTest {
     public void rotateWithClock() {
         Player player = new Player(new Vector2(2,2), textures);
         RotationCard rotate1 = new RotationCard(1, CardType.ROTATERIGHT);
-        rotate1.action(tilePlayer, player);
+        rotate1.action(player);
         assertEquals(Direction.EAST, player.getLookDirection());
     }
 

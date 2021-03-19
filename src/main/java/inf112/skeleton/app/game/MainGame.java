@@ -18,7 +18,7 @@ import java.util.List;
 public class MainGame {
 
 
-   public static ArrayList<SimpleRobot> robots;
+   public static ArrayList<Player> robots;
    public static Board gameBoard;
    public static CardDeck deck;
 
@@ -70,6 +70,7 @@ public class MainGame {
 
     }
 
+
     public Board getGameBoard() { return gameBoard; }
     public CardDeck getDeck() { return deck; }
 
@@ -93,5 +94,6 @@ public class MainGame {
     public void addPlayer(Player player) {
         robots.add(player);
     }
+    public ArrayList<Player> getRobots() {return this.robots;}
 
 }

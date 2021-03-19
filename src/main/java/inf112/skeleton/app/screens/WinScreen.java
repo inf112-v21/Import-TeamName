@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
@@ -21,13 +22,13 @@ public class WinScreen implements Screen {
 
     final RoboRally game;
     private Stage stage;
-    StretchViewport viewPort;
+    FitViewport viewPort;
     private Sprite victorySprite;
     private Image victory;
     float width;
     float height;
 
-    public WinScreen(final RoboRally game, StretchViewport viewPort) {
+    public WinScreen(final RoboRally game, FitViewport viewPort) {
         this.game = game;
         this.viewPort = viewPort;
     }

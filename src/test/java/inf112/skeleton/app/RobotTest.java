@@ -13,7 +13,6 @@ import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.MovementCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +46,7 @@ public class RobotTest {
     @Test
     public void playerMoveUp() {
         Player player = new Player(new Vector2(2,2), textures);
-        player.moveRobotWASD(tilePlayer, 51); // Keycode 51 -> w Should move up
+        player.moveRobotWASD(51); // Keycode 51 -> w Should move up
         assertEquals(new Vector2(2,3), player.getPosition());
     }
 
@@ -77,7 +76,7 @@ public class RobotTest {
     @Test
     public void moveOneForward() {
         Player player = new Player(new Vector2(2,2), textures);
-        player.moveRobot(tilePlayer, 1); //To north
+        player.moveRobot(1); //To north
         assertEquals(new Vector2(2,3), player.getPosition());
     }
 
@@ -86,7 +85,7 @@ public class RobotTest {
         Player player = new Player(new Vector2(2,2), textures);
         Texture playerTexture = Assets.manager.get(Assets.texture); // TEST TEXTURE. NO IMPLICATION FOR TEST
         MovementCard backwardsCard = new MovementCard(1, CardType.BACK1);
-        backwardsCard.action(tilePlayer, player);
+        backwardsCard.action(player);
         assertEquals(new Vector2(2, 1), player.getPosition());
     }
 
