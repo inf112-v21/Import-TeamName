@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.screens.GameScreen;
@@ -22,7 +23,7 @@ public class RoboRally extends Game {
     WinScreen   winScreen;
 
 
-    StretchViewport viewPort;
+    FitViewport viewPort;
     Stage stage;
 
     private boolean debugMode = false;
@@ -33,7 +34,7 @@ public class RoboRally extends Game {
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
 
-        viewPort = new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewPort.apply();
         stage = new Stage(viewPort);
 

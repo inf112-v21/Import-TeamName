@@ -65,6 +65,7 @@ public class MainGame {
 
     }
 
+    public ArrayList<SimpleRobot> getRobots() {return this.robots;}
     public Board getGameBoard() { return gameBoard; }
     public CardDeck getDeck() { return deck; }
 

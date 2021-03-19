@@ -3,6 +3,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 
@@ -18,7 +19,7 @@ public class TitleScreen implements Screen {
 
     final RoboRally game;
     private Stage stage;
-    StretchViewport viewPort;
+    FitViewport viewPort;
 
     float width;
     float height;
@@ -27,7 +28,7 @@ public class TitleScreen implements Screen {
      * Constructor method
 
      */
-    public TitleScreen(final RoboRally game, Stage stage, StretchViewport viewPort) {
+    public TitleScreen(final RoboRally game, Stage stage, FitViewport viewPort) {
         this.game = game;
         this.stage = stage;
         this.viewPort = viewPort;

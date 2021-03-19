@@ -39,9 +39,9 @@ public abstract class SimpleProgramCard implements IProgramCard {
     public CardType getType() {return this.cardtype;}
 
 
-    public void setSize(int w, int h) {this.cardButton.setSize(w,h);}
+    public void setCardButtonSize(int w, int h) {this.cardButton.setSize(w,h);}
 
-    public void setPosition(float wPos, float hPos) { cardButton.setPosition(wPos, hPos); }
+    public void setCardButtonPosition(float wPos, float hPos) { cardButton.setPosition(wPos, hPos); }
 
     public ImageButton getCardButton() { return cardButton; }
 
