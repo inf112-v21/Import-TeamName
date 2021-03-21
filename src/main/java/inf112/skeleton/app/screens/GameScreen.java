@@ -139,7 +139,8 @@ public class GameScreen extends InputAdapter implements Screen {
 
             System.out.println("CompleteRegisterPhase is running.");
             System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
-            System.out.println("Position: " + player.getPosition());
+            System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
+            System.out.println("Position: " + player.getPosition() + "\n");
 
             return true;
         }

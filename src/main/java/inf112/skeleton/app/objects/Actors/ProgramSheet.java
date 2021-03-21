@@ -3,6 +3,9 @@ package inf112.skeleton.app.objects.Actors;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.Register;
+import inf112.skeleton.app.objects.TileObjects.Flag;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProgramSheet {
 
@@ -11,7 +14,7 @@ public class ProgramSheet {
     private Register register;
     private int damageTokens;
     private int lifeTokens;
-    private int flags; //TODO: Change to List<Vector2> flags or HashSet<Vector2> flags? Containing all visited flags. Easier to differentiate already visited flags.
+    private List<Integer> flags;
     private boolean powerDown;
     private boolean dead;
 
@@ -19,7 +22,7 @@ public class ProgramSheet {
         damageTokens = 0;
         lifeTokens = 0;
         powerDown = false;
-        flags = 0;
+        flags = new ArrayList<>();
         dead = false;
         hand = new CardHand(9);
     }
@@ -63,9 +66,17 @@ public class ProgramSheet {
 
     public CardHand getCardHand() {return this.hand;}
 
-    public int getNumberOfFlags() {return flags;}
+    public int getNumberOfFlags() { return flags.size(); }
 
-    public void addFlag() {flags++;}
+    /**
+     * Tries to add flag to visited flags.
+     * Can only add if the flag id is equal to last visited flag +1. --> Only add flags in order.
+     * @param flag
+     */
+    public void addFlag(Flag flag) {
+        int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
+        if (lastVisitedFlag+1 == flag.getFlagID()) flags.add(flag.getFlagID());
+    }
 
     public int getDamage() {
         return this.damageTokens;

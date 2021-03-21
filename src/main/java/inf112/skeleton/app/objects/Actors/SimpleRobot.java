@@ -54,10 +54,12 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
 
         //Player on flag
+        /* This is done in CompleteRegisterPhase, as the last operation.
         if (gameBoard.isPosAFlag(playerPos)) {
             this.programSheet.addFlag();
             return;
         }
+         */
 
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
