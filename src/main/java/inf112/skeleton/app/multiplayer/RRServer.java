@@ -25,32 +25,34 @@ public class RRServer {
             }
         };
 
+        //Bind to port
+        server.bind(NetworkPackets.tcpPort, NetworkPackets.udpPort);
+
+        server.start();
+
         //Registering of packet class is being done all at once at NetworkPackets.java
         NetworkPackets.register(server);
 
 
-
-        //Bind to port
-        server.bind(NetworkPackets.tcpPort, NetworkPackets.udpPort);
 
         server.addListener(new Listener() {
             public void received(Connection c, Object packet) {
                 RRConnection connection = (RRConnection) c; //every connection is of RRConnection, so this should be fine.
 
                 if (packet instanceof Entry) {
-                    Entry name = ((Entry) packet);
+                    Entry name = ((Entry) packet); //casting to access the packet
 
                     //from here on, im just trying to catch invalid names
                     if (connection.name != null) return;
 
                     String named = name.name; //since Entry might get other values in the future.
                     if (named == null) return;
+
+                    named = named.trim();
                     if (named.length() == 0) return;
-                    connection.name = named;
-
-                    // and stuff from here should be game-logic, if i havent forgotten to check something.
 
 
+                    connection.name = named; //should be a valid name by this point.
                 }
 
             }
@@ -61,11 +63,6 @@ public class RRServer {
                     System.out.println("A client disconnected."); //testing
                 }
         });
-
-
-        server.start();
-
-        System.out.println("Server is up and running"); //yet another test/confirmation
     }
 
 

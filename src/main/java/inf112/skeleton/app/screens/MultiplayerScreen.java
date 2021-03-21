@@ -46,7 +46,7 @@ public class MultiplayerScreen implements Screen {
     }
 
     FitViewport viewPort;
-    private boolean debugMode = false;
+    private boolean debugMode = true;
 
 
     @Override

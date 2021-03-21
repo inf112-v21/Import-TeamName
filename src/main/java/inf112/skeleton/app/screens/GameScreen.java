@@ -28,14 +28,12 @@ import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
-<<<<<<< HEAD
 
 import com.esotericsoftware.minlog.Log;
 
 import java.io.IOException;
 
-=======
->>>>>>> master
+
 import static com.badlogic.gdx.Gdx.gl;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;

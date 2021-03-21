@@ -42,29 +42,12 @@ public class TitleScreen implements Screen {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
 
-        ImageButton playButton = new PlayButton(width * 0.4F,height * 0.7F).getButton();
+        ImageButton playButton = new PlayButton(width * 0.4F, height * 0.7F).getButton();
         stage = new Stage(new StretchViewport(width, height));
         stage.addActor(playButton);
 
-
-        //mainGame.setNumPlayers(8); //Max is 8 players
-        playButton.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-<<<<<<< HEAD
-               // game.setGameScreen();
-=======
-                switcher.setGameScreen();
->>>>>>> master
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }});
-
-        Gdx.input.setInputProcessor(stage);
-
     }
+
 
     @Override
     public void render(float delta) {
