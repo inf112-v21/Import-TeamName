@@ -5,6 +5,8 @@ import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.*;
 
@@ -53,10 +55,28 @@ public class CompleteRegisterPhase implements IPhase {
         rotatePlayer();
     }
 
+    /**
+     * Handles collision with other robots.
+     *
+     * @param robotsNextMove
+     */
+    protected void checkRobotCollision(List<Vector2> robotsNextMove) {
+
+    }
 
     /**
-     * The phase activating all lasers. Wall mounted and robots.
+     * Handles collision with walls.
+     * Conveyors, Pushers can't push robots through walls.
+     * @param robotsNextMove
      */
+    protected void checkWallCollision(List<Vector2> robotsNextMove) {
+
+    }
+
+
+        /**
+         * The phase activating all lasers. Wall mounted and robots.
+         */
     protected void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
@@ -109,6 +129,9 @@ public class CompleteRegisterPhase implements IPhase {
             if (gameBoard.isPosAConveyor(robotLocation)) { //If robot is on a conveyor
                 Conveyor con = (Conveyor) gameBoard.getNonWallTileOnPos(robotLocation);
 
+                //Conveyor cannot push robots through walls.
+                if (!gameBoard.canGoToTile(robotLocation,con.getPushDirection())) continue;
+
                 //If express, move only express conveyors
                 if (isExpress) {
                     if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
@@ -128,8 +151,12 @@ public class CompleteRegisterPhase implements IPhase {
                 Vector2 robotLocation = robot.getPosition();
 
                 if (gameBoard.isPosAPusher(robotLocation)) { //If position is a conveyor
-                    Pusher con = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
-                    robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    Pusher push = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
+
+                    //Pusher cannot push robots through walls.
+                    if (!gameBoard.canGoToTile(robotLocation,push.getPushDirection())) continue;
+
+                    robot.setPosition(Direction.goDirection(robotLocation, push.getPushDirection()));
                 }
             }
         }

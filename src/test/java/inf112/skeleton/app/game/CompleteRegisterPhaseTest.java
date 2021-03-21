@@ -93,6 +93,41 @@ public class CompleteRegisterPhaseTest {
         Assert.assertEquals(new Vector2(3,1), robot.getPosition()); //Position should not be different.
     }
 
+    ////////////////////////////////////////
+    ///   Test Conveyors with collision  ///
+    ////////////////////////////////////////
+
+    @Test
+    public void playerCollisionConveyorShouldNotPushPlayer() {
+        Player robot = new Player(new Vector2(4,1), textures);
+        Player robot2 = new Player(new Vector2(4,0), textures);
+        game.addPlayer(robot);
+        game.addPlayer(robot2);
+
+
+        CompleteRegisterPhase phase = new CompleteRegisterPhase();
+        phase.moveConveyor(false); //Only move normal conveyors. Not express
+
+        //Robots should not move
+        Assert.assertEquals(new Vector2(4,1), robot.getPosition()); //Position should not be different.
+        Assert.assertEquals(new Vector2(4,0), robot2.getPosition()); //Position should not be different.
+    }
+
+    @Test
+    public void conveyorCannotPushPlayersThroughWalls() {
+        Player robot = new Player(new Vector2(2,3), textures);
+        game.addPlayer(robot);
+
+        CompleteRegisterPhase phase = new CompleteRegisterPhase();
+        phase.moveConveyor(false); //Only move normal conveyors. Not express
+
+        //Robots should not move
+        Assert.assertEquals(new Vector2(2,3), robot.getPosition()); //Position should not be different.
+    }
+
+
+
+
 
 
     //////////////////////////////////////
@@ -102,13 +137,13 @@ public class CompleteRegisterPhaseTest {
     @Test
     //Begin at (0,4) --> (0,3)
     public void pusherShouldPushInPushDirection() {
-        Player robot = new Player(new Vector2(0,4), textures);
+        Player robot = new Player(new Vector2(1,4), textures);
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.movePusher();
 
-        Assert.assertEquals(new Vector2(0,3), robot.getPosition()); //Position should not be different.
+        Assert.assertEquals(new Vector2(1,3), robot.getPosition()); //Position should not be different.
     }
 
     @Test
@@ -124,6 +159,18 @@ public class CompleteRegisterPhaseTest {
     }
 
 
+
+    @Test
+    public void pushersCannotPushPlayersThroughWalls() {
+        Player robot = new Player(new Vector2(0,4), textures);
+        game.addPlayer(robot);
+
+        CompleteRegisterPhase phase = new CompleteRegisterPhase();
+        phase.movePusher(); //Only move normal conveyors. Not express
+
+        //Robots should not move
+        Assert.assertEquals(new Vector2(0,4), robot.getPosition()); //Position should not be different.
+    }
 
     /////////////////////////////////////////
     /// Test Robot move without collision ///
