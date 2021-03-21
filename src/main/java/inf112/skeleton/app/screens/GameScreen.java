@@ -119,11 +119,15 @@ public class GameScreen extends InputAdapter implements Screen {
         player = new Player(startPos, textures);
 
         //Debug
+
         /*
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
         player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
          */
+
         //Add player to game
         game.addPlayer(player);
 

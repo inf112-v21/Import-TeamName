@@ -11,6 +11,7 @@ import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.*;
 
@@ -32,18 +33,29 @@ public class CompleteRegisterPhase implements IPhase {
 
     /**
      * Executes all programcards the robots have in their register.
+     * Accounts for card priority. This has not been tested! -Endre
      *
      * A *very* simple implementation
      *      - Does not account for player collision.
-     *      - Does not account for card Priority.
      */
     protected void executeProgramCards() {
         System.out.println("executeProgramCards is running \n");
-        for (SimpleRobot robot : robots) {
-            List<SimpleProgramCard> register = robot.getProgramSheet().getRegister().getRegister();
 
-            for (SimpleProgramCard card : register) {
-                System.out.println("Card " + card);
+        for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
+            List<SimpleProgramCard> moves = new ArrayList<>(); //One from each player
+
+            //Get card from players/robots
+            for (SimpleRobot robot : robots) {
+                SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
+                moves.add(card); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
+            }
+
+            Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
+
+            //Execute moves
+            for (SimpleRobot robot : robots) {
+                SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
+                System.out.println("Robot " + robot + " used " + card + " card.");
                 card.action(robot);
             }
         }
