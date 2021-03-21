@@ -67,6 +67,7 @@ public class CardsTest {
         assertEquals(Direction.EAST, player.getLookDirection());
     }
 
+    //TODO: Write tests that account for walls.
 
 
     @Test
