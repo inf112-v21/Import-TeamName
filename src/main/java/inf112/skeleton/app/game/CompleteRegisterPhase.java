@@ -1,6 +1,10 @@
 package inf112.skeleton.app.game;
 
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.Register;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
@@ -26,8 +30,23 @@ public class CompleteRegisterPhase implements IPhase {
         //TODO: Is this 'nice to have'? Maybe just print to console.
     }
 
+    /**
+     * Executes all programcards the robots have in their register.
+     *
+     * A *very* simple implementation
+     *      - Does not account for player collision.
+     *      - Does not account for card Priority.
+     */
     protected void executeProgramCards() {
+        System.out.println("executeProgramCards is running \n");
+        for (SimpleRobot robot : robots) {
+            List<SimpleProgramCard> register = robot.getProgramSheet().getRegister().getRegister();
 
+            for (SimpleProgramCard card : register) {
+                System.out.println("Card " + card);
+                card.action(robot);
+            }
+        }
     }
 
     /**

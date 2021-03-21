@@ -30,7 +30,7 @@ public class CardUI extends Actor {
         stage = screen.getUIStage();
         this.table = new Table();
         System.out.println(MainGame.robots);
-        this.robot = MainGame.robots.get(0); // Take first
+        this.robot = (Player) MainGame.robots.get(0); // Take first
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
 
