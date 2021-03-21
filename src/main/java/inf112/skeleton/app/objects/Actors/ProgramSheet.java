@@ -87,7 +87,7 @@ public class ProgramSheet {
         archiveMarker = flag.getPosition(); //Update respawn point according to rules.
 
         int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
-        if (lastVisitedFlag+1 == flag.getFlagID()) flags.add(flag.getFlagID()); //If in order, add flag.
+        if (lastVisitedFlag+1 == flag.getFlagID() && !flags.contains(flag.getFlagID())) flags.add(flag.getFlagID()); //If in order, add flag.
     }
 
     public int getDamage() {
