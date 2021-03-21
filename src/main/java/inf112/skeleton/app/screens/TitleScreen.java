@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 
 import inf112.skeleton.app.buttons.PlayButton;
+import inf112.skeleton.app.game.MainGame;
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -17,21 +18,23 @@ import static com.badlogic.gdx.Gdx.gl;
  */
 public class TitleScreen implements Screen {
 
-    final RoboRally game;
+    final RoboRally switcher;
     private Stage stage;
     FitViewport viewPort;
 
     float width;
     float height;
-
+    MainGame mainGame;
     /**
      * Constructor method
 
      */
-    public TitleScreen(final RoboRally game, Stage stage, FitViewport viewPort) {
-        this.game = game;
+    public TitleScreen(final RoboRally switcher, Stage stage, FitViewport viewPort) {
+        this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
+        mainGame = new MainGame();
+
     }
 
     @Override
@@ -43,10 +46,16 @@ public class TitleScreen implements Screen {
         stage = new Stage(new StretchViewport(width, height));
         stage.addActor(playButton);
 
+
+        //mainGame.setNumPlayers(8); //Max is 8 players
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+<<<<<<< HEAD
                // game.setGameScreen();
+=======
+                switcher.setGameScreen();
+>>>>>>> master
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -61,9 +70,9 @@ public class TitleScreen implements Screen {
     public void render(float delta) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.batch.begin();
-        game.font.draw(game.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
-        game.batch.end();
+        switcher.batch.begin();
+        switcher.font.draw(switcher.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
+        switcher.batch.end();
         stage.act();
         stage.draw();
 

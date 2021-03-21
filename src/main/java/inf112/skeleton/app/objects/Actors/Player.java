@@ -24,30 +24,31 @@ public class Player extends SimpleRobot {
     public void moveRobotWASD(int keycode) {
         Vector2 pos = getPosition();
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell());
+        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
         if (keycode == Input.Keys.W) {
-            if (getBoard().canGoToTile(pos, NORTH)) {
+            if (gameBoard.canGoToTile(pos, NORTH)) {
                 //pos.y += 1;
                 setPosition(Direction.goDirection(pos, NORTH));
                 System.out.println(pos);
             }
         }
         if (keycode == Input.Keys.A) {
-            if (getBoard().canGoToTile(pos, Direction.WEST)) {
+            if (gameBoard.canGoToTile(pos, Direction.WEST)) {
                 //pos.x -= 1;
                 setPosition(Direction.goDirection(pos, Direction.WEST));
                 System.out.println(pos);
             }
         }
         if (keycode == Input.Keys.S) {
-            if (getBoard().canGoToTile(pos, Direction.SOUTH)) {
+            if (gameBoard.canGoToTile(pos, Direction.SOUTH)) {
                 //pos.y -= 1;
                 setPosition(Direction.goDirection(pos, Direction.SOUTH));
                 System.out.println(pos);
             }
         }
         if (keycode == Input.Keys.D) {
-            if (getBoard().canGoToTile(pos, Direction.EAST)) {
+            if (gameBoard.canGoToTile(pos, Direction.EAST)) {
                 //pos.x += 1;
                 setPosition(Direction.goDirection(pos, Direction.EAST));
                 System.out.println(pos);

@@ -1,8 +1,12 @@
 package inf112.skeleton.app.objects.Actors;
 
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.Register;
+import inf112.skeleton.app.objects.TileObjects.Flag;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProgramSheet {
 
@@ -11,22 +15,23 @@ public class ProgramSheet {
     private Register register;
     private int damageTokens;
     private int lifeTokens;
-    private int flags;
+    private List<Integer> flags;
     private boolean powerDown;
     private boolean dead;
+    private Vector2 archiveMarker; //Respawn point when reentering the game.
 
     public ProgramSheet() {
         damageTokens = 0;
         lifeTokens = 0;
         powerDown = false;
-        flags = 0;
+        flags = new ArrayList<>();
         dead = false;
         hand = new CardHand(9);
+        register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
     }
 
 
     public void addDamage(int amount) {
-
         this.damageTokens += amount;
         if (damageTokens > lifeTokens) this.dead = true;
         if (this.damageTokens > 10) {
@@ -59,13 +64,31 @@ public class ProgramSheet {
         }
     }
 
+    /**
+     * Cards that will be executed in CompleteRegisterPhase
+     * @return
+     */
     public Register getRegister() {return this.register;}
 
+    /**
+     * All cards on hand?
+     * @return
+     */
     public CardHand getCardHand() {return this.hand;}
 
-    public int getNumberOfFlags() {return flags;}
+    public int getNumberOfFlags() { return flags.size(); }
 
-    public void addFlag() {flags++;}
+    /**
+     * Tries to add flag to visited flags.
+     * Can only add if the flag id is equal to last visited flag +1. --> Only add flags in order.
+     * @param flag
+     */
+    public void addFlag(Flag flag) {
+        archiveMarker = flag.getPosition(); //Update respawn point according to rules.
+
+        int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
+        if (lastVisitedFlag+1 == flag.getFlagID() && !flags.contains(flag.getFlagID())) flags.add(flag.getFlagID()); //If in order, add flag.
+    }
 
     public int getDamage() {
         return this.damageTokens;
@@ -89,5 +112,21 @@ public class ProgramSheet {
 
     public void setDead(boolean dead) {
         this.dead = dead;
+    }
+
+    /**
+     * Sets respawn point.
+     * @param archiveMarker
+     */
+    public void setArchiveMarker(Vector2 archiveMarker) {
+        this.archiveMarker = archiveMarker;
+    }
+
+    /**
+     * Returns respawn point
+     * @return
+     */
+    public Vector2 getArchiveMarker() {
+        return archiveMarker;
     }
 }

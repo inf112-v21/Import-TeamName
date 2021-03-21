@@ -13,25 +13,31 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
-
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.RotationCard;
+import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
+<<<<<<< HEAD
 
 import com.esotericsoftware.minlog.Log;
 
 import java.io.IOException;
 
+=======
+>>>>>>> master
 import static com.badlogic.gdx.Gdx.gl;
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
 
 
@@ -81,6 +87,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode, boolean hosting, String ip, String name) {
         game = new MainGame();
+
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
@@ -104,7 +111,7 @@ public class GameScreen extends InputAdapter implements Screen {
         map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
         game.setup(map);
-        this.board = game.getGameBoard();
+        this.board = MainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
         viewPortHeight = (int) board.getBoardDimensions().y;
         viewPortWidth = (int) board.getBoardDimensions().x;
@@ -134,8 +141,18 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        game.addPlayer(new Player(startPos, textures));
         player = new Player(startPos, textures);
+
+        //Debug
+        /*
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+         */
+        //Add player to game
+        game.addPlayer(player);
+
+        //MainGame.gameLoop();
     }
 
 
@@ -145,6 +162,25 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
+        //Player playerTest = (Player) game.robots.get(0);
+        //playerTest.moveRobotWASD(keycode);
+
+        //Debug: Used to trigger a game phase
+        if (keycode == Input.Keys.M) {
+            TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+            playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
+            CompleteRegisterPhase phase = new CompleteRegisterPhase();
+            phase.run();
+
+            System.out.println("CompleteRegisterPhase is running.");
+            System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
+            System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
+            System.out.println("Position: " + player.getPosition() + "\n");
+
+            return true;
+        }
+
         player.moveRobotWASD(keycode);
         return true;
     }

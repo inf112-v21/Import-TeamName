@@ -35,7 +35,7 @@ public class BoardTest {
     //Collision with Lasers, Pushers and CornerWall
     @Test
     public void canGoToTileShouldNotGoThroughPusher() {
-        Assert.assertFalse(boardTestMap.canGoToTile(new Vector2(2,3), Direction.EAST));
+        Assert.assertFalse(boardTestMap.canGoToTile(new Vector2(2,4), Direction.EAST));
     }
 
     @Test

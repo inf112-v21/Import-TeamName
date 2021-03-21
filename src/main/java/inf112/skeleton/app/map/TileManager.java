@@ -50,10 +50,10 @@ public class TileManager {
             case REPAIR_SITE_DOUBLE: return new RepairSite(pos,2);
             case GEAR_ROTATE_LEFT: return new Gear(pos, Rotation.AGAINST_CLOCK);
             case GEAR_ROTATE_RIGHT: return new Gear(pos, Rotation.WITH_CLOCK);
-            case FLAG1: return new Flag(pos);
-            case FLAG2: return new Flag(pos);
-            case FLAG3: return new Flag(pos);
-            case FLAG4: return new Flag(pos);
+            case FLAG1: return new Flag(pos, 1);
+            case FLAG2: return new Flag(pos, 2);
+            case FLAG3: return new Flag(pos, 3);
+            case FLAG4: return new Flag(pos, 4);
 
             //Docking bays (Starting points)
             case DOCKING_BAY1:
