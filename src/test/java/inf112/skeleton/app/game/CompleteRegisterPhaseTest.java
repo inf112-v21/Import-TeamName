@@ -97,7 +97,7 @@ public class CompleteRegisterPhaseTest {
     ///   Test Conveyors with collision  ///
     ////////////////////////////////////////
 
-    @Test
+    @Test 
     public void playerCollisionConveyorShouldNotPushPlayer() {
         Player robot = new Player(new Vector2(4,1), textures);
         Player robot2 = new Player(new Vector2(4,0), textures);
@@ -159,6 +159,9 @@ public class CompleteRegisterPhaseTest {
     }
 
 
+    //////////////////////////////////////
+    ///   Test Pushers with collision  ///
+    //////////////////////////////////////
 
     @Test
     public void pushersCannotPushPlayersThroughWalls() {
@@ -172,13 +175,29 @@ public class CompleteRegisterPhaseTest {
         Assert.assertEquals(new Vector2(0,4), robot.getPosition()); //Position should not be different.
     }
 
+
     /////////////////////////////////////////
     /// Test Robot move without collision ///
     /////////////////////////////////////////
 
+    @Test //TODO Redundant Test? -Endre
+    public void playerMovedToCorrectPosition() {
+        Player robot = new Player(new Vector2(1,1), textures);
+        robot.setLookDirection(Direction.SOUTH);
+
+        robot.setPosition(Direction.goDirection(robot.getPosition(), robot.getLookDirection()));
+
+        Assert.assertEquals(new Vector2(1,0), robot.getPosition()); //Position should not be different.
+    }
 
 
 
+    /////////////////////////////////////////
+    ///   Test Robot move with collision  ///
+    /////////////////////////////////////////
+
+    //Test robots bumping each other in different directions.
+    //TODO: Implement playerCollision logic
 
 
 
