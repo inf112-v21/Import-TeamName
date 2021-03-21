@@ -118,18 +118,28 @@ public class GameScreen extends InputAdapter implements Screen {
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
         player = new Player(startPos, textures);
 
-        //Debug
-
-        /*
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
-         */
-
         //Add player to game
         game.addPlayer(player);
+
+        //Debugging card priority -Endre
+        /*
+        Player player2 = new Player(startPos, textures);
+
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new RotationCard(3, CardType.ROTATERIGHT));
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+
+
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+
+        game.addPlayer(player2);
+         */
 
         //MainGame.gameLoop();
     }

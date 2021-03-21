@@ -35,6 +35,8 @@ public class CompleteRegisterPhase implements IPhase {
      * Executes all programcards the robots have in their register.
      * Accounts for card priority. This has not been tested! -Endre
      *
+     * Robots MUST HAVE 5 cards in their register! This will not work without.
+     *
      * A *very* simple implementation
      *      - Does not account for player collision.
      */
@@ -42,9 +44,9 @@ public class CompleteRegisterPhase implements IPhase {
         System.out.println("executeProgramCards is running \n");
 
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
-            List<SimpleProgramCard> moves = new ArrayList<>(); //One from each player
+            List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
 
-            //Get card from players/robots
+            //Get 1 card from each player/robot
             for (SimpleRobot robot : robots) {
                 SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
                 moves.add(card); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
@@ -52,11 +54,15 @@ public class CompleteRegisterPhase implements IPhase {
 
             Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
 
-            //Execute moves
-            for (SimpleRobot robot : robots) {
-                SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
-                System.out.println("Robot " + robot + " used " + card + " card.");
-                card.action(robot);
+            for (SimpleProgramCard card : moves) {
+                // Do the move on the correct player
+                for (SimpleRobot robot : robots) {
+                    SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
+                    if (robotCard.equals(card)) {
+                        System.out.println("Robot " + robot + " used " + card + " card.");
+                        card.action(robot);
+                    }
+                }
             }
         }
     }
