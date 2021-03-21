@@ -191,7 +191,8 @@ public class CompleteRegisterPhase implements IPhase {
     protected void updateCheckPoints() {
         for (SimpleRobot robot : robots) {
             if (gameBoard.isPosAFlag(robot.getPosition())) {
-                robot.getProgramSheet().addFlag(); //TODO: Change how robots store which flags they have visited. List of locations? List<Vector2> flags;
+                Flag flag = (Flag) gameBoard.getNonWallTileOnPos(robot.getPosition());
+                robot.getProgramSheet().addFlag(flag);
             }
         }
     }

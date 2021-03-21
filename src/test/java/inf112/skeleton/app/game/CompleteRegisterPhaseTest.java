@@ -97,13 +97,12 @@ public class CompleteRegisterPhaseTest {
     ///   Test Conveyors with collision  ///
     ////////////////////////////////////////
 
-    //@Test
-    public void playerCollisionConveyorShouldNotPushPlayer() {
+    //@Test //TODO: Implement player collision
+    public void playerCollisionConveyorShouldMoveBothPlayers() {
         Player robot = new Player(new Vector2(4,1), textures);
         Player robot2 = new Player(new Vector2(4,0), textures);
         game.addPlayer(robot);
         game.addPlayer(robot2);
-
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.moveConveyor(false); //Only move normal conveyors. Not express
