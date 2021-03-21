@@ -6,7 +6,6 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.SimpleObject;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 
@@ -52,19 +51,9 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     public void checkPosition() {
         Vector2 playerPos = getPosition();
 
-
-        //Player on flag
-        /* This is done in CompleteRegisterPhase, as the last operation.
-        if (gameBoard.isPosAFlag(playerPos)) {
-            this.programSheet.addFlag();
-            return;
-        }
-         */
-
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
             getProgramSheet().setDead(true); // Temporary?
-            return;
         }
     }
 
@@ -85,10 +74,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     public TiledMapTileLayer.Cell getPlayerCellWon() {
         return playerCellWon;
-    }
-
-    public Board getBoard() {
-        return gameBoard;
     }
 
     @Override

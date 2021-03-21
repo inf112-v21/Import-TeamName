@@ -1,5 +1,6 @@
 package inf112.skeleton.app.objects.Actors;
 
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.Register;
@@ -17,6 +18,7 @@ public class ProgramSheet {
     private List<Integer> flags;
     private boolean powerDown;
     private boolean dead;
+    private Vector2 archiveMarker; //Respawn point when reentering the game.
 
     public ProgramSheet() {
         damageTokens = 0;
@@ -29,7 +31,6 @@ public class ProgramSheet {
 
 
     public void addDamage(int amount) {
-
         this.damageTokens += amount;
         if (damageTokens > lifeTokens) this.dead = true;
         if (this.damageTokens > 10) {
@@ -74,8 +75,10 @@ public class ProgramSheet {
      * @param flag
      */
     public void addFlag(Flag flag) {
+        archiveMarker = flag.getPosition(); //Update respawn point according to rules.
+
         int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
-        if (lastVisitedFlag+1 == flag.getFlagID()) flags.add(flag.getFlagID());
+        if (lastVisitedFlag+1 == flag.getFlagID()) flags.add(flag.getFlagID()); //If in order, add flag.
     }
 
     public int getDamage() {
@@ -100,5 +103,21 @@ public class ProgramSheet {
 
     public void setDead(boolean dead) {
         this.dead = dead;
+    }
+
+    /**
+     * Sets respawn point.
+     * @param archiveMarker
+     */
+    public void setArchiveMarker(Vector2 archiveMarker) {
+        this.archiveMarker = archiveMarker;
+    }
+
+    /**
+     * Returns respawn point
+     * @return
+     */
+    public Vector2 getArchiveMarker() {
+        return archiveMarker;
     }
 }
