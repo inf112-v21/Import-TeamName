@@ -18,6 +18,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
@@ -113,8 +116,15 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        //Add player to game
         player = new Player(startPos, textures);
+
+        //Debug
+        /*
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
+         */
+        //Add player to game
         game.addPlayer(player);
 
         //MainGame.gameLoop();
