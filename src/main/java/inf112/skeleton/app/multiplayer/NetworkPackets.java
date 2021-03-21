@@ -17,6 +17,7 @@ public class NetworkPackets {
       //  obj.register(Vector2.class); //follow this format of "obj.register(xxx.class)", where xxx is class.
         obj.register(Ping.class);
         obj.register(Entry.class);
+        obj.register(NewPlayer.class);
     }
 
     static public class Entry {  //still testing, might need more here
@@ -26,6 +27,10 @@ public class NetworkPackets {
         public Entry(String name) {
             this.name = name;
         }
+    }
+
+    static public class NewPlayer {
+        
     }
 
     //implement the classes for use in RRClient/RRServer here

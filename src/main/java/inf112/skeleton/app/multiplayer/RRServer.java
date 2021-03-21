@@ -5,6 +5,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.esotericsoftware.minlog.Log;
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
+import inf112.skeleton.app.game.MainGame;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ public class RRServer {
 
     //Server Object
     Server server;
+    MainGame game;
 
 
 
@@ -32,6 +34,7 @@ public class RRServer {
 
         //Registering of packet class is being done all at once at NetworkPackets.java
         NetworkPackets.register(server);
+        game = new MainGame();
 
 
 
@@ -40,19 +43,21 @@ public class RRServer {
                 RRConnection connection = (RRConnection) c; //every connection is of RRConnection, so this should be fine.
 
                 if (packet instanceof Entry) {
-                    Entry name = ((Entry) packet); //casting to access the packet
+                    Entry type = ((Entry) packet); //casting to access the packet
 
                     //from here on, im just trying to catch invalid names
                     if (connection.name != null) return;
 
-                    String named = name.name; //since Entry might get other values in the future.
+                    String named = type.name; //since Entry might get other values in the future.
                     if (named == null) return;
 
                     named = named.trim();
                     if (named.length() == 0) return;
 
-
                     connection.name = named; //should be a valid name by this point.
+
+
+                  //  game.addPlayer();
                 }
 
             }

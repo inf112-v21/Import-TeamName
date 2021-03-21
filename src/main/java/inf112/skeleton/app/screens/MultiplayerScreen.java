@@ -164,7 +164,7 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        //game.setGameScreen();
+        game.setScreen(new GameScreen(game, stage, viewPort, debugMode, false, assignIP.getText(), getName()));
     }
 
     private void host() {
