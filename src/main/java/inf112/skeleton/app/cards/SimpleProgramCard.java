@@ -25,8 +25,6 @@ public abstract class SimpleProgramCard implements IProgramCard {
         getTexture();
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
         cardButton = new ImageButton(drawable);
-
-
     }
 
 
@@ -44,9 +42,15 @@ public abstract class SimpleProgramCard implements IProgramCard {
 
     public ImageButton getCardButton() { return cardButton; }
 
-
     public abstract void action(SimpleRobot robot);
 
+    /**
+     * Prints cardtype
+     * @return
+     */
+    public String toString() {
+        return " " + cardtype;
+    }
 
 
     private void getTexture() {

@@ -27,6 +27,7 @@ public class ProgramSheet {
         flags = new ArrayList<>();
         dead = false;
         hand = new CardHand(9);
+        register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
     }
 
 
@@ -63,8 +64,16 @@ public class ProgramSheet {
         }
     }
 
+    /**
+     * Cards that will be executed in CompleteRegisterPhase
+     * @return
+     */
     public Register getRegister() {return this.register;}
 
+    /**
+     * All cards on hand?
+     * @return
+     */
     public CardHand getCardHand() {return this.hand;}
 
     public int getNumberOfFlags() { return flags.size(); }
