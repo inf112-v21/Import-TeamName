@@ -13,19 +13,18 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
-
+import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
-
 import static com.badlogic.gdx.Gdx.gl;
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
 
 
@@ -114,18 +113,9 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        game.addPlayer(new Player(startPos, textures));
+        //Add player to game
         player = new Player(startPos, textures);
-
-        //game.addPlayer(player);
-
-        /*
-            Legge til spillere i List<> robot
-                -> MainGame har funksjon addPlayer()? addAI()
-
-         */
-
-
+        game.addPlayer(player);
 
         //MainGame.gameLoop();
     }
@@ -138,6 +128,22 @@ public class GameScreen extends InputAdapter implements Screen {
     public boolean keyUp(int keycode) {
         //Player playerTest = (Player) game.robots.get(0);
         //playerTest.moveRobotWASD(keycode);
+
+        //Debug: Used to trigger a game phase
+        if (keycode == Input.Keys.M) {
+            TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+            playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
+            CompleteRegisterPhase phase = new CompleteRegisterPhase();
+            phase.run();
+
+            System.out.println("CompleteRegisterPhase is running.");
+            System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
+            System.out.println("Position: " + player.getPosition());
+
+            return true;
+        }
+
         player.moveRobotWASD(keycode);
         return true;
     }
