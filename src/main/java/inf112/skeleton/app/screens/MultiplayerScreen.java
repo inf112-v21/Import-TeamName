@@ -213,15 +213,15 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void hide() {
-        stage.dispose();
-        skin.dispose();
-        batch.dispose();
-        title.dispose();
         Gdx.input.setInputProcessor(null);
     }
 
     @Override
     public void dispose() {
+        stage.dispose();
+        skin.dispose();
+        batch.dispose();
+        title.dispose();
     }
 
 
