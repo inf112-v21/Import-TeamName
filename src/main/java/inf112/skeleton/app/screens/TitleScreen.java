@@ -42,10 +42,10 @@ public class TitleScreen implements Screen {
         this.width = Gdx.graphics.getWidth();
         this.height = Gdx.graphics.getHeight();
 
-        ImageButton playButton = new PlayButton(width * 0.4F, height * 0.7F).getButton();
-        stage = new Stage(new StretchViewport(width, height));
-        stage.addActor(playButton);
 
+        ImageButton playButton = new PlayButton(width * 0.4F,height * 0.7F).getButton();
+        this.stage = new Stage(new StretchViewport(width, height));
+        this.stage.addActor(playButton);
 
 
         mainGame.setNumPlayers(5); //Max is 8 players

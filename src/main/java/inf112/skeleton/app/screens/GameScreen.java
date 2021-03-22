@@ -208,7 +208,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.gameCamera.update();
         this.uiCamera.update();
 
-        //cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
+        cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
 
         //Render all robot on the board, at their new position.
         for (SimpleRobot robot : robots) {
@@ -241,8 +241,8 @@ public class GameScreen extends InputAdapter implements Screen {
             client.connect(ip);
         }
 
-      //  this.cardui = new CardUI(this, mainGame);
-      //  this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
+       this.cardui = new CardUI(this, mainGame);
+       this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);

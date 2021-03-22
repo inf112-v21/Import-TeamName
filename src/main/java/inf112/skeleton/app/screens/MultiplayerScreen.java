@@ -27,7 +27,7 @@ import static com.badlogic.gdx.Gdx.gl;
 
 public class MultiplayerScreen implements Screen {
 
-    RoboRally game;
+    RoboRally switcher;
 
     private TextField assignIP;
     private TextField assignName;
@@ -41,8 +41,9 @@ public class MultiplayerScreen implements Screen {
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
-    public MultiplayerScreen (RoboRally game) {
-        this.game = game;
+    //Constructor
+    public MultiplayerScreen (RoboRally switcher) {
+        this.switcher = switcher;
     }
 
     FitViewport viewPort;
@@ -154,9 +155,9 @@ public class MultiplayerScreen implements Screen {
     public void render(float delta) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.batch.begin();
-        game.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
-        game.batch.end();
+        switcher.batch.begin();
+        switcher.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
+        switcher.batch.end();
 
         stage.act(delta);
         stage.draw();
@@ -164,11 +165,11 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        game.setScreen(new GameScreen(game, stage, viewPort, debugMode, false, assignIP.getText(), getName()));
+        switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, assignIP.getText(), getName()));
     }
 
     private void host() {
-      game.setScreen(new GameScreen(game, stage, viewPort, debugMode, true, "localhost", getName()));
+      switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, true, "localhost", getName()));
     }
 
     private void find() {
