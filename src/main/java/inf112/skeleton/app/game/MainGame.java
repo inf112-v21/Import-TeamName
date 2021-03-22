@@ -26,7 +26,7 @@ public final class MainGame {
      * Constructor method
      */
     public MainGame() {
-
+        robots = new ArrayList<>();
     }
 
     /**
@@ -38,7 +38,7 @@ public final class MainGame {
     public static void setup(TiledMap map) {
         deck = new CardDeck();
         gameBoard = new Board(map);
-        robots = new ArrayList<>();
+
     }
 
     /**
@@ -76,7 +76,7 @@ public final class MainGame {
      * TODO: Discuss how to add players.
      * @param numPlayers
      */
-    public void setNumPlayers(int numPlayers) {
+    public  static void setNumPlayers(int numPlayers) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
         TextureRegion[][] textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);
 

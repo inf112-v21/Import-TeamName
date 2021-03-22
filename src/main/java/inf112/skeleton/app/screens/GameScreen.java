@@ -46,14 +46,13 @@ public class GameScreen extends InputAdapter implements Screen {
     MainGame game;
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera gameCamera, uiCamera;
-
+    CardUI cardui;
 
     private int viewPortWidth, viewPortHeight;
 
     Stage stage;
     Stage uiStage;
     FitViewport viewPort;
-    private Player player;
     private boolean debugMode;
 
 
@@ -79,7 +78,7 @@ public class GameScreen extends InputAdapter implements Screen {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
-
+        game = new MainGame();
         // Load map and get board data
         map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
@@ -107,22 +106,10 @@ public class GameScreen extends InputAdapter implements Screen {
         mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
         mapRenderer.setView(gameCamera); // Attach camera to map
 
-
         //Handling player1
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
-        TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
-        //Place player on starting point.
-        Vector2 startPos = board.getDockingBays().get(0).getPosition();
 
-        player = new Player(startPos, textures);
-        MainGame.robots.add(player);
 
-        /*
-            Legge til spillere i List<> robot
-                -> MainGame har funksjon addPlayer()? addAI()
-
-         */
 
 
 
@@ -135,8 +122,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        //Player playerTest = (Player) game.robots.get(0);
-        //playerTest.moveRobotWASD(keycode);
+        Player player =  game.getRobots().get(0);
         player.moveRobotWASD(keycode);
         return true;
     }
@@ -178,22 +164,7 @@ public class GameScreen extends InputAdapter implements Screen {
         gameCamera.update();
         uiCamera.update();
 
-        Vector2 playerPos = player.getPosition();
-        int xPos = (int) playerPos.x;
-        int yPos = (int) playerPos.y;
-
-        //Win condition
-        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { switcher.setWinScreen(); } // As of now, player wins when visting all flags.
-
-        //Player is on a flag. Change texture to win texture
-        if (board.isPosAFlag(playerPos)) {
-            tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
-        } else if (board.isPosAPit(playerPos)) {
-            tilePlayer.setCell(xPos,yPos,player.getPlayerCellDead());
-        } else {
-            tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
-        }
-        
+        cardui.renderPlayer(tilePlayer);
         mapRenderer.render();
 
         // Draw card visuals //
@@ -205,8 +176,8 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
 
-        CardUI cardui = new CardUI(this, game);
-        cardui.setUpCards(0,0, player); // Generate buttons and listeners for actions
+        cardui = new CardUI(this, game);
+        cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
         if (debugMode) {
             Gdx.input.setInputProcessor(this);
