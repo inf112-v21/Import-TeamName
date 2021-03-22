@@ -12,10 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
-
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -92,12 +91,14 @@ public class TitleScreen implements Screen {
         singleplayer.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
+                System.out.println("Singleplayer");
                 singleplayer();
             }
         });
 
         multiplayer.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
+                System.out.println("multi");
                 switcher.setScreen(new MultiplayerScreen(switcher));
             }
         });
@@ -135,6 +136,7 @@ public class TitleScreen implements Screen {
 
     public void singleplayer () {
         switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, fill, fill));
+        game.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made!
     }
 
     @Override
