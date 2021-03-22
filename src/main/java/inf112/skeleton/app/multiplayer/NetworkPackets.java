@@ -30,7 +30,6 @@ public class NetworkPackets {
     }
 
     static public class NewPlayer {
-        
     }
 
     //implement the classes for use in RRClient/RRServer here

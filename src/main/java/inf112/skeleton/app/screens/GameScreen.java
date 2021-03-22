@@ -139,7 +139,7 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        //player = new Player(startPos, textures);
+        player = new Player(startPos, textures);
 
         //Debug
         /*
@@ -148,7 +148,8 @@ public class GameScreen extends InputAdapter implements Screen {
         player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
          */
         //Add player to game
-        //game.addPlayer(player);
+        game.addPlayer(player);
+
 
 
         //MainGame.gameLoop();
@@ -237,7 +238,7 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
         }
-        
+
         mapRenderer.render();
 
         // Draw card visuals //

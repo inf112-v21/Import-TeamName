@@ -57,7 +57,7 @@ public class RRServer {
                     connection.name = named; //should be a valid name by this point.
 
 
-                  //  game.addPlayer();
+
                 }
 
             }

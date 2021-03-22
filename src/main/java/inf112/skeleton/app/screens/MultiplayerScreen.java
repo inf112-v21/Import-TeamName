@@ -158,8 +158,8 @@ public class MultiplayerScreen implements Screen {
         game.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
         game.batch.end();
 
+        stage.act(delta);
         stage.draw();
-        stage.act();
 
     }
 
@@ -193,8 +193,10 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        stage.getViewport().update(width,height,true);
         stage.getCamera().viewportHeight = height;
         stage.getCamera().viewportWidth = width;
+
     }
 
     @Override
