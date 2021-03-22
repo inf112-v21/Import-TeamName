@@ -93,6 +93,15 @@ public class TitleScreen implements Screen {
                 singleplayer();
             }
         });
+
+        exitGame.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
+
+        Gdx.input.setInputProcessor(stage);
     }
 
 
