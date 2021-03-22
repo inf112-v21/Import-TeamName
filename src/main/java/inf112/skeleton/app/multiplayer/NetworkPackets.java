@@ -7,8 +7,8 @@ import com.esotericsoftware.kryonet.FrameworkMessage.Ping;
 
 public class NetworkPackets {
 
-    static public final int tcpPort = 24444;
-    static public final int udpPort = 25555;
+    static public final int tcpPort = 8080;
+    static public final int udpPort = 8080;
 
 
     static public void register (EndPoint endPoint) { //EndPoint is either server og client
