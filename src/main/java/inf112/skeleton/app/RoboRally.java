@@ -30,7 +30,7 @@ public class RoboRally extends Game {
     private boolean debugMode = false;
 
     @Override
-    public void create () {
+    public void create() {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
@@ -51,10 +51,12 @@ public class RoboRally extends Game {
         this.setScreen(titleScreen); // Set screen to title screen
     }
 
-    public void debugModeOn() {debugMode = true; }
+    public void debugModeOn() {
+        debugMode = true;
+    }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
         shapeRenderer.dispose();
         font.dispose();
@@ -69,6 +71,7 @@ public class RoboRally extends Game {
         setScreen(winScreen);
     }
 
+    @Override
     public void render() {
         super.render();
     }
