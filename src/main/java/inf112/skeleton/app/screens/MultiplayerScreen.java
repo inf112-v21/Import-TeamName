@@ -100,11 +100,11 @@ public class MultiplayerScreen implements Screen {
         findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
         findGame.setY(assignIP.getY());
 
-        final Button exitGame = new TextButton("Exit", skin);
-        exitGame.setWidth(width*0.40f);
-        exitGame.setHeight(height*0.10f);
-        exitGame.setX(alignToAxisX - exitGame.getWidth()/2);
-        exitGame.setY(height - exitGame.getHeight()-height*0.70f);
+        final Button backButton = new TextButton("Exit", skin);
+        backButton.setWidth(width*0.40f);
+        backButton.setHeight(height*0.10f);
+        backButton.setX(alignToAxisX - backButton.getWidth()/2);
+        backButton.setY(height - backButton.getHeight()-height*0.70f);
 
 
 
@@ -113,7 +113,7 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(joinGame);
         stage.addActor(hostGame);
         stage.addActor(findGame);
-        stage.addActor(exitGame);
+        stage.addActor(backButton);
 
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
             public void keyTyped(TextField textField, char c) {
@@ -142,7 +142,7 @@ public class MultiplayerScreen implements Screen {
                 find();
             }
         });
-        exitGame.addListener(new ClickListener() {
+        backButton.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent event, float x, float y) {
                Gdx.app.exit();
