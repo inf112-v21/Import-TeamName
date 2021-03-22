@@ -1,8 +1,11 @@
 package inf112.skeleton.app.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
@@ -20,12 +23,20 @@ import static com.badlogic.gdx.Gdx.gl;
 public class TitleScreen implements Screen {
 
     final RoboRally switcher;
+    private SpriteBatch batch;
     private Stage stage;
+    private Skin skin;
+    private Texture title;
+
     FitViewport viewPort;
 
     float width;
     float height;
-    MainGame mainGame;
+
+    MainGame game;
+    private boolean debugMode = true;
+
+    int alignToAxisX = Gdx.graphics.getWidth()/2;
     /**
      * Constructor method
 
@@ -34,7 +45,7 @@ public class TitleScreen implements Screen {
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
-        this.mainGame = new MainGame();
+        this.game = new MainGame();
     }
 
     @Override
@@ -48,14 +59,14 @@ public class TitleScreen implements Screen {
         this.stage.addActor(playButton);
 
 
-        mainGame.setNumPlayers(5); //Max is 8 players
-        for (Player player : mainGame.getRobots()) {
+        game.setNumPlayers(5); //Max is 8 players
+        for (Player player : game.getRobots()) {
             System.out.println(player);
         }
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                switcher.setGameScreen(mainGame);
+                switcher.setGameScreen(game);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
