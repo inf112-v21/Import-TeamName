@@ -94,6 +94,12 @@ public class TitleScreen implements Screen {
             }
         });
 
+        multiplayer.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                switcher.setScreen(new MultiplayerScreen(switcher));
+            }
+        });
+
         exitGame.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -119,7 +125,7 @@ public class TitleScreen implements Screen {
     }
 
     @Override
-    public void resize(int i, int i1) {
+    public void resize(int width, int height) {
         stage.getViewport().update(width,height,true);
         stage.getCamera().viewportHeight = height;
         stage.getCamera().viewportWidth = width;
