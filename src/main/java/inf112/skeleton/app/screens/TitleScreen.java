@@ -4,8 +4,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
@@ -50,31 +53,46 @@ public class TitleScreen implements Screen {
 
     @Override
     public void show() {
-        this.width = Gdx.graphics.getWidth();
-        this.height = Gdx.graphics.getHeight();
+        width = Gdx.graphics.getWidth();
+        height = Gdx.graphics.getHeight();
+        batch = new SpriteBatch();
+        title = new Texture("Images/title.png");
+        stage = new Stage(new StretchViewport(width, height));
+        skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 
-        ImageButton playButton = new PlayButton(width * 0.4F,height * 0.7F).getButton();
-        this.stage = new Stage(new StretchViewport(width, height));
-        this.stage.addActor(playButton);
+        final Button singleplayer = new TextButton("Singleplayer", skin);
+        singleplayer.setWidth(width*0.40f);
+        singleplayer.setHeight(height*0.10f);
+        singleplayer.setX(alignToAxisX - singleplayer.getWidth()/2);
+        singleplayer.setY(height - singleplayer.getHeight()-height*0.45f);
 
 
-        game.setNumPlayers(5); //Max is 8 players
-        for (Player player : game.getRobots()) {
-            System.out.println(player);
-        }
-        playButton.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                switcher.setGameScreen(game);
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }});
+        final Button multiplayer = new TextButton("Multiplayer", skin);
+        multiplayer.setWidth(width*0.40f);
+        multiplayer.setHeight(height*0.10f);
+        multiplayer.setX(alignToAxisX - multiplayer.getWidth()/2);
+        multiplayer.setY(height - multiplayer.getHeight()-height*0.55f);
 
+
+
+        final Button exitGame = new TextButton("Exit", skin);
+        exitGame.setWidth(width*0.40f);
+        exitGame.setHeight(height*0.10f);
+        exitGame.setX(alignToAxisX - exitGame.getWidth()/2);
+        exitGame.setY(height - exitGame.getHeight()-height*0.70f);
         Gdx.input.setInputProcessor(stage);
 
+        stage.addActor(singleplayer);
+        stage.addActor(multiplayer);
+        stage.addActor(exitGame);
+
+        singleplayer.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                singleplayer();
+            }
+        });
     }
 
 
@@ -82,17 +100,20 @@ public class TitleScreen implements Screen {
     public void render(float delta) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        this.switcher.batch.begin();
-        this.switcher.font.draw(switcher.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
-        this.switcher.batch.end();
-        this.stage.act();
-        this.stage.draw();
+        switcher.batch.begin();
+        switcher.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
+        switcher.batch.end();
+
+        stage.act(delta);
+        stage.draw();
 
     }
 
     @Override
     public void resize(int i, int i1) {
-
+        stage.getViewport().update(width,height,true);
+        stage.getCamera().viewportHeight = height;
+        stage.getCamera().viewportWidth = width;
     }
 
     @Override

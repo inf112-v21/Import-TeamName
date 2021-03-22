@@ -227,7 +227,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
         client = new RRClient(name);
 
-        if(hosting) {
+        if(hosting = true) {
             Log.info("starting server");
             try {
                 server = new RRServer();
