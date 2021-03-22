@@ -19,6 +19,7 @@ import com.esotericsoftware.kryonet.Client;
 
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 
 import java.net.InetAddress;
@@ -170,6 +171,7 @@ public class MultiplayerScreen implements Screen {
 
     private void host() {
       switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, true, "localhost", getName()));
+      MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Handle adding players better. Temp solution to generate players.
     }
 
     private void find() {

@@ -91,14 +91,12 @@ public class TitleScreen implements Screen {
         singleplayer.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
-                System.out.println("Singleplayer");
                 singleplayer();
             }
         });
 
         multiplayer.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("multi");
                 switcher.setScreen(new MultiplayerScreen(switcher));
             }
         });
@@ -136,7 +134,7 @@ public class TitleScreen implements Screen {
 
     public void singleplayer () {
         switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, fill, fill));
-        game.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made!
+        MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Add another screen underneath TileScreen for SinglePlayer? Handle what map to play, how many players etc.
     }
 
     @Override
