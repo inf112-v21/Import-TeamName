@@ -12,6 +12,7 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.MultiplayerScreen;
+import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
 public class RoboRally extends Game {
@@ -22,8 +23,9 @@ public class RoboRally extends Game {
     GameScreen  gameScreen;
     WinScreen   winScreen;
     MultiplayerScreen multiplayerScreen;
+    TitleScreen titleScreen;
 
-
+String name;
     FitViewport viewPort;
     Stage stage;
 
@@ -34,6 +36,7 @@ public class RoboRally extends Game {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
+        name = "ice";
 
         viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewPort.apply();
@@ -45,13 +48,13 @@ public class RoboRally extends Game {
 
         // Set up screens
 
-        //gameScreen = new GameScreen(this, stage, viewPort, debugMode);
+        gameScreen = new GameScreen(this, stage, viewPort, debugMode, false, name, name);
         winScreen  = new WinScreen(this, viewPort);
-       // gameScreen = new GameScreen(this, stage, viewPort, debugMode);
+        titleScreen = new TitleScreen(this, stage, viewPort);
         multiplayerScreen = new MultiplayerScreen(this);
 
         Gdx.input.setInputProcessor(stage);
-        this.setScreen(multiplayerScreen); // Set screen to title screen
+        this.setScreen(titleScreen); // Set screen to title screen
     }
 
     public void debugModeOn() {
