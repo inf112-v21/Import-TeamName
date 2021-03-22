@@ -131,6 +131,7 @@ public class TitleScreen implements Screen {
         stage.getCamera().viewportWidth = width;
     }
 
+
     @Override
     public void pause() {
 
@@ -143,6 +144,10 @@ public class TitleScreen implements Screen {
 
     @Override
     public void hide() {
+        stage.dispose();
+        skin.dispose();
+        batch.dispose();
+        title.dispose();
         Gdx.input.setInputProcessor(null);
     }
 
