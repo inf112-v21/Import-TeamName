@@ -13,11 +13,14 @@ public class Register {
         registerCards = new ArrayList<>();
     }
 
-    public void selectCard(SimpleProgramCard card) {
+    public void addCardToRegister(SimpleProgramCard card) {
         registerCards.add(card);
     }
 
 
     public ArrayList<SimpleProgramCard>  getRegister() {return this.registerCards;}
+
+
+    public void setCards(ArrayList<SimpleProgramCard> cards) {this.registerCards = cards;}
 
 }

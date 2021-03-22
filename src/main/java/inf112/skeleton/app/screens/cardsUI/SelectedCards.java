@@ -8,15 +8,15 @@ import inf112.skeleton.app.screens.GameScreen;
  *
  * Card the player has selected and shall appear on screen as the player's selected cards.
  */
-public class PotentialCards {
+public class SelectedCards {
 
 
     // Get cards from register
 
     Stage uiStage;
-    public PotentialCards(GameScreen gameScreen, Player player) {
+    public SelectedCards(GameScreen gameScreen, Player player) {
         this.uiStage = gameScreen.getUIStage();
-
+        uiStage.clear(); // Clears the previous screens
 
 
     }

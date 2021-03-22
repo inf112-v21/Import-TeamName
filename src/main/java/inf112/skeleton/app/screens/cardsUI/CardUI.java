@@ -22,7 +22,8 @@ public class CardUI extends Actor {
     private Stage stage;
     CardHand cardHand;
     Player robot;
-
+    private int cardCount;
+    private ArrayList<SimpleProgramCard> selectedCards;
 
     public CardUI(GameScreen screen, MainGame game) {
         stage = screen.getUIStage();
@@ -30,13 +31,15 @@ public class CardUI extends Actor {
         this.robot = game.getRobots().get(0);
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
+        cardCount = 0;
+        selectedCards = new ArrayList<>();
     }
 
 
     public void setUpCards(int w, int h) {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
-            w += 1.5f;
+            w += 1.7f;
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,5);
             cardButton.setPosition(w, h);
@@ -48,8 +51,19 @@ public class CardUI extends Actor {
                     /**
                      * Placeholder behaviour
                      */
+
+                    if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
+
+                    else if (selectedCards.contains(card)) { removeCard(card); cardCount--;}
+                    else {
+                        addCard(card);  cardCount++;
+
+                    }
+
                     card.action(robot);
+                    selectedCards.add(card);
                     //Call on register and potential cards
+                    //card
                 }
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -66,6 +80,21 @@ public class CardUI extends Actor {
         int xPos = (int) playerPos.x;
         int yPos = (int) playerPos.y;
         tilePlayer.setCell(xPos, yPos, robot.getPlayerCell());
+    }
+
+    public void checkSelection() {
+
+    }
+
+
+    public void addCard(SimpleProgramCard card) {
+
+    }
+    public void removeCard(SimpleProgramCard card) {
+
+    }
+    public void sendCards() {
+
     }
 
 
