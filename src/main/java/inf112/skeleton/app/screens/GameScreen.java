@@ -18,15 +18,13 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.cards.CardType;
-import inf112.skeleton.app.cards.MovementCard;
-import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import com.esotericsoftware.minlog.Log;
@@ -37,41 +35,41 @@ import java.io.IOException;
 import static com.badlogic.gdx.Gdx.gl;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
-
+import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * Creates a game screen to be displayed while playing the game
  */
 public class GameScreen extends InputAdapter implements Screen {
 
-    private SpriteBatch batch;
-    private BitmapFont font;
+    private final SpriteBatch batch;
+    private final BitmapFont font;
 
-    private TiledMap map;
+    private final TiledMap map;
 
     // Layers on the map
     public TiledMapTileLayer tilePlayer;
 
 
-    MainGame game;
-    private OrthogonalTiledMapRenderer mapRenderer;
-    private OrthographicCamera gameCamera, uiCamera;
+    MainGame mainGame;
+    private final OrthogonalTiledMapRenderer mapRenderer;
+    private final OrthographicCamera gameCamera, uiCamera;
+    CardUI cardui;
 
-
-    private int viewPortWidth, viewPortHeight;
+    private final int viewPortWidth, viewPortHeight;
 
     Stage stage;
     Stage uiStage;
     FitViewport viewPort;
-    private Player player;
-    private boolean debugMode;
-
+    private final boolean debugMode;
+    Player player;
+    MainGame game;
 
     int width;
     int height;
 
     int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.2);
-    private RoboRally switcher;
+    private final RoboRally switcher;
 
     static Board board;
 
@@ -85,7 +83,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode, boolean hosting, String ip, String name) {
         game = new MainGame();
-
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
@@ -98,57 +95,45 @@ public class GameScreen extends InputAdapter implements Screen {
             this.ip = "localhost";
         }
 
-        width = Gdx.graphics.getWidth();
-        height = Gdx.graphics.getHeight();
 
-        batch = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.RED);
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
+
+        this.batch = new SpriteBatch();
+        this.font = new BitmapFont();
+        this.font.setColor(Color.RED);
+
+
 
         // Load map and get board data
-        map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
+        this.map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
-        game.setup(map);
+        mainGame.setup(map);
         this.board = MainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
-        viewPortHeight = (int) board.getBoardDimensions().y;
-        viewPortWidth = (int) board.getBoardDimensions().x;
+        this.viewPortHeight = (int) board.getBoardDimensions().y;
+        this.viewPortWidth = (int) board.getBoardDimensions().x;
 
-        uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
+        this.uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
 
         // Make camera
-        gameCamera = new OrthographicCamera();
-        uiCamera   = new OrthographicCamera();
+        this.gameCamera = new OrthographicCamera();
+        this.uiCamera   = new OrthographicCamera();
         // Set camera to correct view settings, making room for dashboard.
-        gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
-        uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
+        this.gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
+        this.uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
 
         // Set camera, but does not scale with the fit viewport
         //gameCamera.position.y = initialCameraY;
-        gameCamera.update();
-        uiCamera.update();
+        this.gameCamera.update();
+        this.uiCamera.update();
 
-        uiStage.getViewport().setCamera(uiCamera);
-        mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
-        mapRenderer.setView(gameCamera); // Attach camera to map
-
+        this.uiStage.getViewport().setCamera(uiCamera);
+        this.mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
+        this.mapRenderer.setView(gameCamera); // Attach camera to map
 
         //Handling player1
-        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        Texture playerTexture = Assets.manager.get(Assets.texture); // Texture of player
-        TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
-        //Place player on starting point.
-        Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        player = new Player(startPos, textures);
-
-        //Debug
-        /*
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
-        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE2));
-         */
-        //Add player to game
-        game.addPlayer(player);
+        this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
 
 
@@ -163,6 +148,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
+        Player player = mainGame.robots.get(0);
         //Player playerTest = (Player) game.robots.get(0);
         //playerTest.moveRobotWASD(keycode);
 
@@ -192,23 +178,23 @@ public class GameScreen extends InputAdapter implements Screen {
     public void moveCamera(int keycode) {
 
         if(keycode == Input.Keys.LEFT)
-            gameCamera.translate(-32,0);
+            this.gameCamera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
-            gameCamera.translate(32,0);
+            this.gameCamera.translate(32,0);
         if(keycode == Input.Keys.UP)
-            gameCamera.translate(0,32);
+            this.gameCamera.translate(0,32);
         if(keycode == Input.Keys.DOWN)
-            gameCamera.translate(0,-32);
+            this.gameCamera.translate(0,-32);
         if(keycode == Input.Keys.NUM_1)
-            map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
+            this.map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
         if(keycode == Input.Keys.NUM_2)
-            map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
+            this.map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
-        font.dispose();
+        this.batch.dispose();
+        this.font.dispose();
     }
 
     @Override
@@ -216,35 +202,25 @@ public class GameScreen extends InputAdapter implements Screen {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-
         // RENDER GAME //
         Gdx.gl.glViewport( 0, menuHeight, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        gameCamera.update();
-        uiCamera.update();
+        this.gameCamera.update();
+        this.uiCamera.update();
 
-        Vector2 playerPos = player.getPosition();
-        int xPos = (int) playerPos.x;
-        int yPos = (int) playerPos.y;
+        //cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
 
-        //Win condition
-        if (player.getProgramSheet().getNumberOfFlags() == board.getNrFlags()) { switcher.setWinScreen(); } // As of now, player wins when visting all flags.
-
-        //Player is on a flag. Change texture to win texture
-        if (board.isPosAFlag(playerPos)) {
-            tilePlayer.setCell(xPos,yPos,player.getPlayerCellWon());
-        } else if (board.isPosAPit(playerPos)) {
-            tilePlayer.setCell(xPos,yPos,player.getPlayerCellDead());
-        } else {
-            tilePlayer.setCell(xPos, yPos, player.getPlayerCell());
+        //Render all robot on the board, at their new position.
+        for (SimpleRobot robot : robots) {
+            tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
         }
 
         mapRenderer.render();
 
         // Draw card visuals //
         Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height
-        uiStage.act();
-        uiStage.draw();
+        this.uiStage.act();
+        this.uiStage.draw();
     }
 
     @Override
@@ -265,42 +241,46 @@ public class GameScreen extends InputAdapter implements Screen {
             client.connect(ip);
         }
 
-        CardUI cardui = new CardUI(this, game);
-        cardui.setUpCards(0,0, player); // Generate buttons and listeners for actions
+      //  this.cardui = new CardUI(this, mainGame);
+      //  this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
-        if (debugMode) {
+        if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
         }
         else {
-
-            Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
+            Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
     }
 
+    public void setGame(MainGame mainGame) {
+        this.mainGame = mainGame;
+    }
+
+
     @Override
     public void resize(int width, int height) {
-
-        stage.getViewport().update(width, height, true);
+        this.stage.getViewport().update(width, height, true);
     }
 
     @Override
-    public void pause() {
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-    }
+    public void resume() {}
 
     @Override
+
     public void hide() {
         client.ceaseClient();
         if (server != null) {
             server.ceaseServer();
         }
-
     }
-
-    public Stage getUIStage() {return this.uiStage; }
-    public Stage getStage()   {return this.stage;   }
+    public Stage getUIStage() {
+        return this.uiStage;
+    }
+    public Stage getStage() {
+        return this.stage;
+    }
 
 }

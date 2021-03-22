@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainGame {
+public final class MainGame {
 
 
    public static ArrayList<Player> robots;
@@ -26,7 +29,7 @@ public class MainGame {
      * Constructor method
      */
     public MainGame() {
-
+        robots = new ArrayList<>();
     }
 
     /**
@@ -38,7 +41,7 @@ public class MainGame {
     public static void setup(TiledMap map) {
         deck = new CardDeck();
         gameBoard = new Board(map);
-        robots = new ArrayList<>();
+
     }
 
     /**
@@ -76,13 +79,21 @@ public class MainGame {
      * TODO: Discuss how to add players.
      * @param numPlayers
      */
-    public void setNumPlayers(int numPlayers) {
+    public  static void setNumPlayers(int numPlayers) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
         TextureRegion[][] textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);
-
         for (int i = 0; i < numPlayers; i++) {
             Player robot = new Player(startPositions.get(i).getPosition(), textures);
             robots.add(robot);
+
+            //Test hand.
+            /*
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+             */
         }
     }
 
@@ -93,5 +104,6 @@ public class MainGame {
         robots.add(player);
     }
 
+    public static ArrayList<Player> getRobots() {return robots;}
 
 }

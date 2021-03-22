@@ -9,6 +9,7 @@ import inf112.skeleton.app.RoboRally;
 
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.objects.Actors.Player;
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -33,18 +34,35 @@ public class TitleScreen implements Screen {
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
-        mainGame = new MainGame();
-
+        this.mainGame = new MainGame();
     }
 
     @Override
     public void show() {
-        width = Gdx.graphics.getWidth();
-        height = Gdx.graphics.getHeight();
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
 
         ImageButton playButton = new PlayButton(width * 0.4F, height * 0.7F).getButton();
         stage = new Stage(new StretchViewport(width, height));
         stage.addActor(playButton);
+
+
+
+        mainGame.setNumPlayers(5); //Max is 8 players
+        for (Player player : mainGame.getRobots()) {
+            System.out.println(player);
+        }
+        playButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                switcher.setGameScreen(mainGame);
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }});
+
+        Gdx.input.setInputProcessor(stage);
 
     }
 
@@ -53,11 +71,11 @@ public class TitleScreen implements Screen {
     public void render(float delta) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        switcher.batch.begin();
-        switcher.font.draw(switcher.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
-        switcher.batch.end();
-        stage.act();
-        stage.draw();
+        this.switcher.batch.begin();
+        this.switcher.font.draw(switcher.batch, "WELCOME TO ROBORALLY", width*0.34F, height * 0.75F);
+        this.switcher.batch.end();
+        this.stage.act();
+        this.stage.draw();
 
     }
 
@@ -86,7 +104,6 @@ public class TitleScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-
     }
 
 }

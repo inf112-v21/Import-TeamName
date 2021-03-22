@@ -36,22 +36,22 @@ public class WinScreen implements Screen {
 
     @Override
     public void show() {
-        width = Gdx.graphics.getWidth();
-        height = Gdx.graphics.getHeight();
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
         this.victorySprite = new Sprite(Assets.manager.get(Assets.VictoryImage));
         this.victory = new Image(victorySprite);
-        victory.setPosition(width * 0.4F,height * 0.7F);
-        victory.setSize(200,200);
-        stage = new Stage(new StretchViewport(width, height));
-        stage.addActor(victory);
+        this.victory.setPosition(width * 0.4F,height * 0.7F);
+        this.victory.setSize(200,200);
+        this.stage = new Stage(new StretchViewport(width, height));
+        this.stage.addActor(victory);
     }
 
     @Override
     public void render(float v) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act();
-        stage.draw();
+        this.stage.act();
+        this.stage.draw();
     }
 
     @Override

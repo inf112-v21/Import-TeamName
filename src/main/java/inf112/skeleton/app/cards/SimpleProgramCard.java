@@ -11,7 +11,7 @@ import inf112.skeleton.app.objects.Actors.SimpleRobot;
 /**
  * Abstract simple class.
  */
-public abstract class SimpleProgramCard implements IProgramCard {
+public abstract class SimpleProgramCard implements IProgramCard{
 
     private ImageButton cardButton;
     private final int priority;
@@ -20,7 +20,7 @@ public abstract class SimpleProgramCard implements IProgramCard {
 
 
     SimpleProgramCard(int priority, CardType cardType) {
-        this.priority =  priority;
+        this.priority = priority;
         this.cardtype = cardType;
         getTexture();
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
@@ -64,6 +64,10 @@ public abstract class SimpleProgramCard implements IProgramCard {
             case UTURN: texture = Assets.manager.get(Assets.UTurnCard); break;
             default: throw new IllegalArgumentException("Expected enum cardtype of type (Move1, move2, move3, rotateleft, rotateright, uturn). Got :" + cardtype);
         }
+    }
+
+    public int compareTo(SimpleProgramCard otherCard) {
+        return Integer.compare(getPriority(), otherCard.getPriority());
     }
 
 }
