@@ -33,81 +33,80 @@ import static inf112.skeleton.app.game.MainGame.robots;
  */
 public class GameScreen extends InputAdapter implements Screen {
 
-    private SpriteBatch batch;
-    private BitmapFont font;
+    private final SpriteBatch batch;
+    private final BitmapFont font;
 
-    private TiledMap map;
+    private final TiledMap map;
 
     // Layers on the map
     public TiledMapTileLayer tilePlayer;
 
 
     MainGame mainGame;
-    private OrthogonalTiledMapRenderer mapRenderer;
-    private OrthographicCamera gameCamera, uiCamera;
+    private final OrthogonalTiledMapRenderer mapRenderer;
+    private final OrthographicCamera gameCamera, uiCamera;
     CardUI cardui;
 
-    private int viewPortWidth, viewPortHeight;
+    private final int viewPortWidth, viewPortHeight;
 
     Stage stage;
     Stage uiStage;
     FitViewport viewPort;
-    private boolean debugMode;
+    private final boolean debugMode;
     Player player;
 
     int width;
     int height;
 
     int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.2);
-    private RoboRally switcher;
+    private final RoboRally switcher;
 
     static Board board;
 
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
 
-
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
         this.debugMode = debugMode;
-        width = Gdx.graphics.getWidth();
-        height = Gdx.graphics.getHeight();
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
 
-        batch = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.RED);
+        this.batch = new SpriteBatch();
+        this.font = new BitmapFont();
+        this.font.setColor(Color.RED);
 
 
         // Load map and get board data
-        map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
+        this.map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
         mainGame.setup(map);
         this.board = MainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
-        viewPortHeight = (int) board.getBoardDimensions().y;
-        viewPortWidth = (int) board.getBoardDimensions().x;
+        this.viewPortHeight = (int) board.getBoardDimensions().y;
+        this.viewPortWidth = (int) board.getBoardDimensions().x;
 
-        uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
+        this.uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
 
         // Make camera
-        gameCamera = new OrthographicCamera();
-        uiCamera   = new OrthographicCamera();
+        this.gameCamera = new OrthographicCamera();
+        this.uiCamera   = new OrthographicCamera();
         // Set camera to correct view settings, making room for dashboard.
-        gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
-        uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
+        this.gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
+        this.uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
 
         // Set camera, but does not scale with the fit viewport
         //gameCamera.position.y = initialCameraY;
-        gameCamera.update();
-        uiCamera.update();
+        this.gameCamera.update();
+        this.uiCamera.update();
 
-        uiStage.getViewport().setCamera(uiCamera);
-        mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
-        mapRenderer.setView(gameCamera); // Attach camera to map
+        this.uiStage.getViewport().setCamera(uiCamera);
+        this.mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
+        this.mapRenderer.setView(gameCamera); // Attach camera to map
 
         //Handling player1
-        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
 
 
@@ -171,23 +170,23 @@ public class GameScreen extends InputAdapter implements Screen {
     public void moveCamera(int keycode) {
 
         if(keycode == Input.Keys.LEFT)
-            gameCamera.translate(-32,0);
+            this.gameCamera.translate(-32,0);
         if(keycode == Input.Keys.RIGHT)
-            gameCamera.translate(32,0);
+            this.gameCamera.translate(32,0);
         if(keycode == Input.Keys.UP)
-            gameCamera.translate(0,32);
+            this.gameCamera.translate(0,32);
         if(keycode == Input.Keys.DOWN)
-            gameCamera.translate(0,-32);
+            this.gameCamera.translate(0,-32);
         if(keycode == Input.Keys.NUM_1)
-            map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
+            this.map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
         if(keycode == Input.Keys.NUM_2)
-            map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
+            this.map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
     }
 
     @Override
     public void dispose() {
-        batch.dispose();
-        font.dispose();
+        this.batch.dispose();
+        this.font.dispose();
     }
 
     @Override
@@ -199,30 +198,29 @@ public class GameScreen extends InputAdapter implements Screen {
         // RENDER GAME //
         Gdx.gl.glViewport( 0, menuHeight, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        gameCamera.update();
-        uiCamera.update();
+        this.gameCamera.update();
+        this.uiCamera.update();
 
-        cardui.renderPlayer(tilePlayer);
-        mapRenderer.render();
+        this.cardui.renderPlayer(tilePlayer);
+        this.mapRenderer.render();
 
         // Draw card visuals //
         Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height
-        uiStage.act();
-        uiStage.draw();
+        this.uiStage.act();
+        this.uiStage.draw();
     }
 
     @Override
     public void show() {
 
-        cardui = new CardUI(this, mainGame);
-        cardui.setUpCards(0,0); // Generate buttons and listeners for actions
+        this.cardui = new CardUI(this, mainGame);
+        this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
-        if (debugMode) {
+        if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
         }
         else {
-
-            Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
+            Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
     }
 
@@ -232,18 +230,24 @@ public class GameScreen extends InputAdapter implements Screen {
 
 
     @Override
-    public void resize(int width, int height) { stage.getViewport().update(width, height, true); }
+    public void resize(int width, int height) {
+        this.stage.getViewport().update(width, height, true);
+    }
 
     @Override
-    public void pause() { }
+    public void pause() {}
 
     @Override
-    public void resume() { }
+    public void resume() {}
 
     @Override
-    public void hide() { }
+    public void hide() {}
 
-    public Stage getUIStage() {return this.uiStage; }
-    public Stage getStage()   {return this.stage;   }
+    public Stage getUIStage() {
+        return this.uiStage;
+    }
+    public Stage getStage() {
+        return this.stage;
+    }
 
 }
