@@ -49,7 +49,6 @@ public class TitleScreen implements Screen {
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
-        this.game = new MainGame();
     }
 
     @Override
@@ -73,7 +72,7 @@ public class TitleScreen implements Screen {
         multiplayer.setWidth(width*0.40f);
         multiplayer.setHeight(height*0.10f);
         multiplayer.setX(alignToAxisX - multiplayer.getWidth()/2);
-        multiplayer.setY(height - multiplayer.getHeight()-height*0.60f);
+        multiplayer.setY(height - multiplayer.getHeight()-height*0.55f);
 
 
 

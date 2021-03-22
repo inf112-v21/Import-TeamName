@@ -100,9 +100,9 @@ public class MultiplayerScreen implements Screen {
         findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
         findGame.setY(assignIP.getY());
 
-        final Button backButton = new TextButton("Exit", skin);
+        final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
-        backButton.setHeight(height*0.10f);
+        backButton.setHeight(height*0.08f);
         backButton.setX(alignToAxisX - backButton.getWidth()/2);
         backButton.setY(height - backButton.getHeight()-height*0.70f);
 
@@ -145,7 +145,7 @@ public class MultiplayerScreen implements Screen {
         backButton.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent event, float x, float y) {
-               Gdx.app.exit();
+               switcher.setScreen(new TitleScreen(switcher, stage, viewPort));
            }
         });
 
