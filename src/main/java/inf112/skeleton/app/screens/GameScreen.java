@@ -54,7 +54,7 @@ public class GameScreen extends InputAdapter implements Screen {
     MainGame mainGame;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final OrthographicCamera gameCamera, uiCamera;
-    CardUI cardui;
+    private CardUI cardui;
 
     private final int viewPortWidth, viewPortHeight;
 
@@ -148,7 +148,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        Player player = mainGame.robots.get(0);
+        Player player = mainGame.robots.get(0); // Temporarily one player
         //Player playerTest = (Player) game.robots.get(0);
         //playerTest.moveRobotWASD(keycode);
 
@@ -208,7 +208,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.gameCamera.update();
         this.uiCamera.update();
 
-        cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
+        //cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
 
         //Render all robot on the board, at their new position.
         for (SimpleRobot robot : robots) {
@@ -242,6 +242,7 @@ public class GameScreen extends InputAdapter implements Screen {
         }
 
        this.cardui = new CardUI(this, mainGame);
+        uiStage.addActor(cardui.getTable());
        this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
         if (this.debugMode) {

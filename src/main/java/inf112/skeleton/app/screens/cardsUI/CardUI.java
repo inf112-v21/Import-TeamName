@@ -48,22 +48,18 @@ public class CardUI extends Actor {
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    /**
-                     * Placeholder behaviour
-                     */
-
                     if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
-
-                    else if (selectedCards.contains(card)) { removeCard(card); cardCount--;}
+                    else if (selectedCards.contains(card)) {
+                        System.out.println("Removed card" + card);
+                        selectedCards.remove(card);
+                        cardCount--;
+                    }
                     else {
-                        addCard(card);  cardCount++;
-
+                        System.out.println("Added card" + card);
+                        selectedCards.add(card);
+                        cardCount++;
                     }
 
-                    card.action(robot);
-                    selectedCards.add(card);
-                    //Call on register and potential cards
-                    //card
                 }
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -75,6 +71,10 @@ public class CardUI extends Actor {
         }
     }
 
+    public Table getTable() {
+        return table;
+    }
+
     public void renderPlayer(TiledMapTileLayer tilePlayer) {
         Vector2 playerPos = robot.getPosition();
         int xPos = (int) playerPos.x;
@@ -82,19 +82,17 @@ public class CardUI extends Actor {
         tilePlayer.setCell(xPos, yPos, robot.getPlayerCell());
     }
 
-    public void checkSelection() {
 
-    }
-
-
-    public void addCard(SimpleProgramCard card) {
-
-    }
-    public void removeCard(SimpleProgramCard card) {
-
-    }
+    /**
+     * Method called after a player has sucessfully selectd five cards and clicked the button
+     */
     public void sendCards() {
+        if (cardCount < 5) {
+            System.out.println("You have not selected enough cards. " + cardCount + " selected");
+            return;
+        }
 
+        robot.getProgramSheet().getRegister().setCards(selectedCards);
     }
 
 
