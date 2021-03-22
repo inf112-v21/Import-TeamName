@@ -22,6 +22,7 @@ import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 import static com.badlogic.gdx.Gdx.gl;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
@@ -108,29 +109,6 @@ public class GameScreen extends InputAdapter implements Screen {
         //Handling player1
         this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
-
-
-        //Debugging card priority -Endre
-        /*
-        Player player2 = new Player(startPos, textures);
-
-        player2.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
-        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player2.getProgramSheet().getRegister().selectCard(new RotationCard(3, CardType.ROTATERIGHT));
-        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player2.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
-
->>>>>>> f1015fd9f5db1883e45cf694c8228d6138b10184
-
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-        player.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
-        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
-
-        game.addPlayer(player2);
-         */
-
         //MainGame.gameLoop();
     }
 
@@ -194,15 +172,20 @@ public class GameScreen extends InputAdapter implements Screen {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-
         // RENDER GAME //
         Gdx.gl.glViewport( 0, menuHeight, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         this.gameCamera.update();
         this.uiCamera.update();
 
-        this.cardui.renderPlayer(tilePlayer);
-        this.mapRenderer.render();
+        //cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
+
+        //Render all robot on the board, at their new position.
+        for (SimpleRobot robot : robots) {
+            tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
+        }
+
+        mapRenderer.render();
 
         // Draw card visuals //
         Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height

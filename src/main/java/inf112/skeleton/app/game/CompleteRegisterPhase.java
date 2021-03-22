@@ -48,6 +48,8 @@ public class CompleteRegisterPhase implements IPhase {
 
             //Get 1 card from each player/robot
             for (SimpleRobot robot : robots) {
+                if (robot.getProgramSheet().getRegister().getRegister().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
+
                 SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
                 moves.add(card); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
             }

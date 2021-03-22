@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.cards.CardDeck;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -82,6 +85,15 @@ public final class MainGame {
         for (int i = 0; i < numPlayers; i++) {
             Player robot = new Player(startPositions.get(i).getPosition(), textures);
             robots.add(robot);
+
+            //Test hand.
+            /*
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+            robot.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
+            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+             */
         }
     }
 
