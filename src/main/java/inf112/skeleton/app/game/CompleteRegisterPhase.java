@@ -1,10 +1,17 @@
 package inf112.skeleton.app.game;
 
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.CardType;
+import inf112.skeleton.app.cards.MovementCard;
+import inf112.skeleton.app.cards.Register;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.*;
 
@@ -24,8 +31,40 @@ public class CompleteRegisterPhase implements IPhase {
         //TODO: Is this 'nice to have'? Maybe just print to console.
     }
 
+    /**
+     * Executes all programcards the robots have in their register.
+     * Accounts for card priority. This has not been tested! -Endre
+     *
+     * Robots MUST HAVE 5 cards in their register! This will not work without.
+     *
+     * A *very* simple implementation
+     *      - Does not account for player collision.
+     */
     protected void executeProgramCards() {
+        System.out.println("executeProgramCards is running \n");
 
+        for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
+            List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
+
+            //Get 1 card from each player/robot
+            for (SimpleRobot robot : robots) {
+                SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
+                moves.add(card); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
+            }
+
+            Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
+
+            for (SimpleProgramCard card : moves) {
+                // Do the move on the correct player
+                for (SimpleRobot robot : robots) {
+                    SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegister().get(i); //Get card from robot.
+                    if (robotCard.equals(card)) {
+                        System.out.println("Robot " + robot + " used " + card + " card.");
+                        card.action(robot);
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -53,10 +92,28 @@ public class CompleteRegisterPhase implements IPhase {
         rotatePlayer();
     }
 
+    /**
+     * Handles collision with other robots.
+     *
+     * @param robotsNextMove
+     */
+    protected void checkRobotCollision(List<Vector2> robotsNextMove) {
+
+    }
 
     /**
-     * The phase activating all lasers. Wall mounted and robots.
+     * Handles collision with walls.
+     * Conveyors, Pushers can't push robots through walls.
+     * @param robotsNextMove
      */
+    protected void checkWallCollision(List<Vector2> robotsNextMove) {
+
+    }
+
+
+        /**
+         * The phase activating all lasers. Wall mounted and robots.
+         */
     protected void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
@@ -109,6 +166,9 @@ public class CompleteRegisterPhase implements IPhase {
             if (gameBoard.isPosAConveyor(robotLocation)) { //If robot is on a conveyor
                 Conveyor con = (Conveyor) gameBoard.getNonWallTileOnPos(robotLocation);
 
+                //Conveyor cannot push robots through walls.
+                if (!gameBoard.canGoToTile(robotLocation,con.getPushDirection())) continue;
+
                 //If express, move only express conveyors
                 if (isExpress) {
                     if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
@@ -128,8 +188,12 @@ public class CompleteRegisterPhase implements IPhase {
                 Vector2 robotLocation = robot.getPosition();
 
                 if (gameBoard.isPosAPusher(robotLocation)) { //If position is a conveyor
-                    Pusher con = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
-                    robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    Pusher push = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
+
+                    //Pusher cannot push robots through walls.
+                    if (!gameBoard.canGoToTile(robotLocation,push.getPushDirection())) continue;
+
+                    robot.setPosition(Direction.goDirection(robotLocation, push.getPushDirection()));
                 }
             }
         }
@@ -164,7 +228,8 @@ public class CompleteRegisterPhase implements IPhase {
     protected void updateCheckPoints() {
         for (SimpleRobot robot : robots) {
             if (gameBoard.isPosAFlag(robot.getPosition())) {
-                robot.getProgramSheet().addFlag(); //TODO: Change how robots store which flags they have visited. List of locations? List<Vector2> flags;
+                Flag flag = (Flag) gameBoard.getNonWallTileOnPos(robot.getPosition());
+                robot.getProgramSheet().addFlag(flag);
             }
         }
     }

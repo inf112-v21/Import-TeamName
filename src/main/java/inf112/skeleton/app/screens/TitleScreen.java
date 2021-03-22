@@ -9,6 +9,7 @@ import inf112.skeleton.app.RoboRally;
 
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.objects.Actors.Player;
 
 import static com.badlogic.gdx.Gdx.gl;
 
@@ -47,11 +48,14 @@ public class TitleScreen implements Screen {
         stage.addActor(playButton);
 
 
-        mainGame.setNumPlayers(9);
+        mainGame.setNumPlayers(5); //Max is 8 players
+        for (Player player : mainGame.getRobots()) {
+            System.out.println(player);
+        }
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                switcher.setGameScreen();
+                switcher.setGameScreen(mainGame);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

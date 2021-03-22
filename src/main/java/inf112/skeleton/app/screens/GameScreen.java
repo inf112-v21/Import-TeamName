@@ -13,21 +13,20 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
-
+import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
-
 import static com.badlogic.gdx.Gdx.gl;
+import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
-
+import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * Creates a game screen to be displayed while playing the game
@@ -43,7 +42,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public TiledMapTileLayer tilePlayer;
 
 
-    MainGame game;
+    MainGame mainGame;
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera gameCamera, uiCamera;
     CardUI cardui;
@@ -54,7 +53,7 @@ public class GameScreen extends InputAdapter implements Screen {
     Stage uiStage;
     FitViewport viewPort;
     private boolean debugMode;
-
+    Player player;
 
     int width;
     int height;
@@ -78,11 +77,12 @@ public class GameScreen extends InputAdapter implements Screen {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
-        game = new MainGame();
+
+
         // Load map and get board data
         map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
-        game.setup(map);
+        mainGame.setup(map);
         this.board = MainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
         viewPortHeight = (int) board.getBoardDimensions().y;
@@ -111,7 +111,26 @@ public class GameScreen extends InputAdapter implements Screen {
 
 
 
+        //Debugging card priority -Endre
+        /*
+        Player player2 = new Player(startPos, textures);
 
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new RotationCard(3, CardType.ROTATERIGHT));
+        player2.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player2.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+
+>>>>>>> f1015fd9f5db1883e45cf694c8228d6138b10184
+
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
+        player.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
+        player.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
+
+        game.addPlayer(player2);
+         */
 
         //MainGame.gameLoop();
     }
@@ -122,7 +141,26 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        Player player =  game.getRobots().get(0);
+        Player player = mainGame.robots.get(0);
+        //Player playerTest = (Player) game.robots.get(0);
+        //playerTest.moveRobotWASD(keycode);
+
+        //Debug: Used to trigger a game phase
+        if (keycode == Input.Keys.M) {
+            TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+            playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
+            CompleteRegisterPhase phase = new CompleteRegisterPhase();
+            phase.run();
+
+            System.out.println("CompleteRegisterPhase is running.");
+            System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
+            System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
+            System.out.println("Position: " + player.getPosition() + "\n");
+
+            return true;
+        }
+
         player.moveRobotWASD(keycode);
         return true;
     }
@@ -176,7 +214,7 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
 
-        cardui = new CardUI(this, game);
+        cardui = new CardUI(this, mainGame);
         cardui.setUpCards(0,0); // Generate buttons and listeners for actions
 
         if (debugMode) {
@@ -187,6 +225,11 @@ public class GameScreen extends InputAdapter implements Screen {
             Gdx.input.setInputProcessor(uiStage); // Set input to Card UI
         }
     }
+
+    public void setGame(MainGame mainGame) {
+        this.mainGame = mainGame;
+    }
+
 
     @Override
     public void resize(int width, int height) { stage.getViewport().update(width, height, true); }

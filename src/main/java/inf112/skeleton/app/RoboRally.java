@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
@@ -59,7 +60,8 @@ public class RoboRally extends Game {
         font.dispose();
     }
 
-    public void setGameScreen() {
+    public void setGameScreen(MainGame mainGame) {
+        gameScreen.setGame(mainGame);
         setScreen(gameScreen);
     }
 

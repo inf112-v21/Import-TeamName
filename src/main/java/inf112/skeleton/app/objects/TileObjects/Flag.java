@@ -5,8 +5,14 @@ import inf112.skeleton.app.objects.SimpleObject;
 
 public class Flag extends SimpleObject {
 
-    public Flag(Vector2 position) {
+    private int flagID;
+
+    public Flag(Vector2 position, int flagID) {
         super(position);
+        this.flagID = flagID;
     }
 
+    public int getFlagID() {
+        return flagID;
+    }
 }
