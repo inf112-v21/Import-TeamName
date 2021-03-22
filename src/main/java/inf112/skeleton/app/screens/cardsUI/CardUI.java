@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
@@ -38,13 +39,16 @@ public class CardUI extends Actor {
 
     public void setUpCards(int w, int h) {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
+        //table.setWidth((stage.getWidth()*0.8f));
+        //table.setHeight(stage.getHeight()/3);
+        table.setPosition(w,h);
+        System.out.println(table.getMinHeight());
         for (SimpleProgramCard card : cardHandList) {
-            w += 1.7f;
             ImageButton cardButton = card.getCardButton();
-            cardButton.setSize(2,5);
+            cardButton.setSize(2,1);
             cardButton.setPosition(w, h);
-            table.add(cardButton);
-            stage.addActor(cardButton);
+            table.add(cardButton).size(2,2);
+
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

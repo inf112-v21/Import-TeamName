@@ -1,6 +1,7 @@
 package inf112.skeleton.app.screens.cardsUI;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.GameScreen;
 
@@ -14,9 +15,10 @@ public class SelectedCards {
     // Get cards from register
 
     Stage uiStage;
+    Table table;
     public SelectedCards(GameScreen gameScreen, Player player) {
         this.uiStage = gameScreen.getUIStage();
-        uiStage.clear(); // Clears the previous screens
+        this.table = new Table();
 
 
     }

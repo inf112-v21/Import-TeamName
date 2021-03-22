@@ -114,14 +114,14 @@ public class GameScreen extends InputAdapter implements Screen {
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
 
-        this.uiStage = new Stage(new StretchViewport(viewPortWidth, viewPortHeight));
+        this.uiStage = new Stage(new FitViewport(viewPortWidth, viewPortHeight));
 
         // Make camera
         this.gameCamera = new OrthographicCamera();
         this.uiCamera   = new OrthographicCamera();
         // Set camera to correct view settings, making room for dashboard.
         this.gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
-        this.uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight);
+        this.uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight/2);
 
         // Set camera, but does not scale with the fit viewport
         //gameCamera.position.y = initialCameraY;
@@ -154,6 +154,8 @@ public class GameScreen extends InputAdapter implements Screen {
 
         //Debug: Used to trigger a game phase
         if (keycode == Input.Keys.M) {
+            cardui.sendCards();
+
             TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
             playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
@@ -243,7 +245,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
        this.cardui = new CardUI(this, mainGame);
         uiStage.addActor(cardui.getTable());
-       this.cardui.setUpCards(0,0); // Generate buttons and listeners for actions
+       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 4, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
