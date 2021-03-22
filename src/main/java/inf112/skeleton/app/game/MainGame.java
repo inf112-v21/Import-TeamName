@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainGame {
+public final class MainGame {
 
 
    public static ArrayList<Player> robots;
@@ -93,5 +93,6 @@ public class MainGame {
         robots.add(player);
     }
 
+    public static ArrayList<Player> getRobots() {return robots;}
 
 }

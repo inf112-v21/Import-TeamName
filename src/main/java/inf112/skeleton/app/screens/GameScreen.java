@@ -67,7 +67,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
-        game = new MainGame();
+
 
         this.switcher = switcher;
         this.stage = stage;
@@ -114,10 +114,9 @@ public class GameScreen extends InputAdapter implements Screen {
         TextureRegion[][] textures = new TextureRegion(playerTexture).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         //Place player on starting point.
         Vector2 startPos = board.getDockingBays().get(0).getPosition();
-        game.addPlayer(new Player(startPos, textures));
-        player = new Player(startPos, textures);
 
-        //game.addPlayer(player);
+        player = new Player(startPos, textures);
+        MainGame.robots.add(player);
 
         /*
             Legge til spillere i List<> robot
@@ -219,23 +218,16 @@ public class GameScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {
-
-        stage.getViewport().update(width, height, true);
-    }
+    public void resize(int width, int height) { stage.getViewport().update(width, height, true); }
 
     @Override
-    public void pause() {
-    }
+    public void pause() { }
 
     @Override
-    public void resume() {
-    }
+    public void resume() { }
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() { }
 
     public Stage getUIStage() {return this.uiStage; }
     public Stage getStage()   {return this.stage;   }

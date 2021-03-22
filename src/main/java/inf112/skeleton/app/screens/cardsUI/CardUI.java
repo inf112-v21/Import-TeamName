@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
+import static inf112.skeleton.app.game.MainGame.robots;
+
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
@@ -21,16 +23,16 @@ public class CardUI extends Actor {
     private Table table;
     private Stage stage;
     CardHand cardHand;
-    private int width; // Might be retreived from gdx.graphics.width
-    private int height;
     Player robot;
 
 
     public CardUI(GameScreen screen, MainGame game) {
         stage = screen.getUIStage();
         this.table = new Table();
-        System.out.println(MainGame.robots);
-        this.robot = MainGame.robots.get(0); // Take first
+
+        this.robot = game.getRobots().get(0);
+        System.out.println(robot);
+        //this.robot = game.robots.get(0); // Take first
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
 
@@ -42,7 +44,6 @@ public class CardUI extends Actor {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
             w += 1.5f;
-            System.out.println(w);
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,5);
             cardButton.setPosition(w, h);
@@ -51,10 +52,10 @@ public class CardUI extends Actor {
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    System.out.println(player);
                     card.action(player);
                     //card.action(robot);
                 }
-
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                     return true;
