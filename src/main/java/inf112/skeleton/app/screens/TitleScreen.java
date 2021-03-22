@@ -36,6 +36,8 @@ public class TitleScreen implements Screen {
     float width;
     float height;
 
+    String fill = "fill";
+
     MainGame game;
     private boolean debugMode = true;
 
@@ -131,6 +133,9 @@ public class TitleScreen implements Screen {
         stage.getCamera().viewportWidth = width;
     }
 
+    public void singleplayer () {
+        switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, fill, fill));
+    }
 
     @Override
     public void pause() {
