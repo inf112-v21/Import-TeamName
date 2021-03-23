@@ -23,6 +23,7 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.CompleteRegisterPhase;
+import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
@@ -56,6 +57,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
 
     MainGame mainGame;
+    private GameLoopEventHandler gameLoopEventHandler; //Handles redrawing of players, win & lose condition.
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final OrthographicCamera gameCamera, uiCamera;
     private CardUI cardui;
@@ -140,6 +142,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
 
 
+        this.gameLoopEventHandler = new GameLoopEventHandler(switcher, tilePlayer); //Mostly for testing. Handles re-drawing of players at their new positions.
 
         //MainGame.gameLoop();
     }
@@ -152,7 +155,7 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        player.moveRobotWASD(keycode);
+        robots.get(0).moveRobotWASD(keycode);
         return true;
     }
 
@@ -192,12 +195,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.gameCamera.update();
         this.uiCamera.update();
 
-        //cardui.renderPlayer(tilePlayer); //TODO: Discuss rendering of robots.
-
-        //Render all robot on the board, at their new position.
-        for (SimpleRobot robot : robots) {
-            tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
-        }
+        gameLoopEventHandler.run(); //Handles re-drawing of players.   | Changes texture if on pit or flag, only for testing
 
         mapRenderer.render();
 
@@ -211,6 +209,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
         client = new RRClient(name);
 
+        //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
         if(hosting != false) {
             Log.info("starting server");
             try {
