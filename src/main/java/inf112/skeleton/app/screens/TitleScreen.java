@@ -60,9 +60,6 @@ public class TitleScreen implements Screen {
 
 
         game.setNumPlayers(5); //Max is 8 players
-        for (Player player : game.getRobots()) {
-            System.out.println(player);
-        }
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {

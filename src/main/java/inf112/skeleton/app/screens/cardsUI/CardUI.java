@@ -44,6 +44,7 @@ public class CardUI extends Actor {
         table.setPosition(w,h);
         System.out.println(table.getMinHeight());
         for (SimpleProgramCard card : cardHandList) {
+            System.out.println(card.getType());
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,1);
             cardButton.setPosition(w, h);
@@ -95,7 +96,7 @@ public class CardUI extends Actor {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");
             return;
         }
-
+        System.out.println("Cards sent to register");
         robot.getProgramSheet().getRegister().setCards(selectedCards);
     }
 

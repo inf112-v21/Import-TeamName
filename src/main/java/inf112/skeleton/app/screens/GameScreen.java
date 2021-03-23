@@ -121,7 +121,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.uiCamera   = new OrthographicCamera();
         // Set camera to correct view settings, making room for dashboard.
         this.gameCamera.setToOrtho(false, viewPortWidth, viewPortHeight + 4);  // Set mode. +4, to include room for dashboard.
-        this.uiCamera.setToOrtho(false, viewPortWidth, viewPortHeight/2);
+        this.uiCamera.setToOrtho(false, viewPortWidth*2, viewPortHeight/2);
 
         // Set camera, but does not scale with the fit viewport
         //gameCamera.position.y = initialCameraY;
@@ -244,8 +244,8 @@ public class GameScreen extends InputAdapter implements Screen {
         }
 
        this.cardui = new CardUI(this, mainGame);
-        uiStage.addActor(cardui.getTable());
-       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 4, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
+       uiStage.addActor(cardui.getTable());
+       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
