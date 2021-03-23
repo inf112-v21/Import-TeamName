@@ -1,5 +1,7 @@
 package inf112.skeleton.app.screens.cardsUI;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -8,13 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
+import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
+
+import static inf112.skeleton.app.game.MainGame.robots;
 
 public class CardUI extends Actor {
 
@@ -55,12 +62,14 @@ public class CardUI extends Actor {
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                    //Remove already selected card
                     if (selectedCards.contains(card)) {
                         selectedCards.remove(card);
                         cardCount--;
                         System.out.println("Removed card" + card);
                     }
                     else if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
+                    //Add selected card
                     else {
                         selectedCards.add(card);
                         cardCount++;
@@ -69,6 +78,15 @@ public class CardUI extends Actor {
                 }
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    //TODO: Change texture in a better way. Can we avoid creating new 'Highlight' textures for all buttons? Maybe create pixel layer on the fly.
+                    if (cardCount >= 5) {
+                        //Set normal texture
+                        cardButton.getStyle().imageChecked = cardButton.getStyle().imageUp;
+                    } else {
+                        //Set highlight texture
+                        cardButton.getStyle().imageChecked =  new TextureRegionDrawable(new TextureRegion(new Texture("Images/cards/Move1Down.png")));
+
+                    }
                     return true;
                 }
             });
@@ -101,8 +119,17 @@ public class CardUI extends Actor {
             return;
         }
         System.out.println("Cards sent to register: " + selectedCards);
-        robot.getProgramSheet().getRegister().setCards(selectedCards);
-        gameScreen.executeCards();
+        robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
+
+        for (SimpleRobot robotAI : robots) {
+            if (robotAI.equals(robot)) continue; //Skip human player
+
+            robotAI.getProgramSheet().getRegister().setCards(selectedCards);
+        }
+
+        CompleteRegisterPhase ph = new CompleteRegisterPhase();
+        ph.run();
+        //gameScreen.executeCards();
     }
 
 
