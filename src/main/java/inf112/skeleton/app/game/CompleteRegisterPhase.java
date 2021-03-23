@@ -68,10 +68,10 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
     /**
-     * Deb
-     * @param player
+     * Debug test method perform all the selected cards of a predefined player
+     * @param player: test player whose cards will be executed
      */
-    protected void executePlayerProgramCards(Player player) {
+    public void executePlayerProgramCards(Player player) {
         System.out.println("executeProgramCards is running in debug mode for one single player \n");
         ArrayList<SimpleProgramCard> playerCards = player.getProgramSheet().getRegister().getRegisterCards();
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
@@ -81,7 +81,6 @@ public class CompleteRegisterPhase implements IPhase {
             SimpleProgramCard playerCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
             moves.add(playerCard); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
             Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
-
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
                     SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
@@ -89,7 +88,6 @@ public class CompleteRegisterPhase implements IPhase {
                         card.action(player);
                         System.out.println("DEBUG:  Player"  + " used " + card + " card.");
                     }
-
             }
         }
     }

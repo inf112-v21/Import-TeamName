@@ -276,7 +276,7 @@ public class GameScreen extends InputAdapter implements Screen {
         playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
-        phase.run();
+        phase.executePlayerProgramCards(player);
         System.out.println("CompleteRegisterPhase is running.");
         System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
         System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());

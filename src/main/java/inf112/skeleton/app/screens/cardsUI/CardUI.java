@@ -55,20 +55,17 @@ public class CardUI extends Actor {
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                    if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
-                    else if (selectedCards.contains(card)) {
-
+                    if (selectedCards.contains(card)) {
                         selectedCards.remove(card);
                         cardCount--;
                         System.out.println("Removed card" + card);
                     }
+                    else if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
                     else {
-
                         selectedCards.add(card);
                         cardCount++;
                         System.out.println("Added card" + card + " Selected cards: " + selectedCards);
                     }
-
                 }
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -84,7 +81,6 @@ public class CardUI extends Actor {
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 sendCards();
-                gameScreen.executeCards();
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -96,14 +92,6 @@ public class CardUI extends Actor {
         return table;
     }
 
-    public void renderPlayer(TiledMapTileLayer tilePlayer) {
-        Vector2 playerPos = robot.getPosition();
-        int xPos = (int) playerPos.x;
-        int yPos = (int) playerPos.y;
-        tilePlayer.setCell(xPos, yPos, robot.getPlayerCell());
-    }
-
-
     /**
      * Method called after a player has sucessfully selectd five cards and clicked the button
      */
@@ -114,8 +102,8 @@ public class CardUI extends Actor {
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards);
+        gameScreen.executeCards();
     }
-
 
 
 }

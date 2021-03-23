@@ -9,9 +9,7 @@ public class Register {
 
     private ArrayList<SimpleProgramCard> registerCards;
 
-    public Register() {
-        registerCards = new ArrayList<>();
-    }
+    public Register() { registerCards = new ArrayList<>(); }
 
     public void addCardToRegister(SimpleProgramCard card) {
         registerCards.add(card);
