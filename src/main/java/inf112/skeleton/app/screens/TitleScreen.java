@@ -55,7 +55,7 @@ public class TitleScreen implements Screen {
 
 
         ImageButton playButton = new PlayButton(width * 0.4F,height * 0.7F).getButton();
-        this.stage = new Stage(new StretchViewport(width, height));
+        this.stage = new Stage(new FitViewport(width, height));
         this.stage.addActor(playButton);
 
 

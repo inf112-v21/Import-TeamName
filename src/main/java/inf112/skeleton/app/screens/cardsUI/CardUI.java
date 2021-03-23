@@ -8,12 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Align;
+import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
 
@@ -25,9 +24,11 @@ public class CardUI extends Actor {
     Player robot;
     private int cardCount;
     private ArrayList<SimpleProgramCard> selectedCards;
+    GameScreen gameScreen;
 
-    public CardUI(GameScreen screen, MainGame game) {
-        stage = screen.getUIStage();
+    public CardUI(GameScreen gameScreen, MainGame game) {
+        this.gameScreen = gameScreen;
+        stage = gameScreen.getUIStage();
         this.table = new Table();
         this.robot = game.getRobots().get(0);
         stage.addActor(table);
@@ -41,13 +42,14 @@ public class CardUI extends Actor {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         //table.setWidth((stage.getWidth()*0.8f));
         //table.setHeight(stage.getHeight()/3);
-        table.setPosition(w,h);
+        table.setHeight(h-3);
+        table.setPosition(w,h-h/4);
         System.out.println(table.getMinHeight());
         for (SimpleProgramCard card : cardHandList) {
             System.out.println(card.getType());
             ImageButton cardButton = card.getCardButton();
-            cardButton.setSize(2,1);
-            cardButton.setPosition(w, h);
+            cardButton.setSize(2,2);
+            cardButton.setPosition(w, h/10);
             table.add(cardButton).size(2,2);
 
             cardButton.addListener(new InputListener() {
@@ -55,14 +57,16 @@ public class CardUI extends Actor {
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                     if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
                     else if (selectedCards.contains(card)) {
-                        System.out.println("Removed card" + card);
+
                         selectedCards.remove(card);
                         cardCount--;
+                        System.out.println("Removed card" + card);
                     }
                     else {
-                        System.out.println("Added card" + card);
+
                         selectedCards.add(card);
                         cardCount++;
+                        System.out.println("Added card" + card + " Selected cards: " + selectedCards);
                     }
 
                 }
@@ -74,6 +78,18 @@ public class CardUI extends Actor {
 
 
         }
+        ImageButton playButton = new PlayButton(w,h/10, 2, 2).getButton();
+        table.add(playButton).size(2,2);
+        playButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                sendCards();
+                gameScreen.executeCards();
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }});
     }
 
     public Table getTable() {
@@ -96,7 +112,7 @@ public class CardUI extends Actor {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");
             return;
         }
-        System.out.println("Cards sent to register");
+        System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards);
     }
 

@@ -13,11 +13,15 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
@@ -114,7 +118,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
 
-        this.uiStage = new Stage(new FitViewport(viewPortWidth, viewPortHeight));
+        this.uiStage = new Stage(new FitViewport(viewPortWidth, viewPortHeight-4));
 
         // Make camera
         this.gameCamera = new OrthographicCamera();
@@ -148,28 +152,6 @@ public class GameScreen extends InputAdapter implements Screen {
      */
     @Override
     public boolean keyUp(int keycode) {
-        Player player = mainGame.robots.get(0); // Temporarily one player
-        //Player playerTest = (Player) game.robots.get(0);
-        //playerTest.moveRobotWASD(keycode);
-
-        //Debug: Used to trigger a game phase
-        if (keycode == Input.Keys.M) {
-            cardui.sendCards();
-
-            TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-            playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
-
-            CompleteRegisterPhase phase = new CompleteRegisterPhase();
-            phase.run();
-
-            System.out.println("CompleteRegisterPhase is running.");
-            System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
-            System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
-            System.out.println("Position: " + player.getPosition() + "\n");
-
-            return true;
-        }
-
         player.moveRobotWASD(keycode);
         return true;
     }
@@ -244,6 +226,8 @@ public class GameScreen extends InputAdapter implements Screen {
         }
 
        this.cardui = new CardUI(this, mainGame);
+
+
        uiStage.addActor(cardui.getTable());
        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
 
@@ -286,4 +270,18 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.stage;
     }
 
+    public void executeCards() {
+        Player player = mainGame.robots.get(0); // Temporarily one player
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+        playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+
+        CompleteRegisterPhase phase = new CompleteRegisterPhase();
+        phase.run();
+        System.out.println("CompleteRegisterPhase is running.");
+        System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
+        System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
+        System.out.println("Position: " + player.getPosition() + "\n");
+
+        }
 }
+
