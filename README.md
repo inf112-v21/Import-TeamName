@@ -59,7 +59,7 @@ If executed properly you are presented with the main screen of the mainGame.
 
 DEBUG mode: Move around with W,A,S,D (activiated in the main class)
 
-Should look like this:
+The main game screen should look like this:
 ![Picture of current roboRally](assets/Images/pictureOfCurrentGame.PNG)
 
 ### Tests
