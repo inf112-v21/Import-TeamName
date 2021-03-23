@@ -121,15 +121,7 @@ public class CardUI extends Actor {
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
 
-        for (SimpleRobot robotAI : robots) {
-            if (robotAI.equals(robot)) continue; //Skip human player
-
-            robotAI.getProgramSheet().getRegister().setCards(selectedCards);
-        }
-
-        CompleteRegisterPhase ph = new CompleteRegisterPhase();
-        ph.run();
-        //gameScreen.executeCards();
+        gameScreen.executeCards();
     }
 
 
