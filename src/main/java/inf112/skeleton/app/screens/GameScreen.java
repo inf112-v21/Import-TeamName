@@ -211,7 +211,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
         client = new RRClient(name);
 
-        if(hosting) {
+        if(hosting != false) {
             Log.info("starting server");
             try {
                 server = new RRServer();
@@ -225,11 +225,13 @@ public class GameScreen extends InputAdapter implements Screen {
             client.connect(ip);
         }
 
+
        this.cardui = new CardUI(this, mainGame);
 
 
        uiStage.addActor(cardui.getTable());
        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
+
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);

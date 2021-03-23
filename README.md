@@ -50,12 +50,17 @@ If executed properly you are presented with the main screen of the mainGame.
 
 ## How to play
 * Run main.java
-* A new screen appears, click on the green icon to start the mainGame. 
-* Move around with W,A,S,D (if debug mode turned on in the Main class)
-* OR, click on the cards represented at the bottom of the screen (if debug mode off)
+* A new screeen appears and the player is asked to select multiplayer or singleplayer. For testing purposes,
+  use singleplayer
+* Move player 1 while selecting five cards and clicking the submit button.
+* The selected cards will appear as text in the CONSOLE.
+* The game will proceed to execute the selected cards (As of now, only for player 1)
+
+
+DEBUG mode: Move around with W,A,S,D (activiated in the main class)
 
 Should look like this:
-![Picture of current roboRally](assets/Images/pictureOfCurrentGame.JPG)
+![Picture of current roboRally](assets/Images/pictureOfCurrentGame.PNG)
 
 ### Tests
 The mainGame uses Junit to automatically test the mainGame.

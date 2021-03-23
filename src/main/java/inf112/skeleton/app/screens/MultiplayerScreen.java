@@ -19,6 +19,7 @@ import com.esotericsoftware.kryonet.Client;
 
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 
 import java.net.InetAddress;
@@ -99,11 +100,11 @@ public class MultiplayerScreen implements Screen {
         findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
         findGame.setY(assignIP.getY());
 
-        final Button exitGame = new TextButton("Exit", skin);
-        exitGame.setWidth(width*0.40f);
-        exitGame.setHeight(height*0.10f);
-        exitGame.setX(alignToAxisX - exitGame.getWidth()/2);
-        exitGame.setY(height - exitGame.getHeight()-height*0.70f);
+        final Button backButton = new TextButton("Back", skin);
+        backButton.setWidth(width*0.40f);
+        backButton.setHeight(height*0.08f);
+        backButton.setX(alignToAxisX - backButton.getWidth()/2);
+        backButton.setY(height - backButton.getHeight()-height*0.70f);
 
 
 
@@ -112,7 +113,7 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(joinGame);
         stage.addActor(hostGame);
         stage.addActor(findGame);
-        stage.addActor(exitGame);
+        stage.addActor(backButton);
 
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
             public void keyTyped(TextField textField, char c) {
@@ -141,10 +142,10 @@ public class MultiplayerScreen implements Screen {
                 find();
             }
         });
-        exitGame.addListener(new ClickListener() {
+        backButton.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent event, float x, float y) {
-               Gdx.app.exit();
+               switcher.setScreen(new TitleScreen(switcher, stage, viewPort));
            }
         });
 
@@ -170,6 +171,7 @@ public class MultiplayerScreen implements Screen {
 
     private void host() {
       switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, true, "localhost", getName()));
+      MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Handle adding players better. Temp solution to generate players.
     }
 
     private void find() {
@@ -211,15 +213,15 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void hide() {
-        stage.dispose();
-        skin.dispose();
-        batch.dispose();
-        title.dispose();
         Gdx.input.setInputProcessor(null);
     }
 
     @Override
     public void dispose() {
+        stage.dispose();
+        skin.dispose();
+        batch.dispose();
+        title.dispose();
     }
 
 
