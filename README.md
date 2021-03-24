@@ -61,6 +61,11 @@ If executed properly you are presented with the main screen of the mainGame.
 * The selected cards will appear as text in the CONSOLE.
 * The game will proceed to execute the selected cards (As of now, only for player 1)
 
+## Alternative build:
+Navigate to repository main folder
+mvn clean install
+mvn compile
+mvn exec:java -Dexec.mainClass=inf112.skeleton.app.Main
 
 DEBUG mode: Move around with W,A,S,D (activiated in the main class)
 
