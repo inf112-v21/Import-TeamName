@@ -122,15 +122,18 @@ Prosjektet kan kjøres på Mac, Linux og Windows. Hver build sjekkes automatisk 
 Automatisk tester gjøres gjennom Junit, og manuelle tester er beskrevet i Deliverables/ManualTests. 
 
 ### <b> Klassediagram </b>
-Et oppdatert klassediagram over hele projektet finnes under Deliverables/UML.
+Et oppdatert klassediagram over hele projektet finnes under Deliverables/UML. [Ref](UML/UMLDeliverable3.png)
 
-På grunn av størrelsen på prosjektet og mengden filer har vi valgt å splitte UML-en opp i flere biter for mer presis forklaring.
+På grunn av størrelsen på prosjektet og mengden filer har vi valgt å også inkludere mindre diagrammer for å gi en mer presis forklaring.
 
-Hvert diagram inneholder en viktig del.
+Enkelt diagram som viser direkte arv i prosjektet er her: [SimpleDiagram](UML/UMLSimpleOverview.png) <br>
+Klassene er også gruppert etter hvor ca dem hører til relativt til de andre klassen i prosjektet.
+
+En mer presis gjennomgang basert på diagrammet over følger under:
 
 <b>Ting på brettet</b>
 
-[Ting på brettet](UML/UMLOfTilesOnGameboard.png)
+![Ting på brettet](UML/UMLOfTilesOnGameboard.png)
 
 Dette er alle klassene for det som kan eksistere på spillbrettet. Alt arver fra den abstrakte klassen `SimpleObject.java` som implementerer interfacet `IObjects.java`. Dens hoved egenskap er å holde styr på posisjonen til en brikke på brettet.
 
@@ -142,7 +145,7 @@ Til slutt har vi `actors`, som er brikkene som eksiterer i `Player layer` i alle
 
 <b>GameBoard - Samle informasjon av brett</b>
 
-[Hva inneholder et brett](UML/UMLGameBoard.png)
+![Hva inneholder et brett](UML/UMLGameBoard.png)
 
 Dette er klassen under mappen `Maps` i prosjektet. `Board.java` er hovedklassen, den looper igjennom alle lagene på et kart, lager instanser av objektene den finner, og legger dem til i de relevante listene. Eks, alle "vegg" type brikker blir lagt til i listen `HashMap<> mapCollidables`.
 
@@ -153,14 +156,14 @@ I tillegg har `Board.java` metoder for å spørre hva som er på en gitt posisjo
 
 <b>GameLoop - spill loopen</b>
 
-[Spill loop](UML/UMLGameLoop.png)
+![Spill loop](UML/UMLGameLoop.png)
 
 Her styres spill loopen som kjører selve spill logikken.
 
 
 <b>Screens - Skjermene til spillet</b>
 
-[Skjermene](UML/UMLScreens.png)
+![Skjermene](UML/UMLScreens.png)
 
 Her er alle skjermene i spillet. `Titlescreen` er hovedmenyen, `Multiplayer` er undermenyen som styer spill over nett, og `GameScreen` er skjermen med spillet.
 
@@ -173,7 +176,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 <b>Mappen `AssetManager` og `Buttons` - Visuelle resursser i spillet</b>
 
-[Texuture assets](UML/UMLAssets.png)
+![Texuture assets](UML/UMLAssets.png)
 
 `Assets.java` er klassen som laster inn alle textures og visuelle resursser og gjør dem tilgjengelige for de andre klassene. Dette gjøres kun her i prosjektet, slik at Single Responsibility er innfrid.
 
@@ -182,13 +185,13 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 <b>Cards - Spillets forskjellige kort</b>
 
-[Kort](UML/UMLCards.png)
+![Kort](UML/UMLCards.png)
 
 Alle kort utvider den abstrakte klassen`SimpleProgramCard.java` som implementerer interfacet `IProgramCard.java`. `SimpleProgramCard` inneholder alle generelle egenskaper kort trenger. Det er foreløpig implementert 2 forskjellige kort, `MovementCard.java` og `RotationCard.java`.
 
 `CardType.java` er en enum som inneholder alle mulige kort typer.
 
-`Register.java` og `CardHand.java` er klasser som hver enkelt robot instansierer i sin individuelle `ProgramSheet`. `CardHand` er kortene roboten får utdelt i starten av hver runde. Spilleren velger så 5 av dem, og disse sendes til `Register`. Når spillet skal eksekvere de valgte kortene til spillerene. Henter ` CompleteRegisterPhase.java` ut kortene fra robotenes`Register`.
+`Register.java` og `CardHand.java` er klasser som hver enkelt robot instansierer i sin individuelle `ProgramSheet`. `CardHand` er kortene roboten får utdelt i starten av hver runde. Spilleren velger så 5 av dem, og disse sendes til `Register`. Når spillet skal eksekvere de valgte kortene til spillerene henter ` CompleteRegisterPhase.java` ut kortene fra robotenes`Register`.
 
 
 <br>
