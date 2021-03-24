@@ -129,7 +129,7 @@ På grunn av størrelsen på prosjektet og mengden filer har vi valgt å splitte
 Hvert diagram inneholder en viktig del.
 
 <b>Ting på brettet</b>
-[Ting på brettet]("Deliverables/UML/UMLOfTilesOnGameBoard.png")
+[Ting på brettet](UML/UMLOfTilesOnGameboard.png)
 
 Dette er alle klassene for det som kan eksistere på spillbrettet. Alt arver fra den abstrakte klassen `SimpleObject.java` som implementerer interfacet `IObjects.java`. Dens hoved egenskap er å holde styr på posisjonen til en brikke på brettet.
 
@@ -140,7 +140,7 @@ Dette er alle klassene for det som kan eksistere på spillbrettet. Alt arver fra
 Til slutt har vi `actors`, som er brikkene som eksiterer i `Player layer` i alle kart. Dette er brikker som beveger seg, styres av mennesker eller AI. Alle `actors` arver fra `IActor`, holder styr på rettningen til brikken. `SimpleRobot` arver fra `IActor`. Den inneholder alle metodene en robot skal ha, mye av dens informasjon er lagret i `ProgramSheet.java`.
 
 <b>GameBoard - Samle informasjon av brett</b>
-[Hva inneholder et brett]("Deliverables/UML/UMLGameBoard.png")
+[Hva inneholder et brett](UML/UMLGameBoard.png)
 
 Dette er klassen under mappen `Maps` i prosjektet. `Board.java` er hovedklassen, den looper igjennom alle lagene på et kart, lager instanser av objektene den finner, og legger dem til i de relevante listene. Eks, alle "vegg" type brikker blir lagt til i listen `HashMap<> mapCollidables`.
 
@@ -150,13 +150,13 @@ Dette er klassen under mappen `Maps` i prosjektet. `Board.java` er hovedklassen,
 I tillegg har `Board.java` metoder for å spørre hva som er på en gitt posisjon, og om man kan gå fra en posisjon til en nabo, med hensyn til vegger.
 
 <b>GameLoop - spill loopen</b>
-[Hva inneholder et brett]("Deliverables/UML/UMLGameLoop.png")
+[Hva inneholder et brett](UML/UMLGameLoop.png)
 
 Her styres spill loopen som kjører selve spill logikken.
 
 
 <b>Screens - Skjermene til spillet</b>
-[Skjermene]("Deliverables/UML/UMLScreens.png")
+[Skjermene](UML/UMLScreens.png)
 
 Her er alle skjermene i spillet. `Titlescreen` er hovedmenyen, `Multiplayer` er undermenyen som styer spill over nett, og `GameScreen` er skjermen med spillet.
 
@@ -168,7 +168,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 
 <b>Mappen `AssetManager` og `Buttons` - Visuelle resursser i spillet</b>
-[Skjermene]("Deliverables/UML/UMLAssets.png")
+[Skjermene](UML/UMLAssets.png)
 
 `Assets.java` er klassen som laster inn alle textures og visuelle resursser og gjør dem tilgjengelige for de andre klassene. Dette gjøres kun her i prosjektet, slik at Single Responsibility er innfrid.
 
@@ -176,7 +176,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 
 <b>Cards - Spillets forskjellige kort</b>
-[Skjermene]("Deliverables/UML/UMLCards.png")
+[Skjermene](UML/UMLCards.png)
 
 Alle kort utvider den abstrakte klassen`SimpleProgramCard.java` som implementerer interfacet `IProgramCard.java`. `SimpleProgramCard` inneholder alle generelle egenskaper kort trenger. Det er foreløpig implementert 2 forskjellige kort, `MovementCard.java` og `RotationCard.java`.
 
