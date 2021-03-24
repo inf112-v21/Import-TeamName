@@ -17,7 +17,7 @@ public class RRServer {
 
 
     public RRServer() throws IOException {
-        Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
+        //Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
         //board = new BoardState/Board/GameMap(this);
 
         server = new Server() {
