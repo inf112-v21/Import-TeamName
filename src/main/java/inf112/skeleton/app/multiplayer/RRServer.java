@@ -13,7 +13,6 @@ public class RRServer {
 
     //Server Object
     Server server;
-    MainGame game;
 
 
 
@@ -34,7 +33,7 @@ public class RRServer {
 
         //Registering of packet class is being done all at once at NetworkPackets.java
         NetworkPackets.register(server);
-        game = new MainGame();
+
 
 
 
