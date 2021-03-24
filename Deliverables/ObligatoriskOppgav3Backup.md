@@ -153,7 +153,7 @@ I tillegg har `Board.java` metoder for å spørre hva som er på en gitt posisjo
 
 <b>GameLoop - spill loopen</b>
 
-[Hva inneholder et brett](UML/UMLGameLoop.png)
+[Spill loop](UML/UMLGameLoop.png)
 
 Her styres spill loopen som kjører selve spill logikken.
 
@@ -173,7 +173,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 <b>Mappen `AssetManager` og `Buttons` - Visuelle resursser i spillet</b>
 
-[Skjermene](UML/UMLAssets.png)
+[Texuture assets](UML/UMLAssets.png)
 
 `Assets.java` er klassen som laster inn alle textures og visuelle resursser og gjør dem tilgjengelige for de andre klassene. Dette gjøres kun her i prosjektet, slik at Single Responsibility er innfrid.
 
@@ -182,7 +182,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 <b>Cards - Spillets forskjellige kort</b>
 
-[Skjermene](UML/UMLCards.png)
+[Kort](UML/UMLCards.png)
 
 Alle kort utvider den abstrakte klassen`SimpleProgramCard.java` som implementerer interfacet `IProgramCard.java`. `SimpleProgramCard` inneholder alle generelle egenskaper kort trenger. Det er foreløpig implementert 2 forskjellige kort, `MovementCard.java` og `RotationCard.java`.
 
