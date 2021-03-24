@@ -33,10 +33,7 @@ public class TitleScreen implements Screen {
     float width;
     float height;
 
-    String fill = "fill";
-
     MainGame mainGame;
-    private boolean debugMode = true;
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;
     /**
