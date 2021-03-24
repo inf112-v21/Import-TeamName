@@ -23,15 +23,19 @@ import java.util.ArrayList;
 
 import static inf112.skeleton.app.game.MainGame.robots;
 
+/**
+ * Class responsible for vizualising the possible cards in a cardhand.
+ * Wi
+ */
 public class CardUI extends Actor {
 
     private Table table;
     private Stage stage;
-    CardHand cardHand;
-    Player robot;
+    private final CardHand cardHand;
+    public  Player robot;
     private int cardCount;
-    private ArrayList<SimpleProgramCard> selectedCards;
-    GameScreen gameScreen;
+    public ArrayList<SimpleProgramCard> selectedCards;
+    private  GameScreen gameScreen;
 
     public CardUI(GameScreen gameScreen, MainGame game) {
         this.gameScreen = gameScreen;
@@ -44,11 +48,13 @@ public class CardUI extends Actor {
         selectedCards = new ArrayList<>();
     }
 
-
+    /**
+     * Method that displays the possible cards contained in a cardhand in a table.
+     * @param w: Starting witdth of UI
+     * @param h Starting height of UI
+     */
     public void setUpCards(int w, int h) {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
-        //table.setWidth((stage.getWidth()*0.8f));
-        //table.setHeight(stage.getHeight()/3);
         table.setHeight(h-3);
         table.setPosition(w,h-h/4);
         System.out.println(table.getMinHeight());
@@ -111,7 +117,7 @@ public class CardUI extends Actor {
     }
 
     /**
-     * Method called after a player has sucessfully selectd five cards and clicked the button
+     * Method called after a player has successfully selectd five cards and clicked the button
      */
     public void sendCards() {
         if (cardCount < 5) {
