@@ -4,24 +4,15 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
@@ -29,7 +20,6 @@ import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import com.esotericsoftware.minlog.Log;
@@ -86,13 +76,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private String name;
 
 
-
-    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode, boolean hosting, String ip, String name) {
-        game = new MainGame();
-        this.switcher = switcher;
-        this.stage = stage;
-        this.viewPort = viewPort;
-        this.debugMode = debugMode;
+    public void setMultiPlayer(boolean hosting, String ip, String name) {
         this.hosting = hosting;
         this.name = name;
         if(!ip.isEmpty()) {
@@ -100,8 +84,15 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             this.ip = "localhost";
         }
+    }
 
+    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
+        game = new MainGame();
+        this.switcher = switcher;
+        this.stage = stage;
+        this.viewPort = viewPort;
 
+        this.debugMode = debugMode;
         this.width = Gdx.graphics.getWidth();
         this.height = Gdx.graphics.getHeight();
 
@@ -207,6 +198,19 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
+
+       this.cardui = new CardUI(this, mainGame);
+       uiStage.addActor(cardui.getTable());
+       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
+
+
+        if (this.debugMode) {
+            Gdx.input.setInputProcessor(this);
+        }
+        else {
+            Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
+        }
+
         client = new RRClient(name);
 
         //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
@@ -222,21 +226,6 @@ public class GameScreen extends InputAdapter implements Screen {
             }
         } else {
             client.connect(ip);
-        }
-
-
-       this.cardui = new CardUI(this, mainGame);
-
-
-       uiStage.addActor(cardui.getTable());
-       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
-
-
-        if (this.debugMode) {
-            Gdx.input.setInputProcessor(this);
-        }
-        else {
-            Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
     }
 

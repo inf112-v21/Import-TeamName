@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -19,7 +18,6 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 
@@ -41,15 +39,19 @@ public class MultiplayerScreen implements Screen {
     float width;
     float height;
 
+    MainGame mainGame;
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
     //Constructor
-    public MultiplayerScreen (RoboRally switcher) {
+    public MultiplayerScreen (RoboRally switcher, MainGame mainGame) {
+        this.mainGame = mainGame;
         this.switcher = switcher;
     }
 
     FitViewport viewPort;
     private boolean debugMode = true;
+
+
 
 
     @Override
@@ -167,12 +169,18 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, assignIP.getText(), getName()));
+        mainGame.setNumPlayers(5);
+        switcher.getGameScreen().setMultiPlayer(false, assignIP.getText(), getName());
+        switcher.setGameScreen(mainGame);
+
+
     }
 
     private void host() {
-      switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, true, "localhost", getName()));
-      MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Handle adding players better. Temp solution to generate players.
+      mainGame.setNumPlayers(5);
+      switcher.getGameScreen().setMultiPlayer(true, assignIP.getText(), getName());
+      switcher.setGameScreen(mainGame);
+
     }
 
     private void find() {
