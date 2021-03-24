@@ -30,6 +30,15 @@ public class NetworkPackets {
     }
 
     static public class NewPlayer {
+        public String name;
+        public int playerId;
+
+        public NewPlayer() {}
+        public NewPlayer (String name, int playerId) {
+            this.name = name;
+            this.playerId = playerId;
+
+        }
     }
 
     //implement the classes for use in RRClient/RRServer here
