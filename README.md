@@ -31,6 +31,11 @@ Wiki of the mainGame: [Roborally Wiki](https://www.wikiwand.com/en/RoboRally)
 * Version Control, git etc.
 * Maven
 
+### OS
+* Mac
+* Linux
+* Windows
+
 ### Command line
 Clone project: ``git clone git@github.com:inf112-v21/Import-TeamName.git``
 

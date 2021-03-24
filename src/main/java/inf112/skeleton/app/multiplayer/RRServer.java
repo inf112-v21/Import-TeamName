@@ -56,7 +56,8 @@ public class RRServer {
 
                     connection.name = named; //should be a valid name by this point.
 
-
+                    NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID());
+                    server.sendToAllExceptTCP(connection.getID(), message); //telling everyone except new person, that new person joined.
 
 
 

@@ -225,11 +225,11 @@ public class GameScreen extends InputAdapter implements Screen {
         }
 
 
-       this.cardui = new CardUI(this, mainGame);
+       //this.cardui = new CardUI(this, mainGame);
 
 
-       uiStage.addActor(cardui.getTable());
-       this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
+      // uiStage.addActor(cardui.getTable());
+      // this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight/4)); // Generate buttons and listeners for actions
 
 
         if (this.debugMode) {

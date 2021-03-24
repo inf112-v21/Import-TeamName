@@ -1,9 +1,11 @@
 package inf112.skeleton.app.multiplayer;
 
-import com.esotericsoftware.minlog.Log;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.minlog.Log;
+import com.esotericsoftware.kryo.*;
+
 
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 
@@ -61,7 +63,10 @@ public class RRClient {
     }
 
     public void packetHandler (int playerId, Object packet) {
-        //fill in with a bunch of if/else depending on instanceof object/packet
+        if (packet instanceof NetworkPackets.NewPlayer) {
+            NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
+            System.out.println(type.name + "has joined");
+        }
 
     }
 
