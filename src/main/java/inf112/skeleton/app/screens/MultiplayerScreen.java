@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -15,10 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.esotericsoftware.kryonet.Client;
 
+
+import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 
@@ -32,18 +31,18 @@ public class MultiplayerScreen implements Screen {
 
     private TextField assignIP;
     private TextField assignName;
-    private SpriteBatch batch;
     private Stage stage;
     private Skin skin;
-    private Texture title;
 
     float width;
     float height;
 
+    MainGame mainGame;
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
     //Constructor
-    public MultiplayerScreen (RoboRally switcher) {
+    public MultiplayerScreen (RoboRally switcher, MainGame mainGame) {
+        this.mainGame = mainGame;
         this.switcher = switcher;
     }
 
@@ -51,12 +50,12 @@ public class MultiplayerScreen implements Screen {
     private boolean debugMode = true;
 
 
+
+
     @Override
     public void show () {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
-        batch = new SpriteBatch();
-        title = new Texture("Images/title.png");
         stage = new Stage(new StretchViewport(width, height));
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
@@ -156,9 +155,6 @@ public class MultiplayerScreen implements Screen {
     public void render(float delta) {
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        switcher.batch.begin();
-        switcher.batch.draw(title, alignToAxisX - title.getWidth()/3, height*0.7f,width*0.7f, height*0.3f);
-        switcher.batch.end();
 
         stage.act(delta);
         stage.draw();
@@ -166,12 +162,18 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, assignIP.getText(), getName()));
+        mainGame.setNumPlayers(5);
+        switcher.getGameScreen().setMultiPlayer(false, assignIP.getText(), getName());
+        switcher.setGameScreen(mainGame);
+
+
     }
 
     private void host() {
-      switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, true, "localhost", getName()));
-      MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Handle adding players better. Temp solution to generate players.
+      mainGame.setNumPlayers(5);
+      switcher.getGameScreen().setMultiPlayer(true, assignIP.getText(), getName());
+      switcher.setGameScreen(mainGame);
+
     }
 
     private void find() {
@@ -220,8 +222,6 @@ public class MultiplayerScreen implements Screen {
     public void dispose() {
         stage.dispose();
         skin.dispose();
-        batch.dispose();
-        title.dispose();
     }
 
 

@@ -7,11 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
-import inf112.skeleton.app.screens.MultiplayerScreen;
 import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
@@ -22,10 +20,8 @@ public class RoboRally extends Game {
     public BitmapFont font;
     GameScreen  gameScreen;
     WinScreen   winScreen;
-    MultiplayerScreen multiplayerScreen;
     TitleScreen titleScreen;
 
-    String name;
     FitViewport viewPort;
     Stage stage;
 
@@ -36,7 +32,6 @@ public class RoboRally extends Game {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
-        name = "ice";
 
         viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewPort.apply();
@@ -48,7 +43,7 @@ public class RoboRally extends Game {
 
         // Set up screens
 
-        gameScreen = new GameScreen(this, stage, viewPort, debugMode, false, name, name);
+        gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         winScreen  = new WinScreen(this, viewPort);
         titleScreen = new TitleScreen(this, stage, viewPort);
 
@@ -72,6 +67,8 @@ public class RoboRally extends Game {
         gameScreen.setGame(mainGame);
         setScreen(gameScreen);
     }
+
+    public GameScreen getGameScreen() { return this.gameScreen; }
 
     public void setWinScreen() {
         setScreen(winScreen);

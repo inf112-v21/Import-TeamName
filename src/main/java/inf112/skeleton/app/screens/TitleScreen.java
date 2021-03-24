@@ -33,10 +33,7 @@ public class TitleScreen implements Screen {
     float width;
     float height;
 
-    String fill = "fill";
-
     MainGame mainGame;
-    private boolean debugMode = true;
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;
     /**
@@ -82,19 +79,20 @@ public class TitleScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        mainGame.setNumPlayers(5); //Max is 8 players
+
 
         singleplayer.addListener(new ClickListener() {
 
             @Override
             public void clicked(InputEvent event, float x, float y){
+               mainGame.setNumPlayers(5); //Max is 8 players
                switcher.setGameScreen(mainGame);
             }
         });
 
         multiplayer.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                switcher.setScreen(new MultiplayerScreen(switcher));
+                switcher.setScreen(new MultiplayerScreen(switcher, mainGame));
             }
         });
 
@@ -129,11 +127,6 @@ public class TitleScreen implements Screen {
         stage.getViewport().update(width,height,true);
         stage.getCamera().viewportHeight = height;
         stage.getCamera().viewportWidth = width;
-    }
-
-    public void singleplayer () {
-        switcher.setScreen(new GameScreen(switcher, stage, viewPort, debugMode, false, fill, fill));
-        MainGame.setNumPlayers(5); //Max is 8 players.    <-- Must be after GameScreen has been made! //TODO: Add another screen underneath TileScreen for SinglePlayer? Handle what map to play, how many players etc.
     }
 
     @Override
