@@ -180,6 +180,9 @@ public class MultiplayerScreen implements Screen {
         InetAddress find = client.discoverHost(NetworkPackets.udpPort, 5000);
         if (find != null) {
             assignIP.setText(find.getHostAddress());
+            System.out.println("Server has been found");
+        } else {
+            System.out.println("Server find timed out, no server found on LAN");
         }
         client.stop();
         client.close();
