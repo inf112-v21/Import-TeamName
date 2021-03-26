@@ -3,9 +3,7 @@ package inf112.skeleton.app.multiplayer;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import com.esotericsoftware.minlog.Log;
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
-import inf112.skeleton.app.game.MainGame;
 
 import java.io.IOException;
 
@@ -17,8 +15,6 @@ public class RRServer {
 
 
     public RRServer() throws IOException {
-        //Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
-        //board = new BoardState/Board/GameMap(this);
 
         server = new Server() {
             protected Connection newConnection() {  //Storing by connection state
@@ -56,7 +52,7 @@ public class RRServer {
                     connection.name = named; //should be a valid name by this point.
 
                     NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID());
-                    server.sendToAllExceptTCP(connection.getID(), message); //telling everyone except new person, that new person joined.
+                    server.sendToAllExceptTCP(connection.getID(), message); //messaging everyone except new person, that new person joined.
 
 
 

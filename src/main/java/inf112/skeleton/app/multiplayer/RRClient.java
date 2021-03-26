@@ -4,13 +4,12 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.minlog.Log;
-import com.esotericsoftware.kryo.*;
+
 
 
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 
 import java.io.IOException;
-import java.util.logging.Handler;
 
 public class RRClient {
 
