@@ -3,6 +3,7 @@ package inf112.skeleton.app.multiplayer;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import com.esotericsoftware.minlog.Log;
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class RRServer {
 
 
     public RRServer() throws IOException {
+        Log.set(Log.LEVEL_INFO);
 
         server = new Server() {
             protected Connection newConnection() {  //Storing by connection state
@@ -62,8 +64,9 @@ public class RRServer {
 
                 public void disconnected (Connection c) {
                     RRConnection connection = (RRConnection) c;
-                    //do something here, to be implemented, maybe an if connection.name != null or something, do {message}
-                    System.out.println("A client disconnected."); //testing
+                    if (connection != null) {
+                        System.out.println(connection.name + " has disconnected."); //testing
+                    }
                 }
         });
     }

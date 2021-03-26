@@ -77,7 +77,7 @@ public class MultiplayerScreen implements Screen {
         assignName.setY(height - assignName.getHeight() - height*0.39f);
 
 
-        //Button UI elements, maybe integrate with the button package later
+        //Button UI elements
         final Button joinGame = new TextButton("Join", skin);
         joinGame.setWidth(width*0.40f);
         joinGame.setHeight(height*0.10f);
