@@ -5,6 +5,7 @@
 
 
 ## Deloppgave 1: Team og prosjekt
+
 <b>Referat</b>
 Referat fra hvert møte gruppen har holdt finnes i repository under Deliverables/Møtereferat
 
@@ -45,8 +46,6 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 
 
 ## Deloppgave 2: Krav
-
-*Hvilke krav har vi prioritert? Hva har vi gjort siden forrige innlevering? Møtt MVP?*
 
 ### <b> Brukerhistorier: </b>
 
@@ -108,6 +107,7 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
     5. Robot vinner ved å besøke flagg
     7. Dele ut kort
     9. Bevege robot ut fra valgte kort 
+
 <b> MVP slik prosjektet er nå </b> 
 
     1. Vise et spillebrett
@@ -119,6 +119,7 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
     7. Dele ut kort
     8. Velge 5 kort
     9. Bevege robot ut fra valgte kort
+
 ** En spiller kan tilkoble seg og se spillbrettet
 
 
