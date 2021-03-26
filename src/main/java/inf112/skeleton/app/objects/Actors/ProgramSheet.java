@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ProgramSheet {
 
-
     private CardHand hand;
     private Register register;
     private int damageTokens;
@@ -21,19 +20,22 @@ public class ProgramSheet {
     private Vector2 archiveMarker; //Respawn point when reentering the game.
 
     public ProgramSheet() {
-        damageTokens = 0;
-        lifeTokens = 0;
-        powerDown = false;
-        flags = new ArrayList<>();
-        dead = false;
-        hand = new CardHand(9);
-        register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
+        this.damageTokens = 0;
+        this.lifeTokens = 0;
+        this.powerDown = false;
+        this.flags = new ArrayList<>();
+        this.dead = false;
+        this.hand = new CardHand(9);
+        this.register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
     }
 
-
+    /**
+     * Adds or subtracts damage tokens from an actor's program sheet.
+     * @param amount The amount of tokens to be added. (If negative, remove tokens)
+     */
     public void addDamage(int amount) {
         this.damageTokens += amount;
-        if (damageTokens > lifeTokens) this.dead = true;
+        if (this.damageTokens > this.lifeTokens) this.dead = true;
         if (this.damageTokens > 10) {
             this.damageTokens = 10;
         }
@@ -41,17 +43,21 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        hand.setNumCardsDeck(9 - damageTokens);
+        this.hand.setNumCardsDeck(9 - this.damageTokens);
     }
 
     /**
-     * Called every round for its robot
+     * Deals the correct amount of cards to an actor, based on its damage tokens.
+     * Method is called every round.
      */
     public void dealCards(CardDeck deck) {
-        hand = new CardHand(9 - damageTokens);
-
+        this.hand = new CardHand(9 - this.damageTokens);
     }
 
+    /**
+     * Adds or subtracts life tokens from an actor's program sheet.
+     * @param amount The amount of tokens to be added. (If negative, remove tokens)
+     */
     public void addLife(int amount) {
         this.lifeTokens += amount;
 
@@ -65,18 +71,28 @@ public class ProgramSheet {
     }
 
     /**
-     * Cards that will be executed in CompleteRegisterPhase
-     * @return
+     * Gets the cards that will be executed in CompleteRegisterPhase.
+     * @return register from actor's program sheet.
      */
-    public Register getRegister() {return this.register;}
+    public Register getRegister() {
+        return this.register;
+    }
 
     /**
-     * All cards on hand?
-     * @return
+     * Gets an actor's card hand.
+     * @return actor's card hand.
      */
-    public CardHand getCardHand() {return this.hand;}
+    public CardHand getCardHand() {
+        return this.hand;
+    }
 
-    public int getNumberOfFlags() { return flags.size(); }
+    /**
+     * Gets the amount of flags an actor has visited.
+     * @return amount of flags in this.flags.
+     */
+    public int getNumberOfFlags() {
+        return this.flags.size();
+    }
 
     /**
      * Tries to add flag to visited flags.
@@ -84,16 +100,24 @@ public class ProgramSheet {
      * @param flag
      */
     public void addFlag(Flag flag) {
-        archiveMarker = flag.getPosition(); //Update respawn point according to rules.
+        this.archiveMarker = flag.getPosition(); //Update respawn point according to rules.
 
-        int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
-        if (lastVisitedFlag+1 == flag.getFlagID() && !flags.contains(flag.getFlagID())) flags.add(flag.getFlagID()); //If in order, add flag.
+        int lastVisitedFlag = this.flags.isEmpty() ? 0 : this.flags.get(this.flags.size()-1); //Get last visited flag
+        if (lastVisitedFlag+1 == flag.getFlagID() && !this.flags.contains(flag.getFlagID())) this.flags.add(flag.getFlagID()); //If in order, add flag.
     }
 
+    /**
+     * Gets the amount of damage tokens on an actor's program sheet.
+     * @return int - amount of damage tokens.
+     */
     public int getDamage() {
         return this.damageTokens;
     }
 
+    /**
+     * Gets the amount of life tokens on an actor's program sheet.
+     * @return int - amount of life tokens.
+     */
     public int getLife() {
         return this.lifeTokens;
     }
@@ -110,23 +134,27 @@ public class ProgramSheet {
         return this.dead;
     }
 
+    /**
+     * Sets the boolean value of this.dead. Decides whether an actor is dead or alive.
+     * @param dead boolean - true if dead, false if alive.
+     */
     public void setDead(boolean dead) {
         this.dead = dead;
     }
 
     /**
-     * Sets respawn point.
-     * @param archiveMarker
+     * Sets an actor's respawn point.
+     * @param archiveMarker Vector2
      */
     public void setArchiveMarker(Vector2 archiveMarker) {
         this.archiveMarker = archiveMarker;
     }
 
     /**
-     * Returns respawn point
-     * @return
+     * Gets an actor's respawn point.
+     * @return Vector2
      */
     public Vector2 getArchiveMarker() {
-        return archiveMarker;
+        return this.archiveMarker;
     }
 }
