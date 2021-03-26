@@ -32,7 +32,7 @@ public class TitleScreen implements Screen {
 
     float width;
     float height;
-    
+
     MainGame mainGame;
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;

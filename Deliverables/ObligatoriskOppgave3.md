@@ -35,7 +35,9 @@ Prosjekttavlen fungerer fint til å holde oversikt over den totale arbeidsmengde
 
 <b>Forklar>Forklar kort hvordan dere har prioritert oppgavene fremover</b>. Legg ved skjermdump av project board ved innlevering
 
-[Bilder av projectBoard](Images/projectBoard.JPG)
+<b> Prosjekttavle </b>
+
+[Bilde av prosjekttavle](Projectboard/projectboard_deliv3.png)
 
 <b>Gruppedynamikk og kommunikasjon</b>
 Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en egen discord kanal for å forenkle kommunikasjon.
@@ -187,7 +189,7 @@ I samme package ligger `cardsUI`, denne mappen inneholder skjermene som viser `d
 
 <b>Cards - Spillets forskjellige kort</b>
 
-![Kort](../UML/UMLCards.png)
+![Kort](UML/UMLCards.png)
 
 Alle kort utvider den abstrakte klassen`SimpleProgramCard.java` som implementerer interfacet `IProgramCard.java`. `SimpleProgramCard` inneholder alle generelle egenskaper kort trenger. Det er foreløpig implementert 2 forskjellige kort, `MovementCard.java` og `RotationCard.java`.
 
@@ -206,11 +208,11 @@ Automatiske tester gjøres gjennom Junit rammeverk, og dekker de mest kritiske k
 
 
 
-<b>Arbeidsfordeling</b> //TODO: Hva skriver vi her?
+<b>Arbeidsfordeling</b> 
 
 Gruppen har hatt fokus på å gjevne ut kodebidrag med hensyn på mengden linjer og commits.
 Siden forrige innlevering har nå 4 av medlemmene minimum 2000 linjer kode endret i prosjektet.
-Dette er en økning fra 3 av oss.
+Dette er en økning fra 3 av oss. Til neste Deliverable vil gruppen tilstrebe å jevne ut commits ytterligere.
 
 
 <b> Bugs/uønsket adferd </b>
