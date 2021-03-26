@@ -13,12 +13,11 @@ public class RRServer {
 
     //Server Object
     Server server;
-    MainGame game;
 
 
 
     public RRServer() throws IOException {
-        Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
+        //Log.set(Log.LEVEL_DEBUG);  //set to Log.LEVEL_DEBUG if needed
         //board = new BoardState/Board/GameMap(this);
 
         server = new Server() {
@@ -34,7 +33,7 @@ public class RRServer {
 
         //Registering of packet class is being done all at once at NetworkPackets.java
         NetworkPackets.register(server);
-        game = new MainGame();
+
 
 
 
