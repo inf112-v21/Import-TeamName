@@ -90,3 +90,4 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 * Resizing the window will currently break the clickable cards. Restart fixes it.
 * On titlescreen, going fullscreen, pressing multiplayer, then pressing back. Will break logo if still in fullscreen.
 * !!!Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.
+* When single player is started, game still attempts to connect to server.
