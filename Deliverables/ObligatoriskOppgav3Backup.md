@@ -70,12 +70,15 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 - Lage en grafisk framstilling av kortene i hånden
 - Valgte kort blir markert
 
-
-### <b>Brukerhistorie 3.3 - Multiplayer </b>
+### <b>Brukerhistorie 3.3 - Multiplayer(beta) </b>
 
 <b>Akseptansekriterier:</b>
+- Minst to maskiner kan sende informasjon mellom hverandre.
+    Maskin 1 får vite i konsoll at maskin 2 har koblet seg til.
 
 <b> Arbeidsoppgaver: </b>
+- Lage en server som akspeterer og returnerer packets.
+- Gi melding om at en annen maskin har koblet seg til serveren, og eventuelt koblet seg fra serveren.
 
 ### <b>Brukerhistorie 3.4 - </b>
 
