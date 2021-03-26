@@ -61,6 +61,9 @@ If executed properly you are presented with the main screen of the mainGame.
 * The selected cards will appear as text in the CONSOLE.
 * The game will proceed to execute the selected cards (As of now, only for player 1)
 
+--Multiplayer
+* Write in ip into server ip field, press the "find" button next to it. Then press join. Option: give yourself a name in the name field!
+
 ## Alternative build:
 * Navigate to repository main folder
 * mvn clean install
@@ -85,4 +88,4 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 ## Known bugs
 * Resizing the window will currently break the clickable cards. Restart fixes it.
 * On titlescreen, going fullscreen, pressing multiplayer, then pressing back. Will break logo if still in fullscreen.
-* Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.
+* !!!Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.
