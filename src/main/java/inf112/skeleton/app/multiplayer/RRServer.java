@@ -13,8 +13,6 @@ public class RRServer {
     //Server Object
     Server server;
 
-
-
     public RRServer() throws IOException {
         Log.set(Log.LEVEL_INFO);
 
@@ -31,8 +29,6 @@ public class RRServer {
 
         //Registering of packet class is being done all at once at NetworkPackets.java
         NetworkPackets.register(server);
-
-
 
 
         server.addListener(new Listener() {
@@ -80,6 +76,5 @@ public class RRServer {
         server.close();
         server.stop();
     }
-
 
 }

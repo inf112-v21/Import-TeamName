@@ -15,7 +15,6 @@ import java.util.List;
 
 public final class MainGame {
 
-
    public static ArrayList<Player> robots;
    public static Board gameBoard;
    public static CardDeck deck;
@@ -38,8 +37,6 @@ public final class MainGame {
         gameBoard = new Board(map);
 
     }
-
-
 
     /**
      * TODO: Discuss how to add players.

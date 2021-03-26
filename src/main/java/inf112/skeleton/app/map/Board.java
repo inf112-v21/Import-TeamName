@@ -271,5 +271,8 @@ public class Board {
 
     }
 
-    public TiledMap getMap() {return this.map;}
+    public TiledMap getMap() {
+        return this.map;
+    }
+
 }

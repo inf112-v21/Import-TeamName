@@ -17,8 +17,6 @@ public class RRClient {
     private Client client;
     private int id;
 
-
-
     public RRClient (String name) {
         this.name = name;
 
@@ -71,9 +69,5 @@ public class RRClient {
         client.stop();
         client.close();
     }
-
-
-
-
 
 }

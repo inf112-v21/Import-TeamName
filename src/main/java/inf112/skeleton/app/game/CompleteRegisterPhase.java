@@ -118,8 +118,6 @@ public class CompleteRegisterPhase implements IPhase {
         rotatePlayer();
     }
 
-
-
         /**
          * The phase activating all lasers. Wall mounted and robots.
          */
@@ -242,8 +240,5 @@ public class CompleteRegisterPhase implements IPhase {
             }
         }
     }
-
-
-
 
 }
