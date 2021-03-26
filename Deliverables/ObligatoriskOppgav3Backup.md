@@ -71,6 +71,8 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 - Valgte kort blir markert
 
 ### <b>Brukerhistorie 3.3 - Multiplayer(beta) </b>
+"Som spiller vil jeg kunne spille med andre, slik som et ekte brettspill"
+*sager denne til å minst kunne kommunsere eller se at andre kobler seg til.
 
 <b>Akseptansekriterier:</b>
 - Minst to maskiner kan sende informasjon mellom hverandre.
