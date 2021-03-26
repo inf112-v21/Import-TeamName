@@ -10,7 +10,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
-import inf112.skeleton.app.screens.MultiplayerScreen;
 import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
@@ -21,10 +20,8 @@ public class RoboRally extends Game {
     public BitmapFont font;
     GameScreen  gameScreen;
     WinScreen   winScreen;
-    MultiplayerScreen multiplayerScreen;
     TitleScreen titleScreen;
 
-    String name;
     FitViewport viewPort;
     Stage stage;
 
@@ -35,7 +32,6 @@ public class RoboRally extends Game {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
-        name = "ice";
 
         viewPort = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewPort.apply();

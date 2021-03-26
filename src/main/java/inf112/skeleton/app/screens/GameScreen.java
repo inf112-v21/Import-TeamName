@@ -208,7 +208,7 @@ public class GameScreen extends InputAdapter implements Screen {
                 server = new RRServer();
                 client.connect("localhost");
             } catch (IOException e) {
-                e.printStackTrace();  //no idea what this does, haven't read the documentation on IOException
+                e.printStackTrace();
                 Log.info("Unable to start server.");
                 Gdx.app.exit();
             }

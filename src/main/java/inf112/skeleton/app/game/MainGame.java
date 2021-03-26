@@ -5,16 +5,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.cards.CardDeck;
-import inf112.skeleton.app.cards.CardType;
-import inf112.skeleton.app.cards.MovementCard;
-import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.map.Board;
-import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

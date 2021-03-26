@@ -61,6 +61,15 @@ If executed properly you are presented with the main screen of the mainGame.
 * The selected cards will appear as text in the CONSOLE.
 * The game will proceed to execute the selected cards (As of now, only for player 1)
 
+--Multiplayer
+* Press "find" button to look for LAN server. Then press join if server is found.
+* Second option: type ip into server field. Then press join, it either works or not (untested currently).
+
+## Alternative build:
+* Navigate to repository main folder
+* mvn clean install
+* mvn compile
+* mvn exec:java -Dexec.mainClass=inf112.skeleton.app.Main
 
 DEBUG mode: Move around with W,A,S,D (activiated in the main class)
 
@@ -79,3 +88,5 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 
 ## Known bugs
 * Resizing the window will currently break the clickable cards. Restart fixes it.
+* On titlescreen, going fullscreen, pressing multiplayer, then pressing back. Will break logo if still in fullscreen.
+* !!!Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.

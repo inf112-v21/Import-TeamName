@@ -2,6 +2,7 @@ package inf112.skeleton.app.screens.cardsUI;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -17,10 +18,14 @@ import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
 
+
 /**
  * Class responsible for vizualising the possible cards in a cardhand.
  * Wi
  */
+
+
+
 public class CardUI extends Actor {
 
     private Table table;
