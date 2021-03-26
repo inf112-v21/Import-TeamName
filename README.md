@@ -61,7 +61,7 @@ If executed properly you are presented with the main screen of the mainGame.
 * The selected cards will appear as text in the CONSOLE.
 * The game will proceed to execute the selected cards (As of now, only for player 1)
 
---Multiplayer
+### Multiplayer
 * Press "find" button to look for LAN server. Then press join if server is found.
 * Second option: type ip into server field. Then press join, it either works or not (untested currently).
 
