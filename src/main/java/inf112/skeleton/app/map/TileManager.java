@@ -133,14 +133,5 @@ public class TileManager {
         }
     }
 
-    /**
-     * Prints all enum names and their id
-     * Used for debugging.
-     */
-    public void printT() {
-        for (Tiles tile : Tiles.values()) {
-            System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
-        }
-    }
 
 }

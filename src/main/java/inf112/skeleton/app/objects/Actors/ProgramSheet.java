@@ -98,35 +98,9 @@ public class ProgramSheet {
         return this.lifeTokens;
     }
 
-    public void setPowerDown(boolean state) {
-        this.powerDown = state;
-    }
-
-    public boolean getPowerDown() {
-        return this.powerDown;
-    }
-
-    public boolean isDead() {
-        return this.dead;
-    }
 
     public void setDead(boolean dead) {
         this.dead = dead;
     }
-
-    /**
-     * Sets respawn point.
-     * @param archiveMarker
-     */
-    public void setArchiveMarker(Vector2 archiveMarker) {
-        this.archiveMarker = archiveMarker;
-    }
-
-    /**
-     * Returns respawn point
-     * @return
-     */
-    public Vector2 getArchiveMarker() {
-        return archiveMarker;
-    }
 }
+

@@ -11,10 +11,6 @@ public class Register {
 
     public Register() { registerCards = new ArrayList<>(); }
 
-    public void addCardToRegister(SimpleProgramCard card) {
-        registerCards.add(card);
-    }
-
 
     public ArrayList<SimpleProgramCard> getRegisterCards() {return this.registerCards;}
 

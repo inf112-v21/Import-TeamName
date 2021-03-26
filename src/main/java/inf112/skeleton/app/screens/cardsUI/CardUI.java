@@ -31,7 +31,6 @@ public class CardUI extends Actor {
     public  Player robot;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
-    private  GameScreen gameScreen;
     MainGame mainGame;
 
     public CardUI(MainGame mainGame) {
@@ -48,7 +47,6 @@ public class CardUI extends Actor {
      * @param h Starting height of UI
      */
     public void setUpCards(int w, int h, GameScreen gameScreen) {
-        this.gameScreen = gameScreen;
         stage = gameScreen.getUIStage();
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();

@@ -48,17 +48,15 @@ public class RRClient {
             Log.info("Failed to connect to " + ip);
         }
     }
-
+    protected void disconnectHandler (Connection c) {
+        //add some method which clears disconnected player/depends on game rules. Probably has to be done in some other class.
+    }
     protected void connectionHandler (Connection c) {
         id = c.getID();
         c.getRemoteAddressTCP().toString();
         Entry assignName = new Entry(name);
         client.sendTCP(assignName);
         client.updateReturnTripTime();
-    }
-
-    protected void disconnectHandler (Connection c) {
-        //add some method which clears disconnected player/depends on game rules. Probably has to be done in some other class.
     }
 
     public void packetHandler (int playerId, Object packet) {
@@ -74,9 +72,6 @@ public class RRClient {
         client.close();
     }
 
-    public void ping() {
-        if (client.isConnected()) { this.client.updateReturnTripTime(); }
-    }
 
 
 

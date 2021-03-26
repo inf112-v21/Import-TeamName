@@ -39,35 +39,6 @@ public final class MainGame {
 
     }
 
-    /**
-     * Game Loop
-     * Executes the phases in correct order
-    */
-    public static void gameLoop() {
-
-        IPhase dealCardsPhase = new DealCardsPhase();
-        IPhase programRegisterPhase = new ProgramRegisterPhase();
-        IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
-        IPhase completeRegisterPhase = new CompleteRegisterPhase();
-        IPhase cleanupPhase = new CleanupPhase();
-
-        while (true) { //TODO: If game is over, end loop.
-            dealCardsPhase.run();
-            programRegisterPhase.run();
-            announcePowerDownPhase.run();
-            completeRegisterPhase.run();
-            cleanupPhase.run();
-        }
-
-    }
-
-    /**
-     * Nachspiel
-     * Things to do after the game loop is finished
-     */
-    public static void end() {
-
-    }
 
 
     /**
@@ -81,14 +52,6 @@ public final class MainGame {
             Player robot = new Player(startPositions.get(i).getPosition(), textures);
             robots.add(robot);
 
-            //Test hand.
-            /*
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-             */
         }
     }
 

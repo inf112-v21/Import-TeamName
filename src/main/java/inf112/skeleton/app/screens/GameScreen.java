@@ -13,7 +13,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
@@ -28,7 +27,6 @@ import java.io.IOException;
 
 
 import static com.badlogic.gdx.Gdx.gl;
-import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -139,25 +137,6 @@ public class GameScreen extends InputAdapter implements Screen {
         return true;
     }
 
-    /**
-     * Change camera location based on WASD keystrokes
-     */
-    public void moveCamera(int keycode) {
-
-        if(keycode == Input.Keys.LEFT)
-            this.gameCamera.translate(-32,0);
-        if(keycode == Input.Keys.RIGHT)
-            this.gameCamera.translate(32,0);
-        if(keycode == Input.Keys.UP)
-            this.gameCamera.translate(0,32);
-        if(keycode == Input.Keys.DOWN)
-            this.gameCamera.translate(0,-32);
-        if(keycode == Input.Keys.NUM_1)
-            this.map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
-        if(keycode == Input.Keys.NUM_2)
-            this.map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
-    }
-
     @Override
     public void dispose() {
         this.batch.dispose();
@@ -244,9 +223,6 @@ public class GameScreen extends InputAdapter implements Screen {
     }
     public Stage getUIStage() {
         return this.uiStage;
-    }
-    public Stage getStage() {
-        return this.stage;
     }
 
 
