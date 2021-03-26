@@ -124,7 +124,7 @@ Nå som basisen for å kunne gjøre ting "remote" er til grunne. Sto det enda å
 
 <b>Akseptansekriterier:</b>
 - Å kunne se hvilke kort man har valgt ved
-
+ 
 <b> Arbeidsoppgaver: </b>
 
 - Implementere farge endring ved valg av kort
@@ -141,9 +141,6 @@ Nå som basisen for å kunne gjøre ting "remote" er til grunne. Sto det enda å
 
 - Lage en server som akspeterer og returnerer packets.
 - Gi melding om at en annen maskin har koblet seg til serveren, og eventuelt koblet seg fra serveren.
-
-
-
 
 
 
