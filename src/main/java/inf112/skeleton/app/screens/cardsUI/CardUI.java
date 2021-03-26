@@ -2,8 +2,6 @@ package inf112.skeleton.app.screens.cardsUI;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -14,14 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
-import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
-
-import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * Class responsible for vizualising the possible cards in a cardhand.
@@ -31,21 +25,19 @@ public class CardUI extends Actor {
 
     private Table table;
     private Stage stage;
-    private final CardHand cardHand;
+    private  CardHand cardHand;
     public  Player robot;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
     private  GameScreen gameScreen;
+    MainGame mainGame;
 
-    public CardUI(GameScreen gameScreen, MainGame game) {
-        this.gameScreen = gameScreen;
-        stage = gameScreen.getUIStage();
+    public CardUI(MainGame mainGame) {
+        this.mainGame = mainGame;
         this.table = new Table();
-        this.robot = game.getRobots().get(0);
-        stage.addActor(table);
-        cardHand = robot.getProgramSheet().getCardHand();
+        this.robot = mainGame.getRobots().get(0);
         cardCount = 0;
-        selectedCards = new ArrayList<>();
+        this.selectedCards = new ArrayList<>();
     }
 
     /**
@@ -53,7 +45,11 @@ public class CardUI extends Actor {
      * @param w: Starting witdth of UI
      * @param h Starting height of UI
      */
-    public void setUpCards(int w, int h) {
+    public void setUpCards(int w, int h, GameScreen gameScreen) {
+        this.gameScreen = gameScreen;
+        stage = gameScreen.getUIStage();
+        stage.addActor(table);
+        cardHand = robot.getProgramSheet().getCardHand();
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         table.setHeight(h-3);
         table.setPosition(w,h-h/4);
@@ -120,14 +116,14 @@ public class CardUI extends Actor {
      * Method called after a player has successfully selectd five cards and clicked the button
      */
     public void sendCards() {
-        if (cardCount < 5) {
+        if (selectedCards.size() < 5) {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");
             return;
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
 
-        gameScreen.executeCards();
+        mainGame.executeCards();
     }
 
 

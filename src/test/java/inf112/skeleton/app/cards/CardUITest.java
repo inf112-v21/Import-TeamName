@@ -5,8 +5,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
@@ -21,21 +23,22 @@ public class CardUITest {
 
     private TiledMap map = new TmxMapLoader().load("Maps/MapForJunitTests.tmx");
     MainGame mainGame;
-    GameScreen gameScreen;
-    Stage stage;
 
+    RoboRally switcher;
     @Before
     public void initialize() {
+        switcher = new RoboRally();
+        Assets.load();
+        Assets.manager.finishLoading();
         mainGame = new MainGame();
         mainGame.setup(map);
-        mainGame.setNumPlayers(5);
-        gameScreen = new GameScreen(new RoboRally(), stage, new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()), false);
+        mainGame.setNumPlayers(1);
     }
 
 
     @Test
     public void cantSend1Card() {
-        CardUI ui = new CardUI(gameScreen, mainGame);
+        CardUI ui = new CardUI(mainGame);
         ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));
         ui.sendCards();
         int numCards =  ui.robot.getProgramSheet().getRegister().getRegisterCards().size();
@@ -44,6 +47,11 @@ public class CardUITest {
 
     @Test
     public void canSend5Cards() {
-
+        CardUI ui = new CardUI(mainGame);
+        for (int i = 0; i < 5; i++) { ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));}
+        ui.sendCards();
+        int numCards =  ui.robot.getProgramSheet().getRegister().getRegisterCards().size();
+        System.out.println(numCards);
+        assertTrue(numCards == 5);
     }
 }

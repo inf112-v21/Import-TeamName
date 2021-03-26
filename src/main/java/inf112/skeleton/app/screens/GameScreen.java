@@ -76,16 +76,6 @@ public class GameScreen extends InputAdapter implements Screen {
     private String name;
 
 
-    public void setMultiPlayer(boolean hosting, String ip, String name) {
-        this.hosting = hosting;
-        this.name = name;
-        if(!ip.isEmpty()) {
-            this.ip = ip;
-        } else {
-            this.ip = "localhost";
-        }
-    }
-
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
         this.switcher = switcher;
         this.stage = stage;
@@ -198,9 +188,9 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
 
-        this.cardui = new CardUI(this, mainGame);
+        this.cardui = new CardUI(mainGame);
         uiStage.addActor(cardui.getTable());
-        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4)); // Generate buttons and listeners for actions
+        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this); // Generate buttons and listeners for actions
 
 
         if (this.debugMode) {
@@ -259,18 +249,23 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.stage;
     }
 
-    public void executeCards() {
-        Player player = mainGame.robots.get(0); // Temporarily one player
-        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
-        CompleteRegisterPhase phase = new CompleteRegisterPhase();
-        phase.executePlayerProgramCards(player);
-        System.out.println("CompleteRegisterPhase is running.");
-        System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
-        System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
-        System.out.println("Position: " + player.getPosition() + "\n");
 
+    /**
+     *
+     * @param hosting
+     * @param ip
+     * @param name
+     */
+    public void setMultiPlayer(boolean hosting, String ip, String name) {
+        this.hosting = hosting;
+        this.name = name;
+        if(!ip.isEmpty()) {
+            this.ip = ip;
+        } else {
+            this.ip = "localhost";
         }
+    }
+
 }
 
