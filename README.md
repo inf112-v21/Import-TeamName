@@ -62,7 +62,8 @@ If executed properly you are presented with the main screen of the mainGame.
 * The game will proceed to execute the selected cards (As of now, only for player 1)
 
 --Multiplayer
-* Write in ip into server ip field, press the "find" button next to it. Then press join. Option: give yourself a name in the name field!
+* Press "find" button to look for LAN server. Then press join if server is found.
+* Second option: type ip into server field. Then press join, it either works or not (untested currently).
 
 ## Alternative build:
 * Navigate to repository main folder
