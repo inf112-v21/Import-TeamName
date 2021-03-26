@@ -23,9 +23,6 @@ import java.util.ArrayList;
  * Class responsible for vizualising the possible cards in a cardhand.
  * Wi
  */
-
-
-
 public class CardUI extends Actor {
 
     private Table table;
