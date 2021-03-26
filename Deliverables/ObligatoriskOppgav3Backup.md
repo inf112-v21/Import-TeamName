@@ -10,14 +10,14 @@ Referat fra hvert møte gruppen har holdt finnes i repository under Deliverables
 
 <b>Hvordan fungerer rollene i teamet? Trenger dere andre roller?</b>
 
-Teamet har beholdt rollene fra forrige Deliverable og erfarer at rollene slik de er nå fungerer godt. En ny vurdering vil bli gjort ved behov
+Teamet har beholdt rollene fra forrige Deliverable og erfarer at rollene slik de er nå fungerer godt. En ny vurdering vil bli gjort ved behov.
 
 <b>Erfaringer fra prosjektmetodikk:</b>
-Gruppen har drevet med parprogrammering ved flere av møtene som har blitt holdt. Som ved forrige deliverable har vi utført parprogrammering i en mer uformell stil, hvor alle gruppens medlemmer deltar og kommer med innspill. Prosjekttavlen
+Gruppen har drevet med parprogrammering ved flere av møtene som har blitt holdt. Som ved forrige deliverable har vi utført parprogrammering i en mer uformell stil, hvor alle gruppens medlemmer deltar og kommer med innspill. 
 
 
 <b>Retrospektiv</b>
-For å få fortgang i utviklingsprosessen og komme i mål med MVP har vi i noe grad forsøkt paralell utvikling på ulike branches.
+For å få fortgang i utviklingsprosessen og komme i mål med MVP har vi i noe grad forsøkt parallell utvikling på ulike branches.
 Komponenter i spillet som manglet fra forrige MVP (multiplayer, kortutdeling og utførelse av kort sine handline) ble utviklet selvstendig og deretter merged sammen med
 hovedprosjektet.
 
@@ -71,24 +71,15 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 - Valgte kort blir markert
 
 ### <b>Brukerhistorie 3.3 - Multiplayer(beta) </b>
-"Som spiller vil jeg kunne spille med andre, slik som et ekte brettspill"
-
-- *sager denne til å minst kunne kommunsere eller se at andre kobler seg til.
+"Som spiller vil jeg spille med/mot andre spiller"
 
 <b>Akseptansekriterier:</b>
 - Minst to maskiner kan sende informasjon mellom hverandre.
-    Maskin 1 får vite i konsoll at maskin 2 har koblet seg til.
+- Maskin 1 får vite i konsoll at maskin 2 har koblet seg til.
 
 <b> Arbeidsoppgaver: </b>
 - Lage en server som akspeterer og returnerer packets.
 - Gi melding om at en annen maskin har koblet seg til serveren, og eventuelt koblet seg fra serveren.
-
-### <b>Brukerhistorie 3.4 - </b>
-
-<b>Akseptansekriterier:</b>
-
-<b> Arbeidsoppgaver: </b>
-
 
 
 <b> Fra forrige Deliverable ble følgende MVP innfridd.</b>
