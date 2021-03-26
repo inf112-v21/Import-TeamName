@@ -82,6 +82,7 @@ Fra forrige oblig var det 2 krav som ikke ble innfridd:
 8. Velge 5 kort
 
 De kravene ble derfor prioritert for denne innleveringen. Slik at alle MVP ble innfridd.
+
 <b> Kortlogikk og register fasen: </b>
 
 For å implementere funksjonalitet for å dele ut, velge og utføre handlinger basert på kort krever store endringer i kodebasen. Gruppen har implementert nye klasser for å håndtere spillernes delte kortbunke(alle kort i spillet), spillerens utdelte kort, og spillerens valgte kort. For å kunne utføre kortenes handlinger ble det utarbeidet ny logikk i CompleteRegisterPhase og MainGame. MainGame er klassen som på sikt skal flette sammen all sentral logikk i spillet. CompleteRegisterPhase håndterer utførelsen av spillerenes valgte kort, avfyring av lasere og håndterer flytting av andre roboter om to roboter skulle kollidere.
