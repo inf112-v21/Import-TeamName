@@ -252,9 +252,9 @@ public class GameScreen extends InputAdapter implements Screen {
 
 
     /**
-     *
-     * @param hosting
-     * @param ip
+     * Method that handles multiplayer information from the multiplayer screen
+     * @param hosting: true/false
+     * @param ip: ipv4 address
      * @param name
      */
     public void setMultiPlayer(boolean hosting, String ip, String name) {

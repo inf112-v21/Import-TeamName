@@ -65,9 +65,6 @@ public class CardDeck {
 
 
 
-
-
-
     public int getAvailableCards(CardType type) { return availableCards.get(type); }
 
 }

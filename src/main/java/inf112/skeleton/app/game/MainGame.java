@@ -101,15 +101,14 @@ public final class MainGame {
 
     public static ArrayList<Player> getRobots() {return robots;}
 
-
     /**
-     *
+     * Temporary method for excuting cards for a single player
+     * In later iterations will be handles by CompleteRegisterphase
      */
     public void executeCards() {
         Player player = robots.get(0); // Temporarily one player
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
         playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
-
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.executePlayerProgramCards(player);
         System.out.println("CompleteRegisterPhase is running.");

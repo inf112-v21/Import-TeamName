@@ -17,7 +17,6 @@ public class DealCardsPhase implements IPhase {
 
     @Override
     public void run() {
-        //CardDeck deck = new CardDeck();
         deck.shuffleDeck();
         dealCards();
     }
@@ -28,8 +27,6 @@ public class DealCardsPhase implements IPhase {
          * Create deck for all players?
          */
         ArrayList<IProgramCard> deck = new ArrayList();
-
-        //deck.add();
 
         return deck;
     }

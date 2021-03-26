@@ -98,7 +98,6 @@ public class CardUI extends Actor {
                 }
             });
 
-
         }
         ImageButton playButton = new PlayButton(w,h/10, 2, 2).getButton();
         table.add(playButton).size(2,2);
@@ -113,12 +112,11 @@ public class CardUI extends Actor {
             }});
     }
 
-    public Table getTable() {
-        return table;
-    }
+    /** Returns table used for visualizing table **/
+    public Table getTable() { return table; }
 
     /**
-     * Method called after a player has successfully selectd five cards and clicked the button
+     * Method called after a player has successfully selected five cards and clicked the button
      */
     public void sendCards() {
         if (selectedCards.size() < 5) {
@@ -127,7 +125,6 @@ public class CardUI extends Actor {
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
-
         mainGame.executeCards();
     }
 
