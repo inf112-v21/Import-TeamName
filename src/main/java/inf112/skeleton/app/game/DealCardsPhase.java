@@ -34,8 +34,6 @@ public class DealCardsPhase implements IPhase {
         return deck;
     }
 
-
-
     /**
      * Deals card
      */
@@ -44,7 +42,5 @@ public class DealCardsPhase implements IPhase {
             robot.getProgramSheet().dealCards(deck);
         }
     }
-
-
 
 }
