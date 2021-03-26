@@ -64,6 +64,7 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 - En måte å velge kort
 
 ### <b>Brukerhistorie 3.2 - Grafisk framstilling av kort</b>
+* "Som spiller vil jeg vite hvilke kort jeg kan velge i en gitt runde"
 
 <b>Akseptansekriterier:</b>
 - Å kunne se hvilke kort man har i hånden sin
@@ -72,18 +73,29 @@ Gruppen møtes ved faste møter tre ganger uken. Møtene avholdes fast på en eg
 - Lage en grafisk framstilling av kortene i hånden
 - Valgte kort blir markert
 
-
-### <b>Brukerhistorie 3.3 - Multiplayer </b>
+### <b>Brukerhistorie 3.3 - Grafisk framstilling av valgte kort</b>
+* "Som bruker vil jeg få respons fra spillet på hvilke kort jeg har valgt før kortene sendes videre"
 
 <b>Akseptansekriterier:</b>
+- Å kunne se hvilke kort man har valgt ved
+ 
+<b> Arbeidsoppgaver: </b>
+
+- Implementere farge endring ved valg av kort
+
+
+### <b>Brukerhistorie 3.4 - Multiplayer(beta) </b>
+"Som spiller vil jeg spille med/mot andre spiller"
+
+<b>Akseptansekriterier:</b>
+- Minst to maskiner kan sende informasjon mellom hverandre.
+- Maskin 1 får vite i konsoll at maskin 2 har koblet seg til.
 
 <b> Arbeidsoppgaver: </b>
 
-### <b>Brukerhistorie 3.4 - </b>
+- Lage en server som akspeterer og returnerer packets.
+- Gi melding om at en annen maskin har koblet seg til serveren, og eventuelt koblet seg fra serveren.
 
-<b>Akseptansekriterier:</b>
-
-<b> Arbeidsoppgaver: </b>
 
 
 
