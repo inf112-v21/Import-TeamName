@@ -171,7 +171,7 @@ public class CompleteRegisterPhase implements IPhase {
 
                 //Conveyor cannot push robots through walls.
                 if (!gameBoard.canGoToTile(robotLocation, con.getPushDirection())) continue;
-                //conveyor cannot push robots onto other robots.
+                //Conveyor cannot push robots onto other robots. //TODO: Implement conveyor collision logic.
                 if (robot.occupied(Direction.goDirection(robotLocation, con.getPushDirection()))) continue;
 
                 //If express, move only express conveyors
