@@ -97,8 +97,8 @@ public class CompleteRegisterPhaseTest {
     ///   Test Conveyors with collision  ///
     ////////////////////////////////////////
 
-    @Test
-    public void playerCollisionConveyorShouldNotPlayers() {
+    //@Test //TODO: Implement player collision
+    public void playerCollisionConveyorShouldMoveBothPlayers() {
         Player robot = new Player(new Vector2(4,1), textures);
         Player robot2 = new Player(new Vector2(4,0), textures);
         game.addPlayer(robot);
@@ -107,7 +107,7 @@ public class CompleteRegisterPhaseTest {
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.moveConveyor(false); //Only move normal conveyors. Not express
 
-        //Robots should not move. Robot2 is facing a wall. robot is on a conveyor, heading towards robot2, due to the wall blocking robot2, they should stand still.
+        //Robots should not move
         Assert.assertEquals(new Vector2(4,1), robot.getPosition()); //Position should not be different.
         Assert.assertEquals(new Vector2(4,0), robot2.getPosition()); //Position should not be different.
     }
@@ -125,6 +125,10 @@ public class CompleteRegisterPhaseTest {
     }
 
 
+
+
+
+
     //////////////////////////////////////
     /// Test Pushers without collision ///
     //////////////////////////////////////
@@ -134,12 +138,10 @@ public class CompleteRegisterPhaseTest {
     public void pusherShouldPushInPushDirection() {
         Player robot = new Player(new Vector2(1,4), textures);
         game.addPlayer(robot);
-        Direction lookDirection = robot.getLookDirection();
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.movePusher();
 
-        Assert.assertEquals(lookDirection, robot.getLookDirection());     //Look direction should not change.
         Assert.assertEquals(new Vector2(1,3), robot.getPosition()); //Position should not be different.
     }
 
@@ -148,12 +150,10 @@ public class CompleteRegisterPhaseTest {
     public void pusherShouldPushInPushDirection2() {
         Player robot = new Player(new Vector2(1,4), textures);
         game.addPlayer(robot);
-        Direction lookDirection = robot.getLookDirection();
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
         phase.movePusher();
 
-        Assert.assertEquals(lookDirection, robot.getLookDirection());     //Look direction should not change.
         Assert.assertEquals(new Vector2(1,3), robot.getPosition()); //Position should not be different.
     }
 
@@ -179,20 +179,32 @@ public class CompleteRegisterPhaseTest {
     /// Test Robot move without collision ///
     /////////////////////////////////////////
 
-    @Test
+    @Test //TODO Redundant Test? -Endre
     public void playerMovedToCorrectPosition() {
         Player robot = new Player(new Vector2(1,1), textures);
         robot.setLookDirection(Direction.SOUTH);
 
         robot.setPosition(Direction.goDirection(robot.getPosition(), robot.getLookDirection()));
 
-        Assert.assertEquals(new Vector2(1,0), robot.getPosition());
+        Assert.assertEquals(new Vector2(1,0), robot.getPosition()); //Position should not be different.
     }
+
+
+
+    /////////////////////////////////////////
+    ///   Test Robot move with collision  ///
+    /////////////////////////////////////////
+
+    //Test robots bumping each other in different directions.
+    //TODO: Implement playerCollision logic
+
 
 
     /////////////////////////////////////////
     ///             Test Lasers           ///
     /////////////////////////////////////////
+
+
     @Test
     public void singleLaserShouldDamagePlayer() {
         Player robot = new Player(new Vector2(3,3), textures);
