@@ -35,7 +35,7 @@ public class CompleteRegisterPhase implements IPhase {
      * Robots MUST HAVE 5 cards in their register! This will not work without.
      */
     protected void executeProgramCards() {
-        System.out.println("executeProgramCards is running \n");
+        //System.out.println("executeProgramCards is running \n");
 
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
             List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
@@ -55,7 +55,7 @@ public class CompleteRegisterPhase implements IPhase {
                 for (SimpleRobot robot : robots) {
                     SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
-                        System.out.println("Robot " + robot + " used " + card + " card.");
+                        //System.out.println("Robot " + robot + " used " + card + " card.");
                         card.action(robot);
                     }
                 }
@@ -94,8 +94,8 @@ public class CompleteRegisterPhase implements IPhase {
      */
     protected void boardElementsMove() {
         /*
-        TODO: Implement player collision, for pushers and conveyors. See Rulebook page 5.
-             Player collision
+        TODO: Implement player collision with conveyors. See Rulebook page 5.
+             Player collision using conveyors
                 - Collect all moves in a collection
                 - Check if two or more robots wants to go to same tile.
                     - These robots do nothing/Stand still.
