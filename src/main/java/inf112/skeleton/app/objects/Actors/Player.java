@@ -54,7 +54,7 @@ public class Player extends SimpleRobot {
                 System.out.println(pos);
             }
         }
-        checkPosition(this);
+        checkPosition();
     }
 
 }
