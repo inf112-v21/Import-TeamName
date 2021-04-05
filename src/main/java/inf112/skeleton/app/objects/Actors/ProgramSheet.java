@@ -21,13 +21,14 @@ public class ProgramSheet {
     private Vector2 archiveMarker; //Respawn point when reentering the game.
 
     public ProgramSheet() {
-        damageTokens = 0;
-        lifeTokens = 0;
-        powerDown = false;
-        flags = new ArrayList<>();
-        dead = false;
-        hand = new CardHand(9);
-        register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
+        this.damageTokens = 0;
+        this.lifeTokens = 0;
+        this.powerDown = false;
+        this.flags = new ArrayList<>();
+        this.dead = false;
+        this.hand = new CardHand(9);
+        this.register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
+
     }
 
 
