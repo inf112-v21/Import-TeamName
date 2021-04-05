@@ -2,7 +2,6 @@ package inf112.skeleton.app.screens.cardsUI;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -112,6 +111,7 @@ public class CardUI extends Actor {
 
     /**
      * Method called after a player has successfully selected five cards and clicked the button
+     *  --> 'Announce Done' part of DealCardsPhase.java
      */
     public void sendCards() {
         if (selectedCards.size() < 5) {

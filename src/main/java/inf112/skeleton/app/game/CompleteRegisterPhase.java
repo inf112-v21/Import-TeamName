@@ -83,11 +83,11 @@ public class CompleteRegisterPhase implements IPhase {
             Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
-                    SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
-                    if (robotCard.equals(card)) {
-                        card.action(player);
-                        System.out.println("DEBUG:  Player"  + " used " + card + " card.");
-                    }
+                SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
+                if (robotCard.equals(card)) {
+                    card.action(player);
+                    System.out.println("DEBUG:  Player"  + " used " + card + " card.");
+                }
             }
         }
     }
@@ -118,9 +118,9 @@ public class CompleteRegisterPhase implements IPhase {
         rotatePlayer();
     }
 
-        /**
-         * The phase activating all lasers. Wall mounted and robots.
-         */
+    /**
+     * The phase activating all lasers. Wall mounted and robots.
+     */
     protected void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
