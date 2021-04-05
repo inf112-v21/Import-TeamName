@@ -9,7 +9,7 @@ import java.util.*;
 public class CardDeck {
 
 
-    LinkedHashMap<CardType, Integer> availableCards;
+    public static LinkedHashMap<CardType, Integer> availableCards;
 
     LinkedList<CardType> list; // List used for shuffling cardTypes
 
@@ -26,9 +26,10 @@ public class CardDeck {
         availableCards.put(CardType.MOVE1, 18);
         availableCards.put(CardType.MOVE2, 12);
         availableCards.put(CardType.MOVE3, 6);
+        availableCards.put(CardType.BACK1, 6);
         availableCards.put(CardType.ROTATERIGHT, 18);
         availableCards.put(CardType.ROTATELEFT, 18);
-        availableCards.put(CardType.UTURN, 18);
+        availableCards.put(CardType.UTURN, 6);
     }
 
     /**
