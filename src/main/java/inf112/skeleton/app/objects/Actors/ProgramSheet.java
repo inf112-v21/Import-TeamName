@@ -26,7 +26,7 @@ public class ProgramSheet {
         this.flags = new ArrayList<>();
         this.dead = false;
         this.hand = new CardHand(9);
-        this.register = new Register(); // TODO: Move this to proper location.
+        this.register = new Register();
     }
 
     /**
