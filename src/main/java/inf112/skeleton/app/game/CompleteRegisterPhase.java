@@ -7,7 +7,6 @@ import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,12 +33,9 @@ public class CompleteRegisterPhase implements IPhase {
      * Accounts for card priority. This has not been tested! -Endre
      *
      * Robots MUST HAVE 5 cards in their register! This will not work without.
-     *
-     * A *very* simple implementation
-     *      - Does not account for player collision.
      */
     protected void executeProgramCards() {
-        System.out.println("executeProgramCards is running \n");
+        //System.out.println("executeProgramCards is running \n");
 
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
             List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
@@ -59,7 +55,7 @@ public class CompleteRegisterPhase implements IPhase {
                 for (SimpleRobot robot : robots) {
                     SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
-                        System.out.println("Robot " + robot + " used " + card + " card.");
+                        //System.out.println("Robot " + robot + " used " + card + " card.");
                         card.action(robot);
                     }
                 }
@@ -98,8 +94,8 @@ public class CompleteRegisterPhase implements IPhase {
      */
     protected void boardElementsMove() {
         /*
-        TODO: Implement player collision, accounting for player moving, pushers and conveyors. See Rulebook page 5.
-             Player collision
+        TODO: Implement player collision with conveyors. See Rulebook page 5.
+             Player collision using conveyors
                 - Collect all moves in a collection
                 - Check if two or more robots wants to go to same tile.
                     - These robots do nothing/Stand still.
@@ -119,27 +115,8 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
     /**
-     * Handles collision with other robots.
-     *
-     * @param robotsNextMove
+     * The phase activating all lasers. Wall mounted and robots.
      */
-    protected void checkRobotCollision(List<Vector2> robotsNextMove) {
-
-    }
-
-    /**
-     * Handles collision with walls.
-     * Conveyors, Pushers can't push robots through walls.
-     * @param robotsNextMove
-     */
-    protected void checkWallCollision(List<Vector2> robotsNextMove) {
-
-    }
-
-
-        /**
-         * The phase activating all lasers. Wall mounted and robots.
-         */
     protected void lasersFire() {
         List<Laser> lasers = gameBoard.getLasers(); //All lasers on board
 
@@ -160,7 +137,7 @@ public class CompleteRegisterPhase implements IPhase {
      * Recursively simulates the laser moving in firing direction, stopping only if hitting wall, robot, or is out of bounds.
      * @param currentPosOfLaser
      * @param fireDirection
-     * @param nrOfLasers, differentiate single and double lasers.
+     * @param nrOfLasers : Differentiate single and double lasers.
      */
     private void fireLaser(Vector2 currentPosOfLaser, Direction fireDirection, int nrOfLasers) {
         //If out of bounds.
@@ -193,7 +170,9 @@ public class CompleteRegisterPhase implements IPhase {
                 Conveyor con = (Conveyor) gameBoard.getNonWallTileOnPos(robotLocation);
 
                 //Conveyor cannot push robots through walls.
-                if (!gameBoard.canGoToTile(robotLocation,con.getPushDirection())) continue;
+                if (!gameBoard.canGoToTile(robotLocation, con.getPushDirection())) continue;
+                //Conveyor cannot push robots onto other robots. //TODO: Implement conveyor collision logic.
+                if (robot.occupied(Direction.goDirection(robotLocation, con.getPushDirection()))) continue;
 
                 //If express, move only express conveyors
                 if (isExpress) {
@@ -215,11 +194,11 @@ public class CompleteRegisterPhase implements IPhase {
 
                 if (gameBoard.isPosAPusher(robotLocation)) { //If position is a conveyor
                     Pusher push = (Pusher) gameBoard.getWallTileOnPos(robotLocation);
+                    Direction lookDirection = robot.getLookDirection();
 
-                    //Pusher cannot push robots through walls.
-                    if (!gameBoard.canGoToTile(robotLocation,push.getPushDirection())) continue;
-
-                    robot.setPosition(Direction.goDirection(robotLocation, push.getPushDirection()));
+                    robot.setLookDirection(push.getPushDirection()); //Set robot look direction to push direction of pusher.
+                    robot.moveRobot(1); //Move robot in push direction.
+                    robot.setLookDirection(lookDirection); //Set look direction back to original
                 }
             }
         }

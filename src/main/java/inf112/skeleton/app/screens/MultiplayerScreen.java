@@ -3,10 +3,8 @@ package inf112.skeleton.app.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -79,7 +77,7 @@ public class MultiplayerScreen implements Screen {
         assignName.setY(height - assignName.getHeight() - height*0.39f);
 
 
-        //Button UI elements, maybe integrate with the button package later
+        //Button UI elements
         final Button joinGame = new TextButton("Join", skin);
         joinGame.setWidth(width*0.40f);
         joinGame.setHeight(height*0.10f);
@@ -182,6 +180,9 @@ public class MultiplayerScreen implements Screen {
         InetAddress find = client.discoverHost(NetworkPackets.udpPort, 5000);
         if (find != null) {
             assignIP.setText(find.getHostAddress());
+            System.out.println("Server has been found");
+        } else {
+            System.out.println("Server find timed out, no server found on LAN");
         }
         client.stop();
         client.close();

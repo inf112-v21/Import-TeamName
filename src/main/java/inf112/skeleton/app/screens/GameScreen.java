@@ -76,18 +76,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private String name;
 
 
-    public void setMultiPlayer(boolean hosting, String ip, String name) {
-        this.hosting = hosting;
-        this.name = name;
-        if(!ip.isEmpty()) {
-            this.ip = ip;
-        } else {
-            this.ip = "localhost";
-        }
-    }
-
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
-        game = new MainGame();
         this.switcher = switcher;
         this.stage = stage;
         this.viewPort = viewPort;
@@ -199,9 +188,9 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
 
-        this.cardui = new CardUI(this, mainGame);
+        this.cardui = new CardUI(mainGame);
         uiStage.addActor(cardui.getTable());
-        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4)); // Generate buttons and listeners for actions
+        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this); // Generate buttons and listeners for actions
 
 
         if (this.debugMode) {
@@ -219,7 +208,7 @@ public class GameScreen extends InputAdapter implements Screen {
                 server = new RRServer();
                 client.connect("localhost");
             } catch (IOException e) {
-                e.printStackTrace();  //no idea what this does, haven't read the documentation on IOException
+                e.printStackTrace();
                 Log.info("Unable to start server.");
                 Gdx.app.exit();
             }
@@ -260,18 +249,23 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.stage;
     }
 
-    public void executeCards() {
-        Player player = mainGame.robots.get(0); // Temporarily one player
-        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
-        CompleteRegisterPhase phase = new CompleteRegisterPhase();
-        phase.executePlayerProgramCards(player);
-        System.out.println("CompleteRegisterPhase is running.");
-        System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
-        System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
-        System.out.println("Position: " + player.getPosition() + "\n");
 
+    /**
+     * Method that handles multiplayer information from the multiplayer screen
+     * @param hosting: true/false
+     * @param ip: ipv4 address
+     * @param name
+     */
+    public void setMultiPlayer(boolean hosting, String ip, String name) {
+        this.hosting = hosting;
+        this.name = name;
+        if(!ip.isEmpty()) {
+            this.ip = ip;
+        } else {
+            this.ip = "localhost";
         }
+    }
+
 }
 

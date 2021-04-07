@@ -17,7 +17,6 @@ public class DealCardsPhase implements IPhase {
 
     @Override
     public void run() {
-        //CardDeck deck = new CardDeck();
         deck.shuffleDeck();
         dealCards();
     }
@@ -29,12 +28,8 @@ public class DealCardsPhase implements IPhase {
          */
         ArrayList<IProgramCard> deck = new ArrayList();
 
-        //deck.add();
-
         return deck;
     }
-
-
 
     /**
      * Deals card
@@ -44,7 +39,5 @@ public class DealCardsPhase implements IPhase {
             robot.getProgramSheet().dealCards(deck);
         }
     }
-
-
 
 }

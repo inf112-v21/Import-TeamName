@@ -15,35 +15,43 @@ import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.GameScreen;
-
 import java.util.ArrayList;
 
+
+/**
+ * Class responsible for vizualising the possible cards in a cardhand.
+ * Wi
+ */
 public class CardUI extends Actor {
 
     private Table table;
     private Stage stage;
-    CardHand cardHand;
-    Player robot;
+    private  CardHand cardHand;
+    public  Player robot;
     private int cardCount;
-    private ArrayList<SimpleProgramCard> selectedCards;
-    GameScreen gameScreen;
+    public ArrayList<SimpleProgramCard> selectedCards;
+    private  GameScreen gameScreen;
+    MainGame mainGame;
 
-    public CardUI(GameScreen gameScreen, MainGame game) {
-        this.gameScreen = gameScreen;
-        stage = gameScreen.getUIStage();
+    public CardUI(MainGame mainGame) {
+        this.mainGame = mainGame;
         this.table = new Table();
-        this.robot = game.getRobots().get(0);
-        stage.addActor(table);
-        cardHand = robot.getProgramSheet().getCardHand();
+        this.robot = mainGame.getRobots().get(0);
         cardCount = 0;
-        selectedCards = new ArrayList<>();
+        this.selectedCards = new ArrayList<>();
     }
 
-
-    public void setUpCards(int w, int h) {
+    /**
+     * Method that displays the possible cards contained in a cardhand in a table.
+     * @param w: Starting witdth of UI
+     * @param h Starting height of UI
+     */
+    public void setUpCards(int w, int h, GameScreen gameScreen) {
+        this.gameScreen = gameScreen;
+        stage = gameScreen.getUIStage();
+        stage.addActor(table);
+        cardHand = robot.getProgramSheet().getCardHand();
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
-        //table.setWidth((stage.getWidth()*0.8f));
-        //table.setHeight(stage.getHeight()/3);
         table.setHeight(h-3);
         table.setPosition(w,h-h/4);
         System.out.println(table.getMinHeight());
@@ -52,7 +60,7 @@ public class CardUI extends Actor {
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,2);
             cardButton.setPosition(w, h/10);
-            table.add(cardButton).size(2,3);
+            table.add(cardButton).size(2,2);
 
             cardButton.addListener(new InputListener() {
                 @Override
@@ -86,7 +94,6 @@ public class CardUI extends Actor {
                 }
             });
 
-
         }
         ImageButton playButton = new PlayButton(w,h/10, 2, 2).getButton();
         table.add(playButton).size(2,2);
@@ -101,22 +108,21 @@ public class CardUI extends Actor {
             }});
     }
 
-    public Table getTable() {
-        return table;
-    }
+    /** Returns table used for visualizing table **/
+    public Table getTable() { return table; }
 
     /**
-     * Method called after a player has sucessfully selectd five cards and clicked the button
+     * Method called after a player has successfully selected five cards and clicked the button
+     *  --> 'Announce Done' part of DealCardsPhase.java
      */
     public void sendCards() {
-        if (cardCount < 5) {
+        if (selectedCards.size() < 5) {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");
             return;
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
-
-        gameScreen.executeCards();
+        mainGame.executeCards();
     }
 
 

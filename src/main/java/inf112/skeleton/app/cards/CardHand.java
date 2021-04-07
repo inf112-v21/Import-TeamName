@@ -40,6 +40,7 @@ public class CardHand {
                 case MOVE1:       cards.add(new MovementCard(1,CardType.MOVE1)); break;
                 case MOVE2:       cards.add(new MovementCard(1, CardType.MOVE2)); break;
                 case MOVE3:       cards.add(new MovementCard(1, CardType.MOVE3)); break;
+                case BACK1:       cards.add(new MovementCard(1, CardType.BACK1)); break;
                 case ROTATERIGHT: cards.add(new RotationCard(1, CardType.ROTATERIGHT)); break;
                 case ROTATELEFT:  cards.add(new RotationCard(1, CardType.ROTATELEFT)); break;
                 case UTURN:       cards.add(new RotationCard(getPriority(), CardType.UTURN)); break;

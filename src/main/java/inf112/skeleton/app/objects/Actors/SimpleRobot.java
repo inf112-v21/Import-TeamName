@@ -8,6 +8,7 @@ import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.SimpleObject;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
+import static inf112.skeleton.app.game.MainGame.robots;
 
 public abstract class SimpleRobot extends SimpleObject implements IActor {
 
@@ -31,30 +32,80 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      * @param steps : number of steps to be taken
      */
     public void moveRobot(int steps) {
-
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
         if (steps == 0) return;
 
         Vector2 pos = getPosition();
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Set empty cell where robot once existed
 
-        if (!gameBoard.canGoToTile(pos, lookDirection)) return;
+        //Player & Wall Collision
+        playerCollisionHandler(this, pos, lookDirection, false);
 
-
-        setPosition(Direction.goDirection(pos, lookDirection)); // Move forward
         moveRobot(steps - 1);
-        checkPosition();
+    }
+
+    /**
+     * Accounts for player collision and tries to move robot 1 step in pushDirection.
+     * Checks that when player collision occurs, there is an empty space the robots can be pushed onto. If not, robots stand still.
+     * @param pos : Location of current robot.
+     * @param pushDir : Direction robot wants to move.
+     * @param collisionOccurred : If robot is moved due to collision.
+     */
+    protected boolean playerCollisionHandler(SimpleRobot currentRobot, Vector2 pos, Direction pushDir, Boolean collisionOccurred) {
+        //No wall fills the position
+        if (!gameBoard.canGoToTile(pos,pushDir)) return false;
+
+        Vector2 nextPos = Direction.goDirection(pos, pushDir);
+
+        if (occupied(nextPos)) { //Player collision
+            for (SimpleRobot collidedRobot : robots) { //Find robot we have collided with.
+                if (nextPos.equals(collidedRobot.getPosition())) {
+                    if (!playerCollisionHandler(collidedRobot, nextPos, pushDir, true)) return false; //Check if collided robot is pushable.
+                }
+            }
+        }
+        //Update pos
+        currentRobot.setPosition(nextPos);
+
+        if (collisionOccurred) {
+            checkPosition(currentRobot); //Check if pushed robot is still alive.
+            return true;
+        } else {
+            return checkPosition(currentRobot);
+        }
+    }
+
+    /**
+     * Checks if position is occupied by an actor.
+     * @param pos : Pos to check
+     * @return true if position has an actor
+     */
+    public boolean occupied(Vector2 pos) {
+        for (SimpleRobot robot : robots) {
+            if (robot.getPosition().equals(pos)) return true;
+        }
+        return false;
     }
 
 
-
-    public void checkPosition() {
-        Vector2 playerPos = getPosition();
-
+    /**
+     * Check at after each step the robot takes, it is still alive.
+     * @param robot : Robot to perform check on.
+     * @return True if robot can still move.
+     */
+    public boolean checkPosition(SimpleRobot robot) {
+        Vector2 playerPos = robot.getPosition();
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
-            getProgramSheet().setDead(true); // Temporary?
+            robot.getProgramSheet().setDead(true);
+            //TODO: Remove this dead robot from map.
+            // Must happen here, cannot be in CompleteRegisterPhase - Endre
+            // Maybe move dead player to x:-100,y:-100. Then after all cards are executed/loops are done. Remove dead players entirely.
+            //      - To prevent potential execution errors when modifying lists used in loops.
+
+            return false;
         }
+        return true;
     }
 
     public void dealCards(CardDeck deck) {this.programSheet.dealCards( deck);}

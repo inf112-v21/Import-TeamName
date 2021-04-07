@@ -3,17 +3,12 @@ package inf112.skeleton.app.game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.cards.CardDeck;
-import inf112.skeleton.app.cards.CardType;
-import inf112.skeleton.app.cards.MovementCard;
-import inf112.skeleton.app.cards.RotationCard;
 import inf112.skeleton.app.map.Board;
-import inf112.skeleton.app.objects.Actors.IActor;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,5 +100,22 @@ public final class MainGame {
     }
 
     public static ArrayList<Player> getRobots() {return robots;}
+
+    /**
+     * Temporary method for excuting cards for a single player
+     * In later iterations will be handles by CompleteRegisterphase
+     */
+    public void executeCards() {
+        Player player = robots.get(0); // Temporarily one player
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+        playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
+        CompleteRegisterPhase phase = new CompleteRegisterPhase();
+        phase.executePlayerProgramCards(player);
+        System.out.println("CompleteRegisterPhase is running.");
+        System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
+        System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
+        System.out.println("Position: " + player.getPosition() + "\n");
+
+    }
 
 }
