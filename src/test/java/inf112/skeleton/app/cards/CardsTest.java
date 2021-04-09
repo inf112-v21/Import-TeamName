@@ -35,7 +35,7 @@ public class CardsTest {
 
     @Before
     public void initalise() {
-        textures = new TextureRegion(new Texture("Images/player.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
+        textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
