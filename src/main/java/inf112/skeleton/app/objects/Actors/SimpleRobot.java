@@ -26,7 +26,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         this.programSheet = new ProgramSheet();
 
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
-        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
+        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4])); //TODO: Expand textures to include a 'Win' sprite for picking up a flag.
         
         this.DirectionTextureNORTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
@@ -61,12 +61,12 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      * @param collisionOccurred : If robot is moved due to collision.
      */
     protected boolean playerCollisionHandler(SimpleRobot currentRobot, Vector2 pos, Direction pushDir, Boolean collisionOccurred) {
-        //No wall fills the position
+        //No wall fills the next position
         if (!gameBoard.canGoToTile(pos,pushDir)) return false;
 
         Vector2 nextPos = Direction.goDirection(pos, pushDir);
 
-        if (occupied(nextPos)) { //Player collision
+        if (occupied(nextPos)) { //Check for player collision
             for (SimpleRobot collidedRobot : robots) { //Find robot we have collided with.
                 if (nextPos.equals(collidedRobot.getPosition())) {
                     if (!playerCollisionHandler(collidedRobot, nextPos, pushDir, true)) return false; //Check if collided robot is pushable.
@@ -125,7 +125,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     }
 
     public TiledMapTileLayer.Cell getPlayerCell() {
-
         if (this.lookDirection == Direction.NORTH) {
             return this.DirectionTextureNORTH;
         } else if (this.lookDirection == Direction.SOUTH) {
@@ -135,7 +134,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         } else if (this.lookDirection == Direction.WEST) {
             return this.DirectionTextureWEST;
         }
-         throw new IllegalArgumentException("Error in direction");
+         throw new IllegalArgumentException("LookDirection of " + this + " robot did not match any of the cardinal directions.");
     }
 
     public TiledMapTileLayer.Cell getPlayerCellDead() {
@@ -158,7 +157,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     @Override
     public void rotate(int clockwiseTurns) {
-
         for (int i = 0; i < clockwiseTurns; i++) {
             setLookDirection(Direction.DirectionClockwise(getLookDirection()));
         }
