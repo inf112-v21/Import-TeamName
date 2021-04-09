@@ -15,7 +15,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
-    //private final TiledMapTileLayer.Cell playerCell;
     private final TiledMapTileLayer.Cell playerCellDead;
     private TiledMapTileLayer.Cell playerCellWon;
 
@@ -26,15 +25,13 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
 
-        //this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
-
+        
         this.DirectionTextureNORTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.DirectionTextureWEST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
         this.DirectionTextureEAST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][3]));
-
     }
 
     /**
