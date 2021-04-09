@@ -10,6 +10,7 @@ import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,11 +21,14 @@ public final class MainGame {
    public static Board gameBoard;
    public static CardDeck deck;
 
+   public static List<TextureRegion[][]> robotTextures;
+
     /**
      * Constructor method
      */
     public MainGame() {
         robots = new ArrayList<>();
+        robotTextures = getRobotTextures();
     }
 
     /**
@@ -74,13 +78,13 @@ public final class MainGame {
      * TODO: Discuss how to add players.
      * @param numPlayers
      */
-    public  static void setNumPlayers(int numPlayers) {
+    public static void setNumPlayers(int numPlayers) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
-        TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
+        //TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
 
         for (int i = 0; i < numPlayers; i++) {
-            Player robot = new Player(startPositions.get(i).getPosition(), textures);
+            Player robot = new Player(startPositions.get(i).getPosition(), robotTextures.get(i));
             robots.add(robot);
 
             //Test hand.
@@ -92,6 +96,20 @@ public final class MainGame {
             robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
              */
         }
+    }
+
+    /**
+     * @return List of all different colour textures a tank can have.
+     */
+    public List<TextureRegion[][]> getRobotTextures() {
+        List<String> colour = new ArrayList<>(Arrays.asList("red","orange","blue","cyan","green","magenta","purple","yellow"));
+        List<TextureRegion[][]> textures = new ArrayList<>();
+
+        for (String co : colour) {
+            TextureRegion[][] tankTexture = new TextureRegion(new Texture("Images/robot_" + co + ".png")).split(300, 300);
+            textures.add(tankTexture);
+        }
+        return textures;
     }
 
     /**
