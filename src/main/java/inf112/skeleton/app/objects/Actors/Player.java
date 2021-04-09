@@ -27,36 +27,20 @@ public class Player extends SimpleRobot {
         playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
         if (keycode == Input.Keys.W) {
-            if (gameBoard.canGoToTile(pos, NORTH)) {
-                //pos.y += 1;
-                setPosition(Direction.goDirection(pos, NORTH));
-                setLookDirection(NORTH);
-                System.out.println(pos);
-            }
+            setLookDirection(NORTH);
+            moveRobot(1);
         }
         if (keycode == Input.Keys.A) {
-            if (gameBoard.canGoToTile(pos, Direction.WEST)) {
-                //pos.x -= 1;
-                setPosition(Direction.goDirection(pos, Direction.WEST));
-                setLookDirection(Direction.WEST);
-                System.out.println(pos);
-            }
+            setLookDirection(WEST);
+            moveRobot(1);
         }
         if (keycode == Input.Keys.S) {
-            if (gameBoard.canGoToTile(pos, Direction.SOUTH)) {
-                //pos.y -= 1;
-                setPosition(Direction.goDirection(pos, Direction.SOUTH));
-                setLookDirection(SOUTH);
-                System.out.println(pos);
-            }
+            setLookDirection(SOUTH);
+            moveRobot(1);
         }
         if (keycode == Input.Keys.D) {
-            if (gameBoard.canGoToTile(pos, Direction.EAST)) {
-                //pos.x += 1;
-                setPosition(Direction.goDirection(pos, Direction.EAST));
-                setLookDirection(EAST);
-                System.out.println(pos);
-            }
+            setLookDirection(EAST);
+            moveRobot(1);
         }
         checkPosition(this);
     }
