@@ -52,7 +52,6 @@ public class GameLoopEventHandler {
 
             if (gameBoard.isPosAPit(position)) {
                 tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCellDead());
-                robot.getProgramSheet().setDead(true); //Robot fell down pit //TODO: Check for this in CompleteRegisterPhase?
             }
         }
     }

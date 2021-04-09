@@ -1,5 +1,6 @@
 package inf112.skeleton.app.objects.Actors;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
@@ -14,15 +15,23 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
-    private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
+    private final TiledMapTileLayer.Cell playerCellDead;
+    private TiledMapTileLayer.Cell playerCellWon;
+
+    private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
 
     public SimpleRobot(Vector2 startpos, TextureRegion[][] texture) {
         super(startpos);
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
-        this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
-        this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
-        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
+
+        this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
+        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
+        
+        this.DirectionTextureNORTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
+        this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
+        this.DirectionTextureWEST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
+        this.DirectionTextureEAST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][3]));
     }
 
     /**
@@ -116,7 +125,17 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     }
 
     public TiledMapTileLayer.Cell getPlayerCell() {
-        return playerCell;
+
+        if (this.lookDirection == Direction.NORTH) {
+            return this.DirectionTextureNORTH;
+        } else if (this.lookDirection == Direction.SOUTH) {
+            return this.DirectionTextureSOUTH;
+        } else if (this.lookDirection == Direction.EAST) {
+            return this.DirectionTextureEAST;
+        } else if (this.lookDirection == Direction.WEST) {
+            return this.DirectionTextureWEST;
+        }
+         throw new IllegalArgumentException("Error in direction");
     }
 
     public TiledMapTileLayer.Cell getPlayerCellDead() {
