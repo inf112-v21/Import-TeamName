@@ -6,8 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.enums.Direction;
 
+import static inf112.skeleton.app.enums.Direction.*;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
-import static inf112.skeleton.app.enums.Direction.NORTH;
 
 public class Player extends SimpleRobot {
 
@@ -30,6 +30,7 @@ public class Player extends SimpleRobot {
             if (gameBoard.canGoToTile(pos, NORTH)) {
                 //pos.y += 1;
                 setPosition(Direction.goDirection(pos, NORTH));
+                setLookDirection(NORTH);
                 System.out.println(pos);
             }
         }
@@ -37,6 +38,7 @@ public class Player extends SimpleRobot {
             if (gameBoard.canGoToTile(pos, Direction.WEST)) {
                 //pos.x -= 1;
                 setPosition(Direction.goDirection(pos, Direction.WEST));
+                setLookDirection(Direction.WEST);
                 System.out.println(pos);
             }
         }
@@ -44,6 +46,7 @@ public class Player extends SimpleRobot {
             if (gameBoard.canGoToTile(pos, Direction.SOUTH)) {
                 //pos.y -= 1;
                 setPosition(Direction.goDirection(pos, Direction.SOUTH));
+                setLookDirection(SOUTH);
                 System.out.println(pos);
             }
         }
@@ -51,6 +54,7 @@ public class Player extends SimpleRobot {
             if (gameBoard.canGoToTile(pos, Direction.EAST)) {
                 //pos.x += 1;
                 setPosition(Direction.goDirection(pos, Direction.EAST));
+                setLookDirection(EAST);
                 System.out.println(pos);
             }
         }

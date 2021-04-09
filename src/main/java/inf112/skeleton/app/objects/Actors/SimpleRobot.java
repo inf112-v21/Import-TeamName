@@ -15,35 +15,26 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
-    private final TiledMapTileLayer.Cell playerCell, playerCellDead, playerCellWon;
+    //private final TiledMapTileLayer.Cell playerCell;
+    private final TiledMapTileLayer.Cell playerCellDead;
+    private TiledMapTileLayer.Cell playerCellWon;
 
-    //private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
+    private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
 
     public SimpleRobot(Vector2 startpos, TextureRegion[][] texture) {
         super(startpos);
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
 
-        /*
-        for (TextureRegion[] tex : texture) {
-            for (TextureRegion te : tex) {
-                System.out.print(te);
-            }
-        }
+        //this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
+        this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
+        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
 
-         */
-
-        this.playerCell = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
-        this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
-        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
-
-
-        /*
         this.DirectionTextureNORTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
-        this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[1][0]));
-        this.DirectionTextureWEST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[2][0]));
-        this.DirectionTextureEAST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[3][0]));
-         */
+        this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
+        this.DirectionTextureWEST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
+        this.DirectionTextureEAST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][3]));
+
     }
 
     /**
@@ -137,7 +128,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     }
 
     public TiledMapTileLayer.Cell getPlayerCell() {
-       /*
+
         if (this.lookDirection == Direction.NORTH) {
             return this.DirectionTextureNORTH;
         } else if (this.lookDirection == Direction.SOUTH) {
@@ -148,8 +139,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
             return this.DirectionTextureWEST;
         }
          throw new IllegalArgumentException("Error in direction");
-        */
-        return this.playerCell;
     }
 
     public TiledMapTileLayer.Cell getPlayerCellDead() {
