@@ -1,6 +1,11 @@
 package inf112.skeleton.app.cards;
 
+import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.ProgramSheet;
+
 import java.util.*;
+
+import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * A deck of cards:
@@ -14,15 +19,15 @@ public class CardDeck {
     LinkedList<CardType> list; // List used for shuffling cardTypes
 
     public CardDeck() {
-        availableCards = new LinkedHashMap<>();
-        startCards();
+        CreateDeck();
     }
 
     /**
      *
      * @return a start card deck
      */
-    public void startCards() {
+    public void CreateDeck() {
+        availableCards = new LinkedHashMap<>();
         availableCards.put(CardType.MOVE1, 18);
         availableCards.put(CardType.MOVE2, 12);
         availableCards.put(CardType.MOVE3, 6);
@@ -33,9 +38,23 @@ public class CardDeck {
     }
 
     /**
+     *
+     */
+    public void checkLockedRegister() {
+
+        for (Player player: robots) {
+            if (player.getProgramSheet().getLockREgister()) {
+                ArrayList<SimpleProgramCard> cards = player.getProgramSheet().getRegister();
+            }
+        }
+
+    }
+
+
+    /**
      * Shuffle a deck. Called every time a card is dealt
      */
-    public void shuffleDeck() {
+    public void shuffleCardsInDeck() {
         list = new LinkedList(availableCards.keySet());
         Collections.shuffle(list);
         LinkedHashMap<CardType, Integer> shuffledCards = new LinkedHashMap();
@@ -50,7 +69,7 @@ public class CardDeck {
      * @return a single CardType, used to construct a full cardhand
      */
     public CardType dealACard()  {
-        shuffleDeck();
+        shuffleCardsInDeck();
         CardType type = list.pop();
         int numCards = availableCards.get(type);
         while(numCards <= 0) { // If no cards left, proceed to next type of card

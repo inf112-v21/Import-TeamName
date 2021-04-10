@@ -2,6 +2,7 @@ package inf112.skeleton.app.game;
 
 //import inf112.skeleton.app.cards.CardDeck;
 
+import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.IProgramCard;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
@@ -17,8 +18,7 @@ public class DealCardsPhase implements IPhase {
 
     @Override
     public void run() {
-        deck.shuffleDeck();
-        dealCards();
+        deck.CreateDeck(); // Creates new deck
     }
 
     private ArrayList<IProgramCard> createDeck() {

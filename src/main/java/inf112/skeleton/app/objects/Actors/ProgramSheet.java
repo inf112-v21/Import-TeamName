@@ -17,6 +17,7 @@ public class ProgramSheet {
     private int lifeTokens;
     private List<Integer> flags;
     private boolean powerDown;
+    private boolean lockedRegister;
     private boolean dead;
     private Vector2 archiveMarker; //Respawn point when reentering the game.
 
@@ -130,4 +131,17 @@ public class ProgramSheet {
     public Vector2 getArchiveMarker() {
         return archiveMarker;
     }
+
+
+    /**
+     * Lock register
+     */
+
+    public void lockRegister() {this.lockedRegister = true; }
+
+    /**
+     *
+     * @return status of register
+     */
+    public boolean  getLockREgister() {return this.lockedRegister; }
 }
