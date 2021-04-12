@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -22,15 +23,12 @@ public  final class MainGame {
    public static CardDeck deck;
    private boolean gameOver = false;
 
-   public static List<TextureRegion[][]> robotTextures;
 
     /**
      * Constructor method
      */
     public MainGame() {
-
         robots = new ArrayList<>();
-        robotTextures = getRobotTextures();
     }
 
     /**
@@ -86,7 +84,7 @@ public  final class MainGame {
         //TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
 
         for (int i = 0; i < numPlayers; i++) {
-            Player robot = new Player(startPositions.get(i).getPosition(), robotTextures.get(i));
+            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i));
             robots.add(robot);
 
             //Test hand.
@@ -98,20 +96,6 @@ public  final class MainGame {
             robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
              */
         }
-    }
-
-    /**
-     * @return List of all different colour textures a tank can have.
-     */
-    public List<TextureRegion[][]> getRobotTextures() {
-        List<String> colour = new ArrayList<>(Arrays.asList("red","orange","blue","cyan","green","magenta","purple","yellow"));
-        List<TextureRegion[][]> textures = new ArrayList<>();
-
-        for (String co : colour) {
-            TextureRegion[][] tankTexture = new TextureRegion(new Texture("Images/robot_" + co + ".png")).split(300, 300);
-            textures.add(tankTexture);
-        }
-        return textures;
     }
 
     /**
