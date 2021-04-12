@@ -20,6 +20,7 @@ public  final class MainGame {
    public static ArrayList<Player> robots;
    public static Board gameBoard;
    public static CardDeck deck;
+   private boolean gameOver = false;
 
    public static List<TextureRegion[][]> robotTextures;
 
@@ -56,7 +57,7 @@ public  final class MainGame {
         IPhase completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
-        while (true) { //TODO: If game is over, end loop.
+        while (gameOver == false) { //TODO: If game is over, end loop.
             dealCardsPhase.run(this); // Playercount 1 for debugging
             //programRegisterPhase.run(this);
             //announcePowerDownPhase.run(this);
@@ -70,8 +71,9 @@ public  final class MainGame {
      * Nachspiel
      * Things to do after the game loop is finished
      */
-    public static void end() {
-
+    public  void end() {
+        // Some critiera for the game to end?
+        gameOver = true;
     }
 
 

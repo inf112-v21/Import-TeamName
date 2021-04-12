@@ -15,8 +15,7 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(GdxTestRunner.class)
 public class CardDeckTest {
@@ -107,7 +106,6 @@ public class CardDeckTest {
          */
         DealCardsPhase phase = new DealCardsPhase();
         CardDeck deck = new CardDeck();
-        deck.shuffleCardsInDeck();
         Player player = mainGame.getRobots().get(0);
         ArrayList<SimpleProgramCard> selectedCards = new ArrayList<>();
         selectedCards.add(new MovementCard(1, CardType.BACK1));
@@ -121,6 +119,38 @@ public class CardDeckTest {
         phase.run(mainGame); // Deal cards
         ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getRegisterCards();
         assertEquals(new ArrayList<SimpleProgramCard>(), newRegister);
+
+    }
+
+
+    @Test
+    public void lockedRegisterCardsCannotBeDealtFromDeck() {
+        DealCardsPhase phase = new DealCardsPhase();
+        CardDeck deck = new CardDeck();
+        int oldCardDeckLength = 0;
+        for(CardType types : deck.availableCards.keySet()) {
+            oldCardDeckLength += deck.availableCards.get(types);
+        }
+
+        Player player = mainGame.getRobots().get(0);
+        ArrayList<SimpleProgramCard> selectedCards = new ArrayList<>();
+        selectedCards.add(new MovementCard(1, CardType.BACK1));
+        selectedCards.add(new MovementCard(1, CardType.BACK1));
+        selectedCards.add(new MovementCard(1, CardType.BACK1));
+        selectedCards.add(new MovementCard(1, CardType.BACK1));
+        selectedCards.add(new MovementCard(1, CardType.BACK1));
+        player.getProgramSheet().getRegister().setCards(selectedCards);
+        player.getProgramSheet().addDamage(6); // Take 6 damage and lock register
+        phase.run(mainGame);
+        int newCardDeckLength = 0;
+        for(CardType types : deck.availableCards.keySet()) {
+            newCardDeckLength += deck.availableCards.get(types);
+        }
+        System.out.println("back cards" + deck.availableCards.get(CardType.BACK1));
+        System.out.println("Old card length" + oldCardDeckLength);
+        System.out.println("New cards length " + newCardDeckLength);
+        assertTrue((oldCardDeckLength-5) == newCardDeckLength );
+
 
     }
 

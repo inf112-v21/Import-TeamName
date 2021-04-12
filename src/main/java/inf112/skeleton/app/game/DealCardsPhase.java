@@ -15,20 +15,20 @@ import static inf112.skeleton.app.game.MainGame.robots;
  */
 public class DealCardsPhase implements IPhase {
 
-    private int playercount;
+
     @Override
     public void run(MainGame mainGame) {
         handleLockedCards();
-        createNewDeck();
+        dealCardsToPlayers();
 
     }
 
     /**
-     *
+     * Deals a new hand for every card, based on the created deck
      */
-    private void createNewDeck() {
+    private void dealCardsToPlayers() {
         for (SimpleRobot robot : robots) {
-            robot.getProgramSheet().dealCards(deck);
+            robot.getProgramSheet().dealCards(deck); // Deal cards to each robot
         }
 
     }

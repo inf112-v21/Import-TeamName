@@ -15,18 +15,9 @@ public class CardDeck {
     public static LinkedHashMap<CardType, Integer> availableCards;
 
     LinkedList<CardType> list; // List used for shuffling cardTypes
-    MainGame mainGame;
     public CardDeck() {
-        availableCards = new LinkedHashMap<>();
-        availableCards.put(CardType.MOVE1, 18);
-        availableCards.put(CardType.MOVE2, 12);
-        availableCards.put(CardType.MOVE3, 6);
-        availableCards.put(CardType.BACK1, 6);
-        availableCards.put(CardType.ROTATERIGHT, 18);
-        availableCards.put(CardType.ROTATELEFT, 18);
-        availableCards.put(CardType.UTURN, 6);
+        createDeck();
     }
-
 
 
     /**
@@ -34,7 +25,6 @@ public class CardDeck {
      * @return a start card deck
      */
     public void createDeck() {
-       //checkLockedRegister(mainGame);
         availableCards = new LinkedHashMap<>();
         availableCards.put(CardType.MOVE1, 18);
         availableCards.put(CardType.MOVE2, 12);
@@ -45,27 +35,18 @@ public class CardDeck {
         availableCards.put(CardType.UTURN, 6);
     }
 
-    /** TODO
-     * Takes into account players locked register cards
-     */
-    public void checkLockedRegister(MainGame mainGame) {
-        for (Player player: mainGame.getRobots()) {
-            if (player.getProgramSheet().getLockedRegister()) {
-                ArrayList<SimpleProgramCard> cards = player.getProgramSheet().getRegister().getRegisterCards();
-                System.out.println("Locked register cards list  " + cards);
-            }
-        }
 
-    }
 
     /**
-     *
-     * @param lockedCards
+     * Takes in a list of all cards contained in the players registers.
+     * These cards are to be removed from the available cards in the card deck
+     * @param lockedCards: list of register cards of all players
      */
     public void handleLockedCards(ArrayList<SimpleProgramCard> lockedCards) {
-
         for (SimpleProgramCard card : lockedCards) {
-            availableCards.remove(card.getType());
+            int oldValue = availableCards.get(card.getType());
+            availableCards.put(card.getType(), oldValue-1);
+
         }
 
     }
@@ -101,7 +82,6 @@ public class CardDeck {
         availableCards.put(type, availableCards.get(type)-1);
         return (type);
     }
-
 
 
     public int getAvailableCards(CardType type) { return availableCards.get(type); }
