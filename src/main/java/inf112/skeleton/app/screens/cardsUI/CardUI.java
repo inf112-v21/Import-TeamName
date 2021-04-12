@@ -14,8 +14,11 @@ import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
+
+import static inf112.skeleton.app.game.MainGame.robots;
 
 
 /**
@@ -31,6 +34,10 @@ public class CardUI extends Actor {
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
     private  GameScreen gameScreen;
+    private ArrayList<Player> robots;
+
+    private int w;
+    private int h;
     MainGame mainGame;
 
     public CardUI(MainGame mainGame) {
@@ -38,11 +45,30 @@ public class CardUI extends Actor {
         this.table = new Table();
         System.out.println(mainGame.getRobots());
         this.robot = mainGame.getRobots().get(0);
+        this.robots = mainGame.getRobots();
         cardCount = 0;
         this.selectedCards = new ArrayList<>();
     }
 
+    /** TODO
+     * Clears visual for next player
+     */
+    public void clearTable() {
+        table.clear();
 
+    }
+
+    /**
+     * Details
+     * @param w
+     * @param h
+     * @param gameScreen
+     */
+    public void setUp(int w, int h, GameScreen gameScreen) {
+        this.w = w;
+        this.h = h;
+        this.gameScreen = gameScreen;
+    }
 
 
     /**
@@ -126,6 +152,7 @@ public class CardUI extends Actor {
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
+        //robot.hasChosen()
         mainGame.executeCards(robot);
     }
 

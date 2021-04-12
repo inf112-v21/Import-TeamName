@@ -15,6 +15,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
+    private boolean chosenCards; // TODO: Track if a robot has chosen cards for ChooseCardsPhase. Should this be put in ProgramSheet instead?
     private final TiledMapTileLayer.Cell playerCellDead;
     private TiledMapTileLayer.Cell playerCellWon;
 

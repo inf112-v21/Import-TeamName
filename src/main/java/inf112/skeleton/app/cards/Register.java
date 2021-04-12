@@ -9,6 +9,8 @@ public class Register {
 
     private ArrayList<SimpleProgramCard> registerCards;
 
+    private ArrayList<SimpleProgramCard> lockedRegisterCards;
+
     public Register() { registerCards = new ArrayList<>(); }
 
     public void addCardToRegister(SimpleProgramCard card) {
@@ -20,6 +22,7 @@ public class Register {
 
 
     public void setCards(ArrayList<SimpleProgramCard> cards) {this.registerCards = cards;}
+
 
     public void wipeRegister() {this.registerCards = new ArrayList<SimpleProgramCard>();}
 

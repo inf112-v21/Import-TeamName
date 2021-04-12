@@ -58,7 +58,7 @@ public class GameScreen extends InputAdapter implements Screen {
     Stage uiStage;
     FitViewport viewPort;
     private final boolean debugMode;
-    Player player;
+
 
     int width;
     int height;
@@ -89,12 +89,22 @@ public class GameScreen extends InputAdapter implements Screen {
         this.font.setColor(Color.RED);
 
 
-
+        /**
+         *
+         * TODO
+         * flyttes til ny skjerm
+         */
         // Load map and get board data
         this.map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
         //this.board = new Board(map); // Get map objects
         mainGame.setup(map);
-        this.board = MainGame.gameBoard;
+        //Also setNumberOfPlayers()
+
+
+
+
+
+        this.board = mainGame.gameBoard;
         //Set viewPort dimensions to dimensions of board
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
@@ -123,9 +133,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         this.gameLoopEventHandler = new GameLoopEventHandler(switcher, tilePlayer); //Mostly for testing. Handles re-drawing of players at their new positions.
 
-        //MainGame.gameLoop();
     }
-
 
 
     /**

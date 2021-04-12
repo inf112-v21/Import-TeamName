@@ -17,7 +17,7 @@ public class ProgramSheet {
     private int lifeTokens;
     private List<Integer> flags;
     private boolean powerDown;
-    private boolean lockedRegister;
+    private boolean lockedRegister = false;
     private boolean dead;
     private Vector2 archiveMarker; //Respawn point when reentering the game.
 
@@ -28,7 +28,7 @@ public class ProgramSheet {
         this.flags = new ArrayList<>();
         this.dead = false;
         this.hand = new CardHand(9);
-        this.register = new Register(); //TODO: Is this correct? Added for testing CompleteRegisterPhase -Endre
+        this.register = new Register();
 
     }
 
@@ -43,18 +43,16 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        if(this.damageTokens > 5) lockRegister();
-        //hand.setNumCardsDeck(9 - damageTokens);
+        if(this.damageTokens > 5) this.lockedRegister = true;
+        /** TODO */
+        // Handle registers
     }
 
     /**
      * Called every round for its robot
      */
     public void dealCards(CardDeck deck) {
-        if ( damageTokens > 5) {
-            hand = new CardHand(0);
-            return; //keep hand
-        }
+        if (damageTokens >=10) hand = new CardHand(0);
         hand = new CardHand(9 - damageTokens);
 
     }

@@ -43,6 +43,7 @@ public class CardsTest {
         Assets.manager.finishLoading();
         mainGame = new MainGame();
         mainGame.setup(map);
+        mainGame.setNumPlayers(1);
     }
 
     @Test
@@ -92,15 +93,9 @@ public class CardsTest {
         /**
          * Checks that register has sucessfully been locked after taking 6 damage
          * **/
-
-        CardDeck deck = new CardDeck();
-        deck.shuffleCardsInDeck();
         Player player =  mainGame.getRobots().get(0);
-        ArrayList<SimpleProgramCard> oldCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
-        System.out.println("Old cards " + oldCardHand);
         player.getProgramSheet().addDamage(6); // should be locked
         assertTrue(player.getProgramSheet().getLockedRegister());
-
 
     }
 

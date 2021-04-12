@@ -52,13 +52,13 @@ public  final class MainGame {
     public void gameLoop() {
 
         IPhase dealCardsPhase = new DealCardsPhase();
-        IPhase programRegisterPhase = new ProgramRegisterPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
         IPhase completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
         while (gameOver == false) { //TODO: If game is over, end loop.
-            dealCardsPhase.run(this); // Playercount 1 for debugging
+            dealCardsPhase.run(this);
+            //chooseCardsPhase.run();
             //programRegisterPhase.run(this);
             //announcePowerDownPhase.run(this);
             //completeRegisterPhase.run(this);

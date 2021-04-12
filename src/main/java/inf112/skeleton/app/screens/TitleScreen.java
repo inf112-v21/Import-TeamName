@@ -85,6 +85,10 @@ public class TitleScreen implements Screen {
 
             @Override
             public void clicked(InputEvent event, float x, float y){
+                /**
+                 * TODO
+                 * flyttes til ny skjerm
+                 */
                mainGame.setNumPlayers(5); //Max is 8 players
                switcher.setGameScreen(mainGame);
             }
