@@ -5,6 +5,7 @@ import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.Register;
 import inf112.skeleton.app.objects.TileObjects.Flag;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ProgramSheet {
 
     public ProgramSheet() {
         this.damageTokens = 0;
-        this.lifeTokens = 0;
+        this.lifeTokens = 3;
         this.powerDown = false;
         this.flags = new ArrayList<>();
         this.dead = false;
@@ -35,9 +36,13 @@ public class ProgramSheet {
 
     public void addDamage(int amount) {
         this.damageTokens += amount;
-        if (damageTokens > lifeTokens) this.dead = true;
-        if (this.damageTokens > 10) {
-            this.damageTokens = 10;
+
+        if (this.damageTokens >= 10) {
+            this.damageTokens = 0;
+            this.lifeTokens -= 1;
+            if(this.lifeTokens == 0){
+                this.setDead(true);
+            }
         }
 
         if (this.damageTokens < 0) {
@@ -47,6 +52,9 @@ public class ProgramSheet {
         /** TODO */
         // Handle registers
     }
+
+
+
 
     /**
      * Called every round for its robot
@@ -67,6 +75,10 @@ public class ProgramSheet {
         if (this.lifeTokens < 0) {
             this.lifeTokens = 0;
         }
+    }
+
+    public void loseLife(){
+        this.lifeTokens -= 1;
     }
 
     /**
@@ -102,6 +114,7 @@ public class ProgramSheet {
     public int getLife() {
         return this.lifeTokens;
     }
+
 
     public void setPowerDown(boolean state) {
         this.powerDown = state;
