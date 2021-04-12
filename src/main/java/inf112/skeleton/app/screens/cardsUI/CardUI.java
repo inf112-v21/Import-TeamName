@@ -36,10 +36,14 @@ public class CardUI extends Actor {
     public CardUI(MainGame mainGame) {
         this.mainGame = mainGame;
         this.table = new Table();
+        System.out.println(mainGame.getRobots());
         this.robot = mainGame.getRobots().get(0);
         cardCount = 0;
         this.selectedCards = new ArrayList<>();
     }
+
+
+
 
     /**
      * Method that displays the possible cards contained in a cardhand in a table.
@@ -122,7 +126,7 @@ public class CardUI extends Actor {
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
-        mainGame.executeCards();
+        mainGame.executeCards(robot);
     }
 
 

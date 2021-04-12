@@ -2,8 +2,7 @@ package inf112.skeleton.app.game;
 
 //import inf112.skeleton.app.cards.CardDeck;
 
-import inf112.skeleton.app.cards.CardDeck;
-import inf112.skeleton.app.cards.IProgramCard;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 
 import java.util.ArrayList;
@@ -16,28 +15,38 @@ import static inf112.skeleton.app.game.MainGame.robots;
  */
 public class DealCardsPhase implements IPhase {
 
+    private int playercount;
     @Override
-    public void run() {
-        deck.CreateDeck(); // Creates new deck
+    public void run(MainGame mainGame) {
+        handleLockedCards();
+        createNewDeck();
+
     }
 
-    private ArrayList<IProgramCard> createDeck() {
-        /**
-         *
-         * Create deck for all players?
-         */
-        ArrayList<IProgramCard> deck = new ArrayList();
+    /**
+     *
+     */
+    private void createNewDeck() {
+        for (SimpleRobot robot : robots) {
+            robot.getProgramSheet().dealCards(deck);
+        }
 
-        return deck;
     }
 
     /**
      * Deals card
      */
-    private void dealCards() {
+    private void handleLockedCards() {
+        ArrayList<SimpleProgramCard> lockedCards = new ArrayList<>();
         for (SimpleRobot robot: robots) {
-            robot.getProgramSheet().dealCards(deck);
+            //System.out.println("Registercards" + robot.getProgramSheet().getRegister().getRegisterCards());
+            //System.out.println("Lockred? " +robot.getProgramSheet().getLockedRegister());
+            if (robot.getProgramSheet().getLockedRegister()) lockedCards.addAll(robot.getProgramSheet().getRegister().getRegisterCards());
+            else robot.getProgramSheet().getRegister().wipeRegister();  // Wipe register
         }
+        deck.createDeck(); // Creates new deck
+        deck.handleLockedCards(lockedCards); // Calls upon method in carddeck which removes locked cards from deck
     }
+
 
 }

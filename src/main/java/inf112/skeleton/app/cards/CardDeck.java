@@ -1,11 +1,9 @@
 package inf112.skeleton.app.cards;
 
+import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.ProgramSheet;
 
 import java.util.*;
-
-import static inf112.skeleton.app.game.MainGame.robots;
 
 /**
  * A deck of cards:
@@ -17,16 +15,8 @@ public class CardDeck {
     public static LinkedHashMap<CardType, Integer> availableCards;
 
     LinkedList<CardType> list; // List used for shuffling cardTypes
-
+    MainGame mainGame;
     public CardDeck() {
-        CreateDeck();
-    }
-
-    /**
-     *
-     * @return a start card deck
-     */
-    public void CreateDeck() {
         availableCards = new LinkedHashMap<>();
         availableCards.put(CardType.MOVE1, 18);
         availableCards.put(CardType.MOVE2, 12);
@@ -37,19 +27,48 @@ public class CardDeck {
         availableCards.put(CardType.UTURN, 6);
     }
 
+
+
     /**
      *
+     * @return a start card deck
      */
-    public void checkLockedRegister() {
+    public void createDeck() {
+       //checkLockedRegister(mainGame);
+        availableCards = new LinkedHashMap<>();
+        availableCards.put(CardType.MOVE1, 18);
+        availableCards.put(CardType.MOVE2, 12);
+        availableCards.put(CardType.MOVE3, 6);
+        availableCards.put(CardType.BACK1, 6);
+        availableCards.put(CardType.ROTATERIGHT, 18);
+        availableCards.put(CardType.ROTATELEFT, 18);
+        availableCards.put(CardType.UTURN, 6);
+    }
 
-        for (Player player: robots) {
-            if (player.getProgramSheet().getLockREgister()) {
-                ArrayList<SimpleProgramCard> cards = player.getProgramSheet().getRegister();
+    /** TODO
+     * Takes into account players locked register cards
+     */
+    public void checkLockedRegister(MainGame mainGame) {
+        for (Player player: mainGame.getRobots()) {
+            if (player.getProgramSheet().getLockedRegister()) {
+                ArrayList<SimpleProgramCard> cards = player.getProgramSheet().getRegister().getRegisterCards();
+                System.out.println("Locked register cards list  " + cards);
             }
         }
 
     }
 
+    /**
+     *
+     * @param lockedCards
+     */
+    public void handleLockedCards(ArrayList<SimpleProgramCard> lockedCards) {
+
+        for (SimpleProgramCard card : lockedCards) {
+            availableCards.remove(card.getType());
+        }
+
+    }
 
     /**
      * Shuffle a deck. Called every time a card is dealt

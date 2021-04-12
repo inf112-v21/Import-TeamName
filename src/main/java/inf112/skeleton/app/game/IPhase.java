@@ -4,7 +4,9 @@ public interface IPhase {
 
     /**
      * Run method executes the parts of a phase in order.
+     * @param mainGame
+     *
      */
-    void run();
+    void run(MainGame mainGame);
 
 }

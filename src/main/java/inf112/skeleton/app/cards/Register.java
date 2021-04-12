@@ -21,4 +21,6 @@ public class Register {
 
     public void setCards(ArrayList<SimpleProgramCard> cards) {this.registerCards = cards;}
 
+    public void wipeRegister() {this.registerCards = new ArrayList<SimpleProgramCard>();}
+
 }

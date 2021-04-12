@@ -59,7 +59,6 @@ public class GameScreen extends InputAdapter implements Screen {
     FitViewport viewPort;
     private final boolean debugMode;
     Player player;
-    MainGame game;
 
     int width;
     int height;
@@ -177,6 +176,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         gameLoopEventHandler.run(); //Handles re-drawing of players.   | Changes texture if on pit or flag, only for testing
 
+
         mapRenderer.render();
 
         // Draw card visuals //
@@ -187,7 +187,8 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-
+        // Game loop
+        //mainGame.gameLoop();
         this.cardui = new CardUI(mainGame);
         uiStage.addActor(cardui.getTable());
         this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this); // Generate buttons and listeners for actions

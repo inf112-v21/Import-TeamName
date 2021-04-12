@@ -8,13 +8,14 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.cards.*;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -31,7 +32,7 @@ public class CardsTest {
 
     private TextureRegion[][] textures;
     private TiledMapTileLayer tilePlayer;
-    private MainGame game;
+    private MainGame mainGame;
 
     @Before
     public void initalise() {
@@ -40,8 +41,8 @@ public class CardsTest {
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
         Assets.manager.finishLoading();
-        game = new MainGame();
-        game.setup(map);
+        mainGame = new MainGame();
+        mainGame.setup(map);
     }
 
     @Test
@@ -83,6 +84,24 @@ public class CardsTest {
     public void generateCardDeck() {
         CardDeck deck = new CardDeck();
         assertEquals(18, deck.getAvailableCards(CardType.MOVE1));
+    }
+
+
+    @Test
+    public void testLockedRegister() {
+        /**
+         * Checks that register has sucessfully been locked after taking 6 damage
+         * **/
+
+        CardDeck deck = new CardDeck();
+        deck.shuffleCardsInDeck();
+        Player player =  mainGame.getRobots().get(0);
+        ArrayList<SimpleProgramCard> oldCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
+        System.out.println("Old cards " + oldCardHand);
+        player.getProgramSheet().addDamage(6); // should be locked
+        assertTrue(player.getProgramSheet().getLockedRegister());
+
+
     }
 
 }

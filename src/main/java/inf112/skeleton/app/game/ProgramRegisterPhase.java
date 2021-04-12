@@ -6,7 +6,7 @@ package inf112.skeleton.app.game;
 public class ProgramRegisterPhase implements IPhase {
 
     @Override
-    public void run() {
+    public void run(MainGame mainGame) {
         showCards();
         chooseCards();
         discardLeftOverCards();

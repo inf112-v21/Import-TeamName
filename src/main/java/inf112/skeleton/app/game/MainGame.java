@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public final class MainGame {
+public  final class MainGame {
 
 
    public static ArrayList<Player> robots;
@@ -27,6 +27,7 @@ public final class MainGame {
      * Constructor method
      */
     public MainGame() {
+
         robots = new ArrayList<>();
         robotTextures = getRobotTextures();
     }
@@ -47,7 +48,7 @@ public final class MainGame {
      * Game Loop
      * Executes the phases in correct order
     */
-    public static void gameLoop() {
+    public void gameLoop() {
 
         IPhase dealCardsPhase = new DealCardsPhase();
         IPhase programRegisterPhase = new ProgramRegisterPhase();
@@ -56,11 +57,11 @@ public final class MainGame {
         IPhase cleanupPhase = new CleanupPhase();
 
         while (true) { //TODO: If game is over, end loop.
-            dealCardsPhase.run();
-            programRegisterPhase.run();
-            announcePowerDownPhase.run();
-            completeRegisterPhase.run();
-            cleanupPhase.run();
+            dealCardsPhase.run(this); // Playercount 1 for debugging
+            //programRegisterPhase.run(this);
+            //announcePowerDownPhase.run(this);
+            //completeRegisterPhase.run(this);
+            //cleanupPhase.run(this);
         }
 
     }
@@ -125,8 +126,7 @@ public final class MainGame {
      * Temporary method for excuting cards for a single player
      * In later iterations will be handles by CompleteRegisterphase
      */
-    public void executeCards() {
-        Player player = robots.get(0); // Temporarily one player
+    public void executeCards(Player player) {
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
         playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
         CompleteRegisterPhase phase = new CompleteRegisterPhase();

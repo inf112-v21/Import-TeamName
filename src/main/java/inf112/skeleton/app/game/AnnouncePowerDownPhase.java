@@ -3,7 +3,7 @@ package inf112.skeleton.app.game;
 public class AnnouncePowerDownPhase implements IPhase {
 
     @Override
-    public void run() {
+    public void run(MainGame mainGame) {
         declarePowerDownIntention();
     }
 

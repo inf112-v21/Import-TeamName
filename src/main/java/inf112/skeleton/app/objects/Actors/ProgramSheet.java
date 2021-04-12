@@ -43,13 +43,18 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        hand.setNumCardsDeck(9 - damageTokens);
+        if(this.damageTokens > 5) lockRegister();
+        //hand.setNumCardsDeck(9 - damageTokens);
     }
 
     /**
      * Called every round for its robot
      */
     public void dealCards(CardDeck deck) {
+        if ( damageTokens > 5) {
+            hand = new CardHand(0);
+            return; //keep hand
+        }
         hand = new CardHand(9 - damageTokens);
 
     }
@@ -143,5 +148,5 @@ public class ProgramSheet {
      *
      * @return status of register
      */
-    public boolean  getLockREgister() {return this.lockedRegister; }
+    public boolean getLockedRegister() {return this.lockedRegister; }
 }

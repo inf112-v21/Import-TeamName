@@ -15,7 +15,7 @@ import static inf112.skeleton.app.game.MainGame.*;
 public class CompleteRegisterPhase implements IPhase {
 
     @Override
-    public void run() {
+    public void run(MainGame mainGame) {
         revealProgramCards();
         executeProgramCards();
         boardElementsMove();
