@@ -26,7 +26,7 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
     protected void revealProgramCards() {
-        //TODO: Is this 'nice to have'? Maybe just print to console.
+        //Is this 'nice to have'? Maybe just print to console.
     }
 
     /**

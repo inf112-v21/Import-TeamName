@@ -44,7 +44,6 @@ public class GameLoopEventHandler {
 
     /**
      * If robot on pit, mark as dead.
-     * //TODO: This is only for testing
      */
     private void checkForDeath() {
         for (SimpleRobot robot : robots) {
@@ -58,7 +57,6 @@ public class GameLoopEventHandler {
 
     /**
      * If robot at flag, change to win texture
-     * //TODO: This is only for testing
      */
     private void checkForFlag() {
         for (SimpleRobot robot : robots) {

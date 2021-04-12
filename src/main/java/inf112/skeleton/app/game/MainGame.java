@@ -78,7 +78,6 @@ public  final class MainGame {
 
 
     /**
-     * TODO: Discuss how to add players.
      * @param numPlayers
      */
     public static void setNumPlayers(int numPlayers) {
