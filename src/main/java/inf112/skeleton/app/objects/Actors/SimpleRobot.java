@@ -1,6 +1,5 @@
 package inf112.skeleton.app.objects.Actors;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
@@ -8,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.SimpleObject;
+
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -25,6 +25,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         super(startpos);
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
+        programSheet.setArchiveMarker(startpos);
 
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4])); //TODO: Expand textures to include a 'Win' sprite for picking up a flag.
@@ -52,6 +53,27 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         playerCollisionHandler(this, pos, lookDirection, false);
 
         moveRobot(steps - 1);
+    }
+
+    public void robotLoseLife(SimpleRobot robot){
+        if(getProgramSheet().getLife()>1){
+            getProgramSheet().loseLife();
+            robot.newPosition();
+        } else {
+            robot.getProgramSheet().setDead(true);
+        }
+    }
+
+    public void robotTakeDmg(SimpleRobot robot, int amount){
+        robot.getProgramSheet().addDamage(amount);
+        if(getProgramSheet().getDamage()==0 && !(getProgramSheet().getLife()==0)){
+            robot.newPosition();
+        }
+    }
+
+    public void newPosition(){
+        Vector2 pos = getProgramSheet().getArchiveMarker();
+        setPosition(pos);
     }
 
     /**
@@ -107,7 +129,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         Vector2 playerPos = robot.getPosition();
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
-            robot.getProgramSheet().setDead(true);
+            robotLoseLife(robot);
             //TODO: Remove this dead robot from map.
             // Must happen here, cannot be in CompleteRegisterPhase - Endre
             // Maybe move dead player to x:-100,y:-100. Then after all cards are executed/loops are done. Remove dead players entirely.
