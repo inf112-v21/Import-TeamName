@@ -208,6 +208,7 @@ public class GameScreen extends InputAdapter implements Screen {
             Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
 
+        /**
         client = new RRClient(name);
 
         //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
@@ -224,6 +225,7 @@ public class GameScreen extends InputAdapter implements Screen {
         } else {
             client.connect(ip);
         }
+         */
     }
 
 

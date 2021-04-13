@@ -26,7 +26,7 @@ public class TitleScreen implements Screen {
     private SpriteBatch batch;
     private Stage stage;
     private Skin skin;
-    private Texture title;
+    private final Texture title = new Texture("Images/title.png");
 
     FitViewport viewPort;
 
@@ -52,7 +52,6 @@ public class TitleScreen implements Screen {
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         batch = new SpriteBatch();
-        title = new Texture("Images/title.png");
         stage = new Stage(new StretchViewport(width, height));
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
@@ -158,4 +157,7 @@ public class TitleScreen implements Screen {
         title.dispose();
     }
 
+    public void setToTitle(MainGame mainGame) {
+        this.mainGame = mainGame;
+    }
 }

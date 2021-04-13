@@ -68,6 +68,11 @@ public class RoboRally extends Game {
         setScreen(gameScreen);
     }
 
+    public void setTitleScreen(MainGame mainGame) {
+        titleScreen.setToTitle(mainGame);
+        setScreen(titleScreen);
+    }
+
     public GameScreen getGameScreen() { return this.gameScreen; }
 
     public void setWinScreen() {
