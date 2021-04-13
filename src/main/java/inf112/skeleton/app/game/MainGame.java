@@ -9,6 +9,7 @@ import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,13 +24,12 @@ public  final class MainGame {
    public static CardDeck deck;
    private boolean gameOver = false;
 
+   public CompleteRegisterPhase completeRegisterPhase;
 
     /**
      * Constructor method
      */
-    public MainGame() {
-        robots = new ArrayList<>();
-    }
+    public MainGame() { robots = new ArrayList<>(); }
 
     /**
      * Setup:
@@ -47,21 +47,23 @@ public  final class MainGame {
      * Game Loop
      * Executes the phases in correct order
     */
-    public void gameLoop() {
+    public void gameLoop(CardUI cardUI)  {
 
         IPhase dealCardsPhase = new DealCardsPhase();
+        ChooseCardsPhase chooseCardsPhase = new ChooseCardsPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
-        IPhase completeRegisterPhase = new CompleteRegisterPhase();
+        completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
-        while (gameOver == false) { //TODO: If game is over, end loop.
-            dealCardsPhase.run(this);
-            //chooseCardsPhase.run();
-            //programRegisterPhase.run(this);
-            //announcePowerDownPhase.run(this);
-            //completeRegisterPhase.run(this);
-            //cleanupPhase.run(this);
-        }
+        dealCardsPhase.run();
+        chooseCardsPhase.debugRun(cardUI); // For debugging
+        //chooseCardsPhase.run(cardUI);
+        //completeRegisterPhase.executePlayerProgramCards(robots.get(0));
+        //completeRegisterPhase.run();
+        //announcePowerDownPhase.run(this);
+
+        //cleanupPhase.run(this);
+
 
     }
 
@@ -70,7 +72,7 @@ public  final class MainGame {
      * Things to do after the game loop is finished
      */
     public  void end() {
-        // Some critiera for the game to end?
+        // Some criteria for the game to end?
         gameOver = true;
     }
 
@@ -122,5 +124,6 @@ public  final class MainGame {
         System.out.println("Position: " + player.getPosition() + "\n");
 
     }
+
 
 }

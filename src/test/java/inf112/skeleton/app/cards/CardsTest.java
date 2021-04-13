@@ -15,8 +15,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -88,16 +86,7 @@ public class CardsTest {
     }
 
 
-    @Test
-    public void testLockedRegister() {
-        /**
-         * Checks that register has sucessfully been locked after taking 6 damage
-         * **/
-        Player player =  mainGame.getRobots().get(0);
-        player.getProgramSheet().addDamage(6); // should be locked
-        assertTrue(player.getProgramSheet().getLockedRegister());
 
-    }
 
 }
 
