@@ -14,13 +14,11 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
-import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import com.esotericsoftware.minlog.Log;
@@ -29,7 +27,6 @@ import java.io.IOException;
 
 
 import static com.badlogic.gdx.Gdx.gl;
-import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -178,11 +175,12 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        // Game loop
-        //mainGame.gameLoop();
+
+
         this.cardui = new CardUI(mainGame);
+        cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
-        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this); // Generate buttons and listeners for actions
+        mainGame.gameLoop(cardui); // Game loop starrt
 
 
         if (this.debugMode) {
@@ -195,6 +193,21 @@ public class GameScreen extends InputAdapter implements Screen {
         client = new RRClient(name);
 
         //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
+
+        //if (hosting != false) {
+          //  Log.info("starting server");
+         //   try {
+         //       server = new RRServer();
+        //        client.connect("localhost");
+         //   } catch (IOException e) {
+        //        e.printStackTrace();
+        //        Log.info("Unable to start server.");
+        //        Gdx.app.exit();
+       //     }
+       // } else {
+       //     client.connect(ip);
+      //  }
+
         if (hosting != false) {
             Log.info("starting server");
             try {
@@ -209,6 +222,7 @@ public class GameScreen extends InputAdapter implements Screen {
             client.connect(ip);
         }
          */
+
     }
 
 

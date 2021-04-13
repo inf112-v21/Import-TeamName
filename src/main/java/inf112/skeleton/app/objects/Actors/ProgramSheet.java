@@ -1,9 +1,8 @@
 package inf112.skeleton.app.objects.Actors;
 
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.cards.CardHand;
-import inf112.skeleton.app.cards.Register;
+import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.objects.TileObjects.Flag;
 
 import java.util.ArrayList;
@@ -14,11 +13,11 @@ public class ProgramSheet {
 
     private CardHand hand;
     private Register register;
-    private int damageTokens;
-    private int lifeTokens;
+    public int damageTokens;
+    public int lifeTokens;
     private List<Integer> flags;
     private boolean powerDown;
-    private boolean lockedRegister = false;
+
     private boolean dead;
     private Vector2 archiveMarker; //Respawn point when reentering the game.
 
@@ -48,9 +47,10 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        if(this.damageTokens > 5) this.lockedRegister = true;
-        /** TODO */
-        // Handle registers
+        if(this.damageTokens >= 5) {
+            register.lockRegister(damageTokens - 4);
+        }
+
     }
 
 
@@ -59,7 +59,7 @@ public class ProgramSheet {
     /**
      * Called every round for its robot
      */
-    public void dealCards(CardDeck deck) {
+    public void dealCards() {
         if (damageTokens >=10) hand = new CardHand(0);
         hand = new CardHand(9 - damageTokens);
 
@@ -74,6 +74,9 @@ public class ProgramSheet {
 
         if (this.lifeTokens < 0) {
             this.lifeTokens = 0;
+        }
+        if (this.lifeTokens >= 5) {
+            register.unlockRegister(lifeTokens - 4);
         }
     }
 
@@ -149,15 +152,13 @@ public class ProgramSheet {
     }
 
 
-    /**
-     * Lock register
-     */
 
-    public void lockRegister() {register.lockRegister(); }
+
+    public ArrayList<SimpleProgramCard> getLockedCards() {return this.register.lockedRegisterCards;}
 
     /**
      *
      * @return status of register
      */
-    public boolean getLockedRegister() {return this.lockedRegister; }
+    public int getNumLockedRegisterCards() {return this.register.getNumLockedRegisterCards(); }
 }

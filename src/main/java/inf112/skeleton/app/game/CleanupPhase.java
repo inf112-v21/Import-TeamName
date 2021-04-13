@@ -9,7 +9,7 @@ import static inf112.skeleton.app.game.MainGame.robots;
 public class CleanupPhase implements IPhase {
 
     @Override
-    public void run(MainGame mainGame) {
+    public void run() {
         repairs();
         upgrades();
     }

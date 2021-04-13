@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +21,7 @@ public class CardDeckTest {
 
     private TiledMap map = new TmxMapLoader().load("Maps/MapForJunitTests.tmx");
     MainGame mainGame;
-
+    ArrayList<SimpleProgramCard> exampleSelection;
     RoboRally switcher;
     @Before
     public void initialize() {
@@ -31,6 +30,8 @@ public class CardDeckTest {
         Assets.manager.finishLoading();
         mainGame = new MainGame();
         mainGame.setup(map);
+        exampleSelection = new ArrayList<>();
+        for(int i = 0; i < 5; i++) { exampleSelection.add(new MovementCard(1, CardType.BACK1)); }
         mainGame.setNumPlayers(1);
     }
 
@@ -65,10 +66,12 @@ public class CardDeckTest {
          */
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
-        mainGame.getRobots().get(0).getProgramSheet().addDamage(6);
-        mainGame.getRobots().get(0).getProgramSheet().dealCards(deck);
+        Player player = mainGame.getRobots().get(0);
+        player.getProgramSheet().getRegister().setCards(exampleSelection);
+        player.getProgramSheet().addDamage(6);
+        player.getProgramSheet().dealCards();
         ArrayList<SimpleProgramCard> newCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
-        assertEquals(newCardHand.size(), 3);
+        assertEquals(3, newCardHand.size());
 
     }
 
@@ -82,44 +85,15 @@ public class CardDeckTest {
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
         Player player = mainGame.getRobots().get(0);
-        ArrayList<SimpleProgramCard> selectedCards = new ArrayList<>();
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        player.getProgramSheet().getRegister().setCards(selectedCards);
-        ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getRegisterCards();
-        player.getProgramSheet().addDamage(6);
-        phase.run(mainGame); // Deal cards
-        ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getRegisterCards();
+        player.getProgramSheet().getRegister().setCards(exampleSelection);
+
+        player.getProgramSheet().addDamage(5);
+        ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getLockedCards();
+        phase.run(); // Deal cards
+        ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getLockedCards();
         assertEquals(oldRegister, newRegister);
 
     }
-    @Test
-    public void registerWiped() {
-        /**
-         * Register is wiped if the player is dealt less than 6 damage.
-         */
-        DealCardsPhase phase = new DealCardsPhase();
-        CardDeck deck = new CardDeck();
-        Player player = mainGame.getRobots().get(0);
-        ArrayList<SimpleProgramCard> selectedCards = new ArrayList<>();
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        player.getProgramSheet().getRegister().setCards(selectedCards);
-        ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getRegisterCards();
-        player.getProgramSheet().addDamage(3); // Take 3 damage, should wipe register
-        phase.run(mainGame); // Deal cards
-        ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getRegisterCards();
-        assertEquals(new ArrayList<SimpleProgramCard>(), newRegister);
-
-    }
-
-
 
 
 
