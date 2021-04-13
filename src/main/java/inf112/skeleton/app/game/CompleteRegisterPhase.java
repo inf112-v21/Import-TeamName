@@ -43,8 +43,7 @@ public class CompleteRegisterPhase implements IPhase {
 
             //Get 1 card from each player/robot
             for (SimpleRobot robot : robots) {
-                // For debugging
-                if(robot.getProgramSheet().getRegister().getRegisterCards().size() < 5) continue;
+                if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots.
                 if (robot.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
 
                 SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
@@ -56,6 +55,7 @@ public class CompleteRegisterPhase implements IPhase {
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
                 for (SimpleRobot robot : robots) {
+                    if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots.
                     SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
                         //System.out.println("Robot " + robot + " used " + card + " card.");
@@ -130,6 +130,7 @@ public class CompleteRegisterPhase implements IPhase {
 
         //Fire laser for robots in their lookDirection
         for (SimpleRobot robot : robots) {
+            if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots. They cannot fire their laser.
             Vector2 nextTile = Direction.goDirection(robot.getPosition(),robot.getLookDirection()); //Fire from next tile. Prevents robot hitting itself.
             fireLaser(nextTile, robot.getLookDirection(), 1);
         }

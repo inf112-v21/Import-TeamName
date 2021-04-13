@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.screens.GameScreen;
+import inf112.skeleton.app.screens.MapSelectScreen;
 import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
@@ -21,6 +22,7 @@ public class RoboRally extends Game {
     GameScreen  gameScreen;
     WinScreen   winScreen;
     TitleScreen titleScreen;
+    MapSelectScreen mapSelectScreen;
 
     FitViewport viewPort;
     Stage stage;
@@ -46,6 +48,7 @@ public class RoboRally extends Game {
         gameScreen = new GameScreen(this, stage, viewPort, debugMode);
         winScreen  = new WinScreen(this, viewPort);
         titleScreen = new TitleScreen(this, stage, viewPort);
+        mapSelectScreen = new MapSelectScreen(this, viewPort);
 
         Gdx.input.setInputProcessor(stage);
         this.setScreen(titleScreen); // Set screen to title screen
@@ -66,6 +69,16 @@ public class RoboRally extends Game {
     public void setGameScreen(MainGame mainGame) {
         gameScreen.setGame(mainGame);
         setScreen(gameScreen);
+    }
+
+    public void setTitleScreen(MainGame mainGame) {
+        titleScreen.setToTitle(mainGame);
+        setScreen(titleScreen);
+    }
+
+    public void setMapScreen(MainGame mainGame) {
+        mapSelectScreen.setToMapSelect(mainGame);
+        setScreen(mapSelectScreen);
     }
 
     public GameScreen getGameScreen() { return this.gameScreen; }

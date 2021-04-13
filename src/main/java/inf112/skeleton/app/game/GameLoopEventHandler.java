@@ -37,6 +37,7 @@ public class GameLoopEventHandler {
     private void renderPlayersOnBoard() {
         //Render all robot on the board, at their new position.
         for (SimpleRobot robot : robots) {
+            if (robot.getProgramSheet().isDead()) robot.setPosition(new Vector2(-10,-10)); //Dead players are off the board. TODO: Maybe handle dead players another way -Endre
             tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
         }
     }

@@ -25,7 +25,7 @@ import static com.badlogic.gdx.Gdx.gl;
 
 public class MultiplayerScreen implements Screen {
 
-    RoboRally switcher;
+    final RoboRally switcher;
 
     private TextField assignIP;
     private TextField assignName;
@@ -45,13 +45,13 @@ public class MultiplayerScreen implements Screen {
     }
 
     FitViewport viewPort;
-    private boolean debugMode = true;
 
 
 
 
     @Override
     public void show () {
+        mainGame = new MainGame();
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         stage = new Stage(new StretchViewport(width, height));
@@ -142,7 +142,7 @@ public class MultiplayerScreen implements Screen {
         backButton.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent event, float x, float y) {
-               switcher.setScreen(new TitleScreen(switcher, stage, viewPort));
+               switcher.setTitleScreen(mainGame);
            }
         });
 

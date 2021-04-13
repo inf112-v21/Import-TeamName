@@ -1,6 +1,7 @@
 package inf112.skeleton.app.screens;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -37,7 +38,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private final SpriteBatch batch;
     private final BitmapFont font;
 
-    private final TiledMap map;
+    private TiledMap map;
 
     // Layers on the map
     public TiledMapTileLayer tilePlayer;
@@ -45,11 +46,11 @@ public class GameScreen extends InputAdapter implements Screen {
 
     MainGame mainGame;
     private GameLoopEventHandler gameLoopEventHandler; //Handles redrawing of players, win & lose condition.
-    private final OrthogonalTiledMapRenderer mapRenderer;
-    private final OrthographicCamera gameCamera, uiCamera;
+    private OrthogonalTiledMapRenderer mapRenderer;
+    private OrthographicCamera gameCamera, uiCamera;
     private CardUI cardui;
 
-    private final int viewPortWidth, viewPortHeight;
+    private int viewPortWidth, viewPortHeight;
 
     Stage stage;
     Stage uiStage;
@@ -71,38 +72,9 @@ public class GameScreen extends InputAdapter implements Screen {
     private RRClient client;
     private String name;
 
-
-    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
-        this.switcher = switcher;
-        this.stage = stage;
-        this.viewPort = viewPort;
-
-        this.debugMode = debugMode;
-        this.width = Gdx.graphics.getWidth();
-        this.height = Gdx.graphics.getHeight();
-
-        this.batch = new SpriteBatch();
-        this.font = new BitmapFont();
-        this.font.setColor(Color.RED);
-
-
-        /**
-         *
-         * TODO
-         * flyttes til ny skjerm
-         */
-        // Load map and get board data
-        this.map = new TmxMapLoader().load("Maps/Chess.tmx"); // Get map file
-        //this.board = new Board(map); // Get map objects
-        mainGame.setup(map);
-        //Also setNumberOfPlayers()
-
-
-
-
-
+    public void setMap (TiledMap map) {
+        this.map = map;
         this.board = mainGame.gameBoard;
-        //Set viewPort dimensions to dimensions of board
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
 
@@ -122,14 +94,25 @@ public class GameScreen extends InputAdapter implements Screen {
 
         this.uiStage.getViewport().setCamera(uiCamera);
         this.mapRenderer = new OrthogonalTiledMapRenderer(map,(float) 1/300);  // Render map
-        this.mapRenderer.setView(gameCamera); // Attach camera to map
+        this.mapRenderer.setView(gameCamera);
 
-        //Handling player1
         this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        this.gameLoopEventHandler = new GameLoopEventHandler(switcher, tilePlayer);
 
+    }
 
-        this.gameLoopEventHandler = new GameLoopEventHandler(switcher, tilePlayer); //Mostly for testing. Handles re-drawing of players at their new positions.
+    public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
+        this.switcher = switcher;
+        this.stage = stage;
+        this.viewPort = viewPort;
 
+        this.debugMode = debugMode;
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
+
+        this.batch = new SpriteBatch();
+        this.font = new BitmapFont();
+        this.font.setColor(Color.RED);
     }
 
 
@@ -206,9 +189,11 @@ public class GameScreen extends InputAdapter implements Screen {
             Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
 
+        /**
         client = new RRClient(name);
 
         //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
+
         //if (hosting != false) {
           //  Log.info("starting server");
          //   try {
@@ -222,6 +207,22 @@ public class GameScreen extends InputAdapter implements Screen {
        // } else {
        //     client.connect(ip);
       //  }
+
+        if (hosting != false) {
+            Log.info("starting server");
+            try {
+                server = new RRServer();
+                client.connect("localhost");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.info("Unable to start server.");
+                Gdx.app.exit();
+            }
+        } else {
+            client.connect(ip);
+        }
+         */
+
     }
 
 
