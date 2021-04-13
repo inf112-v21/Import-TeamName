@@ -34,6 +34,10 @@ public class CardUI extends Actor {
     private int h;
     MainGame mainGame;
 
+    /**
+     * Constructor
+     * @param mainGame: instance of main game
+     */
     public CardUI(MainGame mainGame) {
         this.mainGame = mainGame;
         cardCount = 0;
@@ -43,7 +47,7 @@ public class CardUI extends Actor {
 
 
     /**
-     * Details
+     * Set up a Card UI after initialization
      * @param w
      * @param h
      * @param gameScreen
@@ -141,8 +145,7 @@ public class CardUI extends Actor {
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
         robot.getProgramSheet().getRegister().chosenCards = true;
-        mainGame.completeRegisterPhase.executePlayerProgramCards(robot);
-        table.clearChildren();
+        mainGame.executeCards(robot);
     }
 
 

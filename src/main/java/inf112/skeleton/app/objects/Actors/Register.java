@@ -12,7 +12,7 @@ public class Register {
 
     private int numLockedCards;
 
-    public boolean chosenCards;
+    public boolean chosenCards = false;
     protected ArrayList<SimpleProgramCard> registerCards;
 
     protected ArrayList<SimpleProgramCard> lockedRegisterCards;

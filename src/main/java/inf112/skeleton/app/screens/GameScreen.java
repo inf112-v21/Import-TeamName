@@ -192,14 +192,12 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        // Game loop
+
 
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
-        mainGame.gameLoop(cardui);
-        //cardui.generateCards(mainGame.robots.get(0));
-        //this.cardui.generateCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4)); // Generate buttons and listeners for actions
+        mainGame.gameLoop(cardui); // Game loop starrt
 
 
         if (this.debugMode) {
@@ -211,19 +209,19 @@ public class GameScreen extends InputAdapter implements Screen {
         client = new RRClient(name);
 
         //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
-        if (hosting != false) {
-            Log.info("starting server");
-            try {
-                server = new RRServer();
-                client.connect("localhost");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.info("Unable to start server.");
-                Gdx.app.exit();
-            }
-        } else {
-            client.connect(ip);
-        }
+        //if (hosting != false) {
+          //  Log.info("starting server");
+         //   try {
+         //       server = new RRServer();
+        //        client.connect("localhost");
+         //   } catch (IOException e) {
+        //        e.printStackTrace();
+        //        Log.info("Unable to start server.");
+        //        Gdx.app.exit();
+       //     }
+       // } else {
+       //     client.connect(ip);
+      //  }
     }
 
 

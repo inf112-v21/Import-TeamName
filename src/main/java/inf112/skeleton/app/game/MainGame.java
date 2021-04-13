@@ -47,7 +47,7 @@ public  final class MainGame {
      * Game Loop
      * Executes the phases in correct order
     */
-    public void gameLoop(CardUI cardUI) {
+    public void gameLoop(CardUI cardUI)  {
 
         IPhase dealCardsPhase = new DealCardsPhase();
         ChooseCardsPhase chooseCardsPhase = new ChooseCardsPhase();
