@@ -116,7 +116,6 @@ public class GameScreen extends InputAdapter implements Screen {
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
         this.font.setColor(Color.RED);
-
     }
 
 

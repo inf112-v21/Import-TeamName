@@ -116,18 +116,24 @@ public class MapSelectScreen implements Screen {
         dizzy.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
+                mapPath = "Maps/DizzyHighway.tmx";
+                startGame();
             }
         });
 
         exchange.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
+                mapPath = "Maps/Exchange.tmx";
+                startGame();
             }
         });
 
         vault.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
+                mapPath = "Maps/Vault.tmx";
+                startGame();
             }
         });
 
@@ -154,7 +160,6 @@ public class MapSelectScreen implements Screen {
     private void startGame() {
         int count = parseInt(playerCount.getText()); //default atm, is 4.
         if (count < 8) {
-            mapPath = "Maps/Chess.tmx";
             this.map = new TmxMapLoader().load(mapPath);
             mainGame.setup(map);
             mainGame.setNumPlayers(count);
