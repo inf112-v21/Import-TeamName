@@ -55,27 +55,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         moveRobot(steps - 1);
     }
 
-    public void robotLoseLife(SimpleRobot robot){
-        if(getProgramSheet().getLife()>1){
-            getProgramSheet().loseLife();
-            robot.newPosition();
-        } else {
-            robot.getProgramSheet().setDead(true);
-        }
-    }
-
-    public void robotTakeDmg(SimpleRobot robot, int amount){
-        robot.getProgramSheet().addDamage(amount);
-        if(getProgramSheet().getDamage()==0 && !(getProgramSheet().getLife()==0)){
-            robot.newPosition();
-        }
-    }
-
-    public void newPosition(){
-        Vector2 pos = getProgramSheet().getArchiveMarker();
-        setPosition(pos);
-    }
-
     /**
      * Accounts for player collision and tries to move robot 1 step in pushDirection.
      * Checks that when player collision occurs, there is an empty space the robots can be pushed onto. If not, robots stand still.
@@ -119,6 +98,29 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         return false;
     }
 
+    public void robotLoseLife(SimpleRobot robot){
+        if(robot.getProgramSheet().getLife()>1){
+            robot.getProgramSheet().loseLife();
+            robot.newPosition(robot);
+        } else {
+            robot.getProgramSheet().setDead(true);
+            //Remove dead player from map
+            TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+            playerTile.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, new TiledMapTileLayer.Cell()); // Set empty cell where robot once existed
+        }
+    }
+
+    public void robotTakeDmg(SimpleRobot robot, int amount){
+        robot.getProgramSheet().addDamage(amount);
+        if(getProgramSheet().getDamage()==0 && !(getProgramSheet().getLife()==0)){
+            robot.newPosition(robot);
+        }
+    }
+
+    public void newPosition(SimpleRobot robot){
+        Vector2 pos = robot.getProgramSheet().getArchiveMarker();
+        robot.setPosition(pos);
+    }
 
     /**
      * Check at after each step the robot takes, it is still alive.
