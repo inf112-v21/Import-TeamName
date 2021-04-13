@@ -159,7 +159,7 @@ public class MapSelectScreen implements Screen {
 
     private void startGame() {
         int count = parseInt(playerCount.getText()); //default atm, is 4.
-        if (count < 8) {
+        if (count < 9) {
             this.map = new TmxMapLoader().load(mapPath);
             mainGame.setup(map);
             mainGame.setNumPlayers(count);
