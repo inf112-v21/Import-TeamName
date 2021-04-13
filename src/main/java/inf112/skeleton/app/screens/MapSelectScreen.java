@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.map.Board;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Integer.parseInt;
@@ -159,8 +160,13 @@ public class MapSelectScreen implements Screen {
 
     private void startGame() {
         int count = parseInt(playerCount.getText()); //default atm, is 4.
-        if (count < 9) {
+
+        //Check that legal amount of players are selected.
+        if (count < 9 && count > 0) {
             this.map = new TmxMapLoader().load(mapPath);
+            Board tempBoard = new Board(map);
+            if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.
+
             mainGame.setup(map);
             mainGame.setNumPlayers(count);
             switcher.getGameScreen().setMap(map);
