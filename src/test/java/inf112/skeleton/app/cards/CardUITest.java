@@ -10,6 +10,7 @@ import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.GameScreen;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 import org.junit.Before;
@@ -40,8 +41,9 @@ public class CardUITest {
     public void cantSend1Card() {
         CardUI ui = new CardUI(mainGame);
         ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));
-        ui.sendCards();
-        int numCards =  ui.robot.getProgramSheet().getRegister().getRegisterCards().size();
+        Player robot = mainGame.robots.get(0);
+        ui.sendCards(robot);
+        int numCards =  robot.getProgramSheet().getRegister().getRegisterCards().size();
         assertFalse(numCards > 0);
     }
 
@@ -49,9 +51,9 @@ public class CardUITest {
     public void canSend5Cards() {
         CardUI ui = new CardUI(mainGame);
         for (int i = 0; i < 5; i++) { ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));}
-        ui.sendCards();
-        int numCards =  ui.robot.getProgramSheet().getRegister().getRegisterCards().size();
-        System.out.println(numCards);
+        Player robot = mainGame.robots.get(0);
+        ui.sendCards(robot);
+        int numCards =  robot.getProgramSheet().getRegister().getRegisterCards().size();
         assertTrue(numCards == 5);
     }
 }

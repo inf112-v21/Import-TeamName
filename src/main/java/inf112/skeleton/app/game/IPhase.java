@@ -1,5 +1,7 @@
 package inf112.skeleton.app.game;
 
+import inf112.skeleton.app.screens.cardsUI.CardUI;
+
 public interface IPhase {
 
     /**
@@ -7,6 +9,6 @@ public interface IPhase {
      * @param mainGame
      *
      */
-    void run(MainGame mainGame);
+    void run();
 
 }

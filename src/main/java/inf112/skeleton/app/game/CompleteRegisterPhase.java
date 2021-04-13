@@ -16,7 +16,7 @@ import static inf112.skeleton.app.game.MainGame.*;
 public class CompleteRegisterPhase implements IPhase {
 
     @Override
-    public void run(MainGame mainGame) {
+    public void run() {
         revealProgramCards();
         executeProgramCards();
         boardElementsMove();
@@ -64,7 +64,7 @@ public class CompleteRegisterPhase implements IPhase {
         }
     }
 
-    /**
+    /** DEBUG METHOD
      * Debug test method perform all the selected cards of a predefined player
      * @param player: test player whose cards will be executed
      */

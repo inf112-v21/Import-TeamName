@@ -90,7 +90,7 @@ public class CardDeckTest {
         player.getProgramSheet().getRegister().setCards(selectedCards);
         ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getRegisterCards();
         player.getProgramSheet().addDamage(6);
-        phase.run(mainGame); // Deal cards
+        phase.run(); // Deal cards
         ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getRegisterCards();
         assertEquals(oldRegister, newRegister);
 
@@ -112,7 +112,7 @@ public class CardDeckTest {
         player.getProgramSheet().getRegister().setCards(selectedCards);
         ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getRegisterCards();
         player.getProgramSheet().addDamage(3); // Take 3 damage, should wipe register
-        phase.run(mainGame); // Deal cards
+        phase.run(); // Deal cards
         ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getRegisterCards();
         assertEquals(new ArrayList<SimpleProgramCard>(), newRegister);
 
@@ -137,7 +137,7 @@ public class CardDeckTest {
         selectedCards.add(new MovementCard(1, CardType.BACK1));
         player.getProgramSheet().getRegister().setCards(selectedCards);
         player.getProgramSheet().addDamage(6); // Take 6 damage and lock register
-        phase.run(mainGame);
+        phase.run();
         int newCardDeckLength = 0;
         for(CardType types : deck.availableCards.keySet()) {
             newCardDeckLength += deck.availableCards.get(types);

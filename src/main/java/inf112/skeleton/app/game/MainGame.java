@@ -9,6 +9,7 @@ import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,19 +48,20 @@ public  final class MainGame {
      * Game Loop
      * Executes the phases in correct order
     */
-    public void gameLoop() {
+    public void gameLoop(CardUI cardUI) {
 
         IPhase dealCardsPhase = new DealCardsPhase();
+        ChooseCardsPhase chooseCardsPhase = new ChooseCardsPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
         IPhase completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
         while (gameOver == false) { //TODO: If game is over, end loop.
-            dealCardsPhase.run(this);
-            //chooseCardsPhase.run();
-            //programRegisterPhase.run(this);
+            dealCardsPhase.run();
+            chooseCardsPhase.run(cardUI);
+            completeRegisterPhase.run();
             //announcePowerDownPhase.run(this);
-            //completeRegisterPhase.run(this);
+
             //cleanupPhase.run(this);
         }
 
@@ -70,7 +72,7 @@ public  final class MainGame {
      * Things to do after the game loop is finished
      */
     public  void end() {
-        // Some critiera for the game to end?
+        // Some criteria for the game to end?
         gameOver = true;
     }
 

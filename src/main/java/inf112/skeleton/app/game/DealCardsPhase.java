@@ -4,6 +4,7 @@ package inf112.skeleton.app.game;
 
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,13 @@ public class DealCardsPhase implements IPhase {
 
 
     @Override
-    public void run(MainGame mainGame) {
+    public void run() {
         handleLockedCards();
         dealCardsToPlayers();
 
     }
+
+
 
     /**
      * Deals a new hand for every card, based on the created deck

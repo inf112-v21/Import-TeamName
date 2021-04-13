@@ -14,11 +14,8 @@ import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
-
-import static inf112.skeleton.app.game.MainGame.robots;
 
 
 /**
@@ -30,11 +27,11 @@ public class CardUI extends Actor {
     private Table table;
     private Stage stage;
     private  CardHand cardHand;
-    public  Player robot;
+   // public  Player robot;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
     private  GameScreen gameScreen;
-    private ArrayList<Player> robots;
+
 
     private int w;
     private int h;
@@ -44,8 +41,7 @@ public class CardUI extends Actor {
         this.mainGame = mainGame;
         this.table = new Table();
         System.out.println(mainGame.getRobots());
-        this.robot = mainGame.getRobots().get(0);
-        this.robots = mainGame.getRobots();
+        //this.robot = mainGame.getRobots().get(0);
         cardCount = 0;
         this.selectedCards = new ArrayList<>();
     }
@@ -54,7 +50,7 @@ public class CardUI extends Actor {
      * Clears visual for next player
      */
     public void clearTable() {
-        table.clear();
+        table.clearChildren();
 
     }
 
@@ -71,6 +67,9 @@ public class CardUI extends Actor {
     }
 
 
+
+
+
     /**
      * Method that displays the possible cards contained in a cardhand in a table.
      * @param w: Starting witdth of UI
@@ -80,11 +79,11 @@ public class CardUI extends Actor {
     /** Refaktor
      *
      */
-    public void setUpCards(int w, int h, GameScreen gameScreen) {
-        this.gameScreen = gameScreen;
+    public void generateCards(Player robot) {
         stage = gameScreen.getUIStage();
         stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
+        int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         table.setHeight(h-3);
         table.setPosition(w,h-h/4);
@@ -105,7 +104,7 @@ public class CardUI extends Actor {
                         cardCount--;
                         System.out.println("Removed card" + card);
                     }
-                    else if (cardCount >= 5) { System.out.println("Can't add anymore cards"); return; }
+                    else if (cardCount >= possibleNumcards) { System.out.println("Can't add anymore cards"); return; }
                     //Add selected card
                     else {
                         selectedCards.add(card);
@@ -134,7 +133,7 @@ public class CardUI extends Actor {
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                sendCards();
+                sendCards(robot);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -149,15 +148,17 @@ public class CardUI extends Actor {
      * Method called after a player has successfully selected five cards and clicked the button
      *  --> 'Announce Done' part of DealCardsPhase.java
      */
-    public void sendCards() {
-        if (selectedCards.size() < 5) {
+    public void sendCards(Player robot) {
+        int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
+        if (selectedCards.size() < possibleNumcards) {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");
             return;
         }
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
-        //robot.hasChosen()
-        mainGame.executeCards(robot);
+        robot.getProgramSheet().getRegister().chosenCards = true;
+        //mainGame.executeCards(robot);
+        table.clearChildren();
     }
 
 

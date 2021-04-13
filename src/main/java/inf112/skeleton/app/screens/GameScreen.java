@@ -13,13 +13,11 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.game.CompleteRegisterPhase;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
-import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import com.esotericsoftware.minlog.Log;
@@ -28,7 +26,6 @@ import java.io.IOException;
 
 
 import static com.badlogic.gdx.Gdx.gl;
-import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static java.lang.Math.round;
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -196,11 +193,12 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
         // Game loop
-        //mainGame.gameLoop();
-        this.cardui = new CardUI(mainGame);
-        uiStage.addActor(cardui.getTable());
-        this.cardui.setUpCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this); // Generate buttons and listeners for actions
 
+        this.cardui = new CardUI(mainGame);
+        cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
+        uiStage.addActor(cardui.getTable());
+        //this.cardui.generateCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4)); // Generate buttons and listeners for actions
+        //mainGame.gameLoop();
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
