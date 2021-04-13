@@ -59,19 +59,16 @@ public class CardDeckTest {
     }
 
     @Test
-    public void lockedRegisterCardHand() {
+    public void cardHandReductionAfterDamage() {
         /**
          * Checks cardhand after taking 6 damage. Cardhand should be empty
          */
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
-        ArrayList<SimpleProgramCard> oldCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
-        System.out.println("Old cards " + oldCardHand);
         mainGame.getRobots().get(0).getProgramSheet().addDamage(6);
         mainGame.getRobots().get(0).getProgramSheet().dealCards(deck);
         ArrayList<SimpleProgramCard> newCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
-        System.out.println("New cards " + newCardHand);
-        assertEquals(newCardHand, new ArrayList<SimpleProgramCard>());
+        assertEquals(newCardHand.size(), 3);
 
     }
 

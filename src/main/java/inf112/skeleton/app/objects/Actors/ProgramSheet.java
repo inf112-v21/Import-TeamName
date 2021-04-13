@@ -153,7 +153,7 @@ public class ProgramSheet {
      * Lock register
      */
 
-    public void lockRegister() {this.lockedRegister = true; }
+    public void lockRegister() {register.lockRegister(); }
 
     /**
      *

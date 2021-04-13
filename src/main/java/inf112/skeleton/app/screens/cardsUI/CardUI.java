@@ -76,6 +76,10 @@ public class CardUI extends Actor {
      * @param w: Starting witdth of UI
      * @param h Starting height of UI
      */
+
+    /** Refaktor
+     *
+     */
     public void setUpCards(int w, int h, GameScreen gameScreen) {
         this.gameScreen = gameScreen;
         stage = gameScreen.getUIStage();

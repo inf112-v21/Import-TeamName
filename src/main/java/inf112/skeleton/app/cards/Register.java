@@ -11,6 +11,10 @@ public class Register {
 
     private ArrayList<SimpleProgramCard> lockedRegisterCards;
 
+    public void lockRegister() {
+
+    }
+
     public Register() { registerCards = new ArrayList<>(); }
 
     public void addCardToRegister(SimpleProgramCard card) {
