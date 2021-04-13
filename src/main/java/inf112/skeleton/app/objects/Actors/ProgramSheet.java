@@ -13,8 +13,8 @@ public class ProgramSheet {
 
     private CardHand hand;
     private Register register;
-    private int damageTokens;
-    private int lifeTokens;
+    public int damageTokens;
+    public int lifeTokens;
     private List<Integer> flags;
     private boolean powerDown;
 
@@ -47,8 +47,8 @@ public class ProgramSheet {
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        if(this.damageTokens > 5) {
-            register.lockRegister(damageTokens - 5);
+        if(this.damageTokens >= 5) {
+            register.lockRegister(damageTokens - 4);
         }
 
     }
@@ -76,7 +76,7 @@ public class ProgramSheet {
             this.lifeTokens = 0;
         }
         if (this.lifeTokens >= 5) {
-            register.unlockRegister(lifeTokens - 5);
+            register.unlockRegister(lifeTokens - 4);
         }
     }
 

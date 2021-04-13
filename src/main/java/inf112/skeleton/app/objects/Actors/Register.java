@@ -40,11 +40,15 @@ public class Register {
         lockedRegisterCards = new ArrayList<>();
     }
 
-
+    /**
+     *
+     * @param receivedCards: received cards by CardUI. Total should not exceed 5
+     */
     public void addCardsToRegister(ArrayList<SimpleProgramCard> receivedCards) {
         wipeRegister();
         if (lockedRegisterCards.size() > 0) {registerCards.addAll(lockedRegisterCards); }
         registerCards.addAll(receivedCards);
+        if (registerCards.size() > 5) throw new IllegalArgumentException("More than 5 cards in register!");
     }
 
 

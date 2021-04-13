@@ -15,8 +15,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(GdxTestRunner.class)
 public class RegisterTests {
@@ -44,14 +43,42 @@ public class RegisterTests {
         exampleRegister.add(new MovementCard(1, CardType.BACK1));
     }
 
+
     @Test
     public void registerLocksAfterDamage() {
+        /**
+         *
+         */
+        Player player  = mainGame.robots.get(0);
+        player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
+        player.getProgramSheet().addDamage(5);
+        assertEquals(1,player.getProgramSheet().getLockedCards().size());
+    }
+
+
+
+    @Test
+    public void registerLocksAfterDamage2() {
+        /**
+         *
+         */
         Player player  = mainGame.robots.get(0);
         player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
         player.getProgramSheet().addDamage(6);
-        ArrayList<SimpleProgramCard> lockedCards  =player.getProgramSheet().getLockedCards();
-
-        assertEquals(1,lockedCards.size());
-
+        assertEquals(2,player.getProgramSheet().getLockedCards().size());
     }
+
+    @Test
+    public void registerLocksAfterDamage3() {
+        /**
+         *
+         */
+        Player player  = mainGame.robots.get(0);
+        player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
+        player.getProgramSheet().addDamage(7);
+        assertEquals(3,player.getProgramSheet().getLockedCards().size());
+    }
+
+
 }
+
