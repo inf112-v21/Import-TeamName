@@ -3,6 +3,11 @@ package inf112.skeleton.app.assetManager;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Assets {
 
@@ -40,6 +45,22 @@ public class Assets {
 
     public static final AssetDescriptor<Texture> VictoryImage =
             new AssetDescriptor<Texture>("Images/Victory.png", Texture.class);
+
+    public static final List<TextureRegion[][]> robotTextures = getRobotTextures();
+
+    /**
+     * @return List of all different colour textures a tank can have.
+     */
+    public static List<TextureRegion[][]> getRobotTextures() {
+        List<String> colour = new ArrayList<>(Arrays.asList("red","orange","blue","cyan","green","magenta","purple","yellow"));
+        List<TextureRegion[][]> textures = new ArrayList<>();
+
+        for (String co : colour) {
+            TextureRegion[][] tankTexture = new TextureRegion(new Texture("Images/robot_" + co + ".png")).split(300, 300);
+            textures.add(tankTexture);
+        }
+        return textures;
+    }
 
 
     public static void load() {

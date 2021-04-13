@@ -1,5 +1,6 @@
 package inf112.skeleton.app.game;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.enums.Direction;
@@ -25,7 +26,7 @@ public class CompleteRegisterPhase implements IPhase {
     }
 
     protected void revealProgramCards() {
-        //TODO: Is this 'nice to have'? Maybe just print to console.
+        //Is this 'nice to have'? Maybe just print to console.
     }
 
     /**
@@ -48,7 +49,7 @@ public class CompleteRegisterPhase implements IPhase {
                 moves.add(card); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
             }
 
-            Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
+            moves.sort(SimpleProgramCard::compareTo); //Sorts cards based on priority
 
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
@@ -76,7 +77,7 @@ public class CompleteRegisterPhase implements IPhase {
             if (player.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
             SimpleProgramCard playerCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
             moves.add(playerCard); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
-            Collections.sort(moves, SimpleProgramCard::compareTo); //Sorts cards based on priority
+            moves.sort(SimpleProgramCard::compareTo); //Sorts cards based on priority
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
                     SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
@@ -174,9 +175,12 @@ public class CompleteRegisterPhase implements IPhase {
                 //Conveyor cannot push robots onto other robots. //TODO: Implement conveyor collision logic.
                 if (robot.occupied(Direction.goDirection(robotLocation, con.getPushDirection()))) continue;
 
+                TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+                playerTile.setCell((int) robotLocation.x, (int) robotLocation.y, new TiledMapTileLayer.Cell()); //Clear previous position
+
                 //If express, move only express conveyors
                 if (isExpress) {
-                    if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection())); //Move to new position
                 } else {
                     if (con.getSpeed() == 1) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 }
