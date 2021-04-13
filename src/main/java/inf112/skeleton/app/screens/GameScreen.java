@@ -197,8 +197,10 @@ public class GameScreen extends InputAdapter implements Screen {
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
+        mainGame.gameLoop(cardui);
+        //cardui.generateCards(mainGame.robots.get(0));
         //this.cardui.generateCards((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4)); // Generate buttons and listeners for actions
-        //mainGame.gameLoop();
+
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);

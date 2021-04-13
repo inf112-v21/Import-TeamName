@@ -14,12 +14,19 @@ import static inf112.skeleton.app.game.MainGame.robots;
 public class ChooseCardsPhase {
 
 
-    public void run(CardUI cardUI) {
+    public void debugRun(CardUI cardUI) {
+        Player robot = robots.get(0);
+        cardUI.generateCards(robot);
+    }
+
+    public void run(CardUI cardUI) throws InterruptedException {
         for (Player robot : robots) {
             cardUI.generateCards(robot);
-            while (!robot.getProgramSheet().getRegister().chosenCards) { // Wait for the robot to choose cards
+           while (!robot.getProgramSheet().getRegister().chosenCards) { // Wait for the robot to choose cards
+              // try
+               //wait();
             }
-            cardUI.clearTable();
+            //cardUI.clearTable();
             robot.getProgramSheet().getRegister().chosenCards = false;
 
         }

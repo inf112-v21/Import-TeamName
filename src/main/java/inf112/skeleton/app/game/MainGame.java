@@ -24,13 +24,12 @@ public  final class MainGame {
    public static CardDeck deck;
    private boolean gameOver = false;
 
+   public CompleteRegisterPhase completeRegisterPhase;
 
     /**
      * Constructor method
      */
-    public MainGame() {
-        robots = new ArrayList<>();
-    }
+    public MainGame() { robots = new ArrayList<>(); }
 
     /**
      * Setup:
@@ -53,17 +52,18 @@ public  final class MainGame {
         IPhase dealCardsPhase = new DealCardsPhase();
         ChooseCardsPhase chooseCardsPhase = new ChooseCardsPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
-        IPhase completeRegisterPhase = new CompleteRegisterPhase();
+        completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
-        while (gameOver == false) { //TODO: If game is over, end loop.
-            dealCardsPhase.run();
-            chooseCardsPhase.run(cardUI);
-            completeRegisterPhase.run();
-            //announcePowerDownPhase.run(this);
+        dealCardsPhase.run();
+        chooseCardsPhase.debugRun(cardUI); // For debugging
+        //chooseCardsPhase.run(cardUI);
+        //completeRegisterPhase.executePlayerProgramCards(robots.get(0));
+        //completeRegisterPhase.run();
+        //announcePowerDownPhase.run(this);
 
-            //cleanupPhase.run(this);
-        }
+        //cleanupPhase.run(this);
+
 
     }
 
@@ -124,5 +124,6 @@ public  final class MainGame {
         System.out.println("Position: " + player.getPosition() + "\n");
 
     }
+
 
 }

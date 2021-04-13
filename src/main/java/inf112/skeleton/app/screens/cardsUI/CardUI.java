@@ -25,13 +25,10 @@ import java.util.ArrayList;
 public class CardUI extends Actor {
 
     private Table table;
-    private Stage stage;
     private  CardHand cardHand;
-   // public  Player robot;
+    private Stage stage;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
-    private  GameScreen gameScreen;
-
 
     private int w;
     private int h;
@@ -39,20 +36,11 @@ public class CardUI extends Actor {
 
     public CardUI(MainGame mainGame) {
         this.mainGame = mainGame;
-        this.table = new Table();
-        System.out.println(mainGame.getRobots());
-        //this.robot = mainGame.getRobots().get(0);
         cardCount = 0;
         this.selectedCards = new ArrayList<>();
     }
 
-    /** TODO
-     * Clears visual for next player
-     */
-    public void clearTable() {
-        table.clearChildren();
 
-    }
 
     /**
      * Details
@@ -63,10 +51,11 @@ public class CardUI extends Actor {
     public void setUp(int w, int h, GameScreen gameScreen) {
         this.w = w;
         this.h = h;
-        this.gameScreen = gameScreen;
+        this.stage = gameScreen.getUIStage();
+        this.table = new Table();
+        table.setHeight(h-3);
+        table.setPosition(w,h-h/4);
     }
-
-
 
 
 
@@ -80,14 +69,9 @@ public class CardUI extends Actor {
      *
      */
     public void generateCards(Player robot) {
-        stage = gameScreen.getUIStage();
-        stage.addActor(table);
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
-        table.setHeight(h-3);
-        table.setPosition(w,h-h/4);
-        System.out.println(table.getMinHeight());
         for (SimpleProgramCard card : cardHandList) {
             System.out.println(card.getType());
             ImageButton cardButton = card.getCardButton();
@@ -157,7 +141,7 @@ public class CardUI extends Actor {
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
         robot.getProgramSheet().getRegister().chosenCards = true;
-        //mainGame.executeCards(robot);
+        mainGame.completeRegisterPhase.executePlayerProgramCards(robot);
         table.clearChildren();
     }
 
