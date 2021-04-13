@@ -28,7 +28,7 @@ public class DealCardsPhase implements IPhase {
      */
     private void dealCardsToPlayers() {
         for (SimpleRobot robot : robots) {
-            robot.getProgramSheet().dealCards(deck); // Deal cards to each robot
+            robot.getProgramSheet().dealCards(); // Deal cards to each robot
         }
 
     }
@@ -39,10 +39,14 @@ public class DealCardsPhase implements IPhase {
     private void handleLockedCards() {
         ArrayList<SimpleProgramCard> lockedCards = new ArrayList<>();
         for (SimpleRobot robot: robots) {
-            //System.out.println("Registercards" + robot.getProgramSheet().getRegister().getRegisterCards());
-            //System.out.println("Lockred? " +robot.getProgramSheet().getLockedRegister());
-            if (robot.getProgramSheet().getLockedRegister()) lockedCards.addAll(robot.getProgramSheet().getRegister().getRegisterCards());
-            else robot.getProgramSheet().getRegister().wipeRegister();  // Wipe register
+
+            // Mulig å fjerne?
+            if (robot.getProgramSheet().getNumLockedRegisterCards() > 0) lockedCards.addAll(robot.getProgramSheet().getRegister().getLockedCards());
+            /**
+             * Wipes?
+             * TODO
+             */
+            //else robot.getProgramSheet().getRegister().wipeRegister();  // Wipe register
         }
         deck.createDeck(); // Creates new deck
         deck.handleLockedCards(lockedCards); // Calls upon method in carddeck which removes locked cards from deck

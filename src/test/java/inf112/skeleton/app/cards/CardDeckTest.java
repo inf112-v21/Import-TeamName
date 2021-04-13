@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -66,7 +65,7 @@ public class CardDeckTest {
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
         mainGame.getRobots().get(0).getProgramSheet().addDamage(6);
-        mainGame.getRobots().get(0).getProgramSheet().dealCards(deck);
+        mainGame.getRobots().get(0).getProgramSheet().dealCards();
         ArrayList<SimpleProgramCard> newCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
         assertEquals(newCardHand.size(), 3);
 
