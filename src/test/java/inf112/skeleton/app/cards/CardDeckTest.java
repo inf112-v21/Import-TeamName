@@ -120,36 +120,7 @@ public class CardDeckTest {
     }
 
 
-    @Test
-    public void lockedRegisterCardsCannotBeDealtFromDeck() {
-        DealCardsPhase phase = new DealCardsPhase();
-        CardDeck deck = new CardDeck();
-        int oldCardDeckLength = 0;
-        for(CardType types : deck.availableCards.keySet()) {
-            oldCardDeckLength += deck.availableCards.get(types);
-        }
 
-        Player player = mainGame.getRobots().get(0);
-        ArrayList<SimpleProgramCard> selectedCards = new ArrayList<>();
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        selectedCards.add(new MovementCard(1, CardType.BACK1));
-        player.getProgramSheet().getRegister().setCards(selectedCards);
-        player.getProgramSheet().addDamage(6); // Take 6 damage and lock register
-        phase.run(mainGame);
-        int newCardDeckLength = 0;
-        for(CardType types : deck.availableCards.keySet()) {
-            newCardDeckLength += deck.availableCards.get(types);
-        }
-        System.out.println("back cards" + deck.availableCards.get(CardType.BACK1));
-        System.out.println("Old card length" + oldCardDeckLength);
-        System.out.println("New cards length " + newCardDeckLength);
-        assertTrue((oldCardDeckLength-5) == newCardDeckLength );
-
-
-    }
 
 
 
