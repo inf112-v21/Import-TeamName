@@ -20,7 +20,7 @@ public class CleanupPhase implements IPhase {
                 RepairSite repair = (RepairSite) gameBoard.getNonWallTileOnPos(robot.getPosition());
 
                 robot.getProgramSheet().setArchiveMarker(repair.getPosition());
-                robot.getProgramSheet().addLife(1);
+                robot.getProgramSheet().addDamage(-1); //Repair 1 damageToken
 
                 //If robot at double repairSite. Give 1 option card. Imlpement under. This is not MVP.
                 //if (repair.getStrength() == 2) robot.getProgramSheet().give1optionCard
