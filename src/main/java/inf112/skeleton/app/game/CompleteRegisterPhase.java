@@ -189,7 +189,8 @@ public class CompleteRegisterPhase implements IPhase {
                 if (isExpress) {
                     if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection())); //Move to new position
                 } else {
-                    if (con.getSpeed() == 1) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    //Move all conveyors.
+                    if (con.getSpeed() == 1 || con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 }
 
                 //If robot was pushed onto another conveyor.
