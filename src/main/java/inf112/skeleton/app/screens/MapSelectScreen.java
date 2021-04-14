@@ -3,13 +3,13 @@ package inf112.skeleton.app.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -24,7 +24,6 @@ public class MapSelectScreen implements Screen {
 
     final RoboRally switcher;
 
-    private TextField playerCount;
     private Stage stage;
     private Skin skin;
 
@@ -32,6 +31,7 @@ public class MapSelectScreen implements Screen {
 
     float width;
     float height;
+    int count;
 
     String mapPath;
     FitViewport viewPort;
@@ -56,11 +56,21 @@ public class MapSelectScreen implements Screen {
 
 
         //UI elements
-        playerCount = new TextField("4", skin);
+        SelectBox<Integer> playerCount = new SelectBox<Integer>(skin);
+        playerCount.setItems(1, 2, 3, 4, 5, 6, 7, 8);
         playerCount.setWidth(width*0.04f);
         playerCount.setHeight(height*0.04f);
         playerCount.setX(alignToAxisX - playerCount.getWidth()/2);
         playerCount.setY(height - playerCount.getHeight() - height*0.11f);
+
+
+
+        playerCount.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                count = playerCount.getSelected();
+            }
+        });
 
         final Button chess = new TextButton("Chess", skin);
         chess.setWidth(width*0.40f);
@@ -99,12 +109,6 @@ public class MapSelectScreen implements Screen {
         stage.addActor(vault);
         stage.addActor(backButton);
 
-
-        playerCount.setTextFieldListener(new TextField.TextFieldListener() {
-            public void keyTyped(TextField textField, char c) {
-                if (c == '\n') textField.getOnscreenKeyboard().show(false);
-            }
-        });
 
         chess.addListener(new ClickListener() {
             @Override
@@ -159,8 +163,6 @@ public class MapSelectScreen implements Screen {
     }
 
     private void startGame() {
-        int count = parseInt(playerCount.getText()); //default atm, is 4.
-
         //Check that legal amount of players are selected.
         if (count < 9 && count > 0) {
             this.map = new TmxMapLoader().load(mapPath);
