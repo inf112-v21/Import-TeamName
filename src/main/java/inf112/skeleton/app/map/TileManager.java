@@ -89,44 +89,60 @@ public class TileManager {
             case WALL_TOP_RIGHT_CORNER:     return new Wall(pos, Direction.NORTH,Direction.EAST);
 
             //Double conveyor
-            case DOUBLE_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,2);
-            case DOUBLE_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST, 2);
-            case DOUBLE_CONVEYOR_UP: return new Conveyor(pos, Direction.NORTH, 2);
-            case DOUBLE_CONVEYOR_RIGHT: return new Conveyor(pos, Direction.EAST, 2);
+            case DOUBLE_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,2, false);
+            case DOUBLE_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST, 2,false);
+            case DOUBLE_CONVEYOR_UP: return new Conveyor(pos, Direction.NORTH, 2, false);
+            case DOUBLE_CONVEYOR_RIGHT: return new Conveyor(pos, Direction.EAST, 2, false);
             //Double conveyor corner
-            case DOUBLE_CONVEYOR_DOWN_RIGHT: return new Conveyor(pos, Direction.EAST,2);
-            case DOUBLE_CONVEYOR_RIGHT_UP: return new Conveyor(pos, Direction.NORTH, 2);
-            case DOUBLE_CONVEYOR_LEFT_UP: return new Conveyor(pos, Direction.NORTH,2);
-            case DOUBLE_CONVEYOR_DOWN_LEFT: return new Conveyor(pos,Direction.WEST, 2);
-            case DOUBLE_CONVEYOR_LEFT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2);
-            case DOUBLE_CONVEYOR_UP_LEFT: return new Conveyor(pos, Direction.WEST,2);
-            case DOUBLE_CONVEYOR_UP_RIGHT: return new Conveyor(pos, Direction.EAST, 2);
-            case DOUBLE_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2);
+            case DOUBLE_CONVEYOR_DOWN_RIGHT: return new Conveyor(pos, Direction.EAST,2,true);
+            case DOUBLE_CONVEYOR_RIGHT_UP: return new Conveyor(pos, Direction.NORTH, 2,true);
+            case DOUBLE_CONVEYOR_LEFT_UP: return new Conveyor(pos, Direction.NORTH,2,true);
+            case DOUBLE_CONVEYOR_DOWN_LEFT: return new Conveyor(pos,Direction.WEST, 2,true);
+            case DOUBLE_CONVEYOR_LEFT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2,true);
+            case DOUBLE_CONVEYOR_UP_LEFT: return new Conveyor(pos, Direction.WEST,2,true);
+            case DOUBLE_CONVEYOR_UP_RIGHT: return new Conveyor(pos, Direction.EAST, 2,true);
+            case DOUBLE_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos, Direction.SOUTH, 2,true);
 
 
-            case NORMAL_CONVEYOR_LEFT_DOWN: return new Conveyor(pos,Direction.SOUTH,1);
-            case NORMAL_CONVEYOR_UP_LEFT: return new Conveyor(pos,Direction.WEST,1);
-            case NORMAL_CONVEYOR_UP_RIGHT: return new Conveyor(pos,Direction.EAST,1);
-            case NORMAL_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos,Direction.NORTH,1);
-            case NORMAL_CONVEYOR_DOWN_RIGHT: return new Conveyor(pos,Direction.EAST,1);
-            case NORMAL_CONVEYOR_RIGHT_UP: return new Conveyor(pos,Direction.NORTH,1);
-            case NORMAL_CONVEYOR_LEFT_UP: return new Conveyor(pos,Direction.NORTH,1);
-            case NORMAL_CONVEYOR_DOWN_LEFT: return new Conveyor(pos,Direction.WEST,1);
-            case NORMAL_CONVEYOR_UP: return new Conveyor(pos,Direction.NORTH,1);
-            case NORMAL_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,1);
-            case NORMAL_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST,1);
-            case NORMAL_CONVEYOR_RIGHT: return new Conveyor(pos,Direction.EAST,1);
+            //Normal Conveyor
+            case NORMAL_CONVEYOR_UP: return new Conveyor(pos,Direction.NORTH,1, false);
+            case NORMAL_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,1,false);
+            case NORMAL_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST,1, false);
+            case NORMAL_CONVEYOR_RIGHT: return new Conveyor(pos,Direction.EAST,1, false);
+            //Conveyor Turn (In) (Out)
+            case NORMAL_CONVEYOR_LEFT_DOWN: return new Conveyor(pos,Direction.SOUTH,1, true);
+            case NORMAL_CONVEYOR_UP_LEFT: return new Conveyor(pos,Direction.WEST,1, true);
+            case NORMAL_CONVEYOR_UP_RIGHT: return new Conveyor(pos,Direction.EAST,1, true);
+            case NORMAL_CONVEYOR_RIGHT_DOWN: return new Conveyor(pos,Direction.NORTH,1, true);
+            case NORMAL_CONVEYOR_DOWN_RIGHT: return new Conveyor(pos,Direction.EAST,1,true);
+            case NORMAL_CONVEYOR_RIGHT_UP: return new Conveyor(pos,Direction.NORTH,1,true);
+            case NORMAL_CONVEYOR_LEFT_UP: return new Conveyor(pos,Direction.NORTH,1,true);
+            case NORMAL_CONVEYOR_DOWN_LEFT: return new Conveyor(pos,Direction.WEST,1,true);
 
             //Laser (Position) (Shooting Direction)
-            case LASER_DOWN_UP: return new Laser(pos,Direction.NORTH, 1);
+            case LASER_DOWN_UP:    return new Laser(pos,Direction.NORTH, 1);
             case LASER_LEFT_RIGHT: return new Laser(pos,Direction.EAST, 1);
-            case LASER_TOP_DOWN: return new Laser(pos,Direction.SOUTH, 1);
+            case LASER_TOP_DOWN:   return new Laser(pos,Direction.SOUTH, 1);
             case LASER_RIGHT_LEFT: return new Laser(pos,Direction.WEST, 1);
 
             case LASER_DOUBLE_DOWN: return new Laser(pos,Direction.SOUTH, 2);
             case LASER_DOUBLE_LEFT: return new Laser(pos,Direction.WEST, 2);
-            case LASER_DOUBLE_UP: return new Laser(pos,Direction.NORTH, 2);
+            case LASER_DOUBLE_UP:   return new Laser(pos,Direction.NORTH, 2);
             case LASER_DOUBLE_RIGHT: return new Laser(pos,Direction.EAST, 2);
+
+            //Double
+            case DOUBLE_CONVEYOR_TO_UP_FROM_LEFT_AND_DOWN:    return new Conveyor(pos, Direction.NORTH,2, true);
+            case DOUBLE_CONVEYOR_TO_RIGHT_FROM_LEFT_AND_UP:   return new Conveyor(pos, Direction.EAST, 2, true);
+            case DOUBLE_CONVEYOR_TO_DOWN_FROM_RIGHT_AND_UP:   return new Conveyor(pos, Direction.SOUTH, 2, true);
+            case DOUBLE_CONVEYOR_TO_LEFT_FROM_RIGHT_AND_DOWN: return new Conveyor(pos, Direction.WEST, 2, true);
+            case DOUBLE_CONVEYOR_TO_UP_FROM_RIGHT_AND_DOWN:   return new Conveyor(pos, Direction.NORTH, 2, true);
+            case DOUBLE_CONVEYOR_TO_RIGHT_FROM_LEFT_AND_DOWN: return new Conveyor(pos, Direction.EAST,2,true);
+            case DOUBLE_CONVEYOR_TO_RIGHT_FROM_UP_AND_DOWN:   return new Conveyor(pos, Direction.EAST, 2, true);
+            case DOUBLE_CONVEYOR_TO_DOWN_FROM_RIGHT_AND_LEFT: return new Conveyor(pos, Direction.SOUTH, 2, true);
+            case DOUBLE_CONVEYOR_TO_LEFT_FROM_UP_AND_DOWN:    return new Conveyor(pos, Direction.WEST, 2, true);
+            case DOUBLE_CONVEYOR_TO_UP_FROM_LEFT_AND_RIGHT:   return new Conveyor(pos, Direction.NORTH, 2, true);
+            case DOUBLE_CONVEYOR_TO_LEFT_FROM_RIGHT_AND_UP:   return new Conveyor(pos, Direction.WEST, 2, true);
+            case DOUBLE_CONVEYOR_TO_DOWN_FROM_LEFT_AND_UP:    return new Conveyor(pos, Direction.SOUTH, 2, true);
 
 
             default: throw new IllegalArgumentException("Given tile does not exist: " + tile);

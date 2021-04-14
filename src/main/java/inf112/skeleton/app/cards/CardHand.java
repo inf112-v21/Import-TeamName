@@ -10,7 +10,7 @@ import static inf112.skeleton.app.game.MainGame.deck;
  */
 public class CardHand {
 
-    private final int range = 10; // Range of priority numbers
+    private final int range = 500; // Range of priority numbers
 
     private ArrayList<SimpleProgramCard> cards;
     private ArrayList<CardType> chosenCardTypes;
@@ -29,7 +29,10 @@ public class CardHand {
         for (int i = 0; i < numCards; i++) { chosenCardTypes.add(deck.dealACard()); }
     }
 
-
+    /**
+     *
+     * @return: A priority number
+     */
     public int getPriority()  {
         Random rand = new Random();
         return rand.nextInt(range);
@@ -37,12 +40,12 @@ public class CardHand {
     public void generateCardDeck() {
         for (CardType type : chosenCardTypes) {
             switch(type) {
-                case MOVE1:       cards.add(new MovementCard(1,CardType.MOVE1)); break;
-                case MOVE2:       cards.add(new MovementCard(1, CardType.MOVE2)); break;
-                case MOVE3:       cards.add(new MovementCard(1, CardType.MOVE3)); break;
-                case BACK1:       cards.add(new MovementCard(1, CardType.BACK1)); break;
-                case ROTATERIGHT: cards.add(new RotationCard(1, CardType.ROTATERIGHT)); break;
-                case ROTATELEFT:  cards.add(new RotationCard(1, CardType.ROTATELEFT)); break;
+                case MOVE1:       cards.add(new MovementCard(getPriority(),CardType.MOVE1)); break;
+                case MOVE2:       cards.add(new MovementCard(getPriority(), CardType.MOVE2)); break;
+                case MOVE3:       cards.add(new MovementCard(getPriority(), CardType.MOVE3)); break;
+                case BACK1:       cards.add(new MovementCard(getPriority(), CardType.BACK1)); break;
+                case ROTATERIGHT: cards.add(new RotationCard(getPriority(), CardType.ROTATERIGHT)); break;
+                case ROTATELEFT:  cards.add(new RotationCard(getPriority(), CardType.ROTATELEFT)); break;
                 case UTURN:       cards.add(new RotationCard(getPriority(), CardType.UTURN)); break;
                 default:          throw new IllegalArgumentException("Not valid cardtype, got" + type);
             }

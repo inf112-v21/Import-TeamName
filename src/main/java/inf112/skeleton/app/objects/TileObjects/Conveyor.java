@@ -11,11 +11,13 @@ public class Conveyor extends SimpleObject {
 
     private final Direction pushDirection;
     private final Integer speed; // Normal push 1 tile, Fast, push 2 tiles in 2 turns
+    private final boolean turn;  // If a conveyor should change lookdirection of actor standing on it.
 
-    public Conveyor(Vector2 position, Direction pushDirection, Integer speed){
+    public Conveyor(Vector2 position, Direction pushDirection, Integer speed, boolean turn){
         super(position);
         this.pushDirection = pushDirection;
         this.speed = speed;
+        this.turn = turn;
     }
 
     public Direction getPushDirection() {
@@ -23,6 +25,10 @@ public class Conveyor extends SimpleObject {
     }
 
     public Integer getSpeed() {
-        return speed;
+        return this.speed;
+    }
+
+    public boolean isTurn() {
+        return this.turn;
     }
 }

@@ -23,6 +23,7 @@ public  final class MainGame {
 
    public CompleteRegisterPhase completeRegisterPhase;
    public ChooseCardsPhase chooseCardsPhase;
+   public CleanupPhase cleanupPhase;
 
     /**
      * Constructor method
@@ -51,7 +52,7 @@ public  final class MainGame {
         chooseCardsPhase = new ChooseCardsPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
         completeRegisterPhase = new CompleteRegisterPhase();
-        IPhase cleanupPhase = new CleanupPhase();
+        cleanupPhase = new CleanupPhase();
 
         dealCardsPhase.run();
         //chooseCardsPhase.debugRun( cardUI); // For debugging

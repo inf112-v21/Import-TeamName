@@ -167,7 +167,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     }
 
     public TiledMapTileLayer.Cell getPlayerCellWon() {
-        return playerCellWon;
+        return getPlayerCell();
     }
 
     @Override

@@ -51,7 +51,16 @@ public class ProgramSheet {
             register.lockRegister(damageTokens - 4);
         }
 
+        if(this.damageTokens < 5) {
+            /**
+             * TODO
+             */
+            // Endre til at alt slettes?
+            register.unlockRegister(damageTokens - 4);
+        }
     }
+
+
 
 
 
@@ -75,9 +84,7 @@ public class ProgramSheet {
         if (this.lifeTokens < 0) {
             this.lifeTokens = 0;
         }
-        if (this.lifeTokens >= 5) {
-            register.unlockRegister(lifeTokens - 4);
-        }
+
     }
 
     public void loseLife(){

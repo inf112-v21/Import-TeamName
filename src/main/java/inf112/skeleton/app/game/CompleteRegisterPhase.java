@@ -47,7 +47,7 @@ public class CompleteRegisterPhase implements IPhase {
 
             //Get 1 card from each player/robot
             for (SimpleRobot robot : robots) {
-                if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots.
+                if (robot.getProgramSheet().getPowerDown() || robot.getProgramSheet().isDead()) continue; //Skip powered down robots.
                 if (robot.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
 
                 SimpleProgramCard card = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
