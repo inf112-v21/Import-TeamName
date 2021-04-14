@@ -72,6 +72,7 @@ public class CardUI extends Actor {
      *
      */
     public void generateCards(Player robot) {
+        if(robot.getProgramSheet().isDead()) return;
         cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards

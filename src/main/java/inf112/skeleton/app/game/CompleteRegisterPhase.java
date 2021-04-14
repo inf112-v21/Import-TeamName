@@ -155,7 +155,7 @@ public class CompleteRegisterPhase implements IPhase {
         for (SimpleRobot robot : robots) {
             if (robot.getPosition().equals(currentPosOfLaser)) {
                 //Robot is hit by laser. Take damage
-                robot.getProgramSheet().addDamage(nrOfLasers); //TODO: Implement how much damage robot should take based on rules.
+                robot.getProgramSheet().addDamage(nrOfLasers);
                 return; //Robot is hit, stop lasers.
             }
         }

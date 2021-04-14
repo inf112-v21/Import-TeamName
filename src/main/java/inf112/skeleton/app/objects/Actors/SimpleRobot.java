@@ -130,7 +130,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
     public boolean checkPosition(SimpleRobot robot) {
         Vector2 playerPos = robot.getPosition();
         //If player is on Pit or outside map. Set player to dead.
-        if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
+        if (!gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
             robotLoseLife(robot);
             //TODO: Remove this dead robot from map.
             // Must happen here, cannot be in CompleteRegisterPhase - Endre

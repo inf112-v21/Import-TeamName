@@ -126,24 +126,7 @@ public class GameScreen extends InputAdapter implements Screen {
         return true;
     }
 
-    /**
-     * Change camera location based on WASD keystrokes
-     */
-    public void moveCamera(int keycode) {
 
-        if(keycode == Input.Keys.LEFT)
-            this.gameCamera.translate(-32,0);
-        if(keycode == Input.Keys.RIGHT)
-            this.gameCamera.translate(32,0);
-        if(keycode == Input.Keys.UP)
-            this.gameCamera.translate(0,32);
-        if(keycode == Input.Keys.DOWN)
-            this.gameCamera.translate(0,-32);
-        if(keycode == Input.Keys.NUM_1)
-            this.map.getLayers().get(0).setVisible(!map.getLayers().get(0).isVisible());
-        if(keycode == Input.Keys.NUM_2)
-            this.map.getLayers().get(1).setVisible(!map.getLayers().get(1).isVisible());
-    }
 
     @Override
     public void dispose() {
@@ -164,7 +147,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
         gameLoopEventHandler.run(); //Handles re-drawing of players.   | Changes texture if on pit or flag, only for testing
 
-
         mapRenderer.render();
 
         // Draw card visuals //
@@ -176,53 +158,17 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
 
-
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
         mainGame.gameLoop(cardui); // Game loop starrt
-
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
         } else {
             Gdx.input.setInputProcessor(this.uiStage); // Set input to Card UI
         }
-
-        /**
-        client = new RRClient(name);
-
-        //TODO Bug : If singleplayer is selected, game still tries to connect to an ip. Should not do so.
-
-        //if (hosting != false) {
-          //  Log.info("starting server");
-         //   try {
-         //       server = new RRServer();
-        //        client.connect("localhost");
-         //   } catch (IOException e) {
-        //        e.printStackTrace();
-        //        Log.info("Unable to start server.");
-        //        Gdx.app.exit();
-       //     }
-       // } else {
-       //     client.connect(ip);
-      //  }
-
-        if (hosting != false) {
-            Log.info("starting server");
-            try {
-                server = new RRServer();
-                client.connect("localhost");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.info("Unable to start server.");
-                Gdx.app.exit();
-            }
-        } else {
-            client.connect(ip);
-        }
-         */
-
+        
     }
 
 

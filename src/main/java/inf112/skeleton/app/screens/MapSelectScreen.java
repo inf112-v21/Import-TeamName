@@ -159,7 +159,7 @@ public class MapSelectScreen implements Screen {
     }
 
     private void startGame() {
-        int count = parseInt(playerCount.getText()); //default atm, is 4.
+        int count = parseInt(playerCount.getText());
 
         //Check that legal amount of players are selected.
         if (count < 9 && count > 0) {

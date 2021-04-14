@@ -78,6 +78,7 @@ public  final class MainGame {
      * @param numPlayers
      */
     public static void setNumPlayers(int numPlayers) {
+        // input string list of names, length == numPlayers
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         //TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
