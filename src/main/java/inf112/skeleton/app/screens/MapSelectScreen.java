@@ -31,7 +31,7 @@ public class MapSelectScreen implements Screen {
 
     float width;
     float height;
-    int count;
+    int count = 1;
 
     String mapPath;
     FitViewport viewPort;
