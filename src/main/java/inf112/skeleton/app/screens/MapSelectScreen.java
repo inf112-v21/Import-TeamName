@@ -163,17 +163,15 @@ public class MapSelectScreen implements Screen {
     }
 
     private void startGame() {
-        //Check that legal amount of players are selected.
-        if (count < 9 && count > 0) {
-            this.map = new TmxMapLoader().load(mapPath);
-            Board tempBoard = new Board(map);
-            if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.
+        this.map = new TmxMapLoader().load(mapPath);
+        Board tempBoard = new Board(map);
+        if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.
 
-            mainGame.setup(map);
-            mainGame.setNumPlayers(count);
-            switcher.getGameScreen().setMap(map);
-            switcher.setGameScreen(mainGame);
-        }
+        mainGame.setup(map);
+        mainGame.setNumPlayers(count);
+        switcher.getGameScreen().setMap(map);
+        switcher.setGameScreen(mainGame);
+
     }
 
     @Override
