@@ -40,7 +40,6 @@ public class CardUI extends Actor {
      */
     public CardUI(MainGame mainGame) {
         this.mainGame = mainGame;
-        cardCount = 0;
         this.selectedCards = new ArrayList<>();
     }
 
@@ -73,6 +72,7 @@ public class CardUI extends Actor {
      *
      */
     public void generateCards(Player robot) {
+        cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
@@ -145,7 +145,16 @@ public class CardUI extends Actor {
         System.out.println("Cards sent to register: " + selectedCards);
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
         robot.getProgramSheet().getRegister().chosenCards = true;
-        mainGame.executeCards(robot);
+
+        // Reste count and card selection
+        selectedCards = new ArrayList<>();
+        cardCount = 0;
+
+
+        table.clearChildren();
+        mainGame.chooseCardsPhase.run(mainGame, this);
+
+        //mainGame.executeCards(robot);
     }
 
 

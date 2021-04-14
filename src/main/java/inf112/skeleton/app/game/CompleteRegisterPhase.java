@@ -8,6 +8,8 @@ import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.*;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,13 +18,15 @@ import static inf112.skeleton.app.game.MainGame.*;
 public class CompleteRegisterPhase implements IPhase {
 
     @Override
-    public void run() {
+    public void run(MainGame mainGame, CardUI cardUI) {
         revealProgramCards();
         executeProgramCards();
         boardElementsMove();
         lasersFire();
 
+
         updateCheckPoints(); //Checks if robot is on flag
+        mainGame.gameLoop(cardUI);
     }
 
     protected void revealProgramCards() {

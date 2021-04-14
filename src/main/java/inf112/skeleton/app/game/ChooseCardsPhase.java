@@ -12,58 +12,45 @@ import static inf112.skeleton.app.game.MainGame.robots;
  * Choose cards
  */
 public class ChooseCardsPhase extends Thread {
-    Thread wait;
+
+
+
 
     public void debugRun(CardUI cardUI) {
+
         Player robot = robots.get(0);
         cardUI.generateCards(robot);
     }
 
         /**
          *
+         * @param mainGame
          * @param cardUI
 
          */
-        public void run(CardUI cardUI)  {
-            for (Player robot : robots) {
-                cardUI.generateCards(robot);
-                try {
-                    Thread.sleep(50000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                while (!robot.getProgramSheet().getRegister().chosenCards) {
-                        Thread.onSpinWait();
-                    }
+        public void run(MainGame mainGame, CardUI cardUI)  {
 
-                robot.getProgramSheet().getRegister().chosenCards = false;
+            int i = 0;
+            for (Player robot: robots) {
+                i++;
+                if (!robot.getProgramSheet().getRegister().chosenCards) {
+                    System.out.println("#################################");
+                    System.out.println("Player number " + i + " 's turn");
 
-            }
-
-        //
-    }
-
-    public void recursiveWait(Player robot) {
-            if (!robot.getProgramSheet().getRegister().chosenCards) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    cardUI.generateCards(robot); // Generate cards for player that has not chosen cards
+                    return; // Leave chooseCards
                 }
             }
+            resetSelection();
+            mainGame.completeRegisterPhase.run(mainGame, cardUI);
+
     }
 
-    /**
-     * Wait for selection
-     * @param robot: Player to wait for
-     */
-    private void waitForPlayerSelection(Player robot) throws InterruptedException {
-        while (!robot.getProgramSheet().getRegister().chosenCards) {
-            wait();
-            //Thread.sleep(20);
-            if (robot.getProgramSheet().getRegister().chosenCards) break;
-           // wait.wait(200);
-
+    public void resetSelection() {
+        for (Player robot: robots) {
+            robot.getProgramSheet().getRegister().chosenCards = false;
         }
     }
+
+
 }

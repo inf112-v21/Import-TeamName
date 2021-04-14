@@ -1,7 +1,5 @@
 package inf112.skeleton.app.game;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.assetManager.Assets;
@@ -12,7 +10,6 @@ import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -25,6 +22,7 @@ public  final class MainGame {
    private boolean gameOver = false;
 
    public CompleteRegisterPhase completeRegisterPhase;
+   public ChooseCardsPhase chooseCardsPhase;
 
     /**
      * Constructor method
@@ -49,17 +47,15 @@ public  final class MainGame {
     */
     public void gameLoop(CardUI cardUI)  {
 
-        IPhase dealCardsPhase = new DealCardsPhase();
-        ChooseCardsPhase chooseCardsPhase = new ChooseCardsPhase();
+        DealCardsPhase dealCardsPhase = new DealCardsPhase();
+        chooseCardsPhase = new ChooseCardsPhase();
         IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
         completeRegisterPhase = new CompleteRegisterPhase();
         IPhase cleanupPhase = new CleanupPhase();
 
         dealCardsPhase.run();
-        chooseCardsPhase.debugRun(cardUI); // For debugging
-        //chooseCardsPhase.run(cardUI);
-        //completeRegisterPhase.executePlayerProgramCards(robots.get(0));
-        //completeRegisterPhase.run();
+        //chooseCardsPhase.debugRun( cardUI); // For debugging
+        chooseCardsPhase.run(this,cardUI);
         //announcePowerDownPhase.run(this);
 
         //cleanupPhase.run(this);

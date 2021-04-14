@@ -7,8 +7,9 @@ public interface IPhase {
     /**
      * Run method executes the parts of a phase in order.
      * @param mainGame
+     * @param cardUI
      *
      */
-    void run();
+    void run(MainGame mainGame, CardUI cardUI);
 
 }

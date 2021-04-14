@@ -14,10 +14,10 @@ import static inf112.skeleton.app.game.MainGame.robots;
 /**
  * Creates a new deck of cards. Shuffle deck, then deal cards to the players.
  */
-public class DealCardsPhase implements IPhase {
+public class DealCardsPhase  {
 
 
-    @Override
+
     public void run() {
         handleLockedCards();
         dealCardsToPlayers();

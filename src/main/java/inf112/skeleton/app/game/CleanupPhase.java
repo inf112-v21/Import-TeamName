@@ -2,6 +2,7 @@ package inf112.skeleton.app.game;
 
 import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.RepairSite;
+import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
@@ -9,7 +10,7 @@ import static inf112.skeleton.app.game.MainGame.robots;
 public class CleanupPhase implements IPhase {
 
     @Override
-    public void run() {
+    public void run(MainGame mainGame, CardUI cardUI) {
         repairs();
         upgrades();
     }
