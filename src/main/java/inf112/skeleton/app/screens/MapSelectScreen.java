@@ -163,7 +163,7 @@ public class MapSelectScreen implements Screen {
     }
 
     private void startGame() {
-        
+
         this.map = new TmxMapLoader().load(mapPath);
         Board tempBoard = new Board(map);
         if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.

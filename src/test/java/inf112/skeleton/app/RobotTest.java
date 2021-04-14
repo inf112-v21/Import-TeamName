@@ -75,9 +75,9 @@ public class RobotTest {
 
     @Test
     public void moveOneForward() {
-        Player player = new Player(new Vector2(2,2), textures);
+        Player player = new Player(new Vector2(1,1), textures);
         player.moveRobot(1); //To north
-        assertEquals(new Vector2(2,3), player.getPosition());
+        assertEquals(new Vector2(1,2), player.getPosition());
     }
 
     @Test
