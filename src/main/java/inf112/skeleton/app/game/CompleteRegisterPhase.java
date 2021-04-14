@@ -191,6 +191,15 @@ public class CompleteRegisterPhase implements IPhase {
                 } else {
                     if (con.getSpeed() == 1) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
                 }
+
+                //If robot was pushed onto another conveyor.
+                if (gameBoard.isPosAConveyor(robot.getPosition())) {
+                    Conveyor nextPosConveyor = (Conveyor) gameBoard.getNonWallTileOnPos(robotLocation);
+                    //If conveyor robot was pushed onto is a turn conveyor. --> Turn robot.
+                    if (nextPosConveyor.isTurn()) {
+                        robot.setLookDirection(nextPosConveyor.getPushDirection());
+                    }
+                }
             }
         }
     }
