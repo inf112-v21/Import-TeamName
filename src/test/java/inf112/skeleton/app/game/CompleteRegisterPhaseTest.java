@@ -62,18 +62,6 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     //Begin at (3,1) --> (3,1)
-    public void expressConveyorShouldNotPushWhenNotSpecified() {
-        Player robot = new Player(new Vector2(3,1), textures);
-        game.addPlayer(robot);
-
-        CompleteRegisterPhase phase = new CompleteRegisterPhase();
-        phase.moveConveyor(false); //Only move normal conveyors. Not express
-
-        Assert.assertEquals(new Vector2(3,1), robot.getPosition()); //Position should not be different.
-    }
-
-    @Test
-    //Begin at (3,1) --> (3,1)
     /**
      *  Robot is placed on a conveyor that goes in a circle.
      *  * -> *
