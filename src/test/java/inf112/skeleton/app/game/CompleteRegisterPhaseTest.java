@@ -38,7 +38,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void normalConveyorShouldPushRobotOneTileEast() {
-        Player robot = new Player(new Vector2(2,1), textures);
+        Player robot = new Player(new Vector2(2,1), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -51,7 +51,7 @@ public class CompleteRegisterPhaseTest {
     @Test
     //Begin at (3,1) --> (3,0)
     public void expressConveyorShouldPushRobotOneTileSouth() {
-        Player robot = new Player(new Vector2(3,1), textures);
+        Player robot = new Player(new Vector2(3,1), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -63,7 +63,7 @@ public class CompleteRegisterPhaseTest {
     @Test
     //Begin at (3,1) --> (3,1)
     public void expressConveyorShouldNotPushWhenNotSpecified() {
-        Player robot = new Player(new Vector2(3,1), textures);
+        Player robot = new Player(new Vector2(3,1), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -81,7 +81,7 @@ public class CompleteRegisterPhaseTest {
      *  * <- *
      */
     public void conveyorsWorkInCircle() {
-        Player robot = new Player(new Vector2(3,1), textures);
+        Player robot = new Player(new Vector2(3,1), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -99,8 +99,8 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void playerCollisionConveyorShouldNotPlayers() {
-        Player robot = new Player(new Vector2(4,1), textures);
-        Player robot2 = new Player(new Vector2(4,0), textures);
+        Player robot = new Player(new Vector2(4,1), textures, "1");
+        Player robot2 = new Player(new Vector2(4,0), textures, "1");
         game.addPlayer(robot);
         game.addPlayer(robot2);
 
@@ -114,7 +114,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void conveyorCannotPushPlayersThroughWalls() {
-        Player robot = new Player(new Vector2(2,3), textures);
+        Player robot = new Player(new Vector2(2,3), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -132,7 +132,7 @@ public class CompleteRegisterPhaseTest {
     @Test
     //Begin at (0,4) --> (0,3)
     public void pusherShouldPushInPushDirection() {
-        Player robot = new Player(new Vector2(1,4), textures);
+        Player robot = new Player(new Vector2(1,4), textures, "1");
         game.addPlayer(robot);
         Direction lookDirection = robot.getLookDirection();
 
@@ -146,7 +146,7 @@ public class CompleteRegisterPhaseTest {
     @Test
     //Begin at (1,4) --> (1,3)
     public void pusherShouldPushInPushDirection2() {
-        Player robot = new Player(new Vector2(1,4), textures);
+        Player robot = new Player(new Vector2(1,4), textures, "1");
         game.addPlayer(robot);
         Direction lookDirection = robot.getLookDirection();
 
@@ -164,7 +164,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void pushersCannotPushPlayersThroughWalls() {
-        Player robot = new Player(new Vector2(0,4), textures);
+        Player robot = new Player(new Vector2(0,4), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -181,7 +181,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void playerMovedToCorrectPosition() {
-        Player robot = new Player(new Vector2(1,1), textures);
+        Player robot = new Player(new Vector2(1,1), textures, "1");
         robot.setLookDirection(Direction.SOUTH);
 
         robot.setPosition(Direction.goDirection(robot.getPosition(), robot.getLookDirection()));
@@ -195,7 +195,7 @@ public class CompleteRegisterPhaseTest {
     /////////////////////////////////////////
     @Test
     public void singleLaserShouldDamagePlayer() {
-        Player robot = new Player(new Vector2(3,3), textures);
+        Player robot = new Player(new Vector2(3,3), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -207,7 +207,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void doubleLaserShouldDamagePlayer() {
-        Player robot = new Player(new Vector2(4,4), textures);
+        Player robot = new Player(new Vector2(4,4), textures, "1");
         game.addPlayer(robot);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -219,8 +219,8 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void laserShouldOnlyDamageFirstPlayerInALine() {
-        Player robot1 = new Player(new Vector2(3,3), textures);
-        Player robot2 = new Player(new Vector2(3,2), textures);
+        Player robot1 = new Player(new Vector2(3,3), textures, "1");
+        Player robot2 = new Player(new Vector2(3,2), textures, "1");
         robot2.setLookDirection(Direction.EAST); //Prevents robot2 shooting robot1 in the back
         game.addPlayer(robot1);
         game.addPlayer(robot2);
@@ -234,8 +234,8 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void robotShouldDamageOtherRobotWhenShooting() {
-        Player robot1 = new Player(new Vector2(0,0), textures);
-        Player robot2 = new Player(new Vector2(0,1), textures);
+        Player robot1 = new Player(new Vector2(0,0), textures, "1");
+        Player robot2 = new Player(new Vector2(0,1), textures, "1");
         game.addPlayer(robot1);
         game.addPlayer(robot2);
 
@@ -254,7 +254,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void robotShouldBeRotatedWithClock() {
-        Player robot1 = new Player(new Vector2(4,2), textures);
+        Player robot1 = new Player(new Vector2(4,2), textures, "1");
         game.addPlayer(robot1);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();
@@ -265,7 +265,7 @@ public class CompleteRegisterPhaseTest {
 
     @Test
     public void robotShouldBeRotatedAgainstClock() {
-        Player robot1 = new Player(new Vector2(3,2), textures);
+        Player robot1 = new Player(new Vector2(3,2), textures, "1");
         game.addPlayer(robot1);
 
         CompleteRegisterPhase phase = new CompleteRegisterPhase();

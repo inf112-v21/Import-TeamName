@@ -46,7 +46,7 @@ public class CardsTest {
 
     @Test
     public void moveOneForward() {
-        Player player = new Player(new Vector2(2,2), textures);
+        Player player = new Player(new Vector2(2,2), textures, "1");
         MovementCard move1 = new MovementCard(1, CardType.MOVE1 );
         move1.action(player);
         assertEquals(new Vector2(2,3), player.getPosition());
@@ -54,7 +54,7 @@ public class CardsTest {
 
     @Test
     public void moveOneBack() {
-        Player player = new Player(new Vector2(2,2), textures);
+        Player player = new Player(new Vector2(2,2), textures, "1");
         MovementCard move1 = new MovementCard(1,  CardType.BACK1);
         move1.action(player);
         assertEquals(new Vector2(2,1), player.getPosition());
@@ -62,7 +62,7 @@ public class CardsTest {
 
     @Test
     public void rotateWithClock() {
-        Player player = new Player(new Vector2(2,2), textures);
+        Player player = new Player(new Vector2(2,2), textures, "1");
         RotationCard rotate1 = new RotationCard(1, CardType.ROTATERIGHT);
         rotate1.action(player);
         assertEquals(Direction.EAST, player.getLookDirection());

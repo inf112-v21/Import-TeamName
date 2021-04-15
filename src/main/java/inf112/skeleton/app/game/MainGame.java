@@ -1,7 +1,6 @@
 package inf112.skeleton.app.game;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
@@ -69,7 +68,7 @@ public  final class MainGame {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         for (int i = 0; i < numPlayers; i++) {
-            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i));
+            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
             robots.add(robot);
         }
     }

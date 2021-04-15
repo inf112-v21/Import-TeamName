@@ -4,15 +4,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.enums.Direction;
 
 import static inf112.skeleton.app.enums.Direction.*;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 
 public class Player extends SimpleRobot {
 
-    public Player(Vector2 pos, TextureRegion [][] texture) {
-        super(pos, texture);
+    public Player(Vector2 pos, TextureRegion[][] texture, String playerName) {
+        super(pos, texture, "1");
     }
 
     /**

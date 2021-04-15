@@ -78,7 +78,6 @@ public class CardUI extends Actor {
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
-            System.out.println(card.getType());
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,2);
             cardButton.setPosition(w, h/10);

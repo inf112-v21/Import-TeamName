@@ -21,7 +21,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
 
-    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture) {
+    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
         super(startpos);
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
