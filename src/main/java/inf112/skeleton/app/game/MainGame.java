@@ -21,9 +21,12 @@ public  final class MainGame {
    public static CardDeck deck;
    private boolean gameOver = false;
 
-   public CompleteRegisterPhase completeRegisterPhase;
-   public ChooseCardsPhase chooseCardsPhase;
-   public CleanupPhase cleanupPhase;
+
+
+   public static DealCardsPhase dealCardsPhase;
+   public static ChooseCardsPhase chooseCardsPhase;
+   public static CompleteRegisterPhase completeRegisterPhase;
+   public static CleanupPhase cleanupPhase;
 
     /**
      * Constructor method
@@ -39,6 +42,10 @@ public  final class MainGame {
     public static void setup(TiledMap map) {
         deck = new CardDeck();
         gameBoard = new Board(map);
+        dealCardsPhase = new DealCardsPhase();
+        chooseCardsPhase = new ChooseCardsPhase();
+        completeRegisterPhase = new CompleteRegisterPhase();
+        cleanupPhase = new CleanupPhase();
 
     }
 
@@ -46,32 +53,12 @@ public  final class MainGame {
      * Game Loop
      * Executes the phases in correct order
     */
-    public void gameLoop(CardUI cardUI)  {
-
-        DealCardsPhase dealCardsPhase = new DealCardsPhase();
-        chooseCardsPhase = new ChooseCardsPhase();
-        IPhase announcePowerDownPhase = new AnnouncePowerDownPhase();
-        completeRegisterPhase = new CompleteRegisterPhase();
-        cleanupPhase = new CleanupPhase();
-
+    public void startGameRound(CardUI cardUI)  {
         dealCardsPhase.run();
-        //chooseCardsPhase.debugRun( cardUI); // For debugging
-        chooseCardsPhase.run(this,cardUI);
-        //announcePowerDownPhase.run(this);
-
-        //cleanupPhase.run(this);
-
+        chooseCardsPhase.run(this, cardUI);
 
     }
 
-    /**
-     * Nachspiel
-     * Things to do after the game loop is finished
-     */
-    public  void end() {
-        // Some criteria for the game to end?
-        gameOver = true;
-    }
 
 
     /**
@@ -81,47 +68,18 @@ public  final class MainGame {
         // input string list of names, length == numPlayers
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
-        //TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
-
         for (int i = 0; i < numPlayers; i++) {
             Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i));
             robots.add(robot);
-
-            //Test hand.
-            /*
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(1, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(2, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATELEFT));
-            robot.getProgramSheet().getRegister().selectCard(new MovementCard(4, CardType.MOVE1));
-            robot.getProgramSheet().getRegister().selectCard(new RotationCard(1, CardType.ROTATERIGHT));
-             */
         }
     }
 
     /**
      * Temporary. Used for tests.
      */
-    public void addPlayer(Player player) {
-        robots.add(player);
-    }
+    public void addPlayer(Player player) { robots.add(player); }
 
     public static ArrayList<Player> getRobots() {return robots;}
-
-    /**
-     * Temporary method for excuting cards for a single player
-     * In later iterations will be handles by CompleteRegisterphase
-     */
-    public void executeCards(Player player) {
-        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) player.getPosition().x, (int) player.getPosition().y, new TiledMapTileLayer.Cell()); // Clear previous robot image
-        CompleteRegisterPhase phase = new CompleteRegisterPhase();
-        phase.executePlayerProgramCards(player);
-        System.out.println("CompleteRegisterPhase is running.");
-        System.out.println("Damage tokens: " + player.getProgramSheet().getDamage());
-        System.out.println("Flags: " + player.getProgramSheet().getNumberOfFlags());
-        System.out.println("Position: " + player.getPosition() + "\n");
-
-    }
 
 
 }

@@ -15,21 +15,14 @@ public class ChooseCardsPhase extends Thread {
 
 
 
-
-    public void debugRun(CardUI cardUI) {
-
-        Player robot = robots.get(0);
-        cardUI.generateCards(robot);
-    }
-
-        /**
-         *
+        /** Calls the CardUI generate method for every robot.
+         * This will in turn display the cardhand and the register for the player
+         * When all players are accounted for as determined by the chosenCards boolean variable,
+         * the method initiates next phase
          * @param mainGame
          * @param cardUI
-
          */
         public void run(MainGame mainGame, CardUI cardUI)  {
-
             int i = 0;
             for (Player robot: robots) {
                 i++;
@@ -46,6 +39,10 @@ public class ChooseCardsPhase extends Thread {
 
     }
 
+    /**
+     * Iterates through every robot and resets the boolean variable keeping
+     * track of whether or not a player has selected his/her cards for a round
+     */
     public void resetSelection() {
         for (Player robot: robots) {
             robot.getProgramSheet().getRegister().chosenCards = false;

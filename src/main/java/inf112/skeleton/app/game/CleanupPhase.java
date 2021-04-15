@@ -7,12 +7,13 @@ import inf112.skeleton.app.screens.cardsUI.CardUI;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
 
-public class CleanupPhase implements IPhase {
+public class CleanupPhase {
 
-    @Override
+
     public void run(MainGame mainGame, CardUI cardUI) {
         repairs();
         upgrades();
+        mainGame.startGameRound(cardUI);
     }
 
     private void repairs() {
