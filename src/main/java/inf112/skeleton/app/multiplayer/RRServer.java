@@ -70,7 +70,6 @@ public class RRServer {
                     connection.name = named; //should be a valid name by this point.
 
                     NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID());
-                    //mainGame.multiplayerAddPlayer(connection.getID() -1);
                     server.sendToAllTCP(message);
 
                 } return;

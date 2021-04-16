@@ -94,9 +94,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
     }
 
     public void startGameNow() {
-        //this.map = map;
-        //mainGame.setup(map);
-        //mainGame.setNumPlayers(1);
         this.board = mainGame.gameBoard;
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
@@ -154,9 +151,8 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
             }
         } else {
             client.connect(ip);  //if you aren't hosting, then you can only be trying to join.
-
         }
-        startGameNow();
+
         /**
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
