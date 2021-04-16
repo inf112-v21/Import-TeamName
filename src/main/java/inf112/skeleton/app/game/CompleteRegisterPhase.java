@@ -190,7 +190,17 @@ public class CompleteRegisterPhase  {
                 if (isExpress) {
                     if (con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection())); //Move to new position
                 } else {
-                    if (con.getSpeed() == 1) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                    //Move all conveyors.
+                    if (con.getSpeed() == 1 || con.getSpeed() == 2) robot.setPosition(Direction.goDirection(robotLocation, con.getPushDirection()));
+                }
+
+                //If robot was pushed onto another conveyor.
+                if (gameBoard.isPosAConveyor(robot.getPosition())) {
+                    Conveyor nextPosConveyor = (Conveyor) gameBoard.getNonWallTileOnPos(robotLocation);
+                    //If conveyor robot was pushed onto is a turn conveyor. --> Turn robot.
+                    if (nextPosConveyor.isTurn()) {
+                        robot.setLookDirection(nextPosConveyor.getPushDirection());
+                    }
                 }
             }
         }

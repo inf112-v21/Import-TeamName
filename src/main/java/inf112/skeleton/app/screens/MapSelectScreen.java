@@ -18,7 +18,6 @@ import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 
 import static com.badlogic.gdx.Gdx.gl;
-import static java.lang.Integer.parseInt;
 
 public class MapSelectScreen implements Screen {
 
@@ -36,6 +35,15 @@ public class MapSelectScreen implements Screen {
     String mapPath;
     FitViewport viewPort;
     MainGame mainGame;
+
+    private TextField name1;
+    private TextField name2;
+    private TextField name3;
+    private TextField name4;
+    private TextField name5;
+    private TextField name6;
+    private TextField name7;
+    private TextField name8;
 
 
     int alignToAxisX = Gdx.graphics.getWidth()/2;
@@ -63,8 +71,6 @@ public class MapSelectScreen implements Screen {
         playerCount.setX(alignToAxisX - playerCount.getWidth()/2);
         playerCount.setY(height - playerCount.getHeight() - height*0.11f);
 
-
-
         playerCount.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -72,6 +78,57 @@ public class MapSelectScreen implements Screen {
             }
         });
 
+        //name fields
+        name1 = new TextField("1", skin);
+        name1.setWidth(width*0.10f);
+        name1.setHeight(height*0.04f);
+        name1.setX(alignToAxisX + name1.getWidth()*3);
+        name1.setY(height - name1.getHeight() - height*0.20f);
+
+        name2 = new TextField("2", skin);
+        name2.setWidth(width*0.10f);
+        name2.setHeight(height*0.04f);
+        name2.setX(alignToAxisX + name2.getWidth()*3);
+        name2.setY(height - name2.getHeight() - height*0.25f);
+
+        name3 = new TextField("3", skin);
+        name3.setWidth(width*0.10f);
+        name3.setHeight(height*0.04f);
+        name3.setX(alignToAxisX + name3.getWidth()*3);
+        name3.setY(height - name3.getHeight() - height*0.30f);
+
+        name4 = new TextField("4", skin);
+        name4.setWidth(width*0.10f);
+        name4.setHeight(height*0.04f);
+        name4.setX(alignToAxisX + name4.getWidth()*3);
+        name4.setY(height - name4.getHeight() - height*0.35f);
+
+        name5 = new TextField("5", skin);
+        name5.setWidth(width*0.10f);
+        name5.setHeight(height*0.04f);
+        name5.setX(alignToAxisX + name5.getWidth()*3);
+        name5.setY(height - name5.getHeight() - height*0.40f);
+
+        name6 = new TextField("6", skin);
+        name6.setWidth(width*0.10f);
+        name6.setHeight(height*0.04f);
+        name6.setX(alignToAxisX + name6.getWidth()*3);
+        name6.setY(height - name6.getHeight() - height*0.45f);
+
+        name7 = new TextField("7", skin);
+        name7.setWidth(width*0.10f);
+        name7.setHeight(height*0.04f);
+        name7.setX(alignToAxisX + name7.getWidth()*3);
+        name7.setY(height - name7.getHeight() - height*0.50f);
+
+        name8 = new TextField("8", skin);
+        name8.setWidth(width*0.10f);
+        name8.setHeight(height*0.04f);
+        name8.setX(alignToAxisX + name8.getWidth()*3);
+        name8.setY(height - name8.getHeight() - height*0.55f);
+
+
+        //buttons
         final Button chess = new TextButton("Chess", skin);
         chess.setWidth(width*0.40f);
         chess.setHeight(height*0.10f);
@@ -108,7 +165,14 @@ public class MapSelectScreen implements Screen {
         stage.addActor(exchange);
         stage.addActor(vault);
         stage.addActor(backButton);
-
+        stage.addActor(name1);
+        stage.addActor(name2);
+        stage.addActor(name3);
+        stage.addActor(name4);
+        stage.addActor(name5);
+        stage.addActor(name6);
+        stage.addActor(name7);
+        stage.addActor(name8);
 
         chess.addListener(new ClickListener() {
             @Override
@@ -149,6 +213,53 @@ public class MapSelectScreen implements Screen {
             }
         });
 
+        name1.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name2.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name3.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+        name4.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name5.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name6.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name7.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
+        name8.setTextFieldListener(new TextField.TextFieldListener() {
+            public void keyTyped(TextField textField, char c) {
+                if (c == '\n') textField.getOnscreenKeyboard().show(false);
+            }
+        });
+
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -163,12 +274,14 @@ public class MapSelectScreen implements Screen {
     }
 
     private void startGame() {
-
         this.map = new TmxMapLoader().load(mapPath);
         Board tempBoard = new Board(map);
         if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.
-
         mainGame.setup(map);
+        //todo: slap name input onto robots
+        String[] names = {name1.getText(), name2.getText(), name3.getText(), name4.getText(), name5.getText(),
+        name6.getText(), name7.getText(), name8.getText()};
+
         mainGame.setNumPlayers(count);
         switcher.getGameScreen().setMap(map);
         switcher.setGameScreen(mainGame);
