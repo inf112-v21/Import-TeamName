@@ -153,6 +153,12 @@ public class MapSelectScreen implements Screen {
         vault.setX(alignToAxisX - vault.getWidth()/2);
         vault.setY(height - vault.getHeight()-height*0.65f);
 
+        final Button whirlwind = new TextButton("Whirlwind", skin);
+        whirlwind.setWidth(width*0.40f);
+        whirlwind.setHeight(height*0.10f);
+        whirlwind.setX(alignToAxisX - whirlwind.getWidth()/2);
+        whirlwind.setY(height - whirlwind.getHeight()-height*0.35f);
+
         final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
         backButton.setHeight(height*0.08f);
@@ -164,6 +170,7 @@ public class MapSelectScreen implements Screen {
         stage.addActor(dizzy);
         stage.addActor(exchange);
         stage.addActor(vault);
+        stage.addActor(whirlwind);
         stage.addActor(backButton);
         stage.addActor(name1);
         stage.addActor(name2);
@@ -202,6 +209,14 @@ public class MapSelectScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 mapPath = "Maps/Vault.tmx";
+                startGame();
+            }
+        });
+
+        whirlwind.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                mapPath = "Maps/Whirlwind.tmx";
                 startGame();
             }
         });
