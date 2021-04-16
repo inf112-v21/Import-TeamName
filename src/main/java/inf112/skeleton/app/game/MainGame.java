@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
+import inf112.skeleton.app.multiplayer.NetworkPackets;
 import inf112.skeleton.app.objects.Actors.Player;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
@@ -103,6 +104,12 @@ public  final class MainGame {
      */
     public void addPlayer(Player player) {
         robots.add(player);
+    }
+
+    public void multiplayerAddPlayer(int id) {
+        List<DockingBay> startPositions = gameBoard.getDockingBays();
+        Player newRobo = new Player(startPositions.get(id).getPosition(), Assets.robotTextures.get(id));
+        addPlayer(newRobo);
     }
 
     public static ArrayList<Player> getRobots() {return robots;}

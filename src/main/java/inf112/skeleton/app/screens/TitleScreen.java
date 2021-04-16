@@ -89,7 +89,7 @@ public class TitleScreen implements Screen {
 
         multiplayer.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                switcher.setScreen(new MultiplayerScreen(switcher, mainGame));
+                switcher.setScreen(new MultiplayerScreen(switcher));
             }
         });
 
@@ -151,7 +151,4 @@ public class TitleScreen implements Screen {
         title.dispose();
     }
 
-    public void setToTitle(MainGame mainGame) {
-        this.mainGame = mainGame;
-    }
 }

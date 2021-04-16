@@ -11,8 +11,6 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 
-
-
 import static com.badlogic.gdx.Gdx.gl;
 
 /**

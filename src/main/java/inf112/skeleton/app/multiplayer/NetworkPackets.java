@@ -14,7 +14,7 @@ public class NetworkPackets {
        Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
 
        //follow this format of "obj.register(xxx.class)", where xxx is class.
-        obj.register(FrameworkMessage.Ping.class);
+        //obj.register(FrameworkMessage.Ping.class);
         obj.register(Entry.class);
         obj.register(NewPlayer.class);
     }
