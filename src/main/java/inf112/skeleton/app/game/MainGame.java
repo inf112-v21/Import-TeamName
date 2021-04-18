@@ -108,8 +108,17 @@ public  final class MainGame {
 
     public void multiplayerAddPlayer(int id) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
+       // id--;
         Player newRobo = new Player(startPositions.get(id).getPosition(), Assets.robotTextures.get(id));
         addPlayer(newRobo);
+    }
+
+    public void getRobotID (int id) {
+        robots.get(id);
+    }
+
+    public void removePlayer (){
+
     }
 
     public static ArrayList<Player> getRobots() {return robots;}

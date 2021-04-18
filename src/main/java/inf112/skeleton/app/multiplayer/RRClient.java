@@ -70,7 +70,7 @@ public class RRClient {
         if (packet instanceof NetworkPackets.NewPlayer) {
             NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
             System.out.println(type.name + "has joined"); //to console atm
-            mainGame.multiplayerAddPlayer(type.playerId -1);
+            mainGame.multiplayerAddPlayer(type.playerId);
         }
     }
 

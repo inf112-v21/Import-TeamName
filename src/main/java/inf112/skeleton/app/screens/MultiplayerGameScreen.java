@@ -153,6 +153,8 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
             client.connect(ip);  //if you aren't hosting, then you can only be trying to join.
         }
 
+        startGameNow();
+
         /**
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);

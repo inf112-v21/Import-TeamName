@@ -28,7 +28,7 @@ public class RRServer {
 
     public RRServer(MainGame mainGame) throws IOException {
         this.mainGame = mainGame;
-        Log.set(Log.LEVEL_DEBUG);
+        //Log.set(Log.LEVEL_DEBUG);
 
         server = new Server() {
             protected Connection newConnection() {  //Storing by connection state
@@ -71,6 +71,17 @@ public class RRServer {
 
                     NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID());
                     server.sendToAllTCP(message);
+
+                    for (Connection connections: server.getConnections()) {
+                        RRConnection rrConnection = (RRConnection) connections; //casting just in case it uses default connection instead
+
+                        //this here, had problems with adding players, at times it overlapped players at same spot
+                        //this "if" checks if it's yourself who is logging in. thus stopping ^ probably...
+                        if (rrConnection.getID() != connection.getID() && rrConnection.name != null) {
+                            NetworkPackets.NewPlayer message2 = new NetworkPackets.NewPlayer(rrConnection.name, rrConnection.getID());
+                            connection.sendTCP(message2);
+                        }
+                    }
 
                 } return;
 
