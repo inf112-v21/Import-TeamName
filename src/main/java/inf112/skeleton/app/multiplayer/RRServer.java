@@ -69,7 +69,7 @@ public class RRServer {
 
                     connection.name = named; //should be a valid name by this point.
 
-                    NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID());
+                    NetworkPackets.NewPlayer message = new NetworkPackets.NewPlayer(connection.name, connection.getID(), true);
                     server.sendToAllTCP(message);
 
                     for (Connection connections: server.getConnections()) {
@@ -78,7 +78,7 @@ public class RRServer {
                         //this here, had problems with adding players, at times it overlapped players at same spot
                         //this "if" checks if it's yourself who is logging in. thus stopping ^ probably...
                         if (rrConnection.getID() != connection.getID() && rrConnection.name != null) {
-                            NetworkPackets.NewPlayer message2 = new NetworkPackets.NewPlayer(rrConnection.name, rrConnection.getID());
+                            NetworkPackets.NewPlayer message2 = new NetworkPackets.NewPlayer(rrConnection.name, rrConnection.getID(), true);
                             connection.sendTCP(message2);
                         }
                     }
@@ -89,8 +89,10 @@ public class RRServer {
 
                 public void disconnected (Connection c) {
                     RRConnection connection = (RRConnection) c;
-                    if (connection != null) {
+                    if (connection.name != null) {
                         System.out.println(connection.name + " has disconnected."); //testing
+                        NetworkPackets.NewPlayer leaveMessage = new NetworkPackets.NewPlayer(connection.name, connection.getID(), false);
+                        server.sendToAllTCP(leaveMessage);
                     }
                 }
         });

@@ -69,8 +69,13 @@ public class RRClient {
     public void packetHandler (int playerId, Object packet) {
         if (packet instanceof NetworkPackets.NewPlayer) {
             NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
-            System.out.println(type.name + "has joined"); //to console atm
-            mainGame.multiplayerAddPlayer(type.playerId);
+            if (type.joining = !false) {
+                System.out.println(type.name + "has joined"); //to console atm
+                mainGame.multiplayerAddPlayer(type.playerId);
+            } else {
+                System.out.println(type.name + "has leefffttt");
+                mainGame.removePlayer(type.playerId);
+            }
         }
     }
 

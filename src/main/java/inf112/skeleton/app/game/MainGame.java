@@ -108,7 +108,7 @@ public  final class MainGame {
 
     public void multiplayerAddPlayer(int id) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
-       // id--;
+        id--;
         Player newRobo = new Player(startPositions.get(id).getPosition(), Assets.robotTextures.get(id));
         addPlayer(newRobo);
     }
@@ -117,8 +117,10 @@ public  final class MainGame {
         robots.get(id);
     }
 
-    public void removePlayer (){
-
+    public void removePlayer (int id){
+        id --;
+        robots.remove(id);
+        //todo: only removes robot from list, but not from board.
     }
 
     public static ArrayList<Player> getRobots() {return robots;}

@@ -31,12 +31,13 @@ public class NetworkPackets {
     static public class NewPlayer {
         public String name;
         public int playerId;
+        public boolean joining;  //realized i needed a way to know if it was joining or leaving, check server-side
 
         public NewPlayer() {}
-        public NewPlayer (String name, int playerId) {
+        public NewPlayer (String name, int playerId, boolean joining) {
             this.name = name;
             this.playerId = playerId;
-
+            this.joining = joining;
         }
     }
 
