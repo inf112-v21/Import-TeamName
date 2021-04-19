@@ -124,12 +124,7 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
-        float xD = robots.get(0).getPosition().x;
-        float yD = robots.get(0).getPosition().y;
         robots.get(0).moveRobotWASD(keycode);
-        float x = robots.get(0).getPosition().x;
-        float y = robots.get(0).getPosition().y;
-        //NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(0, x, y, xD, yD);
         NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(0, keycode);
         client.sendPacketUDP(packet);
         return true;
@@ -174,10 +169,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
 
     }
 
-    public void testHandler (float delta) {
-        int a = (int) mainGame.robots.get(0).getPosition().x;
-        int b = (int) mainGame.robots.get(0).getPosition().y;
-    }
 
     @Override
     public synchronized void render(float delta) {

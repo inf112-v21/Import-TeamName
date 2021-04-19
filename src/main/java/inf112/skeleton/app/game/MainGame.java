@@ -129,6 +129,7 @@ public  final class MainGame {
             robots.get(packet.playerID).moveRobotWASD(packet.keycode);
         } else {
             robots.get(packet.playerID -1).moveRobotWASD(packet.keycode);
+            System.out.println(packet.playerID);
         }
     }
 

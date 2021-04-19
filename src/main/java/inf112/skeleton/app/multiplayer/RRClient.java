@@ -55,7 +55,7 @@ public class RRClient {
 
     protected void connectionHandler (Connection c) {
         id = c.getID();
-        c.getRemoteAddressTCP().toString();
+        c.getRemoteAddressTCP().toString(); //get ip address
         Entry assignName = new Entry(name);
         client.sendTCP(assignName);
         client.updateReturnTripTime();
@@ -69,7 +69,7 @@ public class RRClient {
     public void packetHandler (int playerId, Object packet) {
         if (packet instanceof NetworkPackets.NewPlayer) {
             NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
-            if (type.joining = !false) {
+            if (type.joining) {
                 System.out.println(type.name + "has joined"); //to console atm
                 mainGame.multiplayerAddPlayer(type.playerID);
             } else {
