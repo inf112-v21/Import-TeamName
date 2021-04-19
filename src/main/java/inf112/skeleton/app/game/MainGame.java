@@ -113,14 +113,15 @@ public  final class MainGame {
         addPlayer(newRobo);
     }
 
-    public void getRobotID (int id) {
-        robots.get(id);
-    }
 
     public void removePlayer (int id){
         id --;
         robots.remove(id);
         //todo: only removes robot from list, but not from board.
+    }
+
+    public void cheatPosition (NetworkPackets.MovedRobot packet) {
+        robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
     }
 
     public static ArrayList<Player> getRobots() {return robots;}

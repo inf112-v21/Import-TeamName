@@ -55,6 +55,12 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         moveRobot(steps - 1);
     }
 
+    public void cheatPosition (float x, float y, float xD, float yD) {
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+        playerTile.setCell((int) xD, (int) yD, new TiledMapTileLayer.Cell()); //set cell empty
+        playerTile.setCell((int) x, (int) y, getPlayerCell());
+    }
+
     /**
      * Accounts for player collision and tries to move robot 1 step in pushDirection.
      * Checks that when player collision occurs, there is an empty space the robots can be pushed onto. If not, robots stand still.

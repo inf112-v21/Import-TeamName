@@ -20,6 +20,7 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
+import inf112.skeleton.app.multiplayer.NetworkPackets;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.objects.Actors.Player;
@@ -123,7 +124,13 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
+        float xD = robots.get(0).getPosition().x;
+        float yD = robots.get(0).getPosition().y;
         robots.get(0).moveRobotWASD(keycode);
+        float x = robots.get(0).getPosition().x;
+        float y = robots.get(0).getPosition().y;
+        NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(1, x, y, xD, yD);
+        client.sendPacketUDP(packet);
         return true;
     }
 

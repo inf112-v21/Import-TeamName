@@ -71,11 +71,15 @@ public class RRClient {
             NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
             if (type.joining = !false) {
                 System.out.println(type.name + "has joined"); //to console atm
-                mainGame.multiplayerAddPlayer(type.playerId);
+                mainGame.multiplayerAddPlayer(type.playerID);
             } else {
                 System.out.println(type.name + "has leefffttt");
-                mainGame.removePlayer(type.playerId);
+                mainGame.removePlayer(type.playerID);
             }
+        } else if (packet instanceof NetworkPackets.MovedRobot) {
+            NetworkPackets.MovedRobot type = (NetworkPackets.MovedRobot) packet;
+            mainGame.cheatPosition(type);
+            System.out.println("A robot moved!");
         }
     }
 
