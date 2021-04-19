@@ -132,16 +132,18 @@ public enum Tiles {
     TEMP6(98),
     TEMP7(99),
     TEMP8(100),
-    TEMP9(105),
-    TEMP10(106),
-    TEMP11(107),
-    TEMP12(108),
+
+    //Pit
+    PIT_TOP_LEFT_CORNER(105),
+    PIT_TOP(106),
+    PIT_TOP_RIGHT(107),
+    PIT_RIGHT(108),
     TEMP13(109),
     TEMP14(110),
-    TEMP15(112),
-    TEMP16(113),
-    TEMP17(114),
-    TEMP18(115),
+    PIT_DOWN_LEFT(112),
+    PIT_DOWN(113),
+    PIT_DOWN_RIGHT(114),
+    PIT_LEFT(115),
     TEMP19(116),
     TEMP20(117);
 

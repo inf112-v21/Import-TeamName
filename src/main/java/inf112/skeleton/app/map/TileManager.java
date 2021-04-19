@@ -55,16 +55,15 @@ public class TileManager {
             case FLAG3: return new Flag(pos, 3);
             case FLAG4: return new Flag(pos, 4);
 
-            //Docking bays (Starting points)
-            case DOCKING_BAY1:
-            case DOCKING_BAY2:
-            case DOCKING_BAY3:
-            case DOCKING_BAY4:
-            case DOCKING_BAY5:
-            case DOCKING_BAY6:
-            case DOCKING_BAY7:
-            case DOCKING_BAY8:
-                return new DockingBay(pos);
+            //Docking bays (Starting points) (Priority)
+            case DOCKING_BAY1: return new DockingBay(pos,1);
+            case DOCKING_BAY2: return new DockingBay(pos,2);
+            case DOCKING_BAY3: return new DockingBay(pos,3);
+            case DOCKING_BAY4: return new DockingBay(pos,4);
+            case DOCKING_BAY5: return new DockingBay(pos,5);
+            case DOCKING_BAY6: return new DockingBay(pos,6);
+            case DOCKING_BAY7: return new DockingBay(pos,7);
+            case DOCKING_BAY8: return new DockingBay(pos,8);
 
             //Pushers (Pos) (Push Direction)
             case PUSHER_NORTH_SOUTH_2: return new Pusher(pos,Direction.SOUTH);
@@ -151,11 +150,20 @@ public class TileManager {
             case LASER_TOP_DOWN:   return new Laser(pos,Direction.SOUTH, 1);
             case LASER_RIGHT_LEFT: return new Laser(pos,Direction.WEST, 1);
 
-            case LASER_DOUBLE_DOWN: return new Laser(pos,Direction.SOUTH, 2);
-            case LASER_DOUBLE_LEFT: return new Laser(pos,Direction.WEST, 2);
-            case LASER_DOUBLE_UP:   return new Laser(pos,Direction.NORTH, 2);
+            case LASER_DOUBLE_DOWN:  return new Laser(pos,Direction.SOUTH, 2);
+            case LASER_DOUBLE_LEFT:  return new Laser(pos,Direction.WEST, 2);
+            case LASER_DOUBLE_UP:    return new Laser(pos,Direction.NORTH, 2);
             case LASER_DOUBLE_RIGHT: return new Laser(pos,Direction.EAST, 2);
 
+            //PIT
+            case PIT_TOP_LEFT_CORNER: return new Pit(pos);
+            case PIT_TOP:             return new Pit(pos);
+            case PIT_TOP_RIGHT:       return new Pit(pos);
+            case PIT_DOWN_LEFT:       return new Pit(pos);
+            case PIT_DOWN:            return new Pit(pos);
+            case PIT_DOWN_RIGHT:      return new Pit(pos);
+            case PIT_LEFT:            return new Pit(pos);
+            case PIT_RIGHT:           return new Pit(pos);
 
             default: throw new IllegalArgumentException("Given tile does not exist: " + tile);
         }
