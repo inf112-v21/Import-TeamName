@@ -208,7 +208,7 @@ public class MapSelectScreen implements Screen {
         vault.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
-                mapPath = "Maps/Vault.tmx";
+                mapPath = "Maps/tmxVault.";
                 startGame();
             }
         });
@@ -224,7 +224,7 @@ public class MapSelectScreen implements Screen {
         backButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                switcher.setTitleScreen(mainGame);
+                switcher.setTitleScreen();
             }
         });
 
