@@ -25,6 +25,8 @@ public class ChooseCardsPhase extends Thread {
         public void run(MainGame mainGame, CardUI cardUI)  {
             int i = 0;
             for (Player robot: robots) {
+                // TODO
+                // Skip dead players
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
                     System.out.println("#################################");
