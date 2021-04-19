@@ -139,31 +139,31 @@ public class MapSelectScreen implements Screen {
         dizzy.setWidth(width*0.40f);
         dizzy.setHeight(height*0.10f);
         dizzy.setX(alignToAxisX - dizzy.getWidth()/2);
-        dizzy.setY(height - dizzy.getHeight()-height*0.35f);
+        dizzy.setY(height - dizzy.getHeight()-height*0.32f);
 
         final Button exchange = new TextButton("Exchange", skin);
         exchange.setWidth(width*0.40f);
         exchange.setHeight(height*0.10f);
         exchange.setX(alignToAxisX - exchange.getWidth()/2);
-        exchange.setY(height - exchange.getHeight()-height*0.50f);
+        exchange.setY(height - exchange.getHeight()-height*0.44f);
 
         final Button vault = new TextButton("Vault", skin);
         vault.setWidth(width*0.40f);
         vault.setHeight(height*0.10f);
         vault.setX(alignToAxisX - vault.getWidth()/2);
-        vault.setY(height - vault.getHeight()-height*0.65f);
+        vault.setY(height - vault.getHeight()-height*0.56f);
 
         final Button whirlwind = new TextButton("Whirlwind", skin);
         whirlwind.setWidth(width*0.40f);
         whirlwind.setHeight(height*0.10f);
         whirlwind.setX(alignToAxisX - whirlwind.getWidth()/2);
-        whirlwind.setY(height - whirlwind.getHeight()-height*0.35f);
+        whirlwind.setY(height - whirlwind.getHeight()-height*0.68f);
 
         final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
         backButton.setHeight(height*0.08f);
         backButton.setX(alignToAxisX - backButton.getWidth()/2);
-        backButton.setY(height - backButton.getHeight()-height*0.85f);
+        backButton.setY(height - backButton.getHeight()-height*0.90f);
 
         stage.addActor(playerCount);
         stage.addActor(chess);
