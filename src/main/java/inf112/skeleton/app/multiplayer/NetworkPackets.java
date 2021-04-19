@@ -44,12 +44,18 @@ public class NetworkPackets {
 
     static public class MovedRobot {
         public int playerID;
-        public float x;
-        public float y;
-        public float xD;
-        public float yD;
+        public int keycode;
+        //public float x;
+        //public float y;
+        //public float xD;
+        //public float yD;
 
         public MovedRobot() {}
+        public MovedRobot(int playerID, int keycode) {
+            this.playerID = playerID;
+            this.keycode = keycode;
+        }
+        /**
         public MovedRobot (int playerID, float x, float y, float xD, float yD) {
             this.playerID = playerID;
             this.x = x;
@@ -57,7 +63,7 @@ public class NetworkPackets {
             this.xD = xD;
             this.yD = yD;
         }
-
+*/
     }
     //implement the classes for use in RRClient/RRServer here
 

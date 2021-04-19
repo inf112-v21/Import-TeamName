@@ -129,7 +129,8 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
         robots.get(0).moveRobotWASD(keycode);
         float x = robots.get(0).getPosition().x;
         float y = robots.get(0).getPosition().y;
-        NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(1, x, y, xD, yD);
+        //NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(0, x, y, xD, yD);
+        NetworkPackets.MovedRobot packet = new NetworkPackets.MovedRobot(0, keycode);
         client.sendPacketUDP(packet);
         return true;
     }

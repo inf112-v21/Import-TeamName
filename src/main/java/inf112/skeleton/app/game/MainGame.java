@@ -2,16 +2,19 @@ package inf112.skeleton.app.game;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 
 public  final class MainGame {
@@ -121,7 +124,8 @@ public  final class MainGame {
     }
 
     public void cheatPosition (NetworkPackets.MovedRobot packet) {
-        robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
+        //robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
+        robots.get(packet.playerID -1).moveRobotWASD(packet.keycode);
     }
 
     public static ArrayList<Player> getRobots() {return robots;}

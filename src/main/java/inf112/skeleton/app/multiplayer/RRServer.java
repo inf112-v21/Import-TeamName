@@ -86,13 +86,15 @@ public class RRServer {
                 } else if (packet instanceof NetworkPackets.MovedRobot) {
                     NetworkPackets.MovedRobot type = (NetworkPackets.MovedRobot) packet;
                     type.playerID = connection.getID();
+                    server.sendToAllExceptUDP(connection.getID(), (type));
+                    /**
                     for (Connection connections: server.getConnections()) {
                         RRConnection rrConnection = (RRConnection) connections;
                         if (rrConnection.getID() != connection.getID() && rrConnection.name != null) {
-                            server.sendToAllUDP(type);
+                            server.sendToAllExceptUDP(connection.getID(),(type));
                         }
                     }
-
+*/
                } //if a packet of unknown class gets sent from client somehow.
                 else if (!(packet instanceof FrameworkMessage.Ping) && !(packet instanceof FrameworkMessage.KeepAlive)) {
                     Log.info("An unknown packet was sent from Client.");
