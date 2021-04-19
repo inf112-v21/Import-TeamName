@@ -3,6 +3,8 @@ package inf112.skeleton.app.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -32,15 +34,16 @@ public class MultiplayerScreen implements Screen {
     private Stage stage;
     private Skin skin;
 
+    //private TiledMap map = new TmxMapLoader().load("Maps/Chess.tmx");
+
     float width;
     float height;
 
-    MainGame mainGame;
+    //MainGame mainGame;
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
     //Constructor
-    public MultiplayerScreen (RoboRally switcher, MainGame mainGame) {
-        this.mainGame = mainGame;
+    public MultiplayerScreen (RoboRally switcher) {
         this.switcher = switcher;
     }
 
@@ -51,7 +54,7 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void show () {
-        mainGame = new MainGame();
+        //mainGame = new MainGame();
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         stage = new Stage(new StretchViewport(width, height));
@@ -142,7 +145,7 @@ public class MultiplayerScreen implements Screen {
         backButton.addListener(new ClickListener() {
            @Override
            public void clicked(InputEvent event, float x, float y) {
-               switcher.setTitleScreen(mainGame);
+               switcher.setTitleScreen();
            }
         });
 
@@ -160,18 +163,18 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        mainGame.setNumPlayers(5);
-        switcher.getGameScreen().setMultiPlayer(false, assignIP.getText(), getName());
-        switcher.setGameScreen(mainGame);
-
+        //mainGame.setup(map);
+        //mainGame.setNumPlayers(3);
+        MultiplayerGameScreen multiplayer = new MultiplayerGameScreen(switcher, false, assignIP.getText(), getName());
+        switcher.setScreen(multiplayer);
 
     }
 
     private void host() {
-      mainGame.setNumPlayers(5);
-      switcher.getGameScreen().setMultiPlayer(true, assignIP.getText(), getName());
-      switcher.setGameScreen(mainGame);
-
+        //mainGame.setup(map);
+        //mainGame.setNumPlayers(1);
+        MultiplayerGameScreen multiplayer = new MultiplayerGameScreen(switcher,true, assignIP.getText(), getName());
+        switcher.setScreen(multiplayer);
     }
 
     private void find() {

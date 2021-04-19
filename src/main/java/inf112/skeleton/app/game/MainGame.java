@@ -4,12 +4,15 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
+import inf112.skeleton.app.multiplayer.NetworkPackets;
 import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.SimpleRobot;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 
 public  final class MainGame {
@@ -77,6 +80,30 @@ public  final class MainGame {
      * Temporary. Used for tests.
      */
     public void addPlayer(Player player) { robots.add(player); }
+
+    public void multiplayerAddPlayer(int id) {
+        List<DockingBay> startPositions = gameBoard.getDockingBays();
+        id--;
+        Player newRobo = new Player(startPositions.get(id).getPosition(), Assets.robotTextures.get(id), "1");
+        addPlayer(newRobo);
+    }
+
+
+    public void removePlayer (int id){
+        id --;
+        robots.remove(id);
+        //todo: only removes robot from list, but not from board.
+    }
+
+    public void cheatPosition (NetworkPackets.MovedRobot packet) {
+        //robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
+        if (packet.playerID == 1) {
+            robots.get(packet.playerID).moveRobotWASD(packet.keycode);
+        } else {
+            robots.get(packet.playerID -1).moveRobotWASD(packet.keycode);
+            System.out.println(packet.playerID);
+        }
+    }
 
     public static ArrayList<Player> getRobots() {return robots;}
 

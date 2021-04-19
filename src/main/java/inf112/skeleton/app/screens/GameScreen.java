@@ -60,12 +60,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     static Board board;
 
-    private boolean hosting;
-    private String ip;
-    private RRServer server;
-    private RRClient client;
-    private String name;
-
     public void setMap (TiledMap map) {
         this.map = map;
         this.board = mainGame.gameBoard;
@@ -92,7 +86,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
         this.tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         this.gameLoopEventHandler = new GameLoopEventHandler(switcher, tilePlayer);
-
     }
 
     public GameScreen(RoboRally switcher, Stage stage, FitViewport viewPort, boolean debugMode) {
@@ -185,34 +178,12 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
 
     public void hide() {
-        client.ceaseClient();
-        if (server != null) {
-            server.ceaseServer();
-        }
     }
     public Stage getUIStage() {
         return this.uiStage;
     }
     public Stage getStage() {
         return this.stage;
-    }
-
-
-
-    /**
-     * Method that handles multiplayer information from the multiplayer screen
-     * @param hosting: true/false
-     * @param ip: ipv4 address
-     * @param name
-     */
-    public void setMultiPlayer(boolean hosting, String ip, String name) {
-        this.hosting = hosting;
-        this.name = name;
-        if(!ip.isEmpty()) {
-            this.ip = ip;
-        } else {
-            this.ip = "localhost";
-        }
     }
 
 }

@@ -17,6 +17,7 @@ public class NetworkPackets {
         obj.register(FrameworkMessage.Ping.class);
         obj.register(Entry.class);
         obj.register(NewPlayer.class);
+        obj.register(MovedRobot.class);
     }
 
     static public class Entry {  //still testing, might need more here
@@ -30,16 +31,40 @@ public class NetworkPackets {
 
     static public class NewPlayer {
         public String name;
-        public int playerId;
+        public int playerID;
+        public boolean joining;  //realized i needed a way to know if it was joining or leaving, check server-side
 
         public NewPlayer() {}
-        public NewPlayer (String name, int playerId) {
+        public NewPlayer (String name, int playerID, boolean joining) {
             this.name = name;
-            this.playerId = playerId;
-
+            this.playerID = playerID;
+            this.joining = joining;
         }
     }
 
+    static public class MovedRobot {
+        public int playerID;
+        public int keycode;
+        //public float x;
+        //public float y;
+        //public float xD;
+        //public float yD;
+
+        public MovedRobot() {}
+        public MovedRobot(int playerID, int keycode) {
+            this.playerID = playerID;
+            this.keycode = keycode;
+        }
+        /**
+        public MovedRobot (int playerID, float x, float y, float xD, float yD) {
+            this.playerID = playerID;
+            this.x = x;
+            this.y = y;
+            this.xD = xD;
+            this.yD = yD;
+        }
+*/
+    }
     //implement the classes for use in RRClient/RRServer here
 
 }
