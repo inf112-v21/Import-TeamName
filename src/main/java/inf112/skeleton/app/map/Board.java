@@ -269,7 +269,7 @@ public class Board {
     public boolean isOnBoard(Vector2 posPlayer) {
         int playerX = (int) posPlayer.x;
         int playerY = (int) posPlayer.y;
-        return (playerX < 0 || playerX > getBoardDimensions().x || playerY < 0 || playerY > getBoardDimensions().y);
+        return (playerX < 0 || playerX >= getBoardDimensions().x || playerY < 0 || playerY >= getBoardDimensions().y);
 
     }
 
