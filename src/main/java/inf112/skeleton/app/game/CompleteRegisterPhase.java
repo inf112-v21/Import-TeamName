@@ -15,9 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.*;
 
-public class CompleteRegisterPhase implements IPhase {
+public class CompleteRegisterPhase  {
 
-    @Override
+
     public void run(MainGame mainGame, CardUI cardUI) {
         revealProgramCards();
         executeProgramCards();
@@ -26,7 +26,8 @@ public class CompleteRegisterPhase implements IPhase {
 
 
         updateCheckPoints(); //Checks if robot is on flag
-        mainGame.gameLoop(cardUI);
+
+        mainGame.cleanupPhase.run(mainGame, cardUI);
     }
 
     protected void revealProgramCards() {

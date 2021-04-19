@@ -41,6 +41,8 @@ public class Board {
         boardDimensions = new Vector2(width,height);
 
         getBoardInformation(map);
+
+        dockingBays.sort(DockingBay::compareTo);
     }
 
     /**

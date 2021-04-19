@@ -19,10 +19,6 @@ import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
-import com.esotericsoftware.minlog.Log;
-
-import java.io.IOException;
-
 
 import static com.badlogic.gdx.Gdx.gl;
 import static java.lang.Math.round;
@@ -152,7 +148,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
-        mainGame.gameLoop(cardui); // Game loop starrt
+        mainGame.startGameRound(cardui); // Game loop starrt
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
