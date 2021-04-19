@@ -125,7 +125,11 @@ public  final class MainGame {
 
     public void cheatPosition (NetworkPackets.MovedRobot packet) {
         //robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
-        robots.get(packet.playerID -1).moveRobotWASD(packet.keycode);
+        if (packet.playerID == 1) {
+            robots.get(packet.playerID).moveRobotWASD(packet.keycode);
+        } else {
+            robots.get(packet.playerID -1).moveRobotWASD(packet.keycode);
+        }
     }
 
     public static ArrayList<Player> getRobots() {return robots;}
