@@ -81,7 +81,7 @@ public class CardUI extends Actor {
             ImageButton cardButton = card.getCardButton();
             cardButton.setSize(2,2);
             cardButton.setPosition(w, h/10);
-            table.add(cardButton).size(2,2);
+            table.add(cardButton).size(2,3);
 
             cardButton.addListener(new InputListener() {
                 @Override

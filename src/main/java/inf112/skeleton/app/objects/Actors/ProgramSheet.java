@@ -3,6 +3,7 @@ package inf112.skeleton.app.objects.Actors;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
+import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.TileObjects.Flag;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class ProgramSheet {
 
     private boolean dead;
     private Vector2 archiveMarker; //Respawn point when reentering the game.
+    private Direction archiveMarkerDirection;
 
     public ProgramSheet() {
         this.damageTokens = 0;
@@ -113,6 +115,7 @@ public class ProgramSheet {
     public void addFlag(Flag flag) {
         archiveMarker = flag.getPosition(); //Update respawn point according to rules.
 
+
         int lastVisitedFlag = flags.isEmpty() ? 0 : flags.get(flags.size()-1); //Get last visited flag
         if (lastVisitedFlag+1 == flag.getFlagID() && !flags.contains(flag.getFlagID())) flags.add(flag.getFlagID()); //If in order, add flag.
     }
@@ -158,7 +161,21 @@ public class ProgramSheet {
         return archiveMarker;
     }
 
+    /**
+     * Sets respawn point look direction.
+     * @param archiveMarkerDirection
+     */
+    public void setArchiveMarkerDirection(Direction archiveMarkerDirection) {
+        this.archiveMarkerDirection = archiveMarkerDirection;
+    }
 
+    /**
+     * Returns respawn point look direction
+     * @return
+     */
+    public Direction getArchiveMarkerDirection() {
+        return archiveMarkerDirection;
+    }
 
 
     public ArrayList<SimpleProgramCard> getLockedCards() {return this.register.lockedRegisterCards;}

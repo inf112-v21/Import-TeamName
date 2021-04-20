@@ -50,8 +50,14 @@ public class GameLoopEventHandler {
         for (SimpleRobot robot : robots) {
             Vector2 position = robot.getPosition();
 
-            if (gameBoard.isPosAPit(position)) {
+            if (gameBoard.isOnBoard(position) ||gameBoard.isPosAPit(position)) {
+                //robot.robotLoseLife(robot);
                 tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCellDead());
+
+            }
+
+            if (robot.getProgramSheet().getLife()>1 && gameBoard.isOnBoard(position)){
+                robot.robotLoseLife(robot);
             }
         }
     }

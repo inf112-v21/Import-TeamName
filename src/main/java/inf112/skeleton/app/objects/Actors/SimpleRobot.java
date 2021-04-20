@@ -26,6 +26,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
         programSheet.setArchiveMarker(startpos);
+        programSheet.setArchiveMarkerDirection(this.lookDirection);
 
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
         this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4])); //TODO: Expand textures to include a 'Win' sprite for picking up a flag.
@@ -123,9 +124,16 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         }
     }
 
+    public void newWaitingPosition(SimpleRobot robot){
+        Vector2 waitingPosition = new Vector2(getPosition().x -100, getPosition().y -100);
+        robot.setPosition(waitingPosition);
+
+    }
+
     public void newPosition(SimpleRobot robot){
-        Vector2 pos = robot.getProgramSheet().getArchiveMarker();
-        robot.setPosition(pos);
+
+        robot.setPosition(robot.getProgramSheet().getArchiveMarker());
+        robot.setLookDirection(robot.getProgramSheet().getArchiveMarkerDirection());
     }
 
     /**
@@ -137,7 +145,8 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         Vector2 playerPos = robot.getPosition();
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
-            robotLoseLife(robot);
+            newWaitingPosition(robot);
+            //robotLoseLife(robot);
             //TODO: Remove this dead robot from map.
             // Must happen here, cannot be in CompleteRegisterPhase - Endre
             // Maybe move dead player to x:-100,y:-100. Then after all cards are executed/loops are done. Remove dead players entirely.
@@ -147,6 +156,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         }
         return true;
     }
+
 
     public void dealCards(CardDeck deck) {this.programSheet.dealCards();}
 
