@@ -9,10 +9,9 @@ import static inf112.skeleton.app.game.MainGame.robots;
 
 
 /**
- * Choose cards
+ * Choose cards phase class:
  */
 public class ChooseCardsPhase extends Thread {
-
 
 
         /** Calls the CardUI generate method for every robot.
@@ -25,8 +24,7 @@ public class ChooseCardsPhase extends Thread {
         public void run(MainGame mainGame, CardUI cardUI)  {
             int i = 0;
             for (Player robot: robots) {
-                // TODO
-                // Skip dead players
+                if (robot.getProgramSheet().getPowerDown() || robot.getProgramSheet().isDead()) continue;
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
                     System.out.println("#################################");
