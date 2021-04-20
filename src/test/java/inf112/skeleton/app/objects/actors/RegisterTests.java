@@ -79,6 +79,36 @@ public class RegisterTests {
         assertEquals(3,player.getProgramSheet().getLockedCards().size());
     }
 
+    @Test
+    public void unlockRegisterAfterLosing1Damage() {
+        Player player  = mainGame.robots.get(0);
+        player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
+        player.getProgramSheet().addDamage(5);
+        assertEquals(1,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+        player.getProgramSheet().addDamage(-1);
+        assertEquals(0,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+
+    }
+
+    @Test
+    public void unlockRegisterAfterLosing2Damage() {
+        Player player  = mainGame.robots.get(0);
+        player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
+        player.getProgramSheet().addDamage(6);
+        assertEquals(2,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+        player.getProgramSheet().addDamage(-2);
+        assertEquals(0,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+    }
+
+    @Test
+    public void unlockRegisterAfterLosing3Damage() {
+        Player player  = mainGame.robots.get(0);
+        player.getProgramSheet().getRegister().addCardsToRegister(exampleRegister); // Send cards to register
+        player.getProgramSheet().addDamage(9);
+        assertEquals(5,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+        player.getProgramSheet().addDamage(-3);
+        assertEquals(2,player.getProgramSheet().getLockedCards().size()); // Confirm locked register
+    }
 
 }
 

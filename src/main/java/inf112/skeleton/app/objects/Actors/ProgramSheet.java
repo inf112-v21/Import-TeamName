@@ -35,9 +35,15 @@ public class ProgramSheet {
     }
 
 
+    /**
+     *
+     * @param amount
+     */
     public void addDamage(int amount) {
+        if(this.damageTokens >= 5 && amount < 0) {
+            register.unlockRegister(Math.abs(amount));
+        }
         this.damageTokens += amount;
-
         if (this.damageTokens >= 10) {
             this.damageTokens = 0;
             this.lifeTokens -= 1;
@@ -45,24 +51,13 @@ public class ProgramSheet {
                 this.setDead(true);
             }
         }
-
         if (this.damageTokens < 0) {
             this.damageTokens = 0;
         }
-        if(this.damageTokens >= 5) {
+        if(this.damageTokens >= 5 && amount > 0) {
             register.lockRegister(damageTokens - 4);
         }
-
-        if(this.damageTokens < 5) {
-            /**
-             * TODO
-             */
-            // Endre til at alt slettes?
-            register.unlockRegister(damageTokens - 4);
-        }
     }
-
-
 
 
 

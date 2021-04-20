@@ -20,17 +20,16 @@ public class Register {
     public void lockRegister(int lockNum) {
         this.numLockedCards = lockNum;
         for (int i = 0; i < lockNum; i++) {
+            System.out.println(i);
             lockedRegisterCards.add(registerCards.remove(0));
         }
-
-
     }
 
     public void unlockRegister(int unlockNum) {
         if (unlockNum > numLockedCards) { numLockedCards = 0; return; }
-        numLockedCards--;
+        this.numLockedCards--;
         for (int i = 0; i < unlockNum; i++) {
-            lockedRegisterCards.remove(lockedRegisterCards.size());
+            lockedRegisterCards.remove(lockedRegisterCards.size()-1);
         }
     }
 
