@@ -21,8 +21,6 @@ public class WinScreen implements Screen {
     final RoboRally game;
     private Stage stage;
     FitViewport viewPort;
-    private Sprite victorySprite;
-    private Image victory;
     float width;
     float height;
 
@@ -36,10 +34,10 @@ public class WinScreen implements Screen {
     public void show() {
         this.width = Gdx.graphics.getWidth();
         this.height = Gdx.graphics.getHeight();
-        this.victorySprite = new Sprite(Assets.manager.get(Assets.VictoryImage));
-        this.victory = new Image(victorySprite);
-        this.victory.setPosition(width * 0.4F,height * 0.7F);
-        this.victory.setSize(200,200);
+        Sprite victorySprite = new Sprite(Assets.manager.get(Assets.VictoryImage));
+        Image victory = new Image(victorySprite);
+        victory.setPosition(width * 0.4F,height * 0.7F);
+        victory.setSize(200,200);
         this.stage = new Stage(new StretchViewport(width, height));
         this.stage.addActor(victory);
     }

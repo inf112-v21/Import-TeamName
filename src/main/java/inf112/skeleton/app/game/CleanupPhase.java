@@ -12,7 +12,6 @@ public class CleanupPhase {
 
     public void run(MainGame mainGame, CardUI cardUI) {
         repairs();
-        upgrades();
         mainGame.startGameRound(cardUI);
     }
 
@@ -30,9 +29,6 @@ public class CleanupPhase {
         }
     }
 
-    private void upgrades() {
-
-    }
 
     /*
     Clean up plan:

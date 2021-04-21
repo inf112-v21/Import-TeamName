@@ -45,11 +45,12 @@ public class TileManager {
         //if (tile==null) return new SimpleObject(new Vector2(-1,-1));
 
         switch (tile) {
+
             case PIT: return new Pit(pos);
             case REPAIR_SITE_SINGLE: return new RepairSite(pos,1);
             case REPAIR_SITE_DOUBLE: return new RepairSite(pos,2);
-            case GEAR_ROTATE_LEFT: return new Gear(pos, Rotation.AGAINST_CLOCK);
-            case GEAR_ROTATE_RIGHT: return new Gear(pos, Rotation.WITH_CLOCK);
+            case GEAR_ROTATE_LEFT:   return new Gear(pos, Rotation.AGAINST_CLOCK);
+            case GEAR_ROTATE_RIGHT:  return new Gear(pos, Rotation.WITH_CLOCK);
             case FLAG1: return new Flag(pos, 1);
             case FLAG2: return new Flag(pos, 2);
             case FLAG3: return new Flag(pos, 3);
@@ -67,13 +68,13 @@ public class TileManager {
 
             //Pushers (Pos) (Push Direction)
             case PUSHER_NORTH_SOUTH_2: return new Pusher(pos,Direction.SOUTH);
-            case PUSHER_EAST_WEST_2: return new Pusher(pos,Direction.WEST);
-            case PUSHER_SOUTH_NORTH: return new Pusher(pos,Direction.NORTH);
-            case PUSHER_WEST_EAST_2: return new Pusher(pos,Direction.EAST);
-            case PUSHER_NORTH_SOUTH: return new Pusher(pos,Direction.SOUTH);
-            case PUSHER_EAST_WEST: return new Pusher(pos,Direction.WEST);
+            case PUSHER_EAST_WEST_2:   return new Pusher(pos,Direction.WEST);
+            case PUSHER_SOUTH_NORTH:   return new Pusher(pos,Direction.NORTH);
+            case PUSHER_WEST_EAST_2:   return new Pusher(pos,Direction.EAST);
+            case PUSHER_NORTH_SOUTH:   return new Pusher(pos,Direction.SOUTH);
+            case PUSHER_EAST_WEST:     return new Pusher(pos,Direction.WEST);
             case PUSHER_SOUTH_NORTH_2: return new Pusher(pos,Direction.NORTH);
-            case PUSHER_WEST_EAST: return new Pusher(pos,Direction.EAST);
+            case PUSHER_WEST_EAST:     return new Pusher(pos,Direction.EAST);
 
 
             //Walls
@@ -88,9 +89,9 @@ public class TileManager {
             case WALL_TOP_RIGHT_CORNER:     return new Wall(pos, Direction.NORTH,Direction.EAST);
 
             //Double conveyor
-            case DOUBLE_CONVEYOR_DOWN: return new Conveyor(pos,Direction.SOUTH,2, false);
-            case DOUBLE_CONVEYOR_LEFT: return new Conveyor(pos,Direction.WEST, 2,false);
-            case DOUBLE_CONVEYOR_UP: return new Conveyor(pos, Direction.NORTH, 2, false);
+            case DOUBLE_CONVEYOR_DOWN:  return new Conveyor(pos,Direction.SOUTH,2, false);
+            case DOUBLE_CONVEYOR_LEFT:  return new Conveyor(pos,Direction.WEST, 2,false);
+            case DOUBLE_CONVEYOR_UP:    return new Conveyor(pos, Direction.NORTH, 2, false);
             case DOUBLE_CONVEYOR_RIGHT: return new Conveyor(pos, Direction.EAST, 2, false);
             //Double conveyor corner
             case DOUBLE_CONVEYOR_DOWN_RIGHT:  return new Conveyor(pos, Direction.EAST,2,true);
@@ -168,15 +169,4 @@ public class TileManager {
             default: throw new IllegalArgumentException("Given tile does not exist: " + tile);
         }
     }
-
-    /**
-     * Prints all enum names and their id
-     * Used for debugging.
-     */
-    public void printT() {
-        for (Tiles tile : Tiles.values()) {
-            System.out.println("Tile id: " + tile.getTileID() + "  Tile name: " + tile);
-        }
-    }
-
 }

@@ -18,10 +18,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
-    private boolean chosenCards; // TODO: Track if a robot has chosen cards for ChooseCardsPhase. Should this be put in ProgramSheet instead?
     private final TiledMapTileLayer.Cell playerCellDead;
-    private TiledMapTileLayer.Cell playerCellWon;
-
     private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
 
     public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
@@ -32,8 +29,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         programSheet.setArchiveMarkerDirection(this.lookDirection);
 
         this.playerCellDead = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4]));
-        this.playerCellWon = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][4])); //TODO: Expand textures to include a 'Win' sprite for picking up a flag.
-        
+
         this.DirectionTextureNORTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][0]));
         this.DirectionTextureSOUTH = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][1]));
         this.DirectionTextureWEST = new TiledMapTileLayer.Cell().setTile(new StaticTiledMapTile(texture[0][2]));
@@ -57,12 +53,6 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         playerCollisionHandler(this, pos, lookDirection, false);
 
         moveRobot(steps - 1);
-    }
-
-    public void cheatPosition (float x, float y, float xD, float yD) {
-        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
-        playerTile.setCell((int) xD, (int) yD, new TiledMapTileLayer.Cell()); //set cell empty
-        playerTile.setCell((int) x, (int) y, getPlayerCell());
     }
 
     /**
