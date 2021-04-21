@@ -23,7 +23,6 @@ public class SimpleRobotTest {
     private TiledMap map;
 
     private TextureRegion[][] textures;
-    private TiledMapTileLayer tilePlayer;
     private static MainGame game;
 
 
@@ -31,7 +30,6 @@ public class SimpleRobotTest {
     public void initialise() {
         textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/MapForJunitTests.tmx");       // Get map file
-        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
         Assets.manager.finishLoading();
         game = new MainGame();
