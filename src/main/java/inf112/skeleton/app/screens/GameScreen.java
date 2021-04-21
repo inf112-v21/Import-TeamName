@@ -50,8 +50,8 @@ public class GameScreen extends InputAdapter implements Screen {
     private final boolean debugMode;
 
 
-    int width;
-    int height;
+    private int width;
+    private int height;
 
     int menuHeight = (int) round(Gdx.graphics.getHeight() * 0.2);
     private final RoboRally switcher;
@@ -60,7 +60,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     public void setMap (TiledMap map) {
         this.map = map;
-        this.board = mainGame.gameBoard;
+        this.board = MainGame.gameBoard;
         this.viewPortHeight = (int) board.getBoardDimensions().y;
         this.viewPortWidth = (int) board.getBoardDimensions().x;
 
@@ -146,7 +146,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.cardui = new CardUI(mainGame);
         cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
-        mainGame.startGameRound(cardui); // Game loop starrt
+        mainGame.startGameRound(cardui); // Game loop start
 
         if (this.debugMode) {
             Gdx.input.setInputProcessor(this);
@@ -180,9 +180,5 @@ public class GameScreen extends InputAdapter implements Screen {
     public Stage getUIStage() {
         return this.uiStage;
     }
-    public Stage getStage() {
-        return this.stage;
-    }
-
 }
 
