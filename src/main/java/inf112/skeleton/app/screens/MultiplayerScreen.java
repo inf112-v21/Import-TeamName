@@ -47,11 +47,6 @@ public class MultiplayerScreen implements Screen {
         this.switcher = switcher;
     }
 
-    FitViewport viewPort;
-
-
-
-
     @Override
     public void show () {
         //mainGame = new MainGame();
