@@ -81,7 +81,7 @@ IPV4-LAN!!!!!!
 DEBUG mode: Move around with W,A,S,D (activiated in the main class)
 
 The main game screen should look like this:
-![Picture of current roboRally](assets/Images/pictureOfCurrentGame.PNG)
+![Picture of current roboRally](assets/Images/pictureOfCurrentGame.png)
 
 ### Tests
 The mainGame uses Junit to automatically test the mainGame.
