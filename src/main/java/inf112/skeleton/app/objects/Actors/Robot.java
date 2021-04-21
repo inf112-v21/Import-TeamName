@@ -19,9 +19,10 @@ public  class Robot extends SimpleObject implements IActor {
     private ProgramSheet programSheet;
     private final TiledMapTileLayer.Cell playerCellDead;
     private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
-
+    private String playerName;
     public Robot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
         super(startpos);
+        this.playerName = playerName;
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
         programSheet.setArchiveMarker(startpos);
@@ -218,4 +219,5 @@ public  class Robot extends SimpleObject implements IActor {
 
     }
 
+    public String getPlayerName() {return this.playerName;}
 }

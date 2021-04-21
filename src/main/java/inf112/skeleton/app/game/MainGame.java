@@ -61,15 +61,14 @@ public  final class MainGame {
 
 
 
-    /**
+    /** Method for adding players to the game
      * @param numPlayers
      */
     public static void setNumPlayers(int numPlayers, String[] playerNames) {
-        // input string list of names, length == numPlayers
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         for (int i = 0; i < numPlayers; i++) {
-            Robot robot = new Robot(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
+            Robot robot = new Robot(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), playerNames[i]);
             robots.add(robot);
         }
     }
@@ -79,7 +78,6 @@ public  final class MainGame {
      * @param numPlayers
      */
     public static void setNumPlayers(int numPlayers) {
-        // input string list of names, length == numPlayers
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         for (int i = 0; i < numPlayers; i++) {
