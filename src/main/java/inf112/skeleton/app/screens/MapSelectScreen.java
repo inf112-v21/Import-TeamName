@@ -304,7 +304,6 @@ public class MapSelectScreen implements Screen {
         Board tempBoard = new Board(map);
         if (tempBoard.getNrDockingBays() < count) return; //Check that selected map supports the number of players.
         mainGame.setup(map);
-        //todo: slap name input onto robots
         String[] names = {name1.getText(), name2.getText(), name3.getText(), name4.getText(), name5.getText(),
         name6.getText(), name7.getText(), name8.getText()};
 

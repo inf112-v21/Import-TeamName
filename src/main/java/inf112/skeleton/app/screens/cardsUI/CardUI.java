@@ -1,5 +1,6 @@
 package inf112.skeleton.app.screens.cardsUI;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -7,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.buttons.PlayButton;
@@ -30,11 +33,14 @@ public class CardUI extends Actor {
     private Stage stage;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
+    private Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
 
     private int w;
     private int h;
     MainGame mainGame;
 
+    public String named;
+    public int lifeTokens;
     /**
      * Constructor
      * @param mainGame: instance of main game
@@ -58,8 +64,9 @@ public class CardUI extends Actor {
         this.h = h;
         this.stage = gameScreen.getUIStage();
         this.table = new Table();
-        table.setHeight(h-3);
+        table.setSize(w-w, h-h-1 );
         table.setPosition(w,h-h/4);
+        table.setRound(false);
     }
 
 
@@ -75,6 +82,8 @@ public class CardUI extends Actor {
      */
     public void generateCards(Robot robot) {
         if(robot.getProgramSheet().isDead()) return;
+        this.named = robot.getPlayerName();
+        this.lifeTokens = robot.getProgramSheet().getLife();
         cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
@@ -116,7 +125,7 @@ public class CardUI extends Actor {
 
         }
         ImageButton playButton = new PlayButton(w,h/10, 2, 2).getButton();
-        table.add(playButton).size(2,2);
+        table.add(playButton).size(2,3);
         playButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
@@ -154,5 +163,12 @@ public class CardUI extends Actor {
 
     }
 
+    public String getRobotName () {
+        return this.named;
+    }
+
+    public int getLifeTokens() {
+        return this.lifeTokens;
+    }
 
 }

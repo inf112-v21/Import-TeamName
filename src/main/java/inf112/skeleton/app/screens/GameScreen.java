@@ -11,13 +11,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
+
+import java.awt.*;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static inf112.skeleton.app.game.MainGame.robots;
@@ -28,8 +34,8 @@ import static java.lang.Math.round;
  */
 public class GameScreen extends InputAdapter implements Screen {
 
-    private final SpriteBatch batch;
-    private final BitmapFont font;
+    private SpriteBatch batch;
+    private BitmapFont font;
 
     private TiledMap map;
 
@@ -98,7 +104,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         this.batch = new SpriteBatch();
         this.font = new BitmapFont();
-        this.font.setColor(Color.RED);
+        this.font.setColor(Color.BLUE);
     }
 
 
@@ -131,6 +137,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.gameCamera.update();
         this.uiCamera.update();
 
+
         gameLoopEventHandler.run(); //Handles re-drawing of players.   | Changes texture if on pit or flag, only for testing
 
         mapRenderer.render();
@@ -139,13 +146,27 @@ public class GameScreen extends InputAdapter implements Screen {
         Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height
         this.uiStage.act();
         this.uiStage.draw();
+        batch.begin();
+        Matrix4 pain = batch.getProjectionMatrix().cpy();
+        batch.setProjectionMatrix(pain.cpy().scale(3f, 4.9f, 1));
+        font.draw(batch, "Player " + cardui.getRobotName() + "'s turn", width*0.1f, height*0.15f);
+        if (cardui.getLifeTokens() == 3) {
+            font.draw(batch, "Life Tokens: X X X", width*0.1f, height*0.1f);
+        } else if (cardui.getLifeTokens() == 2) {
+            font.draw(batch, "Life Tokens: X X  ", width*0.1f, height*0.1f);
+        } else if (cardui.getLifeTokens() == 1) {
+            font.draw(batch, "Life Tokens: X    ", width*0.1f, height*0.1f);
+        }
+        batch.setProjectionMatrix(pain);
+        batch.end();
+
     }
 
     @Override
     public void show() {
 
         this.cardui = new CardUI(mainGame);
-        cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
+        cardui.setUp((int) (uiCamera.viewportWidth)/2, (int) (uiCamera.viewportHeight / 4), this);
         uiStage.addActor(cardui.getTable());
         mainGame.startGameRound(cardui); // Game loop start
 
