@@ -15,8 +15,6 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
-import inf112.skeleton.app.multiplayer.RRClient;
-import inf112.skeleton.app.multiplayer.RRServer;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 

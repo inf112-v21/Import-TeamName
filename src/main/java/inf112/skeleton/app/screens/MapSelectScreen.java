@@ -71,6 +71,7 @@ public class MapSelectScreen implements Screen {
         playerCount.setX(alignToAxisX - playerCount.getWidth()/2);
         playerCount.setY(height - playerCount.getHeight() - height*0.11f);
 
+
         playerCount.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -127,6 +128,14 @@ public class MapSelectScreen implements Screen {
         name8.setX(alignToAxisX + name8.getWidth()*3);
         name8.setY(height - name8.getHeight() - height*0.55f);
 
+        //Labels
+        Label names = new Label("Player names", skin);
+        names.setX(name1.getX());
+        names.setY(name1.getY() * 1.1f);
+
+        Label players = new Label("Select player count", skin);
+        players.setX(alignToAxisX - players.getWidth()/2);
+        players.setY(playerCount.getY() * 1.05f);
 
         //buttons
         final Button chess = new TextButton("Chess", skin);
@@ -180,6 +189,8 @@ public class MapSelectScreen implements Screen {
         stage.addActor(name6);
         stage.addActor(name7);
         stage.addActor(name8);
+        stage.addActor(names);
+        stage.addActor(players);
 
         chess.addListener(new ClickListener() {
             @Override

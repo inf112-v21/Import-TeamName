@@ -41,6 +41,7 @@ public class CardUI extends Actor {
     public CardUI(MainGame mainGame) {
         this.mainGame = mainGame;
         this.selectedCards = new ArrayList<>();
+
     }
 
 
@@ -79,10 +80,9 @@ public class CardUI extends Actor {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
             ImageButton cardButton = card.getCardButton();
-            cardButton.setSize(2,2);
-            cardButton.setPosition(w, h/10);
-            table.add(cardButton).size(2,3);
-
+            //cardButton.setSize(2,2);
+            //cardButton.setPosition(w, h/10);
+            table.add(cardButton).size(2, 3);
             cardButton.addListener(new InputListener() {
                 @Override
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
