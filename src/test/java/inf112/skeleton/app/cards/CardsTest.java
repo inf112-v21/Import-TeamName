@@ -25,21 +25,16 @@ import static org.junit.Assert.assertTrue;
 @RunWith(GdxTestRunner.class)
 public class CardsTest {
 
-    // Make maps
-    private TiledMap map;
-
     private TextureRegion[][] textures;
-    private TiledMapTileLayer tilePlayer;
-    private MainGame mainGame;
 
     @Before
     public void initalise() {
         textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
-        map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
-        tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        // Make maps
+        TiledMap map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         Assets.load();
         Assets.manager.finishLoading();
-        mainGame = new MainGame();
+        MainGame mainGame = new MainGame();
         mainGame.setup(map);
         mainGame.setNumPlayers(1);
     }
