@@ -51,7 +51,7 @@ public class CardDeckTest {
         int sum = 0;
 
         for (int i = 0; i < 10; i++) {
-            CardType type = deck.dealACard();
+            deck.dealACard();
         }
         for(CardType types : deck.availableCards.keySet()) {
             sum += deck.availableCards.get(types);
