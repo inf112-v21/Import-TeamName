@@ -71,32 +71,6 @@ public class CompleteRegisterPhase  {
         }
     }
 
-    /** DEBUG METHOD
-     * Debug test method perform all the selected cards of a predefined player
-     * @param player: test player whose cards will be executed
-     */
-    public void executePlayerProgramCards(Player player) {
-        System.out.println("executeProgramCards is running in debug mode for one single player \n");
-        ArrayList<SimpleProgramCard> playerCards = player.getProgramSheet().getRegister().getRegisterCards();
-        for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
-            List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
-            //Get 1 card from each player/robot
-            if (player.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
-            SimpleProgramCard playerCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
-            moves.add(playerCard); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
-            moves.sort(SimpleProgramCard::compareTo); //Sorts cards based on priority
-            for (SimpleProgramCard card : moves) {
-                // Do the move on the correct player
-                    SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
-                    if (robotCard.equals(card)) {
-                        card.action(player);
-                        System.out.println("DEBUG:  Player"  + " used " + card + " card.");
-                    }
-            }
-        }
-    }
-
-
     /**
      * Moves all conveyors, pushers if activated and rotates robots on Gear tiles.
      */
