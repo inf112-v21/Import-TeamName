@@ -1,17 +1,12 @@
 package inf112.skeleton.app.cards;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.screens.GameScreen;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +36,7 @@ public class CardUITest {
     public void cantSend1Card() {
         CardUI ui = new CardUI(mainGame);
         ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));
-        Player robot = mainGame.robots.get(0);
+        Robot robot = mainGame.robots.get(0);
         ui.sendCards(robot);
         int numCards =  robot.getProgramSheet().getRegister().getRegisterCards().size();
         assertFalse(numCards > 0);

@@ -1,6 +1,5 @@
 package inf112.skeleton.app.multiplayer;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.esotericsoftware.kryonet.Connection;
@@ -8,15 +7,10 @@ import com.esotericsoftware.kryonet.FrameworkMessage;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.esotericsoftware.minlog.Log;
-import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.TileObjects.DockingBay;
 
 import java.io.IOException;
-import java.util.List;
 
 public class RRServer {
 

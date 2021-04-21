@@ -1,10 +1,8 @@
 package inf112.skeleton.app.game;
 
-import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
-import static inf112.skeleton.app.game.MainGame.deck;
 import static inf112.skeleton.app.game.MainGame.robots;
 
 
@@ -23,7 +21,7 @@ public class ChooseCardsPhase extends Thread {
          */
         public void run(MainGame mainGame, CardUI cardUI)  {
             int i = 0;
-            for (Player robot: robots) {
+            for (Robot robot : robots) {
                 if (robot.getProgramSheet().getPowerDown() || robot.getProgramSheet().isDead()) continue;
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
@@ -44,7 +42,7 @@ public class ChooseCardsPhase extends Thread {
      * track of whether or not a player has selected his/her cards for a round
      */
     public void resetSelection() {
-        for (Player robot: robots) {
+        for (Robot robot : robots) {
             robot.getProgramSheet().getRegister().chosenCards = false;
         }
     }

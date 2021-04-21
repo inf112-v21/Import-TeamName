@@ -3,7 +3,7 @@ package inf112.skeleton.app.game;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
@@ -36,7 +36,7 @@ public class GameLoopEventHandler {
      */
     private void renderPlayersOnBoard() {
         //Render all robot on the board, at their new position.
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (robot.getProgramSheet().isDead()) robot.setPosition(new Vector2(-10,-10)); //Dead players are off the board. TODO: Maybe handle dead players another way -Endre
             tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
         }
@@ -47,7 +47,7 @@ public class GameLoopEventHandler {
      * If robot on pit, mark as dead.
      */
     private void checkForDeath() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             Vector2 position = robot.getPosition();
 
             if (gameBoard.isOnBoard(position) ||gameBoard.isPosAPit(position)) {
@@ -66,7 +66,7 @@ public class GameLoopEventHandler {
      * If robot at flag, change to win texture
      */
     private void checkForFlag() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             Vector2 position = robot.getPosition();
 
             if (gameBoard.isPosAFlag(position)) {
@@ -79,7 +79,7 @@ public class GameLoopEventHandler {
      * Testing
      */
     private void checkForWin() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             int visitedFlags = robot.getProgramSheet().getNumberOfFlags();
             if (visitedFlags == gameBoard.getNrFlags()) {
                 switcher.setWinScreen();

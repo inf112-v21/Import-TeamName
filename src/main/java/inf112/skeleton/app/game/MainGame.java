@@ -5,20 +5,18 @@ import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
-import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.objects.TileObjects.DockingBay;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 
 public  final class MainGame {
 
 
-   public static ArrayList<Player> robots;
+   public static ArrayList<Robot> robots;
    public static Board gameBoard;
    public static CardDeck deck;
    private boolean gameOver = false;
@@ -71,7 +69,7 @@ public  final class MainGame {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         for (int i = 0; i < numPlayers; i++) {
-            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
+            Robot robot = new Robot(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
             robots.add(robot);
         }
     }
@@ -85,7 +83,7 @@ public  final class MainGame {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
 
         for (int i = 0; i < numPlayers; i++) {
-            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
+            Robot robot = new Robot(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
             robots.add(robot);
         }
     }
@@ -93,12 +91,12 @@ public  final class MainGame {
     /**
      * Temporary. Used for tests.
      */
-    public void addPlayer(Player player) { robots.add(player); }
+    public void addPlayer(Robot robot) { robots.add(robot); }
 
     public void multiplayerAddPlayer(int id) {
         List<DockingBay> startPositions = gameBoard.getDockingBays();
         id--;
-        Player newRobo = new Player(startPositions.get(id).getPosition(), Assets.robotTextures.get(id), "1");
+        Robot newRobo = new Robot(startPositions.get(id).getPosition(), Assets.robotTextures.get(id), "1");
         addPlayer(newRobo);
     }
 
@@ -119,7 +117,7 @@ public  final class MainGame {
         }
     }
 
-    public static ArrayList<Player> getRobots() {return robots;}
+    public static ArrayList<Robot> getRobots() {return robots;}
 
 
 }

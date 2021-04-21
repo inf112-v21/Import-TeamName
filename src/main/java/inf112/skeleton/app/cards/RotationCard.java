@@ -1,6 +1,6 @@
 package inf112.skeleton.app.cards;
 
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 
 public class RotationCard extends SimpleProgramCard {
 
@@ -27,7 +27,7 @@ public class RotationCard extends SimpleProgramCard {
 
 
     @Override
-    public void action(SimpleRobot robot) {
+    public void action(Robot robot) {
         robot.rotate(clockwiseTurns);
     }
 

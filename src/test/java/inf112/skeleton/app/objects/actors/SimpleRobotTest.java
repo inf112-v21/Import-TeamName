@@ -3,14 +3,13 @@ package inf112.skeleton.app.objects.actors;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,9 +41,9 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldPushPlayer2OneTile() {
-        Player robot1 = new Player(new Vector2(0,3),textures, "1");
+        Robot robot1 = new Robot(new Vector2(0,3),textures, "1");
         robot1.setLookDirection(Direction.SOUTH); //Robot1 is facing robot2
-        Player robot2 = new Player(new Vector2(0,2),textures, "1");
+        Robot robot2 = new Robot(new Vector2(0,2),textures, "1");
 
         game.addPlayer(robot1);
         game.addPlayer(robot2);
@@ -57,9 +56,9 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldPushPlayer2TwoTiles() {
-        Player robot1 = new Player(new Vector2(1,0),textures, "1");
+        Robot robot1 = new Robot(new Vector2(1,0),textures, "1");
         robot1.setLookDirection(Direction.NORTH); //Robot1 is facing robot2
-        Player robot2 = new Player(new Vector2(1,1),textures, "1");
+        Robot robot2 = new Robot(new Vector2(1,1),textures, "1");
 
         game.addPlayer(robot1);
         game.addPlayer(robot2);
@@ -72,10 +71,10 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldPushPlayer2AndPlayer3OneTile() {
-        Player robot1 = new Player(new Vector2(1,0),textures, "1");
+        Robot robot1 = new Robot(new Vector2(1,0),textures, "1");
         robot1.setLookDirection(Direction.NORTH); //Robot1 is facing robot2
-        Player robot2 = new Player(new Vector2(1,1),textures, "1");
-        Player robot3 = new Player(new Vector2(1,2),textures, "1");
+        Robot robot2 = new Robot(new Vector2(1,1),textures, "1");
+        Robot robot3 = new Robot(new Vector2(1,2),textures, "1");
 
         game.addPlayer(robot1);
         game.addPlayer(robot2);
@@ -90,10 +89,10 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldPushPlayer2AndPlayer3TwoTiles() {
-        Player robot1 = new Player(new Vector2(1,0),textures, "1");
+        Robot robot1 = new Robot(new Vector2(1,0),textures, "1");
         robot1.setLookDirection(Direction.NORTH); //Robot1 is facing robot2
-        Player robot2 = new Player(new Vector2(1,1),textures, "1");
-        Player robot3 = new Player(new Vector2(1,2),textures, "1");
+        Robot robot2 = new Robot(new Vector2(1,1),textures, "1");
+        Robot robot3 = new Robot(new Vector2(1,2),textures, "1");
 
         game.addPlayer(robot1);
         game.addPlayer(robot2);
@@ -112,8 +111,8 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldNotPushPlayer2DueToWall() {
-        Player robot1 = new Player(new Vector2(0,3),textures, "1");
-        Player robot2 = new Player(new Vector2(0,2),textures, "1");
+        Robot robot1 = new Robot(new Vector2(0,3),textures, "1");
+        Robot robot2 = new Robot(new Vector2(0,2),textures, "1");
         robot2.setLookDirection(Direction.NORTH); //Robot2 is facing robot1. North of robot1 there is a wall.
 
         game.addPlayer(robot1);
@@ -128,8 +127,8 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldNotPushPlayer2DueToPusher() {
-        Player robot1 = new Player(new Vector2(1,3),textures, "1");
-        Player robot2 = new Player(new Vector2(1,4),textures, "1");
+        Robot robot1 = new Robot(new Vector2(1,3),textures, "1");
+        Robot robot2 = new Robot(new Vector2(1,4),textures, "1");
         robot2.setLookDirection(Direction.NORTH); //Robot2 is facing robot1. North of robot1 there is a wall.
 
         game.addPlayer(robot1);
@@ -144,10 +143,10 @@ public class SimpleRobotTest {
 
     @Test
     public void player1ShouldPushPlayer2AndPlayer3TwoTilesAndBeStoppedByAWall() {
-        Player robot1 = new Player(new Vector2(1,0),textures, "1");
+        Robot robot1 = new Robot(new Vector2(1,0),textures, "1");
         robot1.setLookDirection(Direction.NORTH); //Robot1 is facing robot2
-        Player robot2 = new Player(new Vector2(1,1),textures, "1");
-        Player robot3 = new Player(new Vector2(1,2),textures, "1");
+        Robot robot2 = new Robot(new Vector2(1,1),textures, "1");
+        Robot robot3 = new Robot(new Vector2(1,2),textures, "1");
 
         game.addPlayer(robot1);
         game.addPlayer(robot2);

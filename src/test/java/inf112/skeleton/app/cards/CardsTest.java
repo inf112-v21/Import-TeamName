@@ -10,7 +10,7 @@ import inf112.skeleton.app.GdxTestRunner;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,26 +46,26 @@ public class CardsTest {
 
     @Test
     public void moveOneForward() {
-        Player player = new Player(new Vector2(2,2), textures, "1");
+        Robot robot = new Robot(new Vector2(2,2), textures, "1");
         MovementCard move1 = new MovementCard(1, CardType.MOVE1 );
-        move1.action(player);
-        assertEquals(new Vector2(2,3), player.getPosition());
+        move1.action(robot);
+        assertEquals(new Vector2(2,3), robot.getPosition());
     }
 
     @Test
     public void moveOneBack() {
-        Player player = new Player(new Vector2(2,2), textures, "1");
+        Robot robot = new Robot(new Vector2(2,2), textures, "1");
         MovementCard move1 = new MovementCard(1,  CardType.BACK1);
-        move1.action(player);
-        assertEquals(new Vector2(2,1), player.getPosition());
+        move1.action(robot);
+        assertEquals(new Vector2(2,1), robot.getPosition());
     }
 
     @Test
     public void rotateWithClock() {
-        Player player = new Player(new Vector2(2,2), textures, "1");
+        Robot robot = new Robot(new Vector2(2,2), textures, "1");
         RotationCard rotate1 = new RotationCard(1, CardType.ROTATERIGHT);
-        rotate1.action(player);
-        assertEquals(Direction.EAST, player.getLookDirection());
+        rotate1.action(robot);
+        assertEquals(Direction.EAST, robot.getLookDirection());
     }
 
     //TODO: Write tests that account for walls.

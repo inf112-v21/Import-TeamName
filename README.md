@@ -55,11 +55,11 @@ If executed properly you are presented with the main screen of the mainGame.
 
 ## How to play
 * Run main.java
-* A new screeen appears and the player is asked to select multiplayer or singleplayer. For testing purposes,
+* A new screeen appears and the robot is asked to select multiplayer or singleplayer. For testing purposes,
   use singleplayer
-* Move player 1 while selecting five cards and clicking the submit button.
+* Move robot 1 while selecting five cards and clicking the submit button.
 * The selected cards will appear as text in the CONSOLE.
-* The game will proceed to execute the selected cards (As of now, only for player 1)
+* The game will proceed to execute the selected cards (As of now, only for robot 1)
 
 --Multiplayer
 * Press "find" button to look for LAN server. Then press join if server is found.
@@ -90,4 +90,4 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 * Resizing the window will currently break the clickable cards. Restart fixes it.
 * On titlescreen, going fullscreen, pressing multiplayer, then pressing back. Will break logo if still in fullscreen.
 * !!!Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.
-* When single player is started, game still attempts to connect to server.
+* When single robot is started, game still attempts to connect to server.

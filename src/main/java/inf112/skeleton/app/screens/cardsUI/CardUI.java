@@ -13,7 +13,7 @@ import inf112.skeleton.app.buttons.PlayButton;
 import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.screens.GameScreen;
 import java.util.ArrayList;
 
@@ -72,7 +72,7 @@ public class CardUI extends Actor {
     /** Refaktor
      *
      */
-    public void generateCards(Player robot) {
+    public void generateCards(Robot robot) {
         if(robot.getProgramSheet().isDead()) return;
         cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
@@ -134,7 +134,7 @@ public class CardUI extends Actor {
      * Method called after a player has successfully selected five cards and clicked the button
      *  --> 'Announce Done' part of DealCardsPhase.java
      */
-    public void sendCards(Player robot) {
+    public void sendCards(Robot robot) {
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
         if (selectedCards.size() < possibleNumcards) {
             System.out.println("You have not selected enough cards. " + cardCount + " selected");

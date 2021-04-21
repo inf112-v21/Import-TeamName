@@ -1,6 +1,6 @@
 package inf112.skeleton.app.game;
 
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.objects.TileObjects.RepairSite;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
@@ -16,7 +16,7 @@ public class CleanupPhase {
     }
 
     private void repairs() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (gameBoard.isPosARepaiSite(robot.getPosition())) {
                 RepairSite repair = (RepairSite) gameBoard.getNonWallTileOnPos(robot.getPosition());
 

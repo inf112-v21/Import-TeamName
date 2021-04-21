@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.SimpleObject;
 
@@ -14,14 +13,14 @@ import static inf112.skeleton.app.enums.Direction.EAST;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
 
-public abstract class SimpleRobot extends SimpleObject implements IActor {
+public  class Robot extends SimpleObject implements IActor {
 
     private Direction lookDirection;
     private ProgramSheet programSheet;
     private final TiledMapTileLayer.Cell playerCellDead;
     private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
 
-    public SimpleRobot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
+    public Robot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
         super(startpos);
         this.lookDirection = Direction.NORTH;
         this.programSheet = new ProgramSheet();
@@ -62,14 +61,14 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      * @param pushDir : Direction robot wants to move.
      * @param collisionOccurred : If robot is moved due to collision.
      */
-    protected boolean playerCollisionHandler(SimpleRobot currentRobot, Vector2 pos, Direction pushDir, Boolean collisionOccurred) {
+    protected boolean playerCollisionHandler(Robot currentRobot, Vector2 pos, Direction pushDir, Boolean collisionOccurred) {
         //No wall fills the next position
         if (!gameBoard.canGoToTile(pos,pushDir)) return false;
 
         Vector2 nextPos = Direction.goDirection(pos, pushDir);
 
         if (occupied(nextPos)) { //Check for player collision
-            for (SimpleRobot collidedRobot : robots) { //Find robot we have collided with.
+            for (Robot collidedRobot : robots) { //Find robot we have collided with.
                 if (nextPos.equals(collidedRobot.getPosition())) {
                     if (!playerCollisionHandler(collidedRobot, nextPos, pushDir, true)) return false; //Check if collided robot is pushable.
                 }
@@ -92,13 +91,13 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      * @return true if position has an actor
      */
     public boolean occupied(Vector2 pos) {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (robot.getPosition().equals(pos)) return true;
         }
         return false;
     }
 
-    public void robotLoseLife(SimpleRobot robot){
+    public void robotLoseLife(Robot robot){
         if(robot.getProgramSheet().getLife()>1){
             robot.getProgramSheet().loseLife();
             robot.newPosition(robot);
@@ -110,20 +109,20 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         }
     }
 
-    public void robotTakeDmg(SimpleRobot robot, int amount){
+    public void robotTakeDmg(Robot robot, int amount){
         robot.getProgramSheet().addDamage(amount);
         if(getProgramSheet().getDamage()==0 && !(getProgramSheet().getLife()==0)){
             robot.newPosition(robot);
         }
     }
 
-    public void newWaitingPosition(SimpleRobot robot){
+    public void newWaitingPosition(Robot robot){
         Vector2 waitingPosition = new Vector2(getPosition().x -100, getPosition().y -100);
         robot.setPosition(waitingPosition);
 
     }
 
-    public void newPosition(SimpleRobot robot){
+    public void newPosition(Robot robot){
 
         robot.setPosition(robot.getProgramSheet().getArchiveMarker());
         robot.setLookDirection(robot.getProgramSheet().getArchiveMarkerDirection());
@@ -134,7 +133,7 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
      * @param robot : Robot to perform check on.
      * @return True if robot can still move.
      */
-    public boolean checkPosition(SimpleRobot robot) {
+    public boolean checkPosition(Robot robot) {
         Vector2 playerPos = robot.getPosition();
         //If player is on Pit or outside map. Set player to dead.
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {

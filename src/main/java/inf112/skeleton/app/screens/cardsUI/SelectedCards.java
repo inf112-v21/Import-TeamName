@@ -2,7 +2,7 @@ package inf112.skeleton.app.screens.cardsUI;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.screens.GameScreen;
 
 /**
@@ -16,7 +16,7 @@ public class SelectedCards {
     Stage uiStage;
     Table table;
 
-    public SelectedCards(GameScreen gameScreen, Player player) {
+    public SelectedCards(GameScreen gameScreen, Robot robot) {
         this.uiStage = gameScreen.getUIStage();
         this.table = new Table();
     }

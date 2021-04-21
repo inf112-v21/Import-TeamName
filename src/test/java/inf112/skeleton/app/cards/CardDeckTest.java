@@ -7,7 +7,7 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.DealCardsPhase;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,10 +66,10 @@ public class CardDeckTest {
          */
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
-        Player player = mainGame.getRobots().get(0);
-        player.getProgramSheet().getRegister().setCards(exampleSelection);
-        player.getProgramSheet().addDamage(6);
-        player.getProgramSheet().dealCards();
+        Robot robot = mainGame.getRobots().get(0);
+        robot.getProgramSheet().getRegister().setCards(exampleSelection);
+        robot.getProgramSheet().addDamage(6);
+        robot.getProgramSheet().dealCards();
         ArrayList<SimpleProgramCard> newCardHand = mainGame.getRobots().get(0).getProgramSheet().getCardHand().getProgramCards();
         assertEquals(3, newCardHand.size());
 
@@ -84,13 +84,13 @@ public class CardDeckTest {
         DealCardsPhase phase = new DealCardsPhase();
         CardDeck deck = new CardDeck();
         deck.shuffleCardsInDeck();
-        Player player = mainGame.getRobots().get(0);
-        player.getProgramSheet().getRegister().setCards(exampleSelection);
+        Robot robot = mainGame.getRobots().get(0);
+        robot.getProgramSheet().getRegister().setCards(exampleSelection);
 
-        player.getProgramSheet().addDamage(5);
-        ArrayList<SimpleProgramCard> oldRegister = player.getProgramSheet().getRegister().getLockedCards();
+        robot.getProgramSheet().addDamage(5);
+        ArrayList<SimpleProgramCard> oldRegister = robot.getProgramSheet().getRegister().getLockedCards();
         phase.run(); // Deal cards
-        ArrayList<SimpleProgramCard> newRegister = player.getProgramSheet().getRegister().getLockedCards();
+        ArrayList<SimpleProgramCard> newRegister = robot.getProgramSheet().getRegister().getLockedCards();
         assertEquals(oldRegister, newRegister);
 
     }

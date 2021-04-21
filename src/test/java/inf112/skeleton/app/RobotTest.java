@@ -13,7 +13,7 @@ import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.MovementCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
+import inf112.skeleton.app.objects.Actors.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,48 +45,48 @@ public class RobotTest {
 
     @Test
     public void playerMoveUp() {
-        Player player = new Player(new Vector2(2,2), textures, "1");
-        player.moveRobotWASD(51); // Keycode 51 -> w Should move up
-        assertEquals(new Vector2(2,3), player.getPosition());
+        Robot robot = new Robot(new Vector2(2,2), textures, "1");
+        robot.moveRobotWASD(51); // Keycode 51 -> w Should move up
+        assertEquals(new Vector2(2,3), robot.getPosition());
     }
 
     @Test
     public void rotateWithClock() {
-        Player player = new Player(new Vector2(4,4), textures, "1");
-        player.rotate(1);
-        assertEquals(Direction.EAST, player.getLookDirection());
+        Robot robot = new Robot(new Vector2(4,4), textures, "1");
+        robot.rotate(1);
+        assertEquals(Direction.EAST, robot.getLookDirection());
     }
 
     @Test
     public void rotateAgainstClock() {
-        Player player = new Player(new Vector2(4,4), textures, "1");
-        player.setLookDirection(Direction.WEST);
-        player.rotate(3);
-        assertEquals(Direction.SOUTH, player.getLookDirection());
+        Robot robot = new Robot(new Vector2(4,4), textures, "1");
+        robot.setLookDirection(Direction.WEST);
+        robot.rotate(3);
+        assertEquals(Direction.SOUTH, robot.getLookDirection());
     }
 
     @Test
     public void makeUTurn() {
-        Player player = new Player(new Vector2(4,4), textures, "1");
-        player.setLookDirection(Direction.EAST);
-        player.rotate(2);
-        assertEquals(Direction.WEST, player.getLookDirection());
+        Robot robot = new Robot(new Vector2(4,4), textures, "1");
+        robot.setLookDirection(Direction.EAST);
+        robot.rotate(2);
+        assertEquals(Direction.WEST, robot.getLookDirection());
     }
 
     @Test
     public void moveOneForward() {
-        Player player = new Player(new Vector2(1,1), textures, "1");
-        player.moveRobot(1); //To north
-        assertEquals(new Vector2(1,2), player.getPosition());
+        Robot robot = new Robot(new Vector2(1,1), textures, "1");
+        robot.moveRobot(1); //To north
+        assertEquals(new Vector2(1,2), robot.getPosition());
     }
 
     @Test
     public void moveOneBack() {
-        Player player = new Player(new Vector2(2,2), textures, "1");
+        Robot robot = new Robot(new Vector2(2,2), textures, "1");
         Texture playerTexture = Assets.manager.get(Assets.texture); // TEST TEXTURE. NO IMPLICATION FOR TEST
         MovementCard backwardsCard = new MovementCard(1, CardType.BACK1);
-        backwardsCard.action(player);
-        assertEquals(new Vector2(2, 1), player.getPosition());
+        backwardsCard.action(robot);
+        assertEquals(new Vector2(2, 1), robot.getPosition());
     }
 
 

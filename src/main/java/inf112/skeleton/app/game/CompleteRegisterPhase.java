@@ -5,13 +5,11 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
-import inf112.skeleton.app.objects.Actors.Player;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.objects.TileObjects.*;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import static inf112.skeleton.app.game.MainGame.*;
 
@@ -47,7 +45,7 @@ public class CompleteRegisterPhase  {
             List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
 
             //Get 1 card from each player/robot
-            for (SimpleRobot robot : robots) {
+            for (Robot robot : robots) {
                 if (robot.getProgramSheet().getPowerDown() || robot.getProgramSheet().isDead()) continue; //Skip powered down robots.
                 if (robot.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
 
@@ -59,7 +57,7 @@ public class CompleteRegisterPhase  {
 
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
-                for (SimpleRobot robot : robots) {
+                for (Robot robot : robots) {
                     if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots.
                     SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
@@ -73,23 +71,23 @@ public class CompleteRegisterPhase  {
 
     /** DEBUG METHOD
      * Debug test method perform all the selected cards of a predefined player
-     * @param player: test player whose cards will be executed
+     * @param robot: test player whose cards will be executed
      */
-    public void executePlayerProgramCards(Player player) {
+    public void executePlayerProgramCards(Robot robot) {
         System.out.println("executeProgramCards is running in debug mode for one single player \n");
-        ArrayList<SimpleProgramCard> playerCards = player.getProgramSheet().getRegister().getRegisterCards();
+        ArrayList<SimpleProgramCard> playerCards = robot.getProgramSheet().getRegister().getRegisterCards();
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
             List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
             //Get 1 card from each player/robot
-            if (player.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
-            SimpleProgramCard playerCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
+            if (robot.getProgramSheet().getRegister().getRegisterCards().size() < 5) throw new IllegalArgumentException("Robot had less than 5 cards in their register! When calling CompleteRegisterPhase they must have 5 or more!");
+            SimpleProgramCard playerCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
             moves.add(playerCard); //A Robot should Always have 5 cards, rulebook p. 10 -> Locking register.
             moves.sort(SimpleProgramCard::compareTo); //Sorts cards based on priority
             for (SimpleProgramCard card : moves) {
                 // Do the move on the correct player
-                    SimpleProgramCard robotCard = player.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
+                    SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
-                        card.action(player);
+                        card.action(robot);
                         System.out.println("DEBUG:  Player"  + " used " + card + " card.");
                     }
             }
@@ -134,7 +132,7 @@ public class CompleteRegisterPhase  {
         }
 
         //Fire laser for robots in their lookDirection
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots. They cannot fire their laser.
             Vector2 nextTile = Direction.goDirection(robot.getPosition(),robot.getLookDirection()); //Fire from next tile. Prevents robot hitting itself.
             fireLaser(nextTile, robot.getLookDirection(), 1);
@@ -153,7 +151,7 @@ public class CompleteRegisterPhase  {
         if (gameBoard.isOnBoard(currentPosOfLaser)) return; //Laser is outside board.
 
         //Check if robot is on laser. If so -> Damage robot.
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (robot.getPosition().equals(currentPosOfLaser)) {
                 //Robot is hit by laser. Take damage
                 robot.getProgramSheet().addDamage(nrOfLasers);
@@ -172,7 +170,7 @@ public class CompleteRegisterPhase  {
      * @param isExpress
      */
     protected void moveConveyor(Boolean isExpress) {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             Vector2 robotLocation = robot.getPosition();
 
             if (gameBoard.isPosAConveyor(robotLocation)) { //If robot is on a conveyor
@@ -211,7 +209,7 @@ public class CompleteRegisterPhase  {
      */
     protected void movePusher() {
         if (true) { //If pushers are on, move players
-            for (SimpleRobot robot : robots) {
+            for (Robot robot : robots) {
                 Vector2 robotLocation = robot.getPosition();
 
                 if (gameBoard.isPosAPusher(robotLocation)) { //If position is a conveyor
@@ -230,7 +228,7 @@ public class CompleteRegisterPhase  {
      * Rotates players if on Gear tile
      */
     protected void rotatePlayer() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             Vector2 robotLocation = robot.getPosition();
 
             if (gameBoard.isPosAGear(robotLocation)) { //If position is a conveyor
@@ -253,7 +251,7 @@ public class CompleteRegisterPhase  {
      * If yes, adds flag to that robots programsheet.
      */
     protected void updateCheckPoints() {
-        for (SimpleRobot robot : robots) {
+        for (Robot robot : robots) {
             if (gameBoard.isPosAFlag(robot.getPosition())) {
                 Flag flag = (Flag) gameBoard.getNonWallTileOnPos(robot.getPosition());
                 robot.getProgramSheet().addFlag(flag);

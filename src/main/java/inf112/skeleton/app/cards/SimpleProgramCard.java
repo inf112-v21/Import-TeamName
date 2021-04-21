@@ -6,7 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.assetManager.Assets;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
+
 
 /**
  * Abstract simple class.
@@ -42,7 +43,7 @@ public abstract class SimpleProgramCard implements IProgramCard{
 
     public ImageButton getCardButton() { return cardButton; }
 
-    public abstract void action(SimpleRobot robot);
+    public abstract void action(Robot robot);
 
     /**
      * Prints cardtype

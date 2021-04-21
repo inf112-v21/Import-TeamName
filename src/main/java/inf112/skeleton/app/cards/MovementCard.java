@@ -1,7 +1,7 @@
 package inf112.skeleton.app.cards;
 
 import inf112.skeleton.app.enums.Direction;
-import inf112.skeleton.app.objects.Actors.SimpleRobot;
+import inf112.skeleton.app.objects.Actors.Robot;
 
 import static java.lang.Math.abs;
 
@@ -36,7 +36,7 @@ public class MovementCard extends SimpleProgramCard {
      * @param robot : Robot which performs a given action
      */
     @Override
-    public void action(SimpleRobot robot) {
+    public void action(Robot robot) {
         if (numberOfSteps < 0) {
             Direction lookDirectionRobot = robot.getLookDirection();
             robot.setLookDirection(Direction.DirectionOpposite(lookDirectionRobot)); // Change look direction

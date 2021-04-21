@@ -1,8 +1,5 @@
 package inf112.skeleton.app.cards;
 
-import inf112.skeleton.app.game.MainGame;
-import inf112.skeleton.app.objects.Actors.Player;
-
 import java.util.*;
 
 /**
