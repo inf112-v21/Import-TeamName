@@ -11,7 +11,7 @@ public class MovementCard extends SimpleProgramCard {
      * The number of steps the robot will make. (Negative number if Back Up)
      */
     private final int numberOfSteps;
-    private CardType cardType;
+    private final CardType cardType;
 
     public MovementCard(int priority, CardType cardType) {
         super(priority, cardType);
@@ -43,9 +43,4 @@ public class MovementCard extends SimpleProgramCard {
         }
         robot.moveRobot(abs(numberOfSteps));
     }
-
-    public int getNumberOfSteps() {
-        return this.numberOfSteps;
-    }
-
 }
