@@ -17,6 +17,8 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 
+import java.util.ArrayList;
+
 import static com.badlogic.gdx.Gdx.gl;
 
 public class MapSelectScreen implements Screen {
@@ -308,7 +310,7 @@ public class MapSelectScreen implements Screen {
         String[] names = {name1.getText(), name2.getText(), name3.getText(), name4.getText(), name5.getText(),
         name6.getText(), name7.getText(), name8.getText()};
 
-        mainGame.setNumPlayers(count);
+        mainGame.setNumPlayers(count, names);
         switcher.getGameScreen().setMap(map);
         switcher.setGameScreen(mainGame);
 

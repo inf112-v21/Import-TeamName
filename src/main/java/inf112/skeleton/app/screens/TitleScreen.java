@@ -55,14 +55,14 @@ public class TitleScreen implements Screen {
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 
-        final Button singleplayer = new TextButton("Singleplayer/working test", skin);
+        final Button singleplayer = new TextButton("Offline", skin);
         singleplayer.setWidth(width*0.40f);
         singleplayer.setHeight(height*0.10f);
         singleplayer.setX(alignToAxisX - singleplayer.getWidth()/2);
         singleplayer.setY(height - singleplayer.getHeight()-height*0.45f);
 
 
-        final Button multiplayer = new TextButton("Multiplayer", skin);
+        final Button multiplayer = new TextButton("Online", skin);
         multiplayer.setWidth(width*0.40f);
         multiplayer.setHeight(height*0.10f);
         multiplayer.setX(alignToAxisX - multiplayer.getWidth()/2);

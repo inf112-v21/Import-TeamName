@@ -66,6 +66,20 @@ public  final class MainGame {
     /**
      * @param numPlayers
      */
+    public static void setNumPlayers(int numPlayers, String[] playerNames) {
+        // input string list of names, length == numPlayers
+        List<DockingBay> startPositions = gameBoard.getDockingBays();
+
+        for (int i = 0; i < numPlayers; i++) {
+            Player robot = new Player(startPositions.get(i).getPosition(), Assets.robotTextures.get(i), "1");
+            robots.add(robot);
+        }
+    }
+
+    /**
+     * Method for adding players used in Junit tests
+     * @param numPlayers
+     */
     public static void setNumPlayers(int numPlayers) {
         // input string list of names, length == numPlayers
         List<DockingBay> startPositions = gameBoard.getDockingBays();

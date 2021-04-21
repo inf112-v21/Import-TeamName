@@ -1,5 +1,6 @@
 package inf112.skeleton.app.objects.Actors;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
@@ -8,6 +9,8 @@ import inf112.skeleton.app.cards.CardDeck;
 import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.SimpleObject;
 
+import static inf112.skeleton.app.enums.Direction.*;
+import static inf112.skeleton.app.enums.Direction.EAST;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -157,8 +160,30 @@ public abstract class SimpleRobot extends SimpleObject implements IActor {
         return true;
     }
 
+    public void moveRobotWASD(int keycode) {
+        Vector2 pos = getPosition();
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+        playerTile.setCell((int) pos.x, (int) pos.y, new TiledMapTileLayer.Cell()); // Clear previous robot image
 
-    public void dealCards(CardDeck deck) {this.programSheet.dealCards();}
+        if (keycode == Input.Keys.W) {
+            setLookDirection(NORTH);
+            moveRobot(1);
+        }
+        if (keycode == Input.Keys.A) {
+            setLookDirection(WEST);
+            moveRobot(1);
+        }
+        if (keycode == Input.Keys.S) {
+            setLookDirection(SOUTH);
+            moveRobot(1);
+        }
+        if (keycode == Input.Keys.D) {
+            setLookDirection(EAST);
+            moveRobot(1);
+        }
+        checkPosition(this);
+    }
+
 
     @Override
     public ProgramSheet getProgramSheet() {

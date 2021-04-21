@@ -80,8 +80,6 @@ public class CardUI extends Actor {
         ArrayList<SimpleProgramCard> cardHandList = cardHand.getProgramCards();
         for (SimpleProgramCard card : cardHandList) {
             ImageButton cardButton = card.getCardButton();
-            //cardButton.setSize(2,2);
-            //cardButton.setPosition(w, h/10);
             table.add(cardButton).size(2, 3);
             cardButton.addListener(new InputListener() {
                 @Override
@@ -146,15 +144,13 @@ public class CardUI extends Actor {
         robot.getProgramSheet().getRegister().setCards(selectedCards); //Set cards for human player
         robot.getProgramSheet().getRegister().chosenCards = true;
 
-        // Reste count and card selection
+        // Reset list and count of selected cards
         selectedCards = new ArrayList<>();
         cardCount = 0;
-
 
         table.clearChildren();
         mainGame.chooseCardsPhase.run(mainGame, this);
 
-        //mainGame.executeCards(robot);
     }
 
 
