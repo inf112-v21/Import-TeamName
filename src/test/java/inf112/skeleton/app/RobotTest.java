@@ -1,13 +1,11 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.Texture;
-
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.cards.CardType;
 import inf112.skeleton.app.cards.MovementCard;

@@ -11,7 +11,9 @@ import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.util.ArrayList;
 import java.util.List;
-import static inf112.skeleton.app.game.MainGame.*;
+
+import static inf112.skeleton.app.game.MainGame.gameBoard;
+import static inf112.skeleton.app.game.MainGame.robots;
 
 public class CompleteRegisterPhase  {
 

@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(GdxTestRunner.class)
 public class RegisterTests {

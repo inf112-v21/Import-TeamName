@@ -9,7 +9,6 @@ import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.objects.SimpleObject;
 
 import static inf112.skeleton.app.enums.Direction.*;
-import static inf112.skeleton.app.enums.Direction.EAST;
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;
 

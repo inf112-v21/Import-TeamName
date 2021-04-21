@@ -7,8 +7,8 @@ import com.esotericsoftware.kryonet.FrameworkMessage;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.esotericsoftware.minlog.Log;
-import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 import inf112.skeleton.app.game.MainGame;
+import inf112.skeleton.app.multiplayer.NetworkPackets.Entry;
 
 import java.io.IOException;
 

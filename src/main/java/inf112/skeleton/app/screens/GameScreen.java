@@ -1,6 +1,8 @@
 package inf112.skeleton.app.screens;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,10 +19,9 @@ import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.screens.cardsUI.CardUI;
 
-
 import static com.badlogic.gdx.Gdx.gl;
-import static java.lang.Math.round;
 import static inf112.skeleton.app.game.MainGame.robots;
+import static java.lang.Math.round;
 
 /**
  * Creates a game screen to be displayed while playing the game

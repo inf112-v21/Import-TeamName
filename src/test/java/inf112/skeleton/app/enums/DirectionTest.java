@@ -1,9 +1,8 @@
 package inf112.skeleton.app.enums;
 
 import com.badlogic.gdx.math.Vector2;
-import org.junit.*;
-
-import static org.junit.Assert.fail;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class DirectionTest {
 

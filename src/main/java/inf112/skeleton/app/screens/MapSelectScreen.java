@@ -17,8 +17,6 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
 
-import java.util.ArrayList;
-
 import static com.badlogic.gdx.Gdx.gl;
 
 public class MapSelectScreen implements Screen {
