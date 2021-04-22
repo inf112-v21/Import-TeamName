@@ -18,12 +18,13 @@ public abstract class SimpleProgramCard implements IProgramCard{
     private final int priority;
     private CardType cardtype;
     private Texture texture;
+    private Texture toggledTexture;
 
 
     SimpleProgramCard(int priority, CardType cardType) {
         this.priority = priority;
         this.cardtype = cardType;
-        getTexture();
+        processTextures();
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(texture));
         cardButton = new ImageButton(drawable);
     }
@@ -54,9 +55,12 @@ public abstract class SimpleProgramCard implements IProgramCard{
     }
 
 
-    private void getTexture() {
+    /**
+     *
+      */
+    private void processTextures() {
         switch (cardtype) {
-            case MOVE1: texture = Assets.manager.get(Assets.Move1Card);  break;
+            case MOVE1: texture = Assets.manager.get(Assets.Move1Card); toggledTexture = Assets.manager.get(Assets.Move1CardToggled); break;
             case MOVE2: texture = Assets.manager.get(Assets.Move2Card); break;
             case MOVE3: texture = Assets.manager.get(Assets.Move3Card); break;
             case BACK1: texture = Assets.manager.get(Assets.BackUpCard); break;
@@ -66,6 +70,10 @@ public abstract class SimpleProgramCard implements IProgramCard{
             default: throw new IllegalArgumentException("Expected enum cardtype of type (Move1, move2, move3, rotateleft, rotateright, uturn). Got :" + cardtype);
         }
     }
+
+
+
+    public Texture getToggledTexture() {return this.toggledTexture;}
 
     public int compareTo(SimpleProgramCard otherCard) {
         return Integer.compare(getPriority(), otherCard.getPriority());

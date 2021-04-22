@@ -14,7 +14,7 @@ public class Assets {
     public static AssetManager manager = new AssetManager();
 
     public static final AssetDescriptor<Texture> texture =
-            new AssetDescriptor<Texture>("Images/player.png", Texture.class);
+            new AssetDescriptor<Texture>("Images/Robot/player.png", Texture.class);
 
 
     public static final AssetDescriptor<Texture> playButton =
@@ -27,6 +27,8 @@ public class Assets {
 
     public static final AssetDescriptor<Texture> Move1Card =
             new AssetDescriptor<Texture>("Images/cards/Move1.png", Texture.class);
+    public static final AssetDescriptor<Texture> Move1CardToggled =
+            new AssetDescriptor<Texture>("Images/cards/Move1Toggled.png", Texture.class);
 
     public static final AssetDescriptor<Texture> Move2Card =
             new AssetDescriptor<Texture>("Images/cards/Move2.png", Texture.class);
@@ -56,7 +58,7 @@ public class Assets {
         List<TextureRegion[][]> textures = new ArrayList<>();
 
         for (String co : colour) {
-            TextureRegion[][] tankTexture = new TextureRegion(new Texture("Images/robot_" + co + ".png")).split(300, 300);
+            TextureRegion[][] tankTexture = new TextureRegion(new Texture("Images/Robot/robot_" + co + ".png")).split(300, 300);
             textures.add(tankTexture);
         }
         return textures;
@@ -70,6 +72,7 @@ public class Assets {
         manager.load(BackUpCard);
         manager.load(UTurnCard);
         manager.load(Move1Card);
+        manager.load(Move1CardToggled);
         manager.load(Move2Card);
         manager.load(Move3Card);
         manager.load(RotateLeftCard);
