@@ -25,25 +25,45 @@ public class Assets {
     public static final AssetDescriptor<Texture> BackUpCard =
             new AssetDescriptor<Texture>("Images/cards/BackUp.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> BackUpCardToggled =
+            new AssetDescriptor<Texture>("Images/cards/BackUpToggled.png", Texture.class);
+
     public static final AssetDescriptor<Texture> Move1Card =
             new AssetDescriptor<Texture>("Images/cards/Move1.png", Texture.class);
+
     public static final AssetDescriptor<Texture> Move1CardToggled =
             new AssetDescriptor<Texture>("Images/cards/Move1Toggled.png", Texture.class);
 
     public static final AssetDescriptor<Texture> Move2Card =
             new AssetDescriptor<Texture>("Images/cards/Move2.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> Move2CardToggled =
+            new AssetDescriptor<Texture>("Images/cards/Move2Toggled.png", Texture.class);
+
     public static final AssetDescriptor<Texture> Move3Card =
             new AssetDescriptor<Texture>("Images/cards/Move3.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> Move3CardToggled =
+            new AssetDescriptor<Texture>("Images/cards/Move3Toggled.png", Texture.class);
+
 
     public static final AssetDescriptor<Texture> RotateLeftCard =
             new AssetDescriptor<Texture>("Images/cards/RotateLeft.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> RotateLeftCardToggled =
+            new AssetDescriptor<Texture>("Images/cards/RotateLeftToggled.png", Texture.class);
+
     public static final AssetDescriptor<Texture> RotateRightCard =
             new AssetDescriptor<Texture>("Images/cards/RotateRight.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> RotateRightCardToggled =
+            new AssetDescriptor<Texture>("Images/cards/RotateRightToggled.png", Texture.class);
+
     public static final AssetDescriptor<Texture> UTurnCard =
             new AssetDescriptor<Texture>("Images/cards/U-Turn.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> UTurnCardToggled =
+            new AssetDescriptor<Texture>("Images/cards/U-TurnToggled.png", Texture.class);
 
     public static final AssetDescriptor<Texture> VictoryImage =
             new AssetDescriptor<Texture>("Images/Victory.png", Texture.class);
@@ -70,13 +90,19 @@ public class Assets {
         manager.load(texture);
         manager.load(playButton);
         manager.load(BackUpCard);
+        manager.load(BackUpCardToggled);
         manager.load(UTurnCard);
+        manager.load(UTurnCardToggled);
         manager.load(Move1Card);
         manager.load(Move1CardToggled);
         manager.load(Move2Card);
+        manager.load(Move2CardToggled);
         manager.load(Move3Card);
+        manager.load(Move3CardToggled);
         manager.load(RotateLeftCard);
+        manager.load(RotateLeftCardToggled);
         manager.load(RotateRightCard);
+        manager.load(RotateRightCardToggled);
         manager.load(VictoryImage);
 
     }

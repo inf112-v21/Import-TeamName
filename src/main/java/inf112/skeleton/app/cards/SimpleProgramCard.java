@@ -56,17 +56,17 @@ public abstract class SimpleProgramCard implements IProgramCard{
 
 
     /**
-     *
+     * Set correct textures for a given card
       */
     private void processTextures() {
         switch (cardtype) {
             case MOVE1: texture = Assets.manager.get(Assets.Move1Card); toggledTexture = Assets.manager.get(Assets.Move1CardToggled); break;
-            case MOVE2: texture = Assets.manager.get(Assets.Move2Card); break;
-            case MOVE3: texture = Assets.manager.get(Assets.Move3Card); break;
-            case BACK1: texture = Assets.manager.get(Assets.BackUpCard); break;
-            case ROTATELEFT: texture = Assets.manager.get(Assets.RotateLeftCard); break;
-            case ROTATERIGHT: texture = Assets.manager.get(Assets.RotateRightCard); break;
-            case UTURN: texture = Assets.manager.get(Assets.UTurnCard); break;
+            case MOVE2: texture = Assets.manager.get(Assets.Move2Card); toggledTexture = Assets.manager.get(Assets.Move2CardToggled); break;
+            case MOVE3: texture = Assets.manager.get(Assets.Move3Card); toggledTexture = Assets.manager.get(Assets.Move3CardToggled); break;
+            case BACK1: texture = Assets.manager.get(Assets.BackUpCard); toggledTexture = Assets.manager.get(Assets.BackUpCardToggled); break;
+            case ROTATELEFT: texture = Assets.manager.get(Assets.RotateLeftCard); toggledTexture = Assets.manager.get(Assets.RotateLeftCardToggled);break;
+            case ROTATERIGHT: texture = Assets.manager.get(Assets.RotateRightCard); toggledTexture = Assets.manager.get(Assets.RotateRightCardToggled); break;
+            case UTURN: texture = Assets.manager.get(Assets.UTurnCard); toggledTexture = Assets.manager.get(Assets.UTurnCardToggled); break;
             default: throw new IllegalArgumentException("Expected enum cardtype of type (Move1, move2, move3, rotateleft, rotateright, uturn). Got :" + cardtype);
         }
     }

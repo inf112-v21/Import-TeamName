@@ -116,7 +116,7 @@ public class CardUI extends Actor {
                         cardButton.getStyle().imageChecked = cardButton.getStyle().imageUp;
                     } else {
                         //Set highlight texture
-                        cardButton.getStyle().imageChecked =  new TextureRegionDrawable(new TextureRegion(new Texture("Images/cards/Move1Toggled.png")));
+                        cardButton.getStyle().imageChecked =  new TextureRegionDrawable(card.getToggledTexture());
 
                     }
                     return true;
