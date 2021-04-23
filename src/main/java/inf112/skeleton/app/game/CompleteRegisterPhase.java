@@ -19,7 +19,6 @@ public class CompleteRegisterPhase  {
 
 
     public void run(MainGame mainGame, CardUI cardUI) {
-        revealProgramCards();
         executeProgramCards();
         boardElementsMove();
         lasersFire();
@@ -30,9 +29,7 @@ public class CompleteRegisterPhase  {
         mainGame.cleanupPhase.run(mainGame, cardUI);
     }
 
-    protected void revealProgramCards() {
-        //Is this 'nice to have'? Maybe just print to console.
-    }
+
 
     /**
      * Executes all programcards the robots have in their register.
@@ -228,22 +225,5 @@ public class CompleteRegisterPhase  {
         }
     }
 
-
-    /*
-    CompleteRegister plan:
-        - Reveal Program Cards
-            - Each player reveals his or her program card for that register at the same time.
-        - Execute Program Cards (Robots Move)
-            - Move each robot as its program card indicates.
-            - Note card priority
-            - Resolve interactions -> Hit Wall?, other Player?, touch Flag? Repair Sites.
-        - Board Elements Move
-            1. Express conveyor belts move 1 space.
-            2. All conveyor belts move 1 space.
-            3. Pushers push if active.
-            4. Gear rotate 90 degrees.
-        - Lasers Fire
-        - Touch Checkpoints
-     */
 
 }

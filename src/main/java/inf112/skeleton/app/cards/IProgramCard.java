@@ -21,6 +21,7 @@ public interface IProgramCard {
     int getPriority();
 
 
+     String toString();
 
 
 }

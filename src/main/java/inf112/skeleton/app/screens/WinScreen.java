@@ -24,7 +24,6 @@ public class WinScreen implements Screen {
     FitViewport viewPort;
     float width;
     float height;
-    private Robot robot;
 
     public WinScreen(final RoboRally game, FitViewport viewPort) {
         this.game = game;
@@ -50,10 +49,6 @@ public class WinScreen implements Screen {
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         this.stage.act();
         this.stage.draw();
-    }
-
-    public void winningRobot(Robot robot) {
-        this.robot = robot;
     }
 
     @Override

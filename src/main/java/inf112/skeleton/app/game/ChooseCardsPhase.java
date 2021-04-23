@@ -24,12 +24,8 @@ public class ChooseCardsPhase extends Thread {
             for (Robot robot : robots) {
                 if (robot.getProgramSheet().getLife() < 0 || robot.getProgramSheet().getPowerDown()) continue;
                 if (robot.getProgramSheet().isDead()) continue;
-                System.out.println("Is the player dead?" + robot.getProgramSheet().isDead());
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
-                    System.out.println("#################################");
-                    System.out.println("Player number " + i + " 's turn");
-
                     cardUI.generateCards(robot); // Generate cards for player that has not chosen cards
                     return; // Leave chooseCards
                 }

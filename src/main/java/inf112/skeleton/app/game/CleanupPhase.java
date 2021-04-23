@@ -10,30 +10,31 @@ import static inf112.skeleton.app.game.MainGame.robots;
 public class CleanupPhase {
 
 
+    /**
+     * Cleanup every robot.
+     * Called every roundd
+     * @param mainGame: instance of mainGame
+     * @param cardUI: instance of cardUI
+     */
     public void run(MainGame mainGame, CardUI cardUI) {
         repairs();
         mainGame.startGameRound(cardUI);
     }
 
+    /**
+     * Perform repairs for all robots
+     */
     private void repairs() {
         for (Robot robot : robots) {
+            if (robot.getProgramSheet().isDead()) continue;
             if (gameBoard.isPosARepaiSite(robot.getPosition())) {
                 RepairSite repair = (RepairSite) gameBoard.getNonWallTileOnPos(robot.getPosition());
-
                 robot.getProgramSheet().setArchiveMarker(repair.getPosition());
                 robot.getProgramSheet().addDamage(-1 * repair.getStrength()); //Repair 1 damageToken
-
-                //If robot at double repairSite. Give 1 option card. Imlpement under. This is not MVP.
-                //if (repair.getStrength() == 2) robot.getProgramSheet().give1optionCard
             }
         }
     }
 
 
-    /*
-    Clean up plan:
-        - Repairs & Upgrades
-            - Robots at single-wrench space, discard 1 damage token(heal 1). Robots at two-wrench space, discard 1 damage token token and draw 1 Options card.
-     */
 
 }

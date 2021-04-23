@@ -76,7 +76,7 @@ public class GameLoopEventHandler {
     }
 
     /**
-     * Testing
+     * Testing for win condition
      */
     private void checkForWin() {
         // If a robot has collected all flags in correct order.
@@ -84,7 +84,6 @@ public class GameLoopEventHandler {
             int visitedFlags = robot.getProgramSheet().getNumberOfFlags();
             if (visitedFlags == gameBoard.getNrFlags()) {
                 switcher.setWinScreen();
-
             }
         }
     }

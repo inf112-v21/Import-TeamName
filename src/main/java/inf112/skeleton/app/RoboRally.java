@@ -14,6 +14,8 @@ import inf112.skeleton.app.screens.MapSelectScreen;
 import inf112.skeleton.app.screens.TitleScreen;
 import inf112.skeleton.app.screens.WinScreen;
 
+import java.awt.*;
+
 public class RoboRally extends Game {
 
     public SpriteBatch batch;
