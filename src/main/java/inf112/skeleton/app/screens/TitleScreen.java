@@ -78,9 +78,6 @@ public class TitleScreen implements Screen {
         exitGame.setY(height - exitGame.getHeight()-height*0.70f);
         Gdx.input.setInputProcessor(stage);
 
-
-
-
         singleplayer.addListener(new ClickListener() {
 
             @Override

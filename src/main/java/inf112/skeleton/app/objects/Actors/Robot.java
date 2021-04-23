@@ -19,6 +19,7 @@ public  class Robot extends SimpleObject implements IActor {
     private final TiledMapTileLayer.Cell playerCellDead;
     private final TiledMapTileLayer.Cell DirectionTextureNORTH, DirectionTextureSOUTH, DirectionTextureEAST, DirectionTextureWEST;
     private String playerName;
+
     public Robot(Vector2 startpos, TextureRegion[][] texture, String playerName) {
         super(startpos);
         this.playerName = playerName;

@@ -94,7 +94,6 @@ public class MultiplayerScreen implements Screen {
         backButton.setY(height - backButton.getHeight()-height*0.70f);
 
 
-
         stage.addActor(assignIP);
         stage.addActor(assignName);
         stage.addActor(joinGame);
@@ -108,8 +107,6 @@ public class MultiplayerScreen implements Screen {
                 if (c == '\n') textField.getOnscreenKeyboard().show(false);
             }
         });
-
-
 
         joinGame.addListener(new ClickListener() {
             @Override
@@ -153,7 +150,6 @@ public class MultiplayerScreen implements Screen {
     private void join() {
         MultiplayerGameScreen multiplayer = new MultiplayerGameScreen(switcher, false, assignIP.getText(), getName());
         switcher.setScreen(multiplayer);
-
     }
 
     private void host() {
@@ -211,7 +207,5 @@ public class MultiplayerScreen implements Screen {
         stage.dispose();
         skin.dispose();
     }
-
-
 
 }
