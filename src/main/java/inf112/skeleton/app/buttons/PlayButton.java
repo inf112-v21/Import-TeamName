@@ -28,18 +28,6 @@ public class PlayButton {
         playButton.setSize(widthSize,heightSize);
     }
 
-    /**
-     *
-     * @param w: Height of placement of button
-     * @param h: Width of placement of button
-     */
-    public PlayButton(float w, float h) {
-        texture = Assets.manager.get(Assets.playButton);
-        drawable = new TextureRegionDrawable(new TextureRegion(texture));
-        playButton = new ImageButton(drawable);
-        playButton.setPosition(w,h);
-        playButton.setSize(30,30);
-    }
 
     /**
      *

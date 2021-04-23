@@ -44,7 +44,7 @@ public abstract class SimpleProgramCard implements IProgramCard{
 
     /**
      * Prints cardtype
-     * @return
+     * @return: "String of card types
      */
     public String toString() {
         return " " + cardtype;
@@ -68,8 +68,12 @@ public abstract class SimpleProgramCard implements IProgramCard{
     }
 
 
-
+    /**
+     * Returns texture when player has selcted cards
+     * @return: texture
+     */
     public Texture getToggledTexture() {return this.toggledTexture;}
+
 
     public int compareTo(SimpleProgramCard otherCard) {
         return Integer.compare(getPriority(), otherCard.getPriority());

@@ -98,6 +98,6 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 ## Known bugs
 * Resizing the window will currently break the clickable cards. Restart fixes it.
 * !The Server does not shut itself down, when application is closed. The host of the game, either has to manually stop the process in their preferred IDE, or unbind their ports with commandline to start hosting again.
-*   Commandline: `netstat -ano | findstr :8080` , then `taskkill /pid yourid /f` . Replace yourId whith the Pid to the process.
-* PLayers are still asked to submit cards after their deaths
+*   Commandline: `netstat -ano | findstr :8080` , then `taskkill /pid yourid /f` . Replace yourId with the Pid to the process.
+* PLayers are still asked to submit cards after their deaths.
 * When selecting the map ``Whirlwind``, the hitboxes of the cards are slightly pushed aside, causing the user to have to click above the cards.

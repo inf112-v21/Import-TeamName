@@ -30,7 +30,8 @@ public class CardHand {
     }
 
     /**
-     *
+     * Randomly generates a priority number.
+     * Base on range
      * @return: A priority number
      */
     public int getPriority()  {
@@ -55,7 +56,6 @@ public class CardHand {
     public ArrayList<SimpleProgramCard> getProgramCards() {return cards;}
 
 
-    public void setNumCardsDeck(int num) {this.numCards = num;}
     public int getNumCardsDeck() {return this.numCards;}
     public void subtractNumCardsDeck() {this.numCards--;}
 

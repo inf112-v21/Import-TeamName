@@ -36,7 +36,6 @@ public class RRClient {
                 packetHandler(c.getID(), packet);
             }
             public void disconnected(Connection c) {
-                disconnectHandler(c);
             }
         });
     }
@@ -59,10 +58,6 @@ public class RRClient {
         this.client.updateReturnTripTime();
     }
 
-    protected void disconnectHandler (Connection c) {
-       //well...
-    }
-
     //what to do with packet of type "x"
     public void packetHandler (int playerId, Object packet) {
         if (packet instanceof NetworkPackets.NewPlayer) {
@@ -77,7 +72,6 @@ public class RRClient {
         } else if (packet instanceof NetworkPackets.MovedRobot) {
             NetworkPackets.MovedRobot type = (NetworkPackets.MovedRobot) packet;
             this.mainGame.cheatPosition(type);
-            //System.out.println("A robot moved!");  for manual tests.
         }
     }
 
@@ -88,24 +82,10 @@ public class RRClient {
         }
     }
 
-    //send TCP packet
-    public void sendPacketTCP(Object packet) {
-        if (this.client.isConnected()) {
-            this.client.sendTCP(packet);
-        }
-    }
-
     //shutting off the client
     public void ceaseClient() {
         this.client.stop();
         this.client.close();
-    }
-
-    //was used for manual tests, just pings the server if one is connected.
-    public void ping() {
-        if (this.client.isConnected()) {
-            this.client.updateReturnTripTime();
-        }
     }
 
 }

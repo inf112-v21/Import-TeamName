@@ -32,10 +32,8 @@ public class CardUI extends Actor {
     private int h;
     MainGame mainGame;
 
-    private Robot robot;
+    private Robot robot; // Current robot displayed
 
-    public String playerName;
-    public int lifeTokens;
     /**
      *
      * Constructor
@@ -155,12 +153,6 @@ public class CardUI extends Actor {
 
     }
 
-    public String getRobotName () {
-        return this.playerName;
-    }
 
-    public int getLifeTokens() {
-        return this.lifeTokens;
-    }
 
 }
