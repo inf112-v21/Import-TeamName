@@ -115,8 +115,6 @@ public class GameScreen extends InputAdapter implements Screen {
         return true;
     }
 
-
-
     @Override
     public void dispose() {
         this.batch.dispose();

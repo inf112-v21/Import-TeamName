@@ -63,8 +63,6 @@ public class CardUI extends Actor {
         table.setRound(false);
     }
 
-
-
     /**
      * Method that displays the possible cards contained in a cardhand in a table.
      *  Called on by ChooseCardsphase for every robot. Retrives the cards dealt to the player and

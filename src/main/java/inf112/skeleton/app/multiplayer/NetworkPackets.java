@@ -6,16 +6,16 @@ import com.esotericsoftware.kryonet.FrameworkMessage;
 
 public class NetworkPackets {
 
-    //designate ports to be used here:
+    // Designate ports to be used here:
     static public final int tcpPort = 8080;
     static public final int udpPort = 8080;
 
 
-    static public void register (EndPoint endPoint) { //EndPoint is either server or client
-       Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
+    static public void register (EndPoint endPoint) { // EndPoint is either server or client
+       Kryo obj = endPoint.getKryo(); // Instead of writing the latter on every object to be registered.
 
-       //follow this format of "obj.register(xxx.class)", where xxx is class.
-        obj.register(FrameworkMessage.Ping.class); //ping isn't really used, is more for manual tests during developement.
+       // Follow this format of "obj.register(xxx.class)", where xxx is class.
+        obj.register(FrameworkMessage.Ping.class); // Ping isn't really used, is more for manual tests during developement.
         obj.register(Entry.class);
         obj.register(NewPlayer.class);
         obj.register(MovedRobot.class);
@@ -33,7 +33,7 @@ public class NetworkPackets {
     static public class NewPlayer {
         public String name;
         public int playerID;
-        public boolean joining;  //realized i needed a way to know if it was joining or leaving, check server-side
+        public boolean joining;  // Realized i needed a way to know if it was joining or leaving, check server-side
 
         public NewPlayer() {}
         public NewPlayer (String name, int playerID, boolean joining) {
@@ -43,7 +43,7 @@ public class NetworkPackets {
         }
     }
 
-    static public class MovedRobot { //should do for MVP
+    static public class MovedRobot { // Should do for MVP
         public int playerID;
         public int keycode;
 
@@ -53,6 +53,6 @@ public class NetworkPackets {
             this.keycode = keycode;
         }
     }
-    //implement the classes for use in RRClient/RRServer here
+    // Implement the classes for use in RRClient/RRServer here
 
 }
