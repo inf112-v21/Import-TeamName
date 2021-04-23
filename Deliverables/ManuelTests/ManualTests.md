@@ -27,7 +27,7 @@ Going back in the menu and closing the window from menu. (23.04.21)
 5. In the find game screen: click on the back button to get back to the main menu.
 6. In the main menu screen: click on the exit button.
 
-If all the steps are completed and the game closes, the test is successful. Otherwise, it failed.
+If all the steps are completed and the game window closes, the test is successful. Otherwise, it failed.
 
 # Movement of player
 Move the player figure by clicking on the cards (23.04.21)
