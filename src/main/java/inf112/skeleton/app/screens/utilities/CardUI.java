@@ -1,14 +1,10 @@
-package inf112.skeleton.app.screens.cardsUI;
+package inf112.skeleton.app.screens.utilities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -17,7 +13,6 @@ import inf112.skeleton.app.cards.CardHand;
 import inf112.skeleton.app.cards.SimpleProgramCard;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Robot;
-import inf112.skeleton.app.screens.GameScreen;
 
 import java.util.ArrayList;
 
@@ -30,18 +25,19 @@ public class CardUI extends Actor {
 
     private Table table;
     private  CardHand cardHand;
-    private Stage stage;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
-    private Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
 
     private int w;
     private int h;
     MainGame mainGame;
 
-    public String named;
+    private Robot robot;
+
+    public String playerName;
     public int lifeTokens;
     /**
+     *
      * Constructor
      * @param mainGame: instance of main game
      */
@@ -55,14 +51,12 @@ public class CardUI extends Actor {
 
     /**
      * Set up a Card UI after initialization
-     * @param w
-     * @param h
-     * @param gameScreen
+     * @param w: table position width
+     * @param h: table position height
      */
-    public void setUp(int w, int h, GameScreen gameScreen) {
+    public void setUp(int w, int h) {
         this.w = w;
         this.h = h;
-        this.stage = gameScreen.getUIStage();
         this.table = new Table();
         table.setSize(w-w, h-h-1 );
         table.setPosition(w,h-h/4);
@@ -73,17 +67,12 @@ public class CardUI extends Actor {
 
     /**
      * Method that displays the possible cards contained in a cardhand in a table.
-     * @param w: Starting witdth of UI
-     * @param h Starting height of UI
-     */
-
-    /** Refaktor
-     *
+     *  Called on by ChooseCardsphase for every robot. Retrives the cards dealt to the player and
+     *  generates buttons that allows the robot to select its register cards-
+     *  Populates the list selectedCards
      */
     public void generateCards(Robot robot) {
-        if(robot.getProgramSheet().isDead()) return;
-        this.named = robot.getPlayerName();
-        this.lifeTokens = robot.getProgramSheet().getLife();
+        this.robot = robot;
         cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
@@ -98,7 +87,6 @@ public class CardUI extends Actor {
                     if (selectedCards.contains(card)) {
                         selectedCards.remove(card);
                         cardCount--;
-                        System.out.println("Removed card" + card);
                     }
                     else if (cardCount >= possibleNumcards) { System.out.println("Can't add anymore cards"); return; }
                     //Add selected card
@@ -136,6 +124,11 @@ public class CardUI extends Actor {
             }});
     }
 
+
+    public Robot getCurrentRobot(){
+        return this.robot;
+    }
+
     /** Returns table used for visualizing table **/
     public Table getTable() { return table; }
 
@@ -163,7 +156,7 @@ public class CardUI extends Actor {
     }
 
     public String getRobotName () {
-        return this.named;
+        return this.playerName;
     }
 
     public int getLifeTokens() {

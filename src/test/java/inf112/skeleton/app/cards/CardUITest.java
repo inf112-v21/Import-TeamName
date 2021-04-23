@@ -7,12 +7,18 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.assetManager.Assets;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.objects.Actors.Robot;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * Cardui is a graphic intensive class and as such automatic junit test may be limited.
+ * Manual tests are conducted to ensure correct behaviour
+ */
 @RunWith(GdxTestRunner.class)
 public class CardUITest {
 
@@ -41,15 +47,16 @@ public class CardUITest {
         assertFalse(numCards > 0);
     }
 
-    /**
+
     @Test
     public void canSend5Cards() {
         CardUI ui = new CardUI(mainGame);
+        ui.setUp(2,2);
         for (int i = 0; i < 5; i++) { ui.selectedCards.add(new MovementCard(1, CardType.MOVE1 ));}
-        Player robot = mainGame.robots.get(0);
+        Robot robot = mainGame.robots.get(0);
         ui.sendCards(robot);
         int numCards =  robot.getProgramSheet().getRegister().getRegisterCards().size();
         assertTrue(numCards == 5);
     }
-    **/
+
 }

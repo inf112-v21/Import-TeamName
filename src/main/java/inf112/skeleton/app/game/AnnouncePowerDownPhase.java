@@ -1,6 +1,6 @@
 package inf112.skeleton.app.game;
 
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 
 public class AnnouncePowerDownPhase  {
 

@@ -7,7 +7,7 @@ import inf112.skeleton.app.enums.Direction;
 import inf112.skeleton.app.enums.Rotation;
 import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.objects.TileObjects.*;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 
 import java.util.ArrayList;
 import java.util.List;

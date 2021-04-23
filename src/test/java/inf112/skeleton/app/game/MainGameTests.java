@@ -36,7 +36,7 @@ public class MainGameTests {
         String[] names = {"Alan Turing"};
         mainGame.setNumPlayers(1, names);
 
-        String name = mainGame.robots.get(0).getPlayerName();
+        String name = mainGame.robots.get(0).getRobotName();
         assertEquals("Alan Turing", name);
     }
 }

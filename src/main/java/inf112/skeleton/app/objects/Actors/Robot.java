@@ -102,7 +102,7 @@ public  class Robot extends SimpleObject implements IActor {
             robot.getProgramSheet().loseLife();
             robot.newPosition(robot);
         } else {
-            robot.getProgramSheet().setDead(true);
+            robot.getProgramSheet().setDead();
             //Remove dead player from map
             TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
             playerTile.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, new TiledMapTileLayer.Cell()); // Set empty cell where robot once existed
@@ -214,7 +214,7 @@ public  class Robot extends SimpleObject implements IActor {
 
     }
 
-    public String getPlayerName() {return this.playerName;}
+    public String getRobotName() {return this.playerName;}
 
     public void clearRobotSprite(int x, int y) {
         TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
