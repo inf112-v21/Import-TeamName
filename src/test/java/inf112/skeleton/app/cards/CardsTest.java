@@ -60,7 +60,7 @@ public class CardsTest {
         rotate1.action(robot);
         assertEquals(Direction.EAST, robot.getLookDirection());
     }
-    
+
     @Test
     public void cardDeckSubtractNumCards() {
         CardHand deck = new CardHand(9);
