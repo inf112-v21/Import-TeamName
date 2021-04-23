@@ -155,8 +155,7 @@ public class MapSelectScreen implements Screen {
         whirlwind.setHeight(height*0.10f);
         whirlwind.setX(alignToAxisX - whirlwind.getWidth()/2);
         whirlwind.setY(height - whirlwind.getHeight()-height*0.44f);
-
-
+        
         final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
         backButton.setHeight(height*0.08f);
