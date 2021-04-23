@@ -28,9 +28,7 @@ public class ProgramSheetTest {
         game = new MainGame();
         game.setup(map); //Make game board
     }
-
-    //TODO: Write tests for most methods.
-
+    
 
     @Test
     public void maxLifetokensShouldBe3() {

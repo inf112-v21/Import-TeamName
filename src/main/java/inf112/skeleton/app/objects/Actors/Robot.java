@@ -139,10 +139,6 @@ public  class Robot extends SimpleObject implements IActor {
         if (gameBoard.isOnBoard(playerPos) || gameBoard.isPosAPit(playerPos)) {
             newWaitingPosition(robot);
             //robotLoseLife(robot);
-            //TODO: Remove this dead robot from map.
-            // Must happen here, cannot be in CompleteRegisterPhase - Endre
-            // Maybe move dead player to x:-100,y:-100. Then after all cards are executed/loops are done. Remove dead players entirely.
-            //      - To prevent potential execution errors when modifying lists used in loops.
 
             return false;
         }

@@ -110,7 +110,6 @@ public class CardUI extends Actor {
                 }
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    //TODO: Change texture in a better way. Can we avoid creating new 'Highlight' textures for all buttons? Maybe create pixel layer on the fly.
                     if (cardCount >= 5) {
                         //Set normal texture
                         cardButton.getStyle().imageChecked = cardButton.getStyle().imageUp;

@@ -11,7 +11,6 @@ import inf112.skeleton.app.screens.GameScreen;
 public class SelectedCards {
 
 
-    // TODO: Get cards from register
 
     Stage uiStage;
     Table table;
@@ -20,9 +19,6 @@ public class SelectedCards {
         this.uiStage = gameScreen.getUIStage();
         this.table = new Table();
     }
-    //TODO
-    public void showSelectedCards() {
 
-    }
 
 }
