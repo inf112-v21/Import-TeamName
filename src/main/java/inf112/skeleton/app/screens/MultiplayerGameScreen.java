@@ -127,14 +127,14 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
     public void show() {
         this.mainGame = new MainGame();
 
-        if (hosting == false) {
+        if (!hosting) {
             this.map = new TmxMapLoader().load("Maps/Chess.tmx");
             mainGame.setup(map);
         }
         client = new RRClient(name, mainGame);
 
         //starting server if host, otherwise connect to "ip"
-        if(hosting != false) {
+        if (hosting) {
             Log.info("Starting server~");
             try {
                 server = new RRServer(mainGame);

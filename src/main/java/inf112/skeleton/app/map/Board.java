@@ -59,7 +59,7 @@ public class Board {
         for (MapLayer layer2 : map.getLayers()) { // Loop through all layers
             TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(layer2.getName()); // Get TileMap of current layer.
 
-            //Loops through all tiles in a layer
+            // Loops through all tiles in a layer
             for (int x = 0; x < layer.getWidth(); x++) {
                 for (int y = 0; y < layer.getHeight(); y++) {
                     TiledMapTileLayer.Cell tile = layer.getCell(x, y); //Gets tile from layer
@@ -68,7 +68,7 @@ public class Board {
                     int id = tile.getTile().getId();  // Gets id of current tile.
                     if (id==5) continue;              // Ignore Floor
 
-                    //Convert id(int) to TileObject(Tile-enum)
+                    // Convert id(int) to TileObject(Tile-enum)
                     IObject tileInstance = tileManager.getTileObject(id, new Vector2(x,y));
 
                     if (tileInstance instanceof Wall){
@@ -274,5 +274,8 @@ public class Board {
 
     }
 
-    public TiledMap getMap() {return this.map;}
+    public TiledMap getMap() {
+        return this.map;
+    }
+
 }

@@ -35,7 +35,7 @@ public class GameLoopEventHandler {
      * Draws all robots at their new position
      */
     private void renderPlayersOnBoard() {
-        //Render all robot on the board, at their new position.
+        // Render all robot on the board, at their new position.
         for (Robot robot : robots) {
             if (robot.getProgramSheet().isDead()) robot.setPosition(new Vector2(-10,-10)); //Dead players are off the board.
             tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
@@ -51,9 +51,7 @@ public class GameLoopEventHandler {
             Vector2 position = robot.getPosition();
 
             if (gameBoard.isOnBoard(position) || gameBoard.isPosAPit(position)) {
-                //robot.robotLoseLife(robot);
                 tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCellDead());
-
             }
 
             if (robot.getProgramSheet().getLife()>1 && gameBoard.isOnBoard(position)){

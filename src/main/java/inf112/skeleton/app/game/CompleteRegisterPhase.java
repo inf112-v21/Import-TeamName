@@ -38,7 +38,6 @@ public class CompleteRegisterPhase  {
      * Robots MUST HAVE 5 cards in their register! This will not work without.
      */
     protected void executeProgramCards() {
-        //System.out.println("executeProgramCards is running \n");
 
         for (int i = 0; i < 5; i++) { //Loop through all 5 cards in register.
             List<SimpleProgramCard> moves = new ArrayList<>(); //List with one from each player
@@ -60,7 +59,6 @@ public class CompleteRegisterPhase  {
                     if (robot.getProgramSheet().getPowerDown()) continue; //Skip powered down robots.
                     SimpleProgramCard robotCard = robot.getProgramSheet().getRegister().getRegisterCards().get(i); //Get card from robot.
                     if (robotCard.equals(card)) {
-                        //System.out.println("Robot " + robot + " used " + card + " card.");
                         card.action(robot);
                     }
                 }

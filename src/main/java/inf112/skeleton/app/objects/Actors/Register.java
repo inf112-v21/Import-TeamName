@@ -17,6 +17,7 @@ public class Register {
 
     protected ArrayList<SimpleProgramCard> lockedRegisterCards;
 
+
     public void lockRegister(int lockNum) {
         this.numLockedCards = lockNum;
         for (int i = 0; i < lockNum; i++) {
@@ -61,9 +62,5 @@ public class Register {
 
 
     public void wipeRegister() {this.registerCards = new ArrayList<>();}
-
-    public boolean hasChosenCards() {return this.chosenCards;}
-
-    public void choseCards() {this.chosenCards = true;}
 
 }

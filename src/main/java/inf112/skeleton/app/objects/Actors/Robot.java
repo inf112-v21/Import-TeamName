@@ -110,13 +110,6 @@ public  class Robot extends SimpleObject implements IActor {
         }
     }
 
-    public void robotTakeDmg(Robot robot, int amount){
-        robot.getProgramSheet().addDamage(amount);
-        if(getProgramSheet().getDamage()==0 && !(getProgramSheet().getLife()==0)){
-            robot.newPosition(robot);
-        }
-    }
-
     public void newWaitingPosition(Robot robot){
         Vector2 waitingPosition = new Vector2(getPosition().x -100, getPosition().y -100);
         robot.setPosition(waitingPosition);

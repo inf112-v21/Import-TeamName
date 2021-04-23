@@ -17,7 +17,7 @@ public class TileManager {
     private static final Map<Integer, Tiles> tileEnum = new HashMap<Integer,Tiles>();
 
     public TileManager() {
-        //Adds all enums to map. Used to get corresponding name of a given tileID (int).
+        // Adds all enums to map. Used to get corresponding name of a given tileID (int).
         for (Tiles tile : Tiles.values()) {
             tileEnum.put(tile.getTileID(), tile);
         }
@@ -30,7 +30,6 @@ public class TileManager {
      * @return
      */
     public IObject getTileObject(int tileIDFromMap, Vector2 pos) {
-        //System.out.println(tileIDFromMap);
         return makeTile(tileEnum.get(tileIDFromMap), pos);
     }
 
@@ -41,8 +40,6 @@ public class TileManager {
      * @return IObject corresponding to its tileID.
      */
     private IObject makeTile(Tiles tile, Vector2 pos) {
-        //System.out.println(tile);
-        //if (tile==null) return new SimpleObject(new Vector2(-1,-1));
 
         switch (tile) {
 

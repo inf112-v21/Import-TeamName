@@ -25,7 +25,7 @@ public class RRClient {
         this.client = new Client();
         this.client.start();
 
-        //registered by kryo at networkpackets, both for server and client register the same packets there.
+        // Registered by kryo at networkpackets, both for server and client register the same packets there.
         NetworkPackets.register(this.client);
 
         this.client.addListener(new Listener() {
@@ -52,16 +52,16 @@ public class RRClient {
 
     protected void connectionHandler (Connection c) {
         this.id = c.getID();
-        c.getRemoteAddressTCP().toString(); //get ip address
+        c.getRemoteAddressTCP().toString(); // Get IP address
         Entry assignName = new Entry(this.name);
         this.client.sendTCP(assignName);
         this.client.updateReturnTripTime();
     }
 
-    //what to do with packet of type "x"
+    // What to do with packet of type "x"
     public void packetHandler (int playerId, Object packet) {
         if (packet instanceof NetworkPackets.NewPlayer) {
-            NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; //casting to access the packet
+            NetworkPackets.NewPlayer type = (NetworkPackets.NewPlayer) packet; // Casting to access the packet
             if (type.joining) {
                 System.out.println(type.name + " has joined.");
                 this.mainGame.multiplayerAddPlayer(type.playerID);
@@ -75,14 +75,14 @@ public class RRClient {
         }
     }
 
-    //send UDP packet
+    // Send UDP packet
     public void sendPacketUDP(Object packet) {
         if (this.client.isConnected()) {
             this.client.sendUDP(packet);
         }
     }
 
-    //shutting off the client
+    // Shutting off the client
     public void ceaseClient() {
         this.client.stop();
         this.client.close();

@@ -21,8 +21,6 @@ public  final class MainGame {
    public static CardDeck deck;
    private boolean gameOver = false;
 
-
-
    public static DealCardsPhase dealCardsPhase;
    public static ChooseCardsPhase chooseCardsPhase;
    public static CompleteRegisterPhase completeRegisterPhase;

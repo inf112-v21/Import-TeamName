@@ -23,6 +23,7 @@ public class ProgramSheet {
     private Vector2 archiveMarker; //Respawn point when reentering the game.
     private Direction archiveMarkerDirection;
 
+
     public ProgramSheet() {
         this.damageTokens = 0;
         this.lifeTokens = 3;
@@ -58,9 +59,6 @@ public class ProgramSheet {
             register.lockRegister(damageTokens - 4);
         }
     }
-
-
-
 
     /**
      * Called every round for its robot
@@ -129,11 +127,6 @@ public class ProgramSheet {
 
     public int getLife() {
         return this.lifeTokens;
-    }
-
-
-    public void setPowerDown(boolean state) {
-        this.powerDown = state;
     }
 
     public boolean getPowerDown() {

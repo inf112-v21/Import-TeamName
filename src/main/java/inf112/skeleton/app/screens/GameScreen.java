@@ -195,8 +195,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     public void hide() {
     }
-    public Stage getUIStage() {
-        return this.uiStage;
-    }
+
 }
 
