@@ -17,8 +17,8 @@ Teamet har beholdt rollene fra forrige Deliverable og erfarer at rollene slik de
 <b>Erfaringer fra prosjektmetodikk:</b>
 Fra starten av prosjektet har gruppen drevet med parprogrammering i arbeidsmøte. Særlig i når uavhengige komponenter av spillet flettes sammen har parprogrammering vært viktig.
 
-Gruppen bestemte seg for en Kanban-basert arbeidsmetodikk, som gruppen erfarer har fungert bra. Prosjekttavlen oppdateres ved hvert møte, og nye arbeidsoppgaver legges til mens gruppen er samlet. Dette forenkler tildeling av arbeidsopgaver.
-Gruppen har drevet med parprogrammering ved flere av møtene som har blitt holdt.
+Gruppen bestemte seg for en Kanban-basert arbeidsmetodikk, som gruppen erfarer har fungert bra. Prosjekttavlen oppdateres ved hvert møte, og nye arbeidsoppgaver legges til mens gruppen er samlet. Dette forenkler tildeling av arbeidsopgaver. Samlet sett har vi positive erfaringene med en slik metodikk. Om prosjektets varighet ville vært lengre ville vi ha kunne utprøvd flere metodikker.
+
 
 
 <b>Retrospektiv</b>
@@ -26,7 +26,7 @@ Enkelte funksjoner (som multiplayer, og cards) har blitt utviklet individuelt. V
 
 
 <b>Hva kan forbedres?</b>
-Vår prioritet fra starten av prosjektet var spillogikk. Vi anser det som viktig at spillogikk prioriteres, da dette også får implikasjoner for multiplayer komponenten av spillet. Likevel har gruppen brukt mye tid på det visuelle aspektet av spillet. Et spill som ser bra ut og er intuitivt er viktig for helhetsopplevelsen for brukerne.  Likevel gir det mening å utsette forbedringen av det visuelle aspektet til slutten av prosjekt. Tiden vi ville spart ved å utsette det visuelle kunne vi anvendt på å løse multiplayer komponenten, og innfridd MVP tidligere.
+Vår prioritet fra starten av prosjektet var spillogikk. Vi anser det som viktig at spillogikk prioriteres, da dette også får implikasjoner for multiplayer komponenten av spillet. Likevel har gruppen brukt mye tid på det visuelle aspektet av spillet. Et spill som ser bra ut og er intuitivt er viktig for helhetsopplevelsen for brukerne.  Likevel gir det mening å utsette forbedringen av det visuelle aspektet til slutten av prosjektet. Tiden vi ville spart ved å utsette det visuelle kunne vi anvendt på å løse multiplayer komponenten, og innfridd MVP tidligere.
 
 
 <b>Betydning av fysisk tilstedeværelse</b>
@@ -68,7 +68,7 @@ Under Deloppgave "Krav" finnes en nærmere gjennomgang av implementasjon.
 
 
 <b>Prosjekttavle</b>
-[Bilde av prosjekttavle](Projectboard/projectboard_deliv3.png)
+[Bilde av prosjekttavle](Projectboard/projectboard_deliv4.png)
 
 <b>Gruppedynamikk og kommunikasjon</b>
 Gruppen holder faste møter tre ganger i uken. Vi har en egen Discord server for å dele ressurser og forenkle kommunikasjon.
@@ -114,14 +114,17 @@ De kravene ble derfor prioritert for denne innleveringen. Slik at alle MVP ble i
 
 <br> </br>
 <b> Gameloop </b>
+
 Et viktig delområde fra forrige Deliverable ble implementeringen av runder og ferdigstilling av kort utdeling. Spillogikken sjekker hvilke spillere som har låste kort, og fjerner dem fra denne rundens kortbunke. Hver spiller blir bedt om å velge opptil fem kort, og programmet sørger for at et riktig antall kort låses om spilleren har tatt skade. Deretter vil kortene bli utført for rett spiller, og etter kortenes prioritet. Til slutt repareres de robotene som har avsluttet runden sin på et reperasjonssted.
 
 
 <b> Menysystem</b>
+
 Et mer omfattende meny-system har blitt implementert siden forrige oblig. Måter å få input fra brukeren ble for eksempel lagt til flere av skjermene. Muligheten til å velge kart, antall spillere og blant annet spiller navn ble opprettet. Før dette, var de eneste bruker-valgene singleplayer eller multiplayer(host/join).
 
 
 <b> Multiplayer </b>
+
 Det er viktig å påpeke at multiplayer refererer til spill på tvers av maskiner.
 Multiplayer har blitt implementert slik at MVP innfris. Spiller bevegelser blir nå reflektert på andre maskiner. Altså, dersom en spiller beveger seg på en maskin, så vil spilleren bli bevegd på en annen maskin også.
 
@@ -171,12 +174,38 @@ En stor mengde mindre endringer, samt Junit tester har blitt implementert, men v
 <b>Akseptansekriterier:</b>
 - Minst to maskiner kan sende informasjon mellom hverandre.
 - Maskin 1 får vite i konsoll at maskin 2 har koblet seg til.
+- Om en spiller beveger seg, så vil spilleren også bevege seg på den andre maskinen.
 
 <b> Arbeidsoppgaver: </b>
 
 - Lage en server som akspeterer og returnerer packets.
 - Gi melding om at en annen maskin har koblet seg til serveren, og eventuelt koblet seg fra serveren.
+- Få spillerene til å bevege seg på tvers av skjermene.
 
+
+### <b>Brukerhistorie 4.5 - Valg av kort</b>
+* "Som bruker trenger jeg å kunne velge opptil 5 kort fra min hånd"
+
+<b>Akseptansekriterier:</b>
+* Å kunne velge riktig antall kort
+* Kortene lagres i valgt rekkefølge
+* Å kunne legge til kort til register
+* Å kunne fjerne kort fra register
+
+<b>Arbeidsoppgaver:</b>
+* Lage et register som kortene lagres i
+* En måte å velge kort
+
+
+### <b>Brukerhistorie 4.6 - Bruk av konsoll</b>
+* "Som bruker ønsker jeg å ha nyttig spillinformasjon uten å måtte bruke konsollen"
+
+<b>Akseptansekriterier:</b>
+* Bruker kan se på dashboard for å hente informasjon om mengden liv roboten har igjen.
+
+<b>Arbeidsoppgaver:</b>
+* Sette lifetokens for hver runde.
+* Hente ut rett spiller og skrive ut relevant informasjon sammen med brukerens kort
 
 
 ## Deloppgave 3: Produktleveranse og kodekvalitet
@@ -192,7 +221,7 @@ Automatisk tester gjøres gjennom Junit, og manuelle tester er beskrevet i Deliv
 
 
 ### <b> Klassediagram </b>
-Et oppdatert klassediagram over hele projektet finnes under Deliverables/UML. [Ref](UML/UMLDeliverable2.png)
+Et oppdatert klassediagram over hele projektet finnes under Deliverables/UML.
 
 På grunn av størrelsen på prosjektet og mengden filer har vi valgt å også inkludere mindre diagrammer for å gi en mer presis forklaring.
 
@@ -281,10 +310,11 @@ Automatiske tester gjøres gjennom Junit rammeverk, og dekker de mest kritiske k
 <b>Arbeidsfordeling</b>
 
 Gruppen har hatt fokus på å gjevne ut kodebidrag med hensyn på mengden linjer og commits.
-Vi understreker at mengden commits er en upresis måte å måle mengden arbeid som er gjort mellom teammedlemmer. Iløpet av prosjektet
+Siden forrige innlevering har nå 4 av medlemmene minimum 2000 linjer kode endret i prosjektet. Dette er en økning fra 3 av oss.
 
-
+Vi understreker at mengden commits er en upresis måte å måle mengden arbeid som er gjort mellom teammedlemmer. Iløpet av prosjektet har gruppen holdt hyppige møter og alle teammedlemmer har bidratt aktivt i diskusjon og planlegging av arbeidsoppgavene. Enkelte gruppemedlemmer har flere commits og kodebidrag enn andre, men planleggingen bak har vært et felles prosjekt.
 
 
 <b> Bugs/uønsket adferd </b>
-En oversikt over kjente feil finnes på hovesiden/Readme. 
+En oversikt over kjente feil finnes på hovesiden/ReadMe. 
+
