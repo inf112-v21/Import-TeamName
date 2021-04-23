@@ -54,6 +54,8 @@ Run the project, the main class is located at `src/main/java/inf112/skeleton/app
 If executed properly you are presented with the main screen of the mainGame.
 
 ## How to play
+
+### Singleplayer
 * Run main.java
 * A new screeen appears and the user is asked to select multiplayer or singleplayer. For singleplayer, choose the nr of players in the game, then optionally add their names, then press the map to be played.
 * Move robot 1 by selecting five cards and clicking the submit button.
@@ -61,7 +63,7 @@ If executed properly you are presented with the main screen of the mainGame.
 * Then its the next players turn to choose card.
 * When all have choosen, the game will proceed to execute the selected cards, and the gameloop beigns.
 
-* For multiplayer:
+### For multiplayer:
 --Multiplayer
 *-Hosting-
 * Select Online, press the "host" button.
