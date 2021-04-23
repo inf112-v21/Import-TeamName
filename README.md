@@ -54,23 +54,25 @@ Run the project, the main class is located at `src/main/java/inf112/skeleton/app
 If executed properly you are presented with the main screen of the mainGame.
 
 ## How to play
-* Run main.java
-* A new screeen appears and the robot is asked to select multiplayer or singleplayer. For testing purposes,
-  use singleplayer
-* Move robot 1 while selecting five cards and clicking the submit button.
-* The selected cards will appear as text in the CONSOLE.
-* The game will proceed to execute the selected cards (As of now, only for robot 1)
 
+### Singleplayer
+* Run main.java
+* A new screeen appears and the user is asked to select multiplayer or singleplayer. For singleplayer, choose the nr of players in the game, then optionally add their names, then press the map to be played.
+* Move robot 1 by selecting five cards and clicking the submit button.
+* The selected cards will appear as text in the CONSOLE and as blue 'highlights' over the choosen card.
+* Then its the next players turn to choose card.
+* When all have choosen, the game will proceed to execute the selected cards, and the gameloop beigns.
+
+### For multiplayer:
 --Multiplayer
-IPV4-LAN!!!!!!
 *-Hosting-
 * Select Online, press the "host" button.
 * Play (WASD)
 
-*-Join-
-*Select Online, press the "find" button, it will try to find a server on LAN.
-*If it finds any, it will refresh the "server ip" field, then press Join.
-* Play (WASD)
+* Joining
+* Select Online, press the "find" button, it will try to find a server on LAN.
+* If it finds any, it will refresh the "server ip" field, then press Join. If it fails to find any, the user may add the correct IPV4 address to the host.
+* The game is then played with, WASD.
 
 ## Alternative build:
 * Navigate to repository main folder
@@ -95,4 +97,5 @@ The debug mode disables moving by clicking on the cards, and instead uses WASD.
 
 ## Known bugs
 * Resizing the window will currently break the clickable cards. Restart fixes it.
-* !!!Server doesn't go off when application is closed. Has to stop the process manually(on IDE) or unbind ports via commandline to start hosting again.
+* !The Server does not shut itself down, when application is closed. The host of the game, either has to manually stop the process in their preferred IDE, or unbind their ports with commandline to start hosting again.
+*   Commandline: `netstat -ano | findstr :8080` , then `taskkill /pid yourid /f` . Replace yourId whith the Pid to the process.
