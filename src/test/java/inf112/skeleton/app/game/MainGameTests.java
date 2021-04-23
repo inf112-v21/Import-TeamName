@@ -18,7 +18,7 @@ public class MainGameTests {
     //Get map
     private TiledMap map = new TmxMapLoader().load("Maps/MapForJunitTests.tmx");
     //Splits player texture into the 3 parts. Live/Dead/Win
-    private TextureRegion[][] textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);
+    private TextureRegion[][] textures = new TextureRegion(new Texture("Images/Robot/robot.png")).split(300, 300);
     private MainGame mainGame;
 
     @Before

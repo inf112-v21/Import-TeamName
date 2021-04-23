@@ -31,7 +31,7 @@ public class RobotTest {
 
     @Before
     public void initialise() {
-        textures = new TextureRegion(new Texture("Images/robot.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
+        textures = new TextureRegion(new Texture("Images/Robot/robot.png")).split(300, 300);  // Splits player texture into the 3 parts. Live/Dead/Win
         map = new TmxMapLoader().load("Maps/Chess.tmx");       // Get map file
         tilePlayer = (TiledMapTileLayer) map.getLayers().get("Player");
         Assets.load();
