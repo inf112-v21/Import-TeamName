@@ -61,9 +61,6 @@ public class CardsTest {
         assertEquals(Direction.EAST, robot.getLookDirection());
     }
 
-    //TODO: Write tests that account for walls.
-
-
     @Test
     public void cardDeckSubtractNumCards() {
         CardHand deck = new CardHand(9);

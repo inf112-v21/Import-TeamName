@@ -37,7 +37,7 @@ public class GameLoopEventHandler {
     private void renderPlayersOnBoard() {
         //Render all robot on the board, at their new position.
         for (Robot robot : robots) {
-            if (robot.getProgramSheet().isDead()) robot.setPosition(new Vector2(-10,-10)); //Dead players are off the board. TODO: Maybe handle dead players another way -Endre
+            if (robot.getProgramSheet().isDead()) robot.setPosition(new Vector2(-10,-10)); //Dead players are off the board.
             tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCell());
         }
     }
@@ -50,7 +50,7 @@ public class GameLoopEventHandler {
         for (Robot robot : robots) {
             Vector2 position = robot.getPosition();
 
-            if (gameBoard.isOnBoard(position) ||gameBoard.isPosAPit(position)) {
+            if (gameBoard.isOnBoard(position) || gameBoard.isPosAPit(position)) {
                 //robot.robotLoseLife(robot);
                 tilePlayer.setCell((int) robot.getPosition().x, (int) robot.getPosition().y, robot.getPlayerCellDead());
 
@@ -79,6 +79,7 @@ public class GameLoopEventHandler {
      * Testing
      */
     private void checkForWin() {
+        // If a robot has collected all flags in correct order.
         for (Robot robot : robots) {
             int visitedFlags = robot.getProgramSheet().getNumberOfFlags();
             if (visitedFlags == gameBoard.getNrFlags()) {

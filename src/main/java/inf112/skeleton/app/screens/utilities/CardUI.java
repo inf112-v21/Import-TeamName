@@ -27,7 +27,6 @@ public class CardUI extends Actor {
     private  CardHand cardHand;
     private int cardCount;
     public ArrayList<SimpleProgramCard> selectedCards;
-    private Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
 
     private int w;
     private int h;
