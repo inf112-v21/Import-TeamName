@@ -144,30 +144,18 @@ public class MapSelectScreen implements Screen {
         chess.setX(alignToAxisX - chess.getWidth()/2);
         chess.setY(height - chess.getHeight()-height*0.20f);
 
-        final Button dizzy = new TextButton("DizzyHighway", skin);
-        dizzy.setWidth(width*0.40f);
-        dizzy.setHeight(height*0.10f);
-        dizzy.setX(alignToAxisX - dizzy.getWidth()/2);
-        dizzy.setY(height - dizzy.getHeight()-height*0.32f);
-
         final Button exchange = new TextButton("Exchange", skin);
         exchange.setWidth(width*0.40f);
         exchange.setHeight(height*0.10f);
         exchange.setX(alignToAxisX - exchange.getWidth()/2);
-        exchange.setY(height - exchange.getHeight()-height*0.44f);
-
-        final Button vault = new TextButton("Vault", skin);
-        vault.setWidth(width*0.40f);
-        vault.setHeight(height*0.10f);
-        vault.setX(alignToAxisX - vault.getWidth()/2);
-        vault.setY(height - vault.getHeight()-height*0.56f);
+        exchange.setY(height - exchange.getHeight()-height*0.32f);
 
         final Button whirlwind = new TextButton("Whirlwind", skin);
         whirlwind.setWidth(width*0.40f);
         whirlwind.setHeight(height*0.10f);
         whirlwind.setX(alignToAxisX - whirlwind.getWidth()/2);
-        whirlwind.setY(height - whirlwind.getHeight()-height*0.68f);
-
+        whirlwind.setY(height - whirlwind.getHeight()-height*0.44f);
+        
         final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
         backButton.setHeight(height*0.08f);
@@ -176,9 +164,7 @@ public class MapSelectScreen implements Screen {
 
         stage.addActor(playerCount);
         stage.addActor(chess);
-        stage.addActor(dizzy);
         stage.addActor(exchange);
-        stage.addActor(vault);
         stage.addActor(whirlwind);
         stage.addActor(backButton);
         stage.addActor(name1);
@@ -200,26 +186,11 @@ public class MapSelectScreen implements Screen {
             }
         });
 
-        dizzy.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y){
-                mapPath = "Maps/DizzyHighway.tmx";
-                startGame();
-            }
-        });
 
         exchange.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 mapPath = "Maps/Exchange.tmx";
-                startGame();
-            }
-        });
-
-        vault.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y){
-                mapPath = "Maps/tmxVault.";
                 startGame();
             }
         });
