@@ -13,17 +13,13 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 
-import java.awt.*;
 
 import static com.badlogic.gdx.Gdx.gl;
 import static inf112.skeleton.app.game.MainGame.robots;
@@ -166,7 +162,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public void show() {
 
         this.cardui = new CardUI(mainGame);
-        cardui.setUp((int) (uiCamera.viewportWidth)/2, (int) (uiCamera.viewportHeight / 4), this);
+        cardui.setUp((int) (uiCamera.viewportWidth)/2, (int) (uiCamera.viewportHeight / 4));
         uiStage.addActor(cardui.getTable());
         mainGame.startGameRound(cardui); // Game loop start
 

@@ -2,7 +2,7 @@ package inf112.skeleton.app.game;
 
 import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.objects.TileObjects.RepairSite;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 
 import static inf112.skeleton.app.game.MainGame.gameBoard;
 import static inf112.skeleton.app.game.MainGame.robots;

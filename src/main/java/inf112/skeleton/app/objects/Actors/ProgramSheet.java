@@ -47,8 +47,8 @@ public class ProgramSheet {
         if (this.damageTokens >= 10) {
             this.damageTokens = 0;
             this.lifeTokens -= 1;
-            if(this.lifeTokens == 0){
-                this.setDead(true);
+            if(this.lifeTokens <= 0){
+                this.dead = true;
             }
         }
         if (this.damageTokens < 0) {

@@ -1,7 +1,7 @@
 package inf112.skeleton.app.game;
 
 import inf112.skeleton.app.objects.Actors.Robot;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
+import inf112.skeleton.app.screens.utilities.CardUI;
 
 import static inf112.skeleton.app.game.MainGame.robots;
 
@@ -22,7 +22,7 @@ public class ChooseCardsPhase extends Thread {
         public void run(MainGame mainGame, CardUI cardUI)  {
             int i = 0;
             for (Robot robot : robots) {
-                if (robot.getProgramSheet().getPowerDown() || robot.getProgramSheet().isDead()) continue;
+                if (robot.getProgramSheet().isDead() || robot.getProgramSheet().getPowerDown()) continue;
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
                     System.out.println("#################################");

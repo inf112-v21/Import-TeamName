@@ -19,7 +19,7 @@ public class RoboRally extends Game {
     public SpriteBatch batch;
     public ShapeRenderer shapeRenderer;
     public BitmapFont font;
-    GameScreen  gameScreen;
+    public static GameScreen  gameScreen;
     WinScreen   winScreen;
     TitleScreen titleScreen;
     MapSelectScreen mapSelectScreen;
@@ -39,7 +39,7 @@ public class RoboRally extends Game {
         viewPort.apply();
         stage = new Stage(viewPort);
 
-        // Load assets from assetsmanager
+        // Load assets from assets manager
         Assets.load();
         Assets.manager.finishLoading();
 
@@ -54,6 +54,10 @@ public class RoboRally extends Game {
         this.setScreen(titleScreen); // Set screen to title screen
     }
 
+    /**
+     * Turns on debugmode
+     * Called in Main class
+     */
     public void debugModeOn() {
         debugMode = true;
     }
@@ -88,7 +92,7 @@ public class RoboRally extends Game {
     public void setWinScreen() {
         setScreen(winScreen);
     }
-//*
+
     @Override
     public void render() {
         super.render();
