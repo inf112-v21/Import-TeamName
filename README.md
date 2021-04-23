@@ -69,9 +69,9 @@ If executed properly you are presented with the main screen of the mainGame.
 * Select Online, press the "host" button.
 * Play (WASD)
 
-*-Join-
-*Select Online, press the "find" button, it will try to find a server on LAN.
-*If it finds any, it will refresh the "server ip" field, then press Join. If it fails to find any, the user may add the correct IPV4 address to the host.
+* Joining
+* Select Online, press the "find" button, it will try to find a server on LAN.
+* If it finds any, it will refresh the "server ip" field, then press Join. If it fails to find any, the user may add the correct IPV4 address to the host.
 * The game is then played with, WASD.
 
 ## Alternative build:
