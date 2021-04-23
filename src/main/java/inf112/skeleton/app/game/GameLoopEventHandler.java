@@ -84,6 +84,7 @@ public class GameLoopEventHandler {
             int visitedFlags = robot.getProgramSheet().getNumberOfFlags();
             if (visitedFlags == gameBoard.getNrFlags()) {
                 switcher.setWinScreen();
+
             }
         }
     }

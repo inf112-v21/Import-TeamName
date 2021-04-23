@@ -16,12 +16,14 @@ import static inf112.skeleton.app.game.MainGame.robots;
 public class DealCardsPhase  {
 
 
-
+    /**
+     * Deals cards.
+     * Called upon every round
+     */
     public void run() {
         handleLockedCards();
         dealCardsToPlayers();
     }
-
 
     /**
      * Deals a new hand for every card, based on the created deck

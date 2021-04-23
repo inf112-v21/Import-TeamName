@@ -15,6 +15,9 @@ Teamet har beholdt rollene fra forrige Deliverable og erfarer at rollene slik de
 
 
 <b>Erfaringer fra prosjektmetodikk:</b>
+Fra starten av prosjektet har gruppen drevet med parprogrammering i arbeidsmøte. Særlig i når uavhengige komponenter av spillet flettes sammen har parprogrammering vært viktig.
+
+Gruppen bestemte seg for en Kanban-basert arbeidsmetodikk, som gruppen erfarer har fungert bra. Prosjekttavlen oppdateres ved hvert møte, og nye arbeidsoppgaver legges til mens gruppen er samlet. Dette forenkler tildeling av arbeidsopgaver.
 Gruppen har drevet med parprogrammering ved flere av møtene som har blitt holdt.
 
 
@@ -26,10 +29,35 @@ Enkelte funksjoner (som multiplayer, og cards) har blitt utviklet individuelt. V
 Vår prioritet fra starten av prosjektet var spillogikk. Vi anser det som viktig at spillogikk prioriteres, da dette også får implikasjoner for multiplayer komponenten av spillet. Likevel har gruppen brukt mye tid på det visuelle aspektet av spillet. Et spill som ser bra ut og er intuitivt er viktig for helhetsopplevelsen for brukerne.  Likevel gir det mening å utsette forbedringen av det visuelle aspektet til slutten av prosjekt. Tiden vi ville spart ved å utsette det visuelle kunne vi anvendt på å løse multiplayer komponenten, og innfridd MVP tidligere.
 
 
+<b>Betydning av fysisk tilstedeværelse</b>
+
+Som gruppe har vi ikke hatt mulighet til å møte fysisk. Vi tenker at dette har slått ut mer negativt enn positivt av følgende grunner.
+
+* Negative sider ved å ikke møte fysisk:
+    * Vanskelig å holde god kommunikasjon.
+    * Ikke like lett å forklare kode og konsepter.
+    * Det er enklere å slakke, siden det ikke er noen som nødvendigvis kan følge med på hva du gjør til enhver tid.
+    * Den sosiale arenaen blir ikke like godt utviklet mellom medlemmene. Ofte er det enklere og raskere å jobbe med andre, når man kjenner dem. Det er enklere å gjøre fysisk.
+
+* Positive sider:
+    * Enklere med hyppige møter. Siden det er digitalt, kan alle delta selv om man ikke er i Bergen.
+    * Reduserer pendletid, og det blir enklere å bruke tid på projektet.
+
+* Konklusjon:
+    * Selv om det ble store restriksjoner med fysisk oppmøte. Føler gruppen at projektet ble gjennomført på en god måte. Vi ser nå i etterkant at vi kunne vært mer effektive med kommunikasjon og arbeidsfordeling, men det tyder på at vi har lært mye i dette kurset :-).
 
 
 <b>Forbedringspunkter</b>
-1. Mer fokus på multiplayer
+* Gruppen
+    1. Kommunikasjon
+        * Vi ser at en større tydeliggjøring av ansvar og arbeidsoppgaver kunne spart gruppen for tid.
+    2. Oversikt over alle komponenter i kodebasen
+        * Gruppen har ved hvert møte brukt en type `standup` der vi forklarer endringer og tillegg til prosjektet. I etterkant ser vi et behov for å ta ekstra gjennomganger, slik at alle har samme forståelse av kodebasen. For eksempel
+
+
+* Tekniske forbedringspunkter
+    1. Mer fokus på multiplayer
+        * Dette var en utfordrende bit av prosjektet da ingen av gruppemedlemmen hadde erfaring som vi kunne støtte oss på. Dette sammen med tette tidfrister, resulterte i at vi prioriterte de andre kravene over multiplayer. I etterkant ser vi at hvordan spillet skal bli designet er avhengig multiplayer implementasjonen, og vi måtte refactorere en del for å oppnå MVP krav 6.
 
 
 <b>Gruppens prioriteringer</b>
@@ -39,7 +67,7 @@ Under Deloppgave "Krav" finnes en nærmere gjennomgang av implementasjon.
 
 
 
-<b> Prosjekttavle </b>
+<b>Prosjekttavle</b>
 [Bilde av prosjekttavle](Projectboard/projectboard_deliv3.png)
 
 <b>Gruppedynamikk og kommunikasjon</b>
@@ -95,7 +123,7 @@ Et mer omfattende meny-system har blitt implementert siden forrige oblig. Måter
 
 <b> Multiplayer </b>
 Det er viktig å påpeke at multiplayer refererer til spill på tvers av maskiner.
-Multiplayer har blitt implementert slik at MVP innfris. Spiller bevegelser blir nå reflektert på andre maskiner.
+Multiplayer har blitt implementert slik at MVP innfris. Spiller bevegelser blir nå reflektert på andre maskiner. Altså, dersom en spiller beveger seg på en maskin, så vil spilleren bli bevegd på en annen maskin også.
 
 En stor mengde mindre endringer, samt Junit tester har blitt implementert, men vil ikke bli gjennomgått i detalj. De fleste endringene av betydning vil være loggført i prosjekttavlen.
 
@@ -104,29 +132,41 @@ En stor mengde mindre endringer, samt Junit tester har blitt implementert, men v
 ## <b> Brukerhistorier: </b>
 
 
-### <b>Brukerhistorie 3.2 - Grafisk framstilling av kort</b>
-* "Som spiller vil jeg vite hvilke kort jeg kan velge i en gitt runde"
+### <b>Brukerhistorie 4.1 - Andre spilleres valg</b>
+* "Som bruker ønsker jeg å se andre spilleres trekk"
 
 <b>Akseptansekriterier:</b>
-- Å kunne se hvilke kort man har i hånden sin
+- Å visuelt se andre spilleres bevegelse etter endt runde
 
 <b> Arbeidsoppgaver: </b>
-- Lage en grafisk framstilling av kortene i hånden
+- Spillet registerrer alle spilleres valgte kort
+- Spillet viser resultatet av utførelsen etter endt runde
 
 
-### <b>Brukerhistorie 3.3 - Grafisk framstilling av valgte kort</b>
-* "Som bruker vil jeg få respons fra spillet på hvilke kort jeg har valgt før kortene sendes videre"
+### <b>Brukerhistorie 4.2 - Lifetokens </b>
+* "Som bruker ønsker jeg å se hvor mange life tokens jeg har igjen, slik at jeg vet hvor langt jeg er ifra å dø."
 
 <b>Akseptansekriterier:</b>
-- Å kunne se hvilke kort man har valgt ved
+- Bruker kan visuelt se hvor mange liv han har igjen ved å se på dashbordet når det er hans tur.
 
 <b> Arbeidsoppgaver: </b>
+- Hente mengde lifetokens fra robotens .getProgramSheet()
+- Tegne dette på GUI, gjennom card UI. 
 
-- Implementere farge endring ved valg av kort
+### <b>Brukerhistorie 4.3 - Roboter beveges steg for steg </b>
+* "Som bruker ønsker jeg å se stegvis hvor robotene beveger seg."
+
+<b>Akseptansekriterier:</b>
+- Å visuelt se alle roboter gjøre en bevegelse etter hverandre.
+- Robotene 'teleporterer' ikke fra et sted til et annet.
+
+<b> Arbeidsoppgaver: </b>
+- Endre hvordan bevegelse blir håndtert.
+- Undersøke hvordan render() funksjonen i `GameScreen.java` fungerer.
 
 
-### <b>Brukerhistorie 3.4 - Multiplayer</b>
-"Som spiller vil jeg spille med/mot andre spiller"
+### <b>Brukerhistorie 4.4 - Multiplayer</b>
+* "Som spiller vil jeg spille med/mot andre spiller"
 
 <b>Akseptansekriterier:</b>
 - Minst to maskiner kan sende informasjon mellom hverandre.
@@ -241,8 +281,9 @@ Automatiske tester gjøres gjennom Junit rammeverk, og dekker de mest kritiske k
 <b>Arbeidsfordeling</b>
 
 Gruppen har hatt fokus på å gjevne ut kodebidrag med hensyn på mengden linjer og commits.
-Siden forrige innlevering har nå 4 av medlemmene minimum 2000 linjer kode endret i prosjektet.
-Dette er en økning fra 3 av oss. Til neste Deliverable vil gruppen tilstrebe å jevne ut commits ytterligere.
+Vi understreker at mengden commits er en upresis måte å måle mengden arbeid som er gjort mellom teammedlemmer. Iløpet av prosjektet
+
+
 
 
 <b> Bugs/uønsket adferd </b>
