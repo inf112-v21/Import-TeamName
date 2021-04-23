@@ -46,7 +46,6 @@ public class DealCardsPhase  {
             if (robot.getProgramSheet().getNumLockedRegisterCards() > 0) lockedCards.addAll(robot.getProgramSheet().getRegister().getLockedCards());
             /**
              * Wipes?
-             * TODO
              */
             //else robot.getProgramSheet().getRegister().wipeRegister();  // Wipe register
         }

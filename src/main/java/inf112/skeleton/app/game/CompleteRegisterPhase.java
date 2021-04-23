@@ -76,14 +76,6 @@ public class CompleteRegisterPhase  {
      * Moves all conveyors, pushers if activated and rotates robots on Gear tiles.
      */
     protected void boardElementsMove() {
-        /*
-        TODO: Implement player collision with conveyors. See Rulebook page 5.
-             Player collision using conveyors
-                - Collect all moves in a collection
-                - Check if two or more robots wants to go to same tile.
-                    - These robots do nothing/Stand still.
-                - Execute moves for all robots not moving to same tile as another.
-         */
         //Check for express conveyor, and move player
         moveConveyor(true);
 
@@ -155,7 +147,7 @@ public class CompleteRegisterPhase  {
 
                 //Conveyor cannot push robots through walls.
                 if (!gameBoard.canGoToTile(robotLocation, con.getPushDirection())) continue;
-                //Conveyor cannot push robots onto other robots. //TODO: Implement conveyor collision logic.
+                //Conveyor cannot push robots onto other robots.
                 if (robot.occupied(Direction.goDirection(robotLocation, con.getPushDirection()))) continue;
 
                 TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
