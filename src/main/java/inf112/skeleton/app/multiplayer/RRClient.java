@@ -60,7 +60,7 @@ public class RRClient {
     }
 
     protected void disconnectHandler (Connection c) {
-        //add some method which clears disconnected player/depends on game rules. Probably has to be done in some other class.
+       //well...
     }
 
     //what to do with packet of type "x"
@@ -77,7 +77,7 @@ public class RRClient {
         } else if (packet instanceof NetworkPackets.MovedRobot) {
             NetworkPackets.MovedRobot type = (NetworkPackets.MovedRobot) packet;
             this.mainGame.cheatPosition(type);
-            System.out.println("A robot moved!");
+            //System.out.println("A robot moved!");  for manual tests.
         }
     }
 
@@ -101,6 +101,7 @@ public class RRClient {
         this.client.close();
     }
 
+    //was used for manual tests, just pings the server if one is connected.
     public void ping() {
         if (this.client.isConnected()) {
             this.client.updateReturnTripTime();

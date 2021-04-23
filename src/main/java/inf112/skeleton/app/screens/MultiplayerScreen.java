@@ -5,10 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.esotericsoftware.kryonet.Client;
@@ -28,12 +25,10 @@ public class MultiplayerScreen implements Screen {
     private Stage stage;
     private Skin skin;
 
-    //private TiledMap map = new TmxMapLoader().load("Maps/Chess.tmx");
 
     float width;
     float height;
 
-    //MainGame mainGame;
     int alignToAxisX = Gdx.graphics.getWidth()/2;
 
     //Constructor
@@ -43,7 +38,6 @@ public class MultiplayerScreen implements Screen {
 
     @Override
     public void show () {
-        //mainGame = new MainGame();
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
         stage = new Stage(new StretchViewport(width, height));
@@ -68,6 +62,10 @@ public class MultiplayerScreen implements Screen {
         assignName.setX(alignToAxisX - assignName.getWidth()/2);
         assignName.setY(height - assignName.getHeight() - height*0.39f);
 
+        //label UI elements
+        final Label findLAN = new Label("Press to find LAN server: ", skin);
+        findLAN.setX(alignToAxisX - assignIP.getWidth()/2);
+        findLAN.setY(height - findLAN.getHeight() -height*0.28f);
 
         //Button UI elements
         final Button joinGame = new TextButton("Join", skin);
@@ -86,8 +84,8 @@ public class MultiplayerScreen implements Screen {
         final Button findGame = new TextButton("Find", skin);
         findGame.setWidth(width*0.10f);
         findGame.setHeight(height*0.04f);
-        findGame.setX(assignIP.getX()+assignIP.getWidth()+ width*0.02f);
-        findGame.setY(assignIP.getY());
+        findGame.setX(findLAN.getX()+findLAN.getWidth()+ width*0.02f);
+        findGame.setY(findLAN.getY());
 
         final Button backButton = new TextButton("Back", skin);
         backButton.setWidth(width*0.40f);
@@ -103,6 +101,7 @@ public class MultiplayerScreen implements Screen {
         stage.addActor(hostGame);
         stage.addActor(findGame);
         stage.addActor(backButton);
+        stage.addActor(findLAN);
 
         assignIP.setTextFieldListener(new TextField.TextFieldListener() {
             public void keyTyped(TextField textField, char c) {
@@ -152,16 +151,12 @@ public class MultiplayerScreen implements Screen {
     }
 
     private void join() {
-        //mainGame.setup(map);
-        //mainGame.setNumPlayers(3);
         MultiplayerGameScreen multiplayer = new MultiplayerGameScreen(switcher, false, assignIP.getText(), getName());
         switcher.setScreen(multiplayer);
 
     }
 
     private void host() {
-        //mainGame.setup(map);
-        //mainGame.setNumPlayers(1);
         MultiplayerGameScreen multiplayer = new MultiplayerGameScreen(switcher,true, assignIP.getText(), getName());
         switcher.setScreen(multiplayer);
     }

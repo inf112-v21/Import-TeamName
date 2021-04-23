@@ -219,4 +219,9 @@ public  class Robot extends SimpleObject implements IActor {
     }
 
     public String getPlayerName() {return this.playerName;}
+
+    public void clearRobotSprite(int x, int y) {
+        TiledMapTileLayer playerTile = (TiledMapTileLayer) gameBoard.getMap().getLayers().get("Player");
+        playerTile.setCell( x, y, new TiledMapTileLayer.Cell());
+    }
 }

@@ -6,21 +6,22 @@ import com.esotericsoftware.kryonet.FrameworkMessage;
 
 public class NetworkPackets {
 
+    //designate ports to be used here:
     static public final int tcpPort = 8080;
     static public final int udpPort = 8080;
 
 
-    static public void register (EndPoint endPoint) { //EndPoint is either server og client
+    static public void register (EndPoint endPoint) { //EndPoint is either server or client
        Kryo obj = endPoint.getKryo(); //instead of writing the latter on every object to be registered.
 
        //follow this format of "obj.register(xxx.class)", where xxx is class.
-        obj.register(FrameworkMessage.Ping.class);
+        obj.register(FrameworkMessage.Ping.class); //ping isn't really used, is more for manual tests during developement.
         obj.register(Entry.class);
         obj.register(NewPlayer.class);
         obj.register(MovedRobot.class);
     }
 
-    static public class Entry {  //still testing, might need more here
+    static public class Entry {
         public String name;
 
         public Entry() {}
@@ -42,28 +43,15 @@ public class NetworkPackets {
         }
     }
 
-    static public class MovedRobot {
+    static public class MovedRobot { //should do for MVP
         public int playerID;
         public int keycode;
-        //public float x;
-        //public float y;
-        //public float xD;
-        //public float yD;
 
         public MovedRobot() {}
         public MovedRobot(int playerID, int keycode) {
             this.playerID = playerID;
             this.keycode = keycode;
         }
-        /**
-        public MovedRobot (int playerID, float x, float y, float xD, float yD) {
-            this.playerID = playerID;
-            this.x = x;
-            this.y = y;
-            this.xD = xD;
-            this.yD = yD;
-        }
-*/
     }
     //implement the classes for use in RRClient/RRServer here
 

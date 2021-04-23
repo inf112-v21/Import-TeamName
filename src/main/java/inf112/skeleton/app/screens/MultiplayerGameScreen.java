@@ -22,7 +22,6 @@ import inf112.skeleton.app.map.Board;
 import inf112.skeleton.app.multiplayer.NetworkPackets;
 import inf112.skeleton.app.multiplayer.RRClient;
 import inf112.skeleton.app.multiplayer.RRServer;
-import inf112.skeleton.app.screens.cardsUI.CardUI;
 
 import java.io.IOException;
 
@@ -34,7 +33,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
 
     private OrthogonalTiledMapRenderer mapRenderer;
     private OrthographicCamera gameCamera, uiCamera;
-    private CardUI cardui;
 
     private int viewPortWidth, viewPortHeight;
 
@@ -73,7 +71,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
         this.switcher = switcher;
         this.hosting = hosting;
         this.name = name;
-        //this.map = map;
         if(!ip.isEmpty()) {
             this.ip = ip;
         } else {
@@ -154,13 +151,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
 
         startGameNow();
 
-        /**
-        this.cardui = new CardUI(mainGame);
-        cardui.setUp((int) (uiCamera.viewportWidth) / 2, (int) (uiCamera.viewportHeight / 4), this);
-        uiStage.addActor(cardui.getTable());
-        mainGame.gameLoop(cardui);
-*/
-  //      Gdx.input.setInputProcessor(this.uiStage);
         Gdx.input.setInputProcessor(this);
 
     }
@@ -180,11 +170,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
         gameLoopEventHandler.run();
         mapRenderer.render();
 
-/**
-        Gdx.gl.glViewport( 0,0, Gdx.graphics.getWidth(),  menuHeight); // Set card deck menu height
-        this.uiStage.act();
-        this.uiStage.draw();
- */
     }
 
     @Override
@@ -217,9 +202,6 @@ public class MultiplayerGameScreen extends InputAdapter implements Screen {
         if (server != null) {
             server.ceaseServer();
         }
-    }
-    public Stage getUIStage() {
-        return this.uiStage;
     }
 
     public MainGame getMainGame() {

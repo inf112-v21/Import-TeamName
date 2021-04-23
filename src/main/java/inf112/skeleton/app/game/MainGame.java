@@ -101,12 +101,13 @@ public  final class MainGame {
 
     public void removePlayer (int id){
         id --;
+        int x = (int) robots.get(id).getPosition().x;
+        int y = (int) robots.get(id).getPosition().y;
+        robots.get(id).clearRobotSprite(x, y);
         robots.remove(id);
-        //todo: only removes robot from list, but not from board.
     }
 
     public void cheatPosition (NetworkPackets.MovedRobot packet) {
-        //robots.get(packet.playerID -1).cheatPosition(packet.x, packet.y, packet.xD, packet.yD);
         if (packet.playerID == 1) {
             robots.get(packet.playerID).moveRobotWASD(packet.keycode);
         } else {
