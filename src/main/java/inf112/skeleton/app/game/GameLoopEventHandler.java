@@ -86,13 +86,6 @@ public class GameLoopEventHandler {
                 switcher.setWinScreen();
             }
         }
-
-        //If all but 1 robot is dead --> Winscreen for last robot
-        int dead = 0;
-        for (Robot robot : robots) {
-            if (robot.getProgramSheet().isDead()) dead++;
-        }
-        if (dead == robots.size()-1) switcher.setWinScreen();
     }
 
 
