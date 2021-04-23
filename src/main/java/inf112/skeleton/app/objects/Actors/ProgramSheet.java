@@ -36,8 +36,8 @@ public class ProgramSheet {
 
 
     /**
-     *
-     * @param amount
+     * Deal damage to the robot
+     * @param amount: amount of damage
      */
     public void addDamage(int amount) {
         if(this.damageTokens >= 5 && amount < 0) {
@@ -64,6 +64,7 @@ public class ProgramSheet {
 
     /**
      * Called every round for its robot
+     * Deals a new cardHand to the player
      */
     public void dealCards() {
         if (damageTokens >=10) hand = new CardHand(0);
@@ -71,6 +72,10 @@ public class ProgramSheet {
 
     }
 
+    /**
+     * Add lifetokens to player
+     * @param amount: amount to add
+     */
     public void addLife(int amount) {
         this.lifeTokens += amount;
 
@@ -84,6 +89,9 @@ public class ProgramSheet {
 
     }
 
+    /**
+     *
+     * **/
     public void loseLife(){
         this.lifeTokens -= 1;
     }
@@ -136,8 +144,8 @@ public class ProgramSheet {
         return this.dead;
     }
 
-    public void setDead(boolean dead) {
-        this.dead = dead;
+    public void setDead() {
+        this.dead = true;
     }
 
     /**

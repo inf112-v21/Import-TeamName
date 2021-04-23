@@ -20,9 +20,7 @@ public class DealCardsPhase  {
     public void run() {
         handleLockedCards();
         dealCardsToPlayers();
-
     }
-
 
 
     /**
@@ -30,24 +28,19 @@ public class DealCardsPhase  {
      */
     private void dealCardsToPlayers() {
         for (Robot robot : robots) {
+            if (robot.getProgramSheet().isDead()) continue;
             robot.getProgramSheet().dealCards(); // Deal cards to each robot
         }
 
     }
 
     /**
-     * Deals card
+     * Excludes locked cards from
      */
     private void handleLockedCards() {
         ArrayList<SimpleProgramCard> lockedCards = new ArrayList<>();
         for (Robot robot: robots) {
-
-            // Mulig å fjerne?
             if (robot.getProgramSheet().getNumLockedRegisterCards() > 0) lockedCards.addAll(robot.getProgramSheet().getRegister().getLockedCards());
-            /**
-             * Wipes?
-             */
-            //else robot.getProgramSheet().getRegister().wipeRegister();  // Wipe register
         }
         deck.createDeck(); // Creates new deck
         deck.handleLockedCards(lockedCards); // Calls upon method in carddeck which removes locked cards from deck

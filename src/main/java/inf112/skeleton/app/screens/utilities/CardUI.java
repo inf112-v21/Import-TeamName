@@ -32,9 +32,12 @@ public class CardUI extends Actor {
     private int h;
     MainGame mainGame;
 
+    private Robot robot;
+
     public String playerName;
     public int lifeTokens;
     /**
+     *
      * Constructor
      * @param mainGame: instance of main game
      */
@@ -69,9 +72,7 @@ public class CardUI extends Actor {
      *  Populates the list selectedCards
      */
     public void generateCards(Robot robot) {
-        if (robot.getProgramSheet().isDead()) return;
-        this.playerName = robot.getPlayerName();
-        this.lifeTokens = robot.getProgramSheet().getLife();
+        this.robot = robot;
         cardCount  = 0;
         cardHand = robot.getProgramSheet().getCardHand();
         int possibleNumcards = 5 - robot.getProgramSheet().getNumLockedRegisterCards(); // Subtract locked cards
@@ -121,6 +122,11 @@ public class CardUI extends Actor {
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 return true;
             }});
+    }
+
+
+    public Robot getCurrentRobot(){
+        return this.robot;
     }
 
     /** Returns table used for visualizing table **/

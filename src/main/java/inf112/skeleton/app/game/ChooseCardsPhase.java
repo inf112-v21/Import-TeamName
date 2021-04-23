@@ -22,7 +22,9 @@ public class ChooseCardsPhase extends Thread {
         public void run(MainGame mainGame, CardUI cardUI)  {
             int i = 0;
             for (Robot robot : robots) {
-                if (robot.getProgramSheet().isDead() || robot.getProgramSheet().getPowerDown()) continue;
+                if (robot.getProgramSheet().getLife() < 0 || robot.getProgramSheet().getPowerDown()) continue;
+                if (robot.getProgramSheet().isDead()) continue;
+                System.out.println("Is the player dead?" + robot.getProgramSheet().isDead());
                 i++;
                 if (!robot.getProgramSheet().getRegister().chosenCards) {
                     System.out.println("#################################");

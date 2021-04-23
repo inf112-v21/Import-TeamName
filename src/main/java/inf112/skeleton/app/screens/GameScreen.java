@@ -18,6 +18,7 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.game.GameLoopEventHandler;
 import inf112.skeleton.app.game.MainGame;
 import inf112.skeleton.app.map.Board;
+import inf112.skeleton.app.objects.Actors.Robot;
 import inf112.skeleton.app.screens.utilities.CardUI;
 
 
@@ -145,12 +146,13 @@ public class GameScreen extends InputAdapter implements Screen {
         batch.begin();
         Matrix4 pain = batch.getProjectionMatrix().cpy();
         batch.setProjectionMatrix(pain.cpy().scale(3f, 4.9f, 1));
-        font.draw(batch, "Player " + cardui.getRobotName() + "'s turn", width*0.1f, height*0.15f);
-        if (cardui.getLifeTokens() == 3) {
+        Robot robot = cardui.getCurrentRobot();
+        font.draw(batch, "Player " + robot.getRobotName() + "'s turn", width*0.1f, height*0.15f);
+        if (robot.getProgramSheet().lifeTokens == 3) {
             font.draw(batch, "Life Tokens: X X X", width*0.1f, height*0.1f);
-        } else if (cardui.getLifeTokens() == 2) {
+        } else if (robot.getProgramSheet().lifeTokens == 2) {
             font.draw(batch, "Life Tokens: X X  ", width*0.1f, height*0.1f);
-        } else if (cardui.getLifeTokens() == 1) {
+        } else if (robot.getProgramSheet().lifeTokens == 1) {
             font.draw(batch, "Life Tokens: X    ", width*0.1f, height*0.1f);
         }
         batch.setProjectionMatrix(pain);
